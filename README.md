@@ -30,36 +30,6 @@ The database covers chemicals across major regulatory frameworks:
 - **WHO acute pesticide intoxication** — key pesticides
 - **EWG dietary pesticide exposure study** — malathion, chlormequat, dietary fungicides
 
-## How to use
-
-### Option 1: GitHub Pages (recommended)
-
-This repository is configured for GitHub Pages. Once enabled:
-
-1. Go to your repository **Settings** → **Pages**
-2. Under "Source," select **Deploy from a branch**
-3. Select the **main** branch and **/ (root)** folder
-4. Click **Save**
-5. Your site will be live at `https://[your-username].github.io/toxic-chemical-explorer/`
-
-### Option 2: Open locally
-
-Just open `index.html` in any modern browser. No server needed — it's a single self-contained file.
-
-### Option 3: Any web host
-
-Upload `index.html` to any static hosting service (Netlify, Vercel, Cloudflare Pages, or any web server).
-
-## Making updates
-
-The entire tool lives in a single `index.html` file. The chemical database is embedded in the JavaScript as a `CURATED_DB` object.
-
-**To add a new chemical:** Find the `CURATED_DB` object in the code and add a new entry following the existing pattern. Each entry includes fields for name, aliases, CAS number, chemical class, description, toxicity panels, GreenScreen benchmark, related chemicals, products, manufacturer data, legislation, and external links.
-
-**To update existing data:** Search for the chemical's key (e.g., `"vinyl chloride"`) in the code and edit the relevant fields.
-
-**Working with Claude:** This tool was built collaboratively with Claude. You can continue making updates by sharing the file in a Claude conversation or project and requesting changes. Claude can add new chemicals, update manufacturer data, fix links, and modify the design.
-
 ## Data sources
 
 - [Toxic-Free Future](https://toxicfreefuture.org/) — toxic chemicals information
