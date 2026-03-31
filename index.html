@@ -13,11 +13,9 @@
 </head>
 <body>
   <div id="root"></div>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
-
   <script type="text/babel">
 const { useState, useEffect, useRef, useCallback } = React;
 
@@ -691,6 +689,1827 @@ const CURATED_DB = {
   legislation:[{st:"WA",bill:"HB 2545",status:"passed",title:"Bans flame retardants in furniture and children's products"},{st:"CA",bill:"TB 117-2013",status:"passed",title:"Updated flammability standard — removes open flame test that drove FR use"},{st:"ME",bill:"LD 1433",status:"passed",title:"Bans flame retardants in children's products and furniture"},{st:"US",bill:"CPSC",status:"passed",title:"Halogenated flame retardants banned in children's products, mattresses, furniture, and electronics casings (2024)"},{st:"MN",bill:"SF 1054",status:"passed",title:"Bans TDCPP and TCEP in children's products and furniture"},{st:"EU",bill:"REACH/POP",status:"passed",title:"PBDEs, HBCD listed as POPs/restricted under REACH"}],
   spwa:"Cycle 1 & Cycle 2",
   waPBT:true
+},
+"hydrogen": {
+  name:"Hydrogen", aka:["H","H2"],
+  cas:"1333-74-0",
+  chemClass:{name:"Nonmetals",def:"Element 1 (H) of the periodic table."},
+  desc:"Most abundant element in the universe. Essential component of water and all organic molecules. Not a toxic concern. Physical hazards include flammability (explosive at 4-75% in air) and asphyxiation.",
+  formula:"H", molWeight:"1",
+  structure:null,
+  toxicity:[
+    {label:"Essential element",val:"Fundamental to water and all organic chemistry. No toxicity."},
+    {label:"Flammability",val:"Explosive in air at 4-75%. Physical hazard only."},
+    {label:"Not a concern",val:"No chemical toxicity whatsoever."},
+    {label:"Ecological",val:"No ecological impact. Natural atmospheric component."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Not toxic. Physical hazards only."},
+  parents:[],children:[],
+  products:["Clean energy fuel cells","Ammonia production","Petroleum refining","Chemical synthesis"],
+  func:"Lightest element. Essential to all life. Not toxic.",
+  links:[]
+},
+"helium": {
+  name:"Helium", aka:["He"],
+  cas:"7440-59-7",
+  chemClass:{name:"Noble gases",def:"Element 2 (He) of the periodic table."},
+  desc:"Noble gas. Chemically inert with zero toxicity. Used in MRI machines, welding, and party balloons. Non-renewable resource that escapes to space once released.",
+  formula:"He", molWeight:"2",
+  structure:null,
+  toxicity:[
+    {label:"Chemically inert",val:"Zero toxicity. Does not react with any substances."},
+    {label:"Asphyxiation",val:"Can displace oxygen in confined spaces."},
+    {label:"Resource concern",val:"Non-renewable. Global shortage affecting medical/scientific supply."},
+    {label:"Ecological",val:"No ecological impact. Inert."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Noble gas. Zero toxicity."},
+  parents:[],children:[],
+  products:["MRI cryogenic cooling","Welding shielding gas","Leak detection","Deep-sea diving","Party balloons"],
+  func:"Noble gas. Chemically inert. Non-toxic.",
+  links:[]
+},
+"lithium": {
+  name:"Lithium", aka:["Li"],
+  cas:"7439-93-2",
+  chemClass:{name:"Alkali metals",def:"Element 3 (Li) of the periodic table."},
+  desc:"Lightest metal. Critical for lithium-ion batteries (EVs, phones, grid storage). Used psychiatrically for bipolar disorder. Mining raises major environmental justice concerns in South America and at Thacker Pass, NV.",
+  formula:"Li", molWeight:"3",
+  structure:null,
+  toxicity:[
+    {label:"Therapeutic/toxic",val:"Lithium carbonate treats bipolar disorder but narrow therapeutic window. Toxicity causes kidney damage, thyroid suppression."},
+    {label:"Mining impacts",val:"Brine extraction consumes vast water in arid regions. Contaminates local water supplies."},
+    {label:"Environmental justice",val:"Mining disproportionately affects Indigenous communities in South America and Nevada."},
+    {label:"Ecological",val:"Toxic to aquatic organisms at elevated concentrations. Battery e-waste concern."}
+  ],
+  gs:{bm:"U",label:"Unscreened",detail:"Environmental concerns center on mining impacts rather than elemental toxicity."},
+  parents:[],children:[],
+  products:["Lithium-ion batteries","Grid energy storage","Psychiatric medication","Ceramics and glass","Lubricating greases"],
+  func:"Critical for clean energy batteries. Mining impacts are a major EJ concern.",
+  links:[{t:"USGS lithium",u:"https://www.usgs.gov/centers/national-minerals-information-center/lithium-statistics-and-information"}],
+  manufacturers:[{name:"Albemarle",note:"Major lithium producer. Chile, Australia, US."},{name:"SQM",note:"Chilean lithium giant. Water conflict concerns."},{name:"Ganfeng Lithium",note:"Chinese. Major global producer."}]
+},
+"beryllium": {
+  name:"Beryllium", aka:["Be"],
+  cas:"7440-41-7",
+  chemClass:{name:"Alkaline earth metals",def:"Element 4 (Be) of the periodic table."},
+  desc:"Lightweight aerospace metal. Extremely toxic by inhalation. Chronic beryllium disease (CBD) is an incurable occupational lung disease. IARC Group 1 known human carcinogen.",
+  formula:"Be", molWeight:"4",
+  structure:null,
+  toxicity:[
+    {label:"Cancer",val:"IARC Group 1 carcinogen. Causes lung cancer. Occupational risk from inhaling dust/fumes."},
+    {label:"Chronic beryllium disease",val:"Incurable granulomatous lung disease. Affects 1-16% of exposed workers."},
+    {label:"Acute toxicity",val:"Chemical pneumonitis from acute exposure. Can be fatal."},
+    {label:"Ecological",val:"Industrial releases contaminate air near processing facilities."}
+  ],
+  gs:{bm:1,label:"Benchmark 1",detail:"BM-1 — IARC Group 1 carcinogen. Severe occupational lung disease."},
+  parents:[],children:[],
+  products:["Aerospace alloys","Nuclear components","X-ray windows","Satellites","Dental alloys"],
+  func:"Lightweight structural metal. Extremely toxic by inhalation.",
+  links:[{t:"OSHA beryllium",u:"https://www.osha.gov/beryllium"},{t:"ATSDR",u:"https://www.atsdr.cdc.gov/toxprofiles/tp4.pdf"}],
+  manufacturers:[{name:"Materion Corporation",note:"Dominant US beryllium producer. Only vertically integrated beryllium company globally."}]
+},
+"boron": {
+  name:"Boron", aka:["B"],
+  cas:"7440-42-8",
+  chemClass:{name:"Metalloids",def:"Element 5 (B) of the periodic table."},
+  desc:"Essential micronutrient for plants. Used in borosilicate glass (Pyrex), ceramics, and boric acid insecticide. EU classifies as reproductive toxicant Category 1B at high doses.",
+  formula:"B", molWeight:"5",
+  structure:null,
+  toxicity:[
+    {label:"Reproductive",val:"EU Category 1B reproductive toxicant at high doses."},
+    {label:"Low acute toxicity",val:"Boric acid has low acute toxicity. Historically used as antiseptic."},
+    {label:"Essential for plants",val:"Required micronutrient for plant cell wall formation."},
+    {label:"Ecological",val:"Low aquatic toxicity. Borax mining has localized impacts."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"EU reproductive toxicity classification at high doses. Low concern at typical exposure."},
+  parents:[],children:[],
+  products:["Borosilicate glass (Pyrex)","Fiberglass insulation","Borax detergent","Boric acid insecticide","Nuclear control rods"],
+  func:"Plant micronutrient. Used in glass and ceramics. Low toxicity at normal exposures.",
+  links:[]
+},
+"carbon": {
+  name:"Carbon", aka:["C","Graphite","Diamond"],
+  cas:"7440-44-0",
+  chemClass:{name:"Nonmetals",def:"Element 6 (C) of the periodic table."},
+  desc:"Basis of all known life. Elemental forms (diamond, graphite) are non-toxic. Carbon black is IARC 2B. CO is lethal. CO2 drives climate change.",
+  formula:"C", molWeight:"6",
+  structure:null,
+  toxicity:[
+    {label:"Essential element",val:"Basis of all organic chemistry and life. Not toxic in elemental form."},
+    {label:"Carbon black",val:"IARC Group 2B (possibly carcinogenic) for carbon black by inhalation."},
+    {label:"Carbon monoxide",val:"CO binds hemoglobin 200x stronger than oxygen. Leading cause of poisoning deaths."},
+    {label:"Climate",val:"CO2 from fossil fuels is the primary driver of climate change."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Elemental carbon is non-toxic. Carbon compounds vary enormously in toxicity."},
+  parents:[],children:[],
+  products:["Steel production","Carbon fiber","Activated carbon filtration","Diamond tools","Fossil fuels"],
+  func:"Basis of all life. Non-toxic in elemental form.",
+  links:[]
+},
+"nitrogen": {
+  name:"Nitrogen", aka:["N","N2"],
+  cas:"7727-37-9",
+  chemClass:{name:"Nonmetals",def:"Element 7 (N) of the periodic table."},
+  desc:"78% of atmosphere. Essential for all life (DNA, proteins). N2 gas is non-toxic. Agricultural nitrogen runoff causes eutrophication and dead zones. NOx from combustion causes smog.",
+  formula:"N", molWeight:"7",
+  structure:null,
+  toxicity:[
+    {label:"Essential element",val:"Component of DNA, proteins, amino acids. N2 is non-toxic."},
+    {label:"Asphyxiation",val:"Liquid nitrogen and N2 can displace oxygen in confined spaces."},
+    {label:"Eutrophication",val:"Fertilizer runoff causes algal blooms and oceanic dead zones."},
+    {label:"Air pollution",val:"NOx from combustion causes smog, acid rain, respiratory disease."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Essential. Non-toxic as N2. Nitrogen compounds drive major environmental problems."},
+  parents:[],children:[],
+  products:["Fertilizer production","Food packaging","Cryogenics","Electronics manufacturing","Explosives"],
+  func:"Essential to life. Non-toxic as N2. Fertilizer runoff drives global eutrophication.",
+  links:[]
+},
+"oxygen": {
+  name:"Oxygen", aka:["O","O2","Ozone","O3"],
+  cas:"7782-44-7",
+  chemClass:{name:"Nonmetals",def:"Element 8 (O) of the periodic table."},
+  desc:"Essential for aerobic life. 21% of atmosphere. Ground-level ozone (O3) is a major respiratory pollutant. Stratospheric ozone protects from UV radiation.",
+  formula:"O", molWeight:"8",
+  structure:null,
+  toxicity:[
+    {label:"Essential element",val:"Required for aerobic respiration. Non-toxic at normal levels."},
+    {label:"Oxygen toxicity",val:"Pure O2 at high pressure causes seizures and lung damage."},
+    {label:"Ozone pollution",val:"Ground-level O3 causes asthma and reduced lung function. Key smog component."},
+    {label:"Ozone layer",val:"Stratospheric ozone protects from UV. Montreal Protocol is a success story."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Essential for life. Not a toxic concern in elemental form."},
+  parents:[],children:[],
+  products:["Medical oxygen","Steel manufacturing","Welding","Water treatment","Rocket propellant"],
+  func:"Essential for aerobic life. Ground-level ozone is a significant air pollutant.",
+  links:[]
+},
+"neon": {
+  name:"Neon", aka:["Ne"],
+  cas:"7440-01-9",
+  chemClass:{name:"Noble gases",def:"Element 10 (Ne) of the periodic table."},
+  desc:"Noble gas. Inert and non-toxic. Famous for reddish-orange glow in neon signs.",
+  formula:"Ne", molWeight:"10",
+  structure:null,
+  toxicity:[
+    {label:"Chemically inert",val:"Zero toxicity."},
+    {label:"Not a concern",val:"No health or environmental concerns."},
+    {label:"Asphyxiation",val:"Only hazard in confined spaces."},
+    {label:"Ecological",val:"No impact."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Noble gas. Zero toxicity."},
+  parents:[],children:[],
+  products:["Neon signs","Cryogenics","He-Ne lasers","High-voltage indicators"],
+  func:"Noble gas. Completely inert and non-toxic.",
+  links:[]
+},
+"sodium": {
+  name:"Sodium", aka:["Na","Natrium"],
+  cas:"7440-23-5",
+  chemClass:{name:"Alkali metals",def:"Element 11 (Na) of the periodic table."},
+  desc:"Essential electrolyte for nerve function, muscle contraction, and fluid balance. Dietary excess from processed foods linked to hypertension. Metallic sodium explodes on contact with water.",
+  formula:"Na", molWeight:"11",
+  structure:null,
+  toxicity:[
+    {label:"Essential nutrient",val:"Critical electrolyte. Deficiency can be fatal."},
+    {label:"Dietary excess",val:"Excess intake linked to hypertension and cardiovascular disease."},
+    {label:"Reactivity",val:"Metallic sodium reacts violently with water. Fire and explosion hazard."},
+    {label:"Ecological",val:"Road salt contaminates freshwater ecosystems and drinking water."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Essential nutrient. Not a toxic concern."},
+  parents:[],children:[],
+  products:["Table salt","Baking soda","Soap manufacturing","Road de-icing","Sodium-vapor lamps"],
+  func:"Essential electrolyte. Non-toxic. Dietary excess is a public health concern.",
+  links:[]
+},
+"magnesium": {
+  name:"Magnesium", aka:["Mg"],
+  cas:"7439-95-4",
+  chemClass:{name:"Alkaline earth metals",def:"Element 12 (Mg) of the periodic table."},
+  desc:"Essential mineral for 300+ enzymatic reactions. Deficiency is common. Non-toxic. Burns with intense white flame.",
+  formula:"Mg", molWeight:"12",
+  structure:null,
+  toxicity:[
+    {label:"Essential mineral",val:"Required for 300+ enzymatic reactions. Deficiency causes cramps, osteoporosis."},
+    {label:"Very low toxicity",val:"Excess causes diarrhea. Hypermagnesemia only with kidney impairment."},
+    {label:"Flammability",val:"Burns with intense white flame. Difficult to extinguish."},
+    {label:"Ecological",val:"Naturally abundant. No concerns."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Essential mineral. Not toxic. Widely supplemented."},
+  parents:[],children:[],
+  products:["Lightweight alloys","Fireworks and flares","Dietary supplements","Antacids","Die-casting"],
+  func:"Essential mineral. Lightweight metal. Non-toxic.",
+  links:[]
+},
+"aluminum": {
+  name:"Aluminum", aka:["Al","Aluminium"],
+  cas:"7429-90-5",
+  chemClass:{name:"Post-transition metals",def:"Element 13 (Al) of the periodic table."},
+  desc:"Most abundant metal in Earth crust. Low acute toxicity but accumulates in brain — studied as possible Alzheimer contributor (inconclusive). Occupational inhalation causes aluminosis. Bauxite mining and smelting have major environmental impacts.",
+  formula:"Al", molWeight:"13",
+  structure:null,
+  toxicity:[
+    {label:"Neurotoxicity concern",val:"Accumulates in brain. Studied as possible Alzheimer contributor — inconclusive."},
+    {label:"Occupational",val:"Aluminum dust causes pulmonary fibrosis (aluminosis)."},
+    {label:"Dietary exposure",val:"Present in food additives, antacids, antiperspirants, cookware."},
+    {label:"Ecological",val:"Bauxite mining destroys tropical forests. Smelting is extremely energy-intensive."}
+  ],
+  gs:{bm:"U",label:"Unscreened",detail:"Low acute toxicity but neurotoxicity concerns from accumulation."},
+  parents:[],children:[],
+  products:["Beverage cans","Aircraft","Building materials","Cookware","Antiperspirants","Electrical lines"],
+  func:"Most abundant metal. Low acute toxicity but neurotoxicity concerns.",
+  links:[{t:"ATSDR aluminum",u:"https://www.atsdr.cdc.gov/toxprofiles/tp22.pdf"}],
+  manufacturers:[{name:"Alcoa",note:"Major US aluminum producer."},{name:"Rio Tinto",note:"Major bauxite/aluminum producer."},{name:"Rusal",note:"Russian aluminum giant."}]
+},
+"silicon": {
+  name:"Silicon", aka:["Si"],
+  cas:"7440-21-3",
+  chemClass:{name:"Metalloids",def:"Element 14 (Si) of the periodic table."},
+  desc:"Powers the digital age. Non-toxic in bulk. Crystalline silica dust causes silicosis (IARC Group 1 carcinogen) — major occupational hazard in mining and construction.",
+  formula:"Si", molWeight:"14",
+  structure:null,
+  toxicity:[
+    {label:"Silicosis",val:"Crystalline silica dust causes incurable progressive lung disease."},
+    {label:"Cancer",val:"IARC Group 1 carcinogen (inhaled crystalline silica). Causes lung cancer."},
+    {label:"Essential",val:"May be essential for bone health. Dietary silicon is non-toxic."},
+    {label:"Ecological",val:"Silica is sand. No ecological concerns."}
+  ],
+  gs:{bm:"U",label:"Unscreened",detail:"Elemental silicon is non-toxic. Crystalline silica dust is an occupational carcinogen."},
+  parents:[],children:[],
+  products:["Semiconductor chips","Solar panels","Silicone polymers","Glass","Concrete","Steel alloys"],
+  func:"Powers modern electronics. Non-toxic in bulk. Silica dust is an occupational carcinogen.",
+  links:[{t:"OSHA silica",u:"https://www.osha.gov/silica-crystalline"}]
+},
+"phosphorus": {
+  name:"Phosphorus", aka:["P"],
+  cas:"7723-14-0",
+  chemClass:{name:"Nonmetals",def:"Element 15 (P) of the periodic table."},
+  desc:"Essential for all life — DNA, ATP, bones. White phosphorus is extremely toxic and incendiary. Fertilizer runoff is the primary driver of freshwater eutrophication worldwide.",
+  formula:"P", molWeight:"15",
+  structure:null,
+  toxicity:[
+    {label:"Essential element",val:"Component of DNA, ATP, bones. Deficiency impairs growth."},
+    {label:"White phosphorus",val:"Extremely toxic and incendiary. Severe chemical burns. Used in military munitions."},
+    {label:"Eutrophication",val:"Fertilizer runoff causes algal blooms and dead zones worldwide."},
+    {label:"Ecological",val:"Excess phosphorus has created dead zones in Lake Erie, Gulf of Mexico, Baltic Sea."}
+  ],
+  gs:{bm:"U",label:"Unscreened",detail:"Essential element. White phosphorus is extremely toxic. Nutrient pollution is a global crisis."},
+  parents:[],children:[],
+  products:["Fertilizers","DNA/ATP (biological)","Match heads","Steel production","Flame retardants"],
+  func:"Essential to life. White phosphorus is extremely toxic. Fertilizer runoff drives eutrophication.",
+  links:[]
+},
+"sulfur": {
+  name:"Sulfur", aka:["S","Sulphur"],
+  cas:"7704-34-9",
+  chemClass:{name:"Nonmetals",def:"Element 16 (S) of the periodic table."},
+  desc:"Essential element in amino acids cysteine and methionine. Low elemental toxicity. SO2 from fossil fuels causes acid rain. H2S is extremely toxic — lethal at high concentrations.",
+  formula:"S", molWeight:"16",
+  structure:null,
+  toxicity:[
+    {label:"Essential element",val:"Component of amino acids. Required for protein structure."},
+    {label:"SO2 pollution",val:"Fossil fuel SO2 causes acid rain and respiratory disease."},
+    {label:"H2S toxicity",val:"Extremely toxic — rapid death at >500 ppm. Rotten egg smell only at low levels."},
+    {label:"Ecological",val:"Acid rain from SO2 damages forests and acidifies lakes. Clean Air Act reduced this dramatically."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Elemental sulfur is non-toxic. Sulfur compounds (SO2, H2S) are significant hazards."},
+  parents:[],children:[],
+  products:["Sulfuric acid production","Rubber vulcanization","Fertilizers","Fungicides","Wine preservation"],
+  func:"Essential element. Low elemental toxicity. Sulfur compounds are major hazards.",
+  links:[]
+},
+"chlorine": {
+  name:"Chlorine", aka:["Cl","Cl2"],
+  cas:"7782-50-5",
+  chemClass:{name:"Halogens",def:"Element 17 (Cl) of the periodic table."},
+  desc:"Essential for water disinfection — saved millions of lives. But also precursor to PVC, TCE, PCE, and many persistent toxic chemicals. Gas form is acutely toxic (first chemical weapon in WWI). Chloride salts (table salt) are essential.",
+  formula:"Cl", molWeight:"17",
+  structure:null,
+  toxicity:[
+    {label:"Acute toxicity",val:"Cl2 gas is a severe respiratory irritant. Chemical weapon in WWI."},
+    {label:"Water disinfection",val:"One of the greatest public health achievements. Creates disinfection byproducts (THMs)."},
+    {label:"Industrial precursor",val:"Starting material for PVC, TCE, PCE, chlorinated pesticides — many persistent pollutants."},
+    {label:"Ecological",val:"Organochlorines (PCBs, DDT, dioxins) are among the most persistent contaminants ever created."}
+  ],
+  gs:{bm:2,label:"Benchmark 2",detail:"Essential for water disinfection but precursor to many BM-1 chemicals."},
+  parents:[],children:[],
+  products:["Water disinfection","PVC production","Bleach","Solvents","Pesticides","Swimming pools"],
+  func:"Essential for water disinfection. Precursor to many persistent toxic chemicals.",
+  links:[{t:"ATSDR chlorine",u:"https://www.atsdr.cdc.gov/toxprofiles/tp172.pdf"}],
+  manufacturers:[{name:"Olin Corporation",note:"Major US chlor-alkali producer."},{name:"Occidental Chemical",note:"Major chlorine producer."},{name:"Westlake Chemical",note:"Chlor-alkali and PVC producer."}]
+},
+"argon": {
+  name:"Argon", aka:["Ar"],
+  cas:"7440-37-1",
+  chemClass:{name:"Noble gases",def:"Element 18 (Ar) of the periodic table."},
+  desc:"Most abundant noble gas in atmosphere (0.93%). Completely inert and non-toxic.",
+  formula:"Ar", molWeight:"18",
+  structure:null,
+  toxicity:[
+    {label:"Chemically inert",val:"Zero toxicity."},
+    {label:"Asphyxiation",val:"Heavier than air — can collect in low areas."},
+    {label:"Not a concern",val:"No health or environmental concerns."},
+    {label:"Ecological",val:"No impact."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Noble gas. Zero toxicity."},
+  parents:[],children:[],
+  products:["Welding shielding gas","Double-pane windows","Incandescent bulbs","Metal smelting"],
+  func:"Most abundant noble gas. Completely inert and non-toxic.",
+  links:[]
+},
+"potassium": {
+  name:"Potassium", aka:["K","Kalium"],
+  cas:"7440-09-7",
+  chemClass:{name:"Alkali metals",def:"Element 19 (K) of the periodic table."},
+  desc:"Essential electrolyte for heart, nerves, and muscles. Most Americans are deficient. Not toxic at dietary levels.",
+  formula:"K", molWeight:"19",
+  structure:null,
+  toxicity:[
+    {label:"Essential nutrient",val:"Critical for heart rhythm. Most Americans deficient."},
+    {label:"Hyperkalemia",val:"Dangerous in kidney disease patients."},
+    {label:"Reactivity",val:"Metallic potassium reacts violently with water."},
+    {label:"Ecological",val:"Potash mining has localized impacts."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Essential nutrient. Not a toxic concern."},
+  parents:[],children:[],
+  products:["Fertilizers (potash)","Salt substitute (KCl)","Soap making","Glass manufacturing"],
+  func:"Essential electrolyte. Non-toxic at dietary levels.",
+  links:[]
+},
+"calcium": {
+  name:"Calcium", aka:["Ca"],
+  cas:"7440-70-2",
+  chemClass:{name:"Alkaline earth metals",def:"Element 20 (Ca) of the periodic table."},
+  desc:"Most abundant mineral in the human body. Essential for bones, teeth, nerves, blood clotting. Not a toxic concern. Deficiency causes osteoporosis.",
+  formula:"Ca", molWeight:"20",
+  structure:null,
+  toxicity:[
+    {label:"Essential mineral",val:"Most abundant body mineral. Required for bones, nerves, blood clotting."},
+    {label:"Very low toxicity",val:"Excessive supplementation can cause kidney stones. Not toxic."},
+    {label:"Not a concern",val:"No occupational or environmental toxicity."},
+    {label:"Ecological",val:"Naturally abundant. Limestone is a major geological material."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Essential mineral. Not toxic."},
+  parents:[],children:[],
+  products:["Construction (cement, concrete)","Dietary supplement","Antacid","Steelmaking","Water treatment"],
+  func:"Most abundant body mineral. Essential for bones. Non-toxic.",
+  links:[]
+},
+"scandium": {
+  name:"Scandium", aka:["Sc"],
+  cas:"7440-20-2",
+  chemClass:{name:"Transition metals",def:"Element 21 (Sc) of the periodic table."},
+  desc:"Rare metal used in aluminum-scandium alloys. Low toxicity. Limited data.",
+  formula:"Sc", molWeight:"21",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Rare metal used in aluminum-scandium alloys. Low toxicity. Limited data."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Rare metal used in aluminum-scandium alloys. Low toxicity. Limited data."},
+  parents:[],children:[],
+  products:["Aluminum-scandium alloys","High-intensity lights"],
+  func:"Rare metal used in aluminum-scandium alloys. Low toxicity. Limited data.",
+  links:[]
+},
+"titanium": {
+  name:"Titanium", aka:["Ti","TiO2"],
+  cas:"7440-32-6",
+  chemClass:{name:"Transition metals",def:"Element 22 (Ti) of the periodic table."},
+  desc:"Strong, lightweight. TiO2 is most used white pigment. IARC 2B for nanoparticle TiO2. France banned TiO2 in food (2020).",
+  formula:"Ti", molWeight:"22",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Strong, lightweight. TiO2 is most used white pigment. IARC 2B for nanoparticle TiO2. France banned TiO2 in food (2020)."}
+  ],
+  gs:{bm:2,label:"Benchmark 2",detail:"Strong, lightweight. TiO2 is most used white pigment. IARC 2B for nanoparticle TiO2. France banned TiO2 in food (2020)."},
+  parents:[],children:[],
+  products:["White pigment (paint)","Sunscreen","Food whitener (E171)","Aerospace alloys","Medical implants"],
+  func:"Strong, lightweight. TiO2 is most used white pigment. IARC 2B for nanoparticle TiO2. France banned TiO2 in food (2020).",
+  links:[]
+},
+"vanadium": {
+  name:"Vanadium", aka:["V"],
+  cas:"7440-62-2",
+  chemClass:{name:"Transition metals",def:"Element 23 (V) of the periodic table."},
+  desc:"Steel alloy metal. Vanadium pentoxide is respiratory toxicant. Occupational hazard.",
+  formula:"V", molWeight:"23",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Steel alloy metal. Vanadium pentoxide is respiratory toxicant. Occupational hazard."}
+  ],
+  gs:{bm:2,label:"Benchmark 2",detail:"Steel alloy metal. Vanadium pentoxide is respiratory toxicant. Occupational hazard."},
+  parents:[],children:[],
+  products:["Steel alloys","Vanadium redox batteries","Catalysts"],
+  func:"Steel alloy metal. Vanadium pentoxide is respiratory toxicant. Occupational hazard.",
+  links:[]
+},
+"manganese": {
+  name:"Manganese", aka:["Mn"],
+  cas:"7439-96-5",
+  chemClass:{name:"Transition metals",def:"Element 25 (Mn) of the periodic table."},
+  desc:"Essential trace element but neurotoxic at high levels. Causes manganism (Parkinson-like disease). Welders and miners at risk.",
+  formula:"Mn", molWeight:"25",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Essential trace element but neurotoxic at high levels. Causes manganism (Parkinson-like disease). Welders and miners at risk."}
+  ],
+  gs:{bm:2,label:"Benchmark 2",detail:"Essential trace element but neurotoxic at high levels. Causes manganism (Parkinson-like disease). Welders and miners at risk."},
+  parents:[],children:[],
+  products:["Steel production","Batteries (MnO2)","Aluminum alloys","Fertilizers"],
+  func:"Essential trace element but neurotoxic at high levels. Causes manganism (Parkinson-like disease). Welders and miners at risk.",
+  links:[]
+},
+"iron": {
+  name:"Iron", aka:["Fe","Ferrum"],
+  cas:"7439-89-6",
+  chemClass:{name:"Transition metals",def:"Element 26 (Fe) of the periodic table."},
+  desc:"Most used metal. Essential for hemoglobin. Deficiency affects ~2 billion people. Not toxic at normal levels.",
+  formula:"Fe", molWeight:"26",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Most used metal. Essential for hemoglobin. Deficiency affects ~2 billion people. Not toxic at normal levels."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Most used metal. Essential for hemoglobin. Deficiency affects ~2 billion people. Not toxic at normal levels."},
+  parents:[],children:[],
+  products:["Steel","Construction","Automotive","Dietary supplement","Magnets"],
+  func:"Most used metal. Essential for hemoglobin. Deficiency affects ~2 billion people. Not toxic at normal levels.",
+  links:[]
+},
+"cobalt": {
+  name:"Cobalt", aka:["Co"],
+  cas:"7440-48-4",
+  chemClass:{name:"Transition metals",def:"Element 27 (Co) of the periodic table."},
+  desc:"Essential as vitamin B12. IARC 2B at high levels. DRC mining involves child labor. Li-ion battery cathodes.",
+  formula:"Co", molWeight:"27",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Essential as vitamin B12. IARC 2B at high levels. DRC mining involves child labor. Li-ion battery cathodes."}
+  ],
+  gs:{bm:2,label:"Benchmark 2",detail:"Essential as vitamin B12. IARC 2B at high levels. DRC mining involves child labor. Li-ion battery cathodes."},
+  parents:[],children:[],
+  products:["Li-ion battery cathodes","Superalloys","Blue pigments","Vitamin B12"],
+  func:"Essential as vitamin B12. IARC 2B at high levels. DRC mining involves child labor. Li-ion battery cathodes.",
+  links:[]
+},
+"nickel": {
+  name:"Nickel", aka:["Ni"],
+  cas:"7440-02-0",
+  chemClass:{name:"Transition metals",def:"Element 28 (Ni) of the periodic table."},
+  desc:"IARC Group 1 carcinogen (nickel compounds). Most common contact allergen (10-20% of women). Stainless steel.",
+  formula:"Ni", molWeight:"28",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"IARC Group 1 carcinogen (nickel compounds). Most common contact allergen (10-20% of women). Stainless steel."}
+  ],
+  gs:{bm:1,label:"Benchmark 1",detail:"IARC Group 1 carcinogen (nickel compounds). Most common contact allergen (10-20% of women). Stainless steel."},
+  parents:[],children:[],
+  products:["Stainless steel","Batteries","Coins","Plating","Jewelry"],
+  func:"IARC Group 1 carcinogen (nickel compounds). Most common contact allergen (10-20% of women). Stainless steel.",
+  links:[]
+},
+"copper": {
+  name:"Copper", aka:["Cu"],
+  cas:"7440-50-8",
+  chemClass:{name:"Transition metals",def:"Element 29 (Cu) of the periodic table."},
+  desc:"Essential trace element. Low human toxicity but highly toxic to aquatic organisms. Used as fungicide.",
+  formula:"Cu", molWeight:"29",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Essential trace element. Low human toxicity but highly toxic to aquatic organisms. Used as fungicide."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Essential trace element. Low human toxicity but highly toxic to aquatic organisms. Used as fungicide."},
+  parents:[],children:[],
+  products:["Electrical wiring","Plumbing","Electronics","Antimicrobial surfaces","Fungicides"],
+  func:"Essential trace element. Low human toxicity but highly toxic to aquatic organisms. Used as fungicide.",
+  links:[]
+},
+"zinc": {
+  name:"Zinc", aka:["Zn"],
+  cas:"7440-66-6",
+  chemClass:{name:"Transition metals",def:"Element 30 (Zn) of the periodic table."},
+  desc:"Essential for immune function. Deficiency affects ~2 billion people. Low human toxicity.",
+  formula:"Zn", molWeight:"30",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Essential for immune function. Deficiency affects ~2 billion people. Low human toxicity."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Essential for immune function. Deficiency affects ~2 billion people. Low human toxicity."},
+  parents:[],children:[],
+  products:["Galvanized steel","Batteries","Supplements","Sunscreen (ZnO)","Brass alloys"],
+  func:"Essential for immune function. Deficiency affects ~2 billion people. Low human toxicity.",
+  links:[]
+},
+"gallium": {
+  name:"Gallium", aka:["Ga"],
+  cas:"7440-55-3",
+  chemClass:{name:"Post-transition metals",def:"Element 31 (Ga) of the periodic table."},
+  desc:"Semiconductor metal. Melts near body temp. Low toxicity.",
+  formula:"Ga", molWeight:"31",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Semiconductor metal. Melts near body temp. Low toxicity."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Semiconductor metal. Melts near body temp. Low toxicity."},
+  parents:[],children:[],
+  products:["Semiconductors (GaAs)","LEDs","Solar cells","Smartphones"],
+  func:"Semiconductor metal. Melts near body temp. Low toxicity.",
+  links:[]
+},
+"germanium": {
+  name:"Germanium", aka:["Ge"],
+  cas:"7440-56-4",
+  chemClass:{name:"Metalloids",def:"Element 32 (Ge) of the periodic table."},
+  desc:"Fiber optics and electronics. Low toxicity. Supplements can cause kidney damage.",
+  formula:"Ge", molWeight:"32",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Fiber optics and electronics. Low toxicity. Supplements can cause kidney damage."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Fiber optics and electronics. Low toxicity. Supplements can cause kidney damage."},
+  parents:[],children:[],
+  products:["Fiber optic cables","Infrared optics","Semiconductors","Solar cells"],
+  func:"Fiber optics and electronics. Low toxicity. Supplements can cause kidney damage.",
+  links:[]
+},
+"selenium": {
+  name:"Selenium", aka:["Se"],
+  cas:"7782-49-2",
+  chemClass:{name:"Nonmetals",def:"Element 34 (Se) of the periodic table."},
+  desc:"Essential with narrow safety range. Required for thyroid. Deficiency causes Keshan disease. Excess causes selenosis.",
+  formula:"Se", molWeight:"34",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Essential with narrow safety range. Required for thyroid. Deficiency causes Keshan disease. Excess causes selenosis."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Essential with narrow safety range. Required for thyroid. Deficiency causes Keshan disease. Excess causes selenosis."},
+  parents:[],children:[],
+  products:["Dietary supplement","Glass manufacturing","Solar cells","Shampoo (selenium sulfide)"],
+  func:"Essential with narrow safety range. Required for thyroid. Deficiency causes Keshan disease. Excess causes selenosis.",
+  links:[]
+},
+"bromine": {
+  name:"Bromine", aka:["Br"],
+  cas:"7726-95-6",
+  chemClass:{name:"Halogens",def:"Element 35 (Br) of the periodic table."},
+  desc:"Precursor to brominated flame retardants (PBDEs). Corrosive and toxic liquid.",
+  formula:"Br", molWeight:"35",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Precursor to brominated flame retardants (PBDEs). Corrosive and toxic liquid."}
+  ],
+  gs:{bm:2,label:"Benchmark 2",detail:"Precursor to brominated flame retardants (PBDEs). Corrosive and toxic liquid."},
+  parents:[],children:[],
+  products:["Brominated flame retardants","Pharmaceuticals","Water treatment","Fumigants"],
+  func:"Precursor to brominated flame retardants (PBDEs). Corrosive and toxic liquid.",
+  links:[]
+},
+"krypton": {
+  name:"Krypton", aka:["Kr"],
+  cas:"7439-90-9",
+  chemClass:{name:"Noble gases",def:"Element 36 (Kr) of the periodic table."},
+  desc:"Noble gas. Inert and non-toxic.",
+  formula:"Kr", molWeight:"36",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Noble gas. Inert and non-toxic."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Noble gas. Inert and non-toxic."},
+  parents:[],children:[],
+  products:["Fluorescent lighting","Window insulation"],
+  func:"Noble gas. Inert and non-toxic.",
+  links:[]
+},
+"rubidium": {
+  name:"Rubidium", aka:["Rb"],
+  cas:"7440-17-7",
+  chemClass:{name:"Alkali metals",def:"Element 37 (Rb) of the periodic table."},
+  desc:"Rare alkali metal. Low toxicity. Used in atomic clocks.",
+  formula:"Rb", molWeight:"37",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Rare alkali metal. Low toxicity. Used in atomic clocks."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Rare alkali metal. Low toxicity. Used in atomic clocks."},
+  parents:[],children:[],
+  products:["Atomic clocks","Specialty glass","Photocells"],
+  func:"Rare alkali metal. Low toxicity. Used in atomic clocks.",
+  links:[]
+},
+"strontium": {
+  name:"Strontium", aka:["Sr"],
+  cas:"7440-24-6",
+  chemClass:{name:"Alkaline earth metals",def:"Element 38 (Sr) of the periodic table."},
+  desc:"Stable isotopes low toxicity. Sr-90 from nuclear fallout concentrates in bones.",
+  formula:"Sr", molWeight:"38",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Stable isotopes low toxicity. Sr-90 from nuclear fallout concentrates in bones."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Stable isotopes low toxicity. Sr-90 from nuclear fallout concentrates in bones."},
+  parents:[],children:[],
+  products:["Fireworks (red)","Toothpaste","CRT glass"],
+  func:"Stable isotopes low toxicity. Sr-90 from nuclear fallout concentrates in bones.",
+  links:[]
+},
+"yttrium": {
+  name:"Yttrium", aka:["Y"],
+  cas:"7440-65-5",
+  chemClass:{name:"Transition metals",def:"Element 39 (Y) of the periodic table."},
+  desc:"Rare earth. Low toxicity. LEDs and lasers.",
+  formula:"Y", molWeight:"39",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Rare earth. Low toxicity. LEDs and lasers."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Rare earth. Low toxicity. LEDs and lasers."},
+  parents:[],children:[],
+  products:["LED phosphors","YAG lasers","Superconductors"],
+  func:"Rare earth. Low toxicity. LEDs and lasers.",
+  links:[]
+},
+"zirconium": {
+  name:"Zirconium", aka:["Zr"],
+  cas:"7440-67-7",
+  chemClass:{name:"Transition metals",def:"Element 40 (Zr) of the periodic table."},
+  desc:"Corrosion-resistant. Very low toxicity. Nuclear reactors and dental implants.",
+  formula:"Zr", molWeight:"40",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Corrosion-resistant. Very low toxicity. Nuclear reactors and dental implants."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Corrosion-resistant. Very low toxicity. Nuclear reactors and dental implants."},
+  parents:[],children:[],
+  products:["Nuclear fuel rod cladding","Dental implants (zirconia)","Ceramics"],
+  func:"Corrosion-resistant. Very low toxicity. Nuclear reactors and dental implants.",
+  links:[]
+},
+"niobium": {
+  name:"Niobium", aka:["Nb","Columbium"],
+  cas:"7440-03-1",
+  chemClass:{name:"Transition metals",def:"Element 41 (Nb) of the periodic table."},
+  desc:"Steel alloying element. Very low toxicity. Brazil produces ~90% of supply.",
+  formula:"Nb", molWeight:"41",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Steel alloying element. Very low toxicity. Brazil produces ~90% of supply."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Steel alloying element. Very low toxicity. Brazil produces ~90% of supply."},
+  parents:[],children:[],
+  products:["High-strength steel","Superconducting magnets","Jet engines","Jewelry"],
+  func:"Steel alloying element. Very low toxicity. Brazil produces ~90% of supply.",
+  links:[]
+},
+"molybdenum": {
+  name:"Molybdenum", aka:["Mo"],
+  cas:"7439-98-7",
+  chemClass:{name:"Transition metals",def:"Element 42 (Mo) of the periodic table."},
+  desc:"Essential trace element. Low toxicity. Steel alloys.",
+  formula:"Mo", molWeight:"42",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Essential trace element. Low toxicity. Steel alloys."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Essential trace element. Low toxicity. Steel alloys."},
+  parents:[],children:[],
+  products:["Steel alloys","Catalysts","Lubricants (MoS2)"],
+  func:"Essential trace element. Low toxicity. Steel alloys.",
+  links:[]
+},
+"technetium": {
+  name:"Technetium", aka:["Tc","Tc-99m"],
+  cas:"7440-26-8",
+  chemClass:{name:"Transition metals",def:"Element 43 (Tc) of the periodic table."},
+  desc:"Radioactive. Tc-99m is the most used diagnostic radioisotope (SPECT scans).",
+  formula:"Tc", molWeight:"43",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Radioactive. Tc-99m is the most used diagnostic radioisotope (SPECT scans)."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Radioactive. Tc-99m is the most used diagnostic radioisotope (SPECT scans)."},
+  parents:[],children:[],
+  products:["Medical imaging (Tc-99m SPECT)","Nuclear medicine"],
+  func:"Radioactive. Tc-99m is the most used diagnostic radioisotope (SPECT scans).",
+  links:[]
+},
+"ruthenium": {
+  name:"Ruthenium", aka:["Ru"],
+  cas:"7440-18-8",
+  chemClass:{name:"Transition metals",def:"Element 44 (Ru) of the periodic table."},
+  desc:"Platinum group metal. Low toxicity.",
+  formula:"Ru", molWeight:"44",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Platinum group metal. Low toxicity."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Platinum group metal. Low toxicity."},
+  parents:[],children:[],
+  products:["Electronics","Catalysts","Solar cells"],
+  func:"Platinum group metal. Low toxicity.",
+  links:[]
+},
+"rhodium": {
+  name:"Rhodium", aka:["Rh"],
+  cas:"7440-16-6",
+  chemClass:{name:"Transition metals",def:"Element 45 (Rh) of the periodic table."},
+  desc:"Platinum group metal. Very low toxicity. Catalytic converters.",
+  formula:"Rh", molWeight:"45",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Platinum group metal. Very low toxicity. Catalytic converters."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Platinum group metal. Very low toxicity. Catalytic converters."},
+  parents:[],children:[],
+  products:["Catalytic converters","Chemical catalysts","Glass manufacturing"],
+  func:"Platinum group metal. Very low toxicity. Catalytic converters.",
+  links:[]
+},
+"palladium": {
+  name:"Palladium", aka:["Pd"],
+  cas:"7440-05-3",
+  chemClass:{name:"Transition metals",def:"Element 46 (Pd) of the periodic table."},
+  desc:"Catalytic converter component. Low toxicity.",
+  formula:"Pd", molWeight:"46",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Catalytic converter component. Low toxicity."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Catalytic converter component. Low toxicity."},
+  parents:[],children:[],
+  products:["Catalytic converters","Electronics","Dental fillings","Jewelry"],
+  func:"Catalytic converter component. Low toxicity.",
+  links:[]
+},
+"silver": {
+  name:"Silver", aka:["Ag","Argentum"],
+  cas:"7440-22-4",
+  chemClass:{name:"Transition metals",def:"Element 47 (Ag) of the periodic table."},
+  desc:"Antimicrobial. Low human toxicity. Argyria (permanent blue skin) from chronic exposure. Nanosilver is an emerging aquatic concern.",
+  formula:"Ag", molWeight:"47",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Antimicrobial. Low human toxicity. Argyria (permanent blue skin) from chronic exposure. Nanosilver is an emerging aquatic concern."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Antimicrobial. Low human toxicity. Argyria (permanent blue skin) from chronic exposure. Nanosilver is an emerging aquatic concern."},
+  parents:[],children:[],
+  products:["Jewelry","Electronics","Photography","Antimicrobial coatings","Solar panels"],
+  func:"Antimicrobial. Low human toxicity. Argyria (permanent blue skin) from chronic exposure. Nanosilver is an emerging aquatic concern.",
+  links:[]
+},
+"indium": {
+  name:"Indium", aka:["In"],
+  cas:"7440-74-6",
+  chemClass:{name:"Post-transition metals",def:"Element 49 (In) of the periodic table."},
+  desc:"Touchscreens (ITO). Indium lung disease is severe occupational hazard.",
+  formula:"In", molWeight:"49",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Touchscreens (ITO). Indium lung disease is severe occupational hazard."}
+  ],
+  gs:{bm:2,label:"Benchmark 2",detail:"Touchscreens (ITO). Indium lung disease is severe occupational hazard."},
+  parents:[],children:[],
+  products:["Touchscreens","Semiconductors","Solders","Solar cells"],
+  func:"Touchscreens (ITO). Indium lung disease is severe occupational hazard.",
+  links:[]
+},
+"tellurium": {
+  name:"Tellurium", aka:["Te"],
+  cas:"13494-80-9",
+  chemClass:{name:"Metalloids",def:"Element 52 (Te) of the periodic table."},
+  desc:"Rare metalloid. Low toxicity. Solar cells. Causes garlic breath.",
+  formula:"Te", molWeight:"52",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Rare metalloid. Low toxicity. Solar cells. Causes garlic breath."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Rare metalloid. Low toxicity. Solar cells. Causes garlic breath."},
+  parents:[],children:[],
+  products:["CdTe solar cells","Thermoelectric devices","Rubber vulcanization"],
+  func:"Rare metalloid. Low toxicity. Solar cells. Causes garlic breath.",
+  links:[]
+},
+"iodine": {
+  name:"Iodine", aka:["I","I2"],
+  cas:"7553-56-2",
+  chemClass:{name:"Halogens",def:"Element 53 (I) of the periodic table."},
+  desc:"Essential for thyroid. Deficiency is leading preventable cause of intellectual disability. Salt iodization is a public health triumph.",
+  formula:"I", molWeight:"53",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Essential for thyroid. Deficiency is leading preventable cause of intellectual disability. Salt iodization is a public health triumph."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Essential for thyroid. Deficiency is leading preventable cause of intellectual disability. Salt iodization is a public health triumph."},
+  parents:[],children:[],
+  products:["Iodized salt","Thyroid medications","Antiseptics","Medical contrast agents"],
+  func:"Essential for thyroid. Deficiency is leading preventable cause of intellectual disability. Salt iodization is a public health triumph.",
+  links:[]
+},
+"xenon": {
+  name:"Xenon", aka:["Xe"],
+  cas:"7440-63-3",
+  chemClass:{name:"Noble gases",def:"Element 54 (Xe) of the periodic table."},
+  desc:"Noble gas. Inert. Used as anesthetic and in specialty lighting.",
+  formula:"Xe", molWeight:"54",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Noble gas. Inert. Used as anesthetic and in specialty lighting."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Noble gas. Inert. Used as anesthetic and in specialty lighting."},
+  parents:[],children:[],
+  products:["Anesthesia","High-intensity lamps","Satellite propulsion","Medical imaging"],
+  func:"Noble gas. Inert. Used as anesthetic and in specialty lighting.",
+  links:[]
+},
+"cesium": {
+  name:"Cesium", aka:["Cs","Caesium"],
+  cas:"7440-46-2",
+  chemClass:{name:"Alkali metals",def:"Element 55 (Cs) of the periodic table."},
+  desc:"Most reactive stable metal. Cs-137 from nuclear fission is a major contaminant (Chernobyl, Fukushima).",
+  formula:"Cs", molWeight:"55",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Most reactive stable metal. Cs-137 from nuclear fission is a major contaminant (Chernobyl, Fukushima)."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Most reactive stable metal. Cs-137 from nuclear fission is a major contaminant (Chernobyl, Fukushima)."},
+  parents:[],children:[],
+  products:["Atomic clocks","Oil drilling fluids","Radiation therapy"],
+  func:"Most reactive stable metal. Cs-137 from nuclear fission is a major contaminant (Chernobyl, Fukushima).",
+  links:[]
+},
+"barium": {
+  name:"Barium", aka:["Ba"],
+  cas:"7440-39-3",
+  chemClass:{name:"Alkaline earth metals",def:"Element 56 (Ba) of the periodic table."},
+  desc:"Soluble barium compounds are highly toxic (cardiac arrest). Barium sulfate (insoluble) is safe as X-ray contrast agent.",
+  formula:"Ba", molWeight:"56",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Soluble barium compounds are highly toxic (cardiac arrest). Barium sulfate (insoluble) is safe as X-ray contrast agent."}
+  ],
+  gs:{bm:2,label:"Benchmark 2",detail:"Soluble barium compounds are highly toxic (cardiac arrest). Barium sulfate (insoluble) is safe as X-ray contrast agent."},
+  parents:[],children:[],
+  products:["Medical X-ray contrast","Drilling fluids","Fireworks (green)","Rat poison (historical)"],
+  func:"Soluble barium compounds are highly toxic (cardiac arrest). Barium sulfate (insoluble) is safe as X-ray contrast agent.",
+  links:[]
+},
+"lanthanum": {
+  name:"Lanthanum", aka:["La"],
+  cas:"7439-91-0",
+  chemClass:{name:"Lanthanides",def:"Element 57 (La) of the periodic table."},
+  desc:"Rare earth. Low toxicity. Catalysts and kidney disease treatment.",
+  formula:"La", molWeight:"57",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Rare earth. Low toxicity. Catalysts and kidney disease treatment."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Rare earth. Low toxicity. Catalysts and kidney disease treatment."},
+  parents:[],children:[],
+  products:["Catalytic converters","Camera lenses","Kidney medication"],
+  func:"Rare earth. Low toxicity. Catalysts and kidney disease treatment.",
+  links:[]
+},
+"cerium": {
+  name:"Cerium", aka:["Ce"],
+  cas:"7440-45-1",
+  chemClass:{name:"Lanthanides",def:"Element 58 (Ce) of the periodic table."},
+  desc:"Most abundant rare earth. Low toxicity.",
+  formula:"Ce", molWeight:"58",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Most abundant rare earth. Low toxicity."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Most abundant rare earth. Low toxicity."},
+  parents:[],children:[],
+  products:["Catalytic converters","Glass polishing","Self-cleaning ovens","Lighter flints"],
+  func:"Most abundant rare earth. Low toxicity.",
+  links:[]
+},
+"praseodymium": {
+  name:"Praseodymium", aka:["Pr"],
+  cas:"7440-10-0",
+  chemClass:{name:"Lanthanides",def:"Element 59 (Pr) of the periodic table."},
+  desc:"Rare earth. Low toxicity. Magnets.",
+  formula:"Pr", molWeight:"59",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Rare earth. Low toxicity. Magnets."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Rare earth. Low toxicity. Magnets."},
+  parents:[],children:[],
+  products:["Permanent magnets","Green glass coloring"],
+  func:"Rare earth. Low toxicity. Magnets.",
+  links:[]
+},
+"neodymium": {
+  name:"Neodymium", aka:["Nd"],
+  cas:"7440-00-8",
+  chemClass:{name:"Lanthanides",def:"Element 60 (Nd) of the periodic table."},
+  desc:"Critical for strongest permanent magnets (NdFeB). Wind turbines, EVs. Mining impacts significant.",
+  formula:"Nd", molWeight:"60",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Critical for strongest permanent magnets (NdFeB). Wind turbines, EVs. Mining impacts significant."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Critical for strongest permanent magnets (NdFeB). Wind turbines, EVs. Mining impacts significant."},
+  parents:[],children:[],
+  products:["NdFeB magnets","Wind turbines","EV motors","Hard drives"],
+  func:"Critical for strongest permanent magnets (NdFeB). Wind turbines, EVs. Mining impacts significant.",
+  links:[]
+},
+"promethium": {
+  name:"Promethium", aka:["Pm"],
+  cas:"7440-12-2",
+  chemClass:{name:"Lanthanides",def:"Element 61 (Pm) of the periodic table."},
+  desc:"Radioactive. No stable isotopes.",
+  formula:"Pm", molWeight:"61",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Radioactive. No stable isotopes."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Radioactive. No stable isotopes."},
+  parents:[],children:[],
+  products:["Nuclear batteries","Luminous paint"],
+  func:"Radioactive. No stable isotopes.",
+  links:[]
+},
+"samarium": {
+  name:"Samarium", aka:["Sm"],
+  cas:"7440-19-9",
+  chemClass:{name:"Lanthanides",def:"Element 62 (Sm) of the periodic table."},
+  desc:"Rare earth. Low toxicity. Sm-153 for cancer treatment.",
+  formula:"Sm", molWeight:"62",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Rare earth. Low toxicity. Sm-153 for cancer treatment."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Rare earth. Low toxicity. Sm-153 for cancer treatment."},
+  parents:[],children:[],
+  products:["Samarium-cobalt magnets","Cancer treatment (Sm-153)"],
+  func:"Rare earth. Low toxicity. Sm-153 for cancer treatment.",
+  links:[]
+},
+"europium": {
+  name:"Europium", aka:["Eu"],
+  cas:"7440-53-1",
+  chemClass:{name:"Lanthanides",def:"Element 63 (Eu) of the periodic table."},
+  desc:"Rare earth. Red phosphor in displays. Low toxicity.",
+  formula:"Eu", molWeight:"63",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Rare earth. Red phosphor in displays. Low toxicity."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Rare earth. Red phosphor in displays. Low toxicity."},
+  parents:[],children:[],
+  products:["Red phosphor (TVs, LEDs)","Anti-counterfeiting (euro banknotes)"],
+  func:"Rare earth. Red phosphor in displays. Low toxicity.",
+  links:[]
+},
+"gadolinium": {
+  name:"Gadolinium", aka:["Gd"],
+  cas:"7440-54-2",
+  chemClass:{name:"Lanthanides",def:"Element 64 (Gd) of the periodic table."},
+  desc:"MRI contrast agent. Brain retention concern. Nephrogenic systemic fibrosis in kidney patients.",
+  formula:"Gd", molWeight:"64",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"MRI contrast agent. Brain retention concern. Nephrogenic systemic fibrosis in kidney patients."}
+  ],
+  gs:{bm:2,label:"Benchmark 2",detail:"MRI contrast agent. Brain retention concern. Nephrogenic systemic fibrosis in kidney patients."},
+  parents:[],children:[],
+  products:["MRI contrast agents","Neutron capture therapy"],
+  func:"MRI contrast agent. Brain retention concern. Nephrogenic systemic fibrosis in kidney patients.",
+  links:[]
+},
+"terbium": {
+  name:"Terbium", aka:["Tb"],
+  cas:"7440-27-9",
+  chemClass:{name:"Lanthanides",def:"Element 65 (Tb) of the periodic table."},
+  desc:"Rare earth. Low toxicity.",
+  formula:"Tb", molWeight:"65",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Rare earth. Low toxicity."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Rare earth. Low toxicity."},
+  parents:[],children:[],
+  products:["Green phosphors","Solid-state devices"],
+  func:"Rare earth. Low toxicity.",
+  links:[]
+},
+"dysprosium": {
+  name:"Dysprosium", aka:["Dy"],
+  cas:"7429-91-6",
+  chemClass:{name:"Lanthanides",def:"Element 66 (Dy) of the periodic table."},
+  desc:"Critical for high-performance magnets. China controls ~90% supply. Low toxicity.",
+  formula:"Dy", molWeight:"66",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Critical for high-performance magnets. China controls ~90% supply. Low toxicity."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Critical for high-performance magnets. China controls ~90% supply. Low toxicity."},
+  parents:[],children:[],
+  products:["EV magnets","Wind turbine magnets"],
+  func:"Critical for high-performance magnets. China controls ~90% supply. Low toxicity.",
+  links:[]
+},
+"holmium": {
+  name:"Holmium", aka:["Ho"],
+  cas:"7440-60-0",
+  chemClass:{name:"Lanthanides",def:"Element 67 (Ho) of the periodic table."},
+  desc:"Highest magnetic moment. Low toxicity.",
+  formula:"Ho", molWeight:"67",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Highest magnetic moment. Low toxicity."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Highest magnetic moment. Low toxicity."},
+  parents:[],children:[],
+  products:["Specialized magnets","Medical lasers"],
+  func:"Highest magnetic moment. Low toxicity.",
+  links:[]
+},
+"erbium": {
+  name:"Erbium", aka:["Er"],
+  cas:"7440-52-0",
+  chemClass:{name:"Lanthanides",def:"Element 68 (Er) of the periodic table."},
+  desc:"Critical for fiber optic amplifiers (internet). Low toxicity.",
+  formula:"Er", molWeight:"68",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Critical for fiber optic amplifiers (internet). Low toxicity."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Critical for fiber optic amplifiers (internet). Low toxicity."},
+  parents:[],children:[],
+  products:["Fiber optic amplifiers","Lasers"],
+  func:"Critical for fiber optic amplifiers (internet). Low toxicity.",
+  links:[]
+},
+"thulium": {
+  name:"Thulium", aka:["Tm"],
+  cas:"7440-30-4",
+  chemClass:{name:"Lanthanides",def:"Element 69 (Tm) of the periodic table."},
+  desc:"Rarest stable lanthanide. Low toxicity.",
+  formula:"Tm", molWeight:"69",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Rarest stable lanthanide. Low toxicity."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Rarest stable lanthanide. Low toxicity."},
+  parents:[],children:[],
+  products:["Portable X-ray machines","Lasers"],
+  func:"Rarest stable lanthanide. Low toxicity.",
+  links:[]
+},
+"ytterbium": {
+  name:"Ytterbium", aka:["Yb"],
+  cas:"7440-64-4",
+  chemClass:{name:"Lanthanides",def:"Element 70 (Yb) of the periodic table."},
+  desc:"Rare earth. Low toxicity.",
+  formula:"Yb", molWeight:"70",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Rare earth. Low toxicity."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Rare earth. Low toxicity."},
+  parents:[],children:[],
+  products:["Stainless steel","Lasers","Atomic clocks"],
+  func:"Rare earth. Low toxicity.",
+  links:[]
+},
+"lutetium": {
+  name:"Lutetium", aka:["Lu"],
+  cas:"7439-94-3",
+  chemClass:{name:"Lanthanides",def:"Element 71 (Lu) of the periodic table."},
+  desc:"Heaviest rare earth. Lu-177 for cancer treatment (Pluvicto for prostate cancer).",
+  formula:"Lu", molWeight:"71",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Heaviest rare earth. Lu-177 for cancer treatment (Pluvicto for prostate cancer)."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Heaviest rare earth. Lu-177 for cancer treatment (Pluvicto for prostate cancer)."},
+  parents:[],children:[],
+  products:["Cancer treatment (Lu-177)","PET scan detectors"],
+  func:"Heaviest rare earth. Lu-177 for cancer treatment (Pluvicto for prostate cancer).",
+  links:[]
+},
+"hafnium": {
+  name:"Hafnium", aka:["Hf"],
+  cas:"7440-58-6",
+  chemClass:{name:"Transition metals",def:"Element 72 (Hf) of the periodic table."},
+  desc:"Corrosion-resistant. Nuclear control rods. Low toxicity.",
+  formula:"Hf", molWeight:"72",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Corrosion-resistant. Nuclear control rods. Low toxicity."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Corrosion-resistant. Nuclear control rods. Low toxicity."},
+  parents:[],children:[],
+  products:["Nuclear control rods","Semiconductors","Plasma cutting"],
+  func:"Corrosion-resistant. Nuclear control rods. Low toxicity.",
+  links:[]
+},
+"tantalum": {
+  name:"Tantalum", aka:["Ta"],
+  cas:"7440-25-7",
+  chemClass:{name:"Transition metals",def:"Element 73 (Ta) of the periodic table."},
+  desc:"Conflict mineral — DRC mining fuels armed conflict. Smartphone capacitors. Biologically inert.",
+  formula:"Ta", molWeight:"73",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Conflict mineral — DRC mining fuels armed conflict. Smartphone capacitors. Biologically inert."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Conflict mineral — DRC mining fuels armed conflict. Smartphone capacitors. Biologically inert."},
+  parents:[],children:[],
+  products:["Smartphone capacitors","Surgical implants","Jet engine turbines"],
+  func:"Conflict mineral — DRC mining fuels armed conflict. Smartphone capacitors. Biologically inert.",
+  links:[]
+},
+"tungsten": {
+  name:"Tungsten", aka:["W","Wolfram"],
+  cas:"7440-33-7",
+  chemClass:{name:"Transition metals",def:"Element 74 (W) of the periodic table."},
+  desc:"Highest melting point. Generally low toxicity. Military ammunition contaminates ranges.",
+  formula:"W", molWeight:"74",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Highest melting point. Generally low toxicity. Military ammunition contaminates ranges."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Highest melting point. Generally low toxicity. Military ammunition contaminates ranges."},
+  parents:[],children:[],
+  products:["Light bulb filaments","Cutting tools","Military ammunition","Jewelry"],
+  func:"Highest melting point. Generally low toxicity. Military ammunition contaminates ranges.",
+  links:[]
+},
+"rhenium": {
+  name:"Rhenium", aka:["Re"],
+  cas:"7440-15-5",
+  chemClass:{name:"Transition metals",def:"Element 75 (Re) of the periodic table."},
+  desc:"Rare metal. Jet engine superalloys. Low toxicity.",
+  formula:"Re", molWeight:"75",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Rare metal. Jet engine superalloys. Low toxicity."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Rare metal. Jet engine superalloys. Low toxicity."},
+  parents:[],children:[],
+  products:["Jet engine superalloys","Catalysts"],
+  func:"Rare metal. Jet engine superalloys. Low toxicity.",
+  links:[]
+},
+"osmium": {
+  name:"Osmium", aka:["Os"],
+  cas:"7440-04-2",
+  chemClass:{name:"Transition metals",def:"Element 76 (Os) of the periodic table."},
+  desc:"Densest natural element. Osmium tetroxide (OsO4) is extremely toxic. Metal form is inert.",
+  formula:"Os", molWeight:"76",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Densest natural element. Osmium tetroxide (OsO4) is extremely toxic. Metal form is inert."}
+  ],
+  gs:{bm:2,label:"Benchmark 2",detail:"Densest natural element. Osmium tetroxide (OsO4) is extremely toxic. Metal form is inert."},
+  parents:[],children:[],
+  products:["Microscopy staining","Electrical contacts"],
+  func:"Densest natural element. Osmium tetroxide (OsO4) is extremely toxic. Metal form is inert.",
+  links:[]
+},
+"iridium": {
+  name:"Iridium", aka:["Ir"],
+  cas:"7439-88-5",
+  chemClass:{name:"Transition metals",def:"Element 77 (Ir) of the periodic table."},
+  desc:"Extremely dense and corrosion-resistant. Low toxicity.",
+  formula:"Ir", molWeight:"77",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Extremely dense and corrosion-resistant. Low toxicity."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Extremely dense and corrosion-resistant. Low toxicity."},
+  parents:[],children:[],
+  products:["Spark plugs","Crucibles","Electrical contacts"],
+  func:"Extremely dense and corrosion-resistant. Low toxicity.",
+  links:[]
+},
+"platinum": {
+  name:"Platinum", aka:["Pt"],
+  cas:"7440-06-4",
+  chemClass:{name:"Transition metals",def:"Element 78 (Pt) of the periodic table."},
+  desc:"Precious metal. Non-toxic as metal. Cisplatin is a powerful cancer drug.",
+  formula:"Pt", molWeight:"78",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Precious metal. Non-toxic as metal. Cisplatin is a powerful cancer drug."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Precious metal. Non-toxic as metal. Cisplatin is a powerful cancer drug."},
+  parents:[],children:[],
+  products:["Catalytic converters","Chemotherapy (cisplatin)","Jewelry","Fuel cells"],
+  func:"Precious metal. Non-toxic as metal. Cisplatin is a powerful cancer drug.",
+  links:[]
+},
+"gold": {
+  name:"Gold", aka:["Au","Aurum"],
+  cas:"7440-57-5",
+  chemClass:{name:"Transition metals",def:"Element 79 (Au) of the periodic table."},
+  desc:"Chemically inert. Non-toxic. Mining uses mercury and cyanide — severe environmental damage.",
+  formula:"Au", molWeight:"79",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Chemically inert. Non-toxic. Mining uses mercury and cyanide — severe environmental damage."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Chemically inert. Non-toxic. Mining uses mercury and cyanide — severe environmental damage."},
+  parents:[],children:[],
+  products:["Jewelry","Electronics","Medical diagnostics","Financial reserves"],
+  func:"Chemically inert. Non-toxic. Mining uses mercury and cyanide — severe environmental damage.",
+  links:[]
+},
+"thallium": {
+  name:"Thallium", aka:["Tl"],
+  cas:"7440-28-0",
+  chemClass:{name:"Post-transition metals",def:"Element 81 (Tl) of the periodic table."},
+  desc:"Extremely toxic. Causes hair loss, neuropathy, death. Historically used as rat poison.",
+  formula:"Tl", molWeight:"81",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Extremely toxic. Causes hair loss, neuropathy, death. Historically used as rat poison."}
+  ],
+  gs:{bm:1,label:"Benchmark 1",detail:"Extremely toxic. Causes hair loss, neuropathy, death. Historically used as rat poison."},
+  parents:[],children:[],
+  products:["Electronics (historical)","Medical imaging (Tl-201)"],
+  func:"Extremely toxic. Causes hair loss, neuropathy, death. Historically used as rat poison.",
+  links:[]
+},
+"bismuth": {
+  name:"Bismuth", aka:["Bi"],
+  cas:"7440-69-9",
+  chemClass:{name:"Post-transition metals",def:"Element 83 (Bi) of the periodic table."},
+  desc:"Uniquely non-toxic heavy metal. Pepto-Bismol. Lead replacement.",
+  formula:"Bi", molWeight:"83",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Uniquely non-toxic heavy metal. Pepto-Bismol. Lead replacement."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Uniquely non-toxic heavy metal. Pepto-Bismol. Lead replacement."},
+  parents:[],children:[],
+  products:["Pepto-Bismol","Lead-free ammunition","Lead-free solder","Cosmetics"],
+  func:"Uniquely non-toxic heavy metal. Pepto-Bismol. Lead replacement.",
+  links:[]
+},
+"polonium": {
+  name:"Polonium", aka:["Po","Po-210"],
+  cas:"7440-08-6",
+  chemClass:{name:"Post-transition metals",def:"Element 84 (Po) of the periodic table."},
+  desc:"Extremely radioactive. Lethal in micrograms. Found in tobacco smoke. Used to assassinate Litvinenko (2006).",
+  formula:"Po", molWeight:"84",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Extremely radioactive. Lethal in micrograms. Found in tobacco smoke. Used to assassinate Litvinenko (2006)."}
+  ],
+  gs:{bm:1,label:"Benchmark 1",detail:"Extremely radioactive. Lethal in micrograms. Found in tobacco smoke. Used to assassinate Litvinenko (2006)."},
+  parents:[],children:[],
+  products:["Nuclear batteries (historical)","Found in tobacco smoke"],
+  func:"Extremely radioactive. Lethal in micrograms. Found in tobacco smoke. Used to assassinate Litvinenko (2006).",
+  links:[]
+},
+"astatine": {
+  name:"Astatine", aka:["At"],
+  cas:"7440-68-8",
+  chemClass:{name:"Halogens",def:"Element 85 (At) of the periodic table."},
+  desc:"Rarest natural element. Radioactive. At-211 under study for cancer therapy.",
+  formula:"At", molWeight:"85",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Rarest natural element. Radioactive. At-211 under study for cancer therapy."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Rarest natural element. Radioactive. At-211 under study for cancer therapy."},
+  parents:[],children:[],
+  products:["Cancer treatment research (At-211)"],
+  func:"Rarest natural element. Radioactive. At-211 under study for cancer therapy.",
+  links:[]
+},
+"radon": {
+  name:"Radon", aka:["Rn","Rn-222"],
+  cas:"10043-92-2",
+  chemClass:{name:"Noble gases",def:"Element 86 (Rn) of the periodic table."},
+  desc:"Second leading cause of lung cancer (21,000 US deaths/year). Seeps into buildings from soil. Colorless, odorless. Every home should be tested.",
+  formula:"Rn", molWeight:"86",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Second leading cause of lung cancer (21,000 US deaths/year). Seeps into buildings from soil. Colorless, odorless. Every home should be tested."}
+  ],
+  gs:{bm:1,label:"Benchmark 1",detail:"Second leading cause of lung cancer (21,000 US deaths/year). Seeps into buildings from soil. Colorless, odorless. Every home should be tested."},
+  parents:[],children:[],
+  products:["Home testing kits"],
+  func:"Second leading cause of lung cancer (21,000 US deaths/year). Seeps into buildings from soil. Colorless, odorless. Every home should be tested.",
+  links:[]
+},
+"francium": {
+  name:"Francium", aka:["Fr"],
+  cas:"7440-73-5",
+  chemClass:{name:"Alkali metals",def:"Element 87 (Fr) of the periodic table."},
+  desc:"Most unstable natural element. 22-minute half-life. No applications.",
+  formula:"Fr", molWeight:"87",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Most unstable natural element. 22-minute half-life. No applications."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Most unstable natural element. 22-minute half-life. No applications."},
+  parents:[],children:[],
+  products:["Scientific research only"],
+  func:"Most unstable natural element. 22-minute half-life. No applications.",
+  links:[]
+},
+"radium": {
+  name:"Radium", aka:["Ra","Ra-226"],
+  cas:"7440-14-4",
+  chemClass:{name:"Alkaline earth metals",def:"Element 88 (Ra) of the periodic table."},
+  desc:"Bone-seeking radioactive element. Radium Girls tragedy led to worker safety reforms. Causes bone cancer.",
+  formula:"Ra", molWeight:"88",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Bone-seeking radioactive element. Radium Girls tragedy led to worker safety reforms. Causes bone cancer."}
+  ],
+  gs:{bm:1,label:"Benchmark 1",detail:"Bone-seeking radioactive element. Radium Girls tragedy led to worker safety reforms. Causes bone cancer."},
+  parents:[],children:[],
+  products:["Luminous paint (historical)","Cancer treatment (historical)"],
+  func:"Bone-seeking radioactive element. Radium Girls tragedy led to worker safety reforms. Causes bone cancer.",
+  links:[]
+},
+"actinium": {
+  name:"Actinium", aka:["Ac"],
+  cas:"7440-34-8",
+  chemClass:{name:"Actinides",def:"Element 89 (Ac) of the periodic table."},
+  desc:"Radioactive. Ac-225 is a promising targeted cancer therapy radioisotope.",
+  formula:"Ac", molWeight:"89",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Radioactive. Ac-225 is a promising targeted cancer therapy radioisotope."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Radioactive. Ac-225 is a promising targeted cancer therapy radioisotope."},
+  parents:[],children:[],
+  products:["Cancer treatment research (Ac-225)"],
+  func:"Radioactive. Ac-225 is a promising targeted cancer therapy radioisotope.",
+  links:[]
+},
+"thorium": {
+  name:"Thorium", aka:["Th"],
+  cas:"7440-29-1",
+  chemClass:{name:"Actinides",def:"Element 90 (Th) of the periodic table."},
+  desc:"Radioactive. Proposed alternative nuclear fuel with safety advantages.",
+  formula:"Th", molWeight:"90",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Radioactive. Proposed alternative nuclear fuel with safety advantages."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Radioactive. Proposed alternative nuclear fuel with safety advantages."},
+  parents:[],children:[],
+  products:["Gas lantern mantles","Proposed nuclear fuel","Welding electrodes"],
+  func:"Radioactive. Proposed alternative nuclear fuel with safety advantages.",
+  links:[]
+},
+"protactinium": {
+  name:"Protactinium", aka:["Pa"],
+  cas:"7440-13-3",
+  chemClass:{name:"Actinides",def:"Element 91 (Pa) of the periodic table."},
+  desc:"Extremely rare radioactive actinide. No applications.",
+  formula:"Pa", molWeight:"91",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Extremely rare radioactive actinide. No applications."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Extremely rare radioactive actinide. No applications."},
+  parents:[],children:[],
+  products:["Scientific research only"],
+  func:"Extremely rare radioactive actinide. No applications.",
+  links:[]
+},
+"uranium": {
+  name:"Uranium", aka:["U","U-235","U-238"],
+  cas:"7440-61-1",
+  chemClass:{name:"Actinides",def:"Element 92 (U) of the periodic table."},
+  desc:"Nuclear fuel and weapons. Both chemically toxic (kidney) and radioactive. Mining devastated Navajo communities (500+ abandoned mines).",
+  formula:"U", molWeight:"92",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Nuclear fuel and weapons. Both chemically toxic (kidney) and radioactive. Mining devastated Navajo communities (500+ abandoned mines)."}
+  ],
+  gs:{bm:1,label:"Benchmark 1",detail:"Nuclear fuel and weapons. Both chemically toxic (kidney) and radioactive. Mining devastated Navajo communities (500+ abandoned mines)."},
+  parents:[],children:[],
+  products:["Nuclear power","Nuclear weapons","Depleted uranium ammunition"],
+  func:"Nuclear fuel and weapons. Both chemically toxic (kidney) and radioactive. Mining devastated Navajo communities (500+ abandoned mines).",
+  links:[]
+},
+"neptunium": {
+  name:"Neptunium", aka:["Np"],
+  cas:"7439-99-8",
+  chemClass:{name:"Actinides",def:"Element 93 (Np) of the periodic table."},
+  desc:"Transuranic. Nuclear waste concern. No commercial applications.",
+  formula:"Np", molWeight:"93",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Transuranic. Nuclear waste concern. No commercial applications."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Transuranic. Nuclear waste concern. No commercial applications."},
+  parents:[],children:[],
+  products:["Nuclear waste management"],
+  func:"Transuranic. Nuclear waste concern. No commercial applications.",
+  links:[]
+},
+"plutonium": {
+  name:"Plutonium", aka:["Pu","Pu-239"],
+  cas:"7440-07-5",
+  chemClass:{name:"Actinides",def:"Element 94 (Pu) of the periodic table."},
+  desc:"Primary nuclear weapons material. Extremely toxic alpha emitter. 24,100-year half-life. Contamination at Rocky Flats, Hanford, Savannah River.",
+  formula:"Pu", molWeight:"94",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Primary nuclear weapons material. Extremely toxic alpha emitter. 24,100-year half-life. Contamination at Rocky Flats, Hanford, Savannah River."}
+  ],
+  gs:{bm:1,label:"Benchmark 1",detail:"Primary nuclear weapons material. Extremely toxic alpha emitter. 24,100-year half-life. Contamination at Rocky Flats, Hanford, Savannah River."},
+  parents:[],children:[],
+  products:["Nuclear weapons","Reactor fuel (MOX)","Space probe power (RTGs)"],
+  func:"Primary nuclear weapons material. Extremely toxic alpha emitter. 24,100-year half-life. Contamination at Rocky Flats, Hanford, Savannah River.",
+  links:[]
+},
+"americium": {
+  name:"Americium", aka:["Am","Am-241"],
+  cas:"7440-35-9",
+  chemClass:{name:"Actinides",def:"Element 95 (Am) of the periodic table."},
+  desc:"Am-241 is in every smoke detector. Negligible risk in detectors.",
+  formula:"Am", molWeight:"95",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Am-241 is in every smoke detector. Negligible risk in detectors."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Am-241 is in every smoke detector. Negligible risk in detectors."},
+  parents:[],children:[],
+  products:["Smoke detectors","Industrial gauges"],
+  func:"Am-241 is in every smoke detector. Negligible risk in detectors.",
+  links:[]
+},
+"curium": {
+  name:"Curium", aka:["Cm"],
+  cas:"7440-51-9",
+  chemClass:{name:"Actinides",def:"Element 96 (Cm) of the periodic table."},
+  desc:"Named for Marie and Pierre Curie. Space probe power. Radiation hazard.",
+  formula:"Cm", molWeight:"96",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Named for Marie and Pierre Curie. Space probe power. Radiation hazard."}
+  ],
+  gs:{bm:3,label:"Benchmark 3",detail:"Named for Marie and Pierre Curie. Space probe power. Radiation hazard."},
+  parents:[],children:[],
+  products:["Space probe power (RTGs)"],
+  func:"Named for Marie and Pierre Curie. Space probe power. Radiation hazard.",
+  links:[]
+},
+"berkelium": {
+  name:"Berkelium", aka:["Bk"],
+  cas:"7440-40-6",
+  chemClass:{name:"Synthetic elements",def:"Element 97 (Bk) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=97). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Bk", molWeight:"97",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=97). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=97). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=97). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"californium": {
+  name:"Californium", aka:["Cf"],
+  cas:"7440-71-3",
+  chemClass:{name:"Synthetic elements",def:"Element 98 (Cf) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=98). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Cf", molWeight:"98",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=98). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=98). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=98). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"einsteinium": {
+  name:"Einsteinium", aka:["Es"],
+  cas:"7429-92-7",
+  chemClass:{name:"Synthetic elements",def:"Element 99 (Es) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=99). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Es", molWeight:"99",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=99). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=99). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=99). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"fermium": {
+  name:"Fermium", aka:["Fm"],
+  cas:"7440-72-4",
+  chemClass:{name:"Synthetic elements",def:"Element 100 (Fm) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=100). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Fm", molWeight:"100",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=100). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=100). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=100). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"mendelevium": {
+  name:"Mendelevium", aka:["Md"],
+  cas:"7440-11-1",
+  chemClass:{name:"Synthetic elements",def:"Element 101 (Md) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=101). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Md", molWeight:"101",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=101). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=101). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=101). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"nobelium": {
+  name:"Nobelium", aka:["No"],
+  cas:"10028-14-5",
+  chemClass:{name:"Synthetic elements",def:"Element 102 (No) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=102). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"No", molWeight:"102",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=102). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=102). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=102). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"lawrencium": {
+  name:"Lawrencium", aka:["Lr"],
+  cas:"22537-19-5",
+  chemClass:{name:"Synthetic elements",def:"Element 103 (Lr) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=103). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Lr", molWeight:"103",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=103). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=103). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=103). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"rutherfordium": {
+  name:"Rutherfordium", aka:["Rf"],
+  cas:"53850-36-5",
+  chemClass:{name:"Synthetic elements",def:"Element 104 (Rf) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=104). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Rf", molWeight:"104",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=104). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=104). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=104). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"dubnium": {
+  name:"Dubnium", aka:["Db"],
+  cas:"53850-35-4",
+  chemClass:{name:"Synthetic elements",def:"Element 105 (Db) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=105). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Db", molWeight:"105",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=105). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=105). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=105). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"seaborgium": {
+  name:"Seaborgium", aka:["Sg"],
+  cas:"54038-81-2",
+  chemClass:{name:"Synthetic elements",def:"Element 106 (Sg) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=106). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Sg", molWeight:"106",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=106). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=106). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=106). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"bohrium": {
+  name:"Bohrium", aka:["Bh"],
+  cas:"54037-14-8",
+  chemClass:{name:"Synthetic elements",def:"Element 107 (Bh) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=107). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Bh", molWeight:"107",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=107). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=107). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=107). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"hassium": {
+  name:"Hassium", aka:["Hs"],
+  cas:"55145-13-2",
+  chemClass:{name:"Synthetic elements",def:"Element 108 (Hs) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=108). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Hs", molWeight:"108",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=108). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=108). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=108). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"meitnerium": {
+  name:"Meitnerium", aka:["Mt"],
+  cas:"54038-01-6",
+  chemClass:{name:"Synthetic elements",def:"Element 109 (Mt) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=109). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Mt", molWeight:"109",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=109). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=109). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=109). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"darmstadtium": {
+  name:"Darmstadtium", aka:["Ds"],
+  cas:"54083-77-1",
+  chemClass:{name:"Synthetic elements",def:"Element 110 (Ds) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=110). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Ds", molWeight:"110",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=110). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=110). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=110). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"roentgenium": {
+  name:"Roentgenium", aka:["Rg"],
+  cas:"54386-24-2",
+  chemClass:{name:"Synthetic elements",def:"Element 111 (Rg) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=111). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Rg", molWeight:"111",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=111). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=111). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=111). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"copernicium": {
+  name:"Copernicium", aka:["Cn"],
+  cas:"54084-26-3",
+  chemClass:{name:"Synthetic elements",def:"Element 112 (Cn) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=112). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Cn", molWeight:"112",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=112). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=112). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=112). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"nihonium": {
+  name:"Nihonium", aka:["Nh"],
+  cas:"54084-70-7",
+  chemClass:{name:"Synthetic elements",def:"Element 113 (Nh) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=113). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Nh", molWeight:"113",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=113). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=113). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=113). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"flerovium": {
+  name:"Flerovium", aka:["Fl"],
+  cas:"54085-16-4",
+  chemClass:{name:"Synthetic elements",def:"Element 114 (Fl) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=114). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Fl", molWeight:"114",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=114). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=114). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=114). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"moscovium": {
+  name:"Moscovium", aka:["Mc"],
+  cas:"54085-64-2",
+  chemClass:{name:"Synthetic elements",def:"Element 115 (Mc) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=115). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Mc", molWeight:"115",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=115). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=115). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=115). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"livermorium": {
+  name:"Livermorium", aka:["Lv"],
+  cas:"54100-71-9",
+  chemClass:{name:"Synthetic elements",def:"Element 116 (Lv) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=116). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Lv", molWeight:"116",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=116). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=116). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=116). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"tennessine": {
+  name:"Tennessine", aka:["Ts"],
+  cas:"87658-56-8",
+  chemClass:{name:"Synthetic elements",def:"Element 117 (Ts) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=117). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Ts", molWeight:"117",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=117). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=117). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=117). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
+},
+"oganesson": {
+  name:"Oganesson", aka:["Og"],
+  cas:"54144-19-3",
+  chemClass:{name:"Synthetic elements",def:"Element 118 (Og) of the periodic table."},
+  desc:"Synthetic radioactive element (Z=118). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  formula:"Og", molWeight:"118",
+  structure:null,
+  toxicity:[
+    {label:"Summary",val:"Synthetic radioactive element (Z=118). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."}
+  ],
+  gs:{bm:4,label:"Benchmark 4",detail:"Synthetic radioactive element (Z=118). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics."},
+  parents:[],children:[],
+  products:["Nuclear physics research only"],
+  func:"Synthetic radioactive element (Z=118). Produced in particle accelerators. Extremely short-lived. No practical applications outside nuclear physics.",
+  links:[]
 },
 "cadmium": {
   name:"Cadmium", aka:["Cd","Cadmium compounds","Cadmium oxide"],
@@ -1645,6 +3464,48 @@ Object.entries(CURATED_DB).forEach(([key, val]) => {
 });
 // Extra common search aliases
 const EXTRA_ALIASES = {
+  "mercury":"heavy metals","hg":"heavy metals","quicksilver":"heavy metals",
+  "arsenic":"heavy metals","as element":"heavy metals",
+  "chromium":"hexavalent chromium","cr":"hexavalent chromium",
+  "lead element":"lead","pb":"lead",
+  "antimony element":"antimony","sb":"antimony",
+  "cadmium element":"cadmium","cd element":"cadmium",
+  "tin element":"organotins","sn":"organotins",
+  "fluorine":"pfas","f element":"pfas",
+  "h":"hydrogen","h2":"hydrogen","he":"helium","li":"lithium","be":"beryllium",
+  "b element":"boron","c element":"carbon","n":"nitrogen","n2":"nitrogen",
+  "o":"oxygen","o2":"oxygen","o3":"oxygen","ozone":"oxygen","ne":"neon","na":"sodium",
+  "mg":"magnesium","al":"aluminum","aluminium":"aluminum","si":"silicon",
+  "p element":"phosphorus","sulphur":"sulfur",
+  "cl":"chlorine","cl2":"chlorine","ar":"argon","k element":"potassium",
+  "ca element":"calcium","sc":"scandium","ti":"titanium","tio2":"titanium",
+  "v element":"vanadium","mn":"manganese","fe":"iron","co element":"cobalt",
+  "ni":"nickel","cu":"copper","zn":"zinc","ga":"gallium","ge":"germanium",
+  "se":"selenium","br":"bromine","kr":"krypton","rb":"rubidium","sr":"strontium",
+  "y element":"yttrium","zr":"zirconium","nb":"niobium","columbium":"niobium",
+  "mo":"molybdenum","tc":"technetium","tc-99m":"technetium",
+  "ru":"ruthenium","rh":"rhodium","pd":"palladium","ag":"silver",
+  "in element":"indium","te":"tellurium","i element":"iodine","xe":"xenon",
+  "cs":"cesium","caesium":"cesium","ba":"barium",
+  "la":"lanthanum","ce":"cerium","pr":"praseodymium",
+  "nd":"neodymium","pm":"promethium","sm":"samarium","eu":"europium",
+  "gd":"gadolinium","tb element":"terbium","dy":"dysprosium","ho":"holmium",
+  "er":"erbium","tm":"thulium","yb":"ytterbium","lu":"lutetium",
+  "hf":"hafnium","ta":"tantalum","wolfram":"tungsten",
+  "re":"rhenium","os":"osmium","ir":"iridium","pt":"platinum",
+  "au":"gold","tl":"thallium","bi":"bismuth","po":"polonium","po-210":"polonium",
+  "at":"astatine","rn":"radon","rn-222":"radon",
+  "ra":"radium","ra-226":"radium","ac":"actinium","th":"thorium",
+  "pa":"protactinium","u-235":"uranium","u-238":"uranium",
+  "np":"neptunium","pu":"plutonium","pu-239":"plutonium",
+  "am":"americium","am-241":"americium","cm":"curium",
+  "bk":"berkelium","cf element":"californium","es element":"einsteinium",
+  "fm element":"fermium","md element":"mendelevium",
+  "lr":"lawrencium","rf":"rutherfordium","db":"dubnium","sg":"seaborgium",
+  "bh":"bohrium","hs element":"hassium","mt":"meitnerium","ds":"darmstadtium",
+  "rg":"roentgenium","nh":"nihonium",
+  "fl element":"flerovium","mc":"moscovium","lv":"livermorium",
+  "ts element":"tennessine","og":"oganesson",
   "bpa":"bisphenol a","bisphenols":"bisphenol a","flame retardants":"flame retardants",
   "toxic flame retardants":"flame retardants","bfrs":"flame retardants","pbde":"flame retardants","pbdes":"flame retardants",
   "tce":"trichloroethylene","d4":"cyclotetrasiloxane","d5":"cyclotetrasiloxane","siloxanes":"cyclotetrasiloxane","silicone":"cyclotetrasiloxane",
@@ -2533,8 +4394,6 @@ Provide 4 toxicity entries covering human health AND ecological hazards. For Gre
   );
 }
 
-
-// Mount the app
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<ChemicalExplorer />);
   </script>
