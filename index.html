@@ -770,6 +770,307 @@ const CURATED_DB = {
   spwa:"Cycle 1 & Cycle 2",
   waPBT:true
 },
+"quaternary ammonium compounds": {
+  name:"Quaternary ammonium compounds (Quats)", aka:["Quats","QACs","Benzalkonium chloride","BAC","ADBAC","DDAC","Cetylpyridinium chloride","Quaternium-15"],
+  cas:"Multiple (class)",
+  chemClass:{name:"Quaternary ammonium compounds",def:"A large class of cationic surfactants with a permanently charged nitrogen atom bonded to four organic groups. Used as antimicrobials, preservatives, surfactants, antistatic agents, and fabric softeners. Over 800 individual QACs are in commerce. Use surged during COVID-19 pandemic. Identified as a chemical class of emerging concern in a 2023 Environmental Science & Technology review."},
+  desc:"Antimicrobial chemicals found in disinfectant sprays and wipes, hand sanitizers, fabric softeners, dryer sheets, shampoos, body wash, baby wipes, and eye drops. Their use exploded during the COVID-19 pandemic. In 2009, Virginia Tech researcher Terry Hrubec discovered that mice exposed to common quats (ADBAC and DDAC) developed neural tube defects and fertility problems — a finding that was accidental, as the lab had simply switched cleaning products. Since then, research has linked quats to reproductive toxicity, asthma, disruption of cellular energy metabolism (mitochondrial function), and promotion of antimicrobial-resistant bacteria. A 2023 multi-institutional review in Environmental Science & Technology formally designated QACs as a chemical class of emerging concern.",
+  formula:"R4N+ (variable)", molWeight:"Varies by compound",
+  structure:null,
+  toxicity:[
+    {label:"Reproductive",val:"ADBAC and DDAC cause neural tube defects, decreased fertility, and reduced sperm quality in mice. Effects observed at exposure levels from routine environmental cleaning. Hrubec et al. (Virginia Tech) discovered this accidentally when their lab switched disinfectants."},
+    {label:"Respiratory",val:"Benzalkonium chloride and DDAC are recognized asthma triggers. Occupational asthma in cleaning workers is well-documented. California and New York have issued guidance to avoid quat-based disinfectants in schools."},
+    {label:"Antimicrobial resistance",val:"Widespread quat use promotes resistant bacteria. QAC resistance genes (qac genes) are often co-located with antibiotic resistance genes on the same plasmids — meaning quat exposure can simultaneously select for antibiotic-resistant bacteria."},
+    {label:"Ecological",val:"Toxic to aquatic organisms. Found in sediment cores from urban estuaries dating to the 1950s, with concentrations reflecting changes in consumer product formulations. Wastewater treatment does not fully remove QACs."}
+  ],
+  gs:{bm:2,label:"Benchmark 2 — Use but search for safer alternatives",detail:"BM-2 based on reproductive toxicity, asthma induction, and antimicrobial resistance promotion. The class is vast and individual compounds vary in toxicity, but the most common disinfectant quats (ADBAC, DDAC, BAC) have concerning toxicity profiles. The 2023 ES&T review recommends applying essential use principles to limit unnecessary QAC applications."},
+  parents:["Ammonium salts","Alkyl halides"],
+  children:["ADBAC (alkyldimethylbenzylammonium chloride)","DDAC (didecyldimethylammonium chloride)","BAC (benzalkonium chloride)","Cetylpyridinium chloride (CPC)","Cetrimonium bromide (CTAB)"],
+  products:["Disinfectant sprays and wipes (Lysol, Clorox)","Hand sanitizers","Fabric softeners and dryer sheets","Baby wipes","Shampoo and conditioner (conditioning quats)","Eye drops (benzalkonium chloride preservative)","Body wash and hand soap","Hospital-grade disinfectants","Swimming pool treatment","Wood preservatives"],
+  func:"Cationic surfactants that disrupt microbial cell membranes. Used as antimicrobials (disinfectants, sanitizers), preservatives, antistatic agents, and conditioning/softening agents. The positively charged nitrogen binds to negatively charged microbial surfaces.",
+  manufacturers:[{name:"Lonza Group",note:"Major QAC producer (Bardac, Barquat brands). Swiss chemical company."},{name:"Stepan Company",note:"US surfactant manufacturer. Major QAC producer."},{name:"Thor Group",note:"UK-based biocides manufacturer."},{name:"Pilot Chemical Company",note:"US specialty chemical producer."},{name:"Procter & Gamble, Reckitt, SC Johnson",note:"Major consumer product companies using QACs in disinfectants and cleaners (Lysol, Mr. Clean, etc.)."}],
+  saferAlternatives:[
+    {context:"Surface disinfection",alt:"Hypochlorous acid (HOCl), hydrogen peroxide-based cleaners, thymol-based disinfectants, electrolyzed water",note:"EPA List N includes non-quat disinfectants effective against COVID-19. Hypochlorous acid is gaining popularity as a safer alternative."},
+    {context:"Hand hygiene",alt:"Plain soap and water, alcohol-based (60%+ ethanol) hand sanitizers",note:"CDC recommends soap and water as first choice. Alcohol sanitizers are effective without quat concerns."},
+    {context:"Fabric softening",alt:"Vinegar rinse, wool dryer balls, plant-based fabric softeners",note:"Quats in fabric softeners leave residue on clothing that contacts skin continuously. Wool dryer balls are a chemical-free alternative."},
+    {context:"Hospital/institutional",alt:"Accelerated hydrogen peroxide (AHP), peracetic acid, EPA Safer Choice-certified disinfectants",note:"Virox and other AHP-based products are effective hospital-grade disinfectants without quat concerns."},
+    {context:"Eye drops",alt:"Preservative-free single-dose vials, polyquad (less toxic quat), purite (stabilized oxychloro complex)",note:"Benzalkonium chloride in eye drops damages corneal epithelium with chronic use. Preservative-free formulations recommended for long-term use."}
+  ],
+  altSource:"EPA List N, CDC hand hygiene guidance, California CDPH school cleaning guidance",
+  links:[{t:"ES&T review (2023)",u:"https://pubs.acs.org/doi/10.1021/acs.est.2c08244"},{t:"NCBI toxicology",u:"https://www.ncbi.nlm.nih.gov/books/NBK594254/"},{t:"NPIC quat fact sheet",u:"https://npic.orst.edu/factsheets/quats.html"},{t:"C&EN safety review",u:"https://cen.acs.org/safety/consumer-safety/know-enough-safety-quat-disinfectants/98/i30"}],
+  legislation:[{st:"US",bill:"FDA OTC Monograph",status:"passed",title:"FDA banned 19 antimicrobial active ingredients including some quats from consumer hand/body wash (2016)"},{st:"CA",bill:"CDPH guidance",status:"passed",title:"California recommended avoiding quat-based disinfectants in schools (2020)"},{st:"EU",bill:"BPR",status:"passed",title:"EU Biocidal Products Regulation requires authorization for QAC disinfectants"}]
+},
+"plastics": {
+  name:"Plastics (overview)", aka:["Plastic","Synthetic polymers","Resins","Plastic pollution"],
+  cas:"Multiple (class)",
+  chemClass:{name:"Synthetic polymers",def:"Materials made by chemically linking small molecules (monomers) into long chains (polymers). Most plastics are derived from fossil fuels (petroleum, natural gas). The plastics-to-chemicals pipeline means every plastic carries hazards from its monomer, its additives, and its degradation products. Global plastic production exceeds 400 million tonnes annually and is projected to triple by 2060."},
+  desc:"Plastics are not a single material — they are a family of synthetic polymers, each with distinct chemical hazards. The danger is not just the polymer backbone but the full lifecycle: toxic monomers (vinyl chloride, styrene, BPA, formaldehyde), chemical additives (phthalate plasticizers, brominated flame retardants, heavy metal stabilizers, UV stabilizers), degradation into microplastics and nanoplastics that carry these chemicals into the body and environment, and end-of-life hazards (dioxin formation from incineration, leachate from landfills). Only ~9% of plastic ever produced has been recycled. The UN Global Plastics Treaty negotiations are the most significant international effort to address the crisis.",
+  formula:"Various", molWeight:"Polymer",
+  structure:null,
+  toxicity:[
+    {label:"Chemical additives",val:"Plastics contain thousands of chemical additives — plasticizers, flame retardants, UV stabilizers, colorants, antimicrobials. Over 13,000 chemicals are associated with plastics; more than 3,200 are hazardous. Many leach from products during use."},
+    {label:"Monomer hazards",val:"Many plastic monomers are toxic: vinyl chloride (carcinogen), styrene (probable carcinogen), BPA (endocrine disruptor), formaldehyde (carcinogen), acrylonitrile (carcinogen). Workers in plastic production face the highest exposure."},
+    {label:"Microplastics",val:"All plastics eventually fragment into micro- and nanoplastics found in human blood, placenta, lungs, and brains. Microplastics carry adsorbed chemicals and cross biological barriers. Health effects are under intensive investigation."},
+    {label:"Ecological",val:"8-10 million tonnes of plastic enter oceans annually. Entanglement, ingestion by wildlife, and chemical leaching. Plastic production is projected to account for 20% of global oil consumption by 2050. Incineration generates dioxins."}],
+  gs:{bm:"U",label:"Unscreened",detail:"Plastics as a class are not GreenScreen assessed. Individual polymers and their associated chemicals vary enormously — from relatively benign (PE, PP) to highly hazardous (PVC, PS). The hazard depends on the monomer, additives, and end-of-life pathway."},
+  parents:["Petroleum","Natural gas","Monomers (ethylene, propylene, styrene, vinyl chloride, BPA, etc.)"],
+  children:["Polyethylene (PE)","Polypropylene (PP)","PVC","Polystyrene (PS)","PET","Polycarbonate (PC)","Polyurethane (PU)","Nylon","ABS","Bioplastics (PLA)","Microplastics"],
+  products:["Packaging (40% of all plastic)","Construction","Textiles","Automotive","Electronics","Medical devices","Agriculture","Consumer goods"],
+  func:"Versatile synthetic materials valued for durability, lightweight, low cost, and moldability. Different polymers serve different functions — rigid structural materials, flexible films, fibers, foams, and coatings.",
+  manufacturers:[{name:"ExxonMobil Chemical",note:"Largest US petrochemical producer. Major PE and PP producer."},{name:"Dow Chemical",note:"Major PE, PS, and PU producer."},{name:"LyondellBasell",note:"One of the largest plastics companies globally. PE and PP."},{name:"SABIC",note:"Saudi-based. Major PE, PP, PC, and PET producer."},{name:"INEOS",note:"Major PE, PP, PS, and PVC producer."},{name:"Formosa Plastics",note:"Major PVC and PE producer."}],
+  saferAlternatives:[
+    {context:"Packaging",alt:"Paper, cardboard, glass, aluminum, compostable materials, reusable containers",note:"Reduce and reuse are more effective than material substitution. Refill/reuse systems eliminate packaging entirely."},
+    {context:"Building materials",alt:"Wood, metal, fiber cement, mineral-based materials",note:"Healthy Building Network Informed Product Guidance identifies plastic-free alternatives for most building applications."},
+    {context:"Textiles",alt:"Natural fibers (cotton, wool, linen, hemp), recycled natural fibers",note:"Synthetic textiles shed microfibers. Natural fibers biodegrade. Organic cotton avoids pesticide concerns."},
+    {context:"Food storage",alt:"Glass, stainless steel, silicone, beeswax wraps, ceramic",note:"Avoid heating food in plastic containers. Glass and stainless steel do not leach chemicals."}
+  ],
+  altSource:"Beyond Plastics, Break Free From Plastic, Healthy Building Network",
+  links:[{t:"Beyond Plastics",u:"https://www.beyondplastics.org/"},{t:"Break Free From Plastic",u:"https://www.breakfreefromplastic.org/"},{t:"UNEP plastics treaty",u:"https://www.unep.org/topics/chemicals-and-pollution-action/pollution-action/global-plastics-treaty"},{t:"PlastChem report",u:"https://www.plastchem-project.org/"}],
+  legislation:[{st:"Global",bill:"UN Global Plastics Treaty",status:"proposed",title:"International negotiations for legally binding instrument on plastic pollution — INC-5 in Busan (2024)"},{st:"WA",bill:"Multiple",status:"passed",title:"Washington has banned plastic bags, PS food containers, and PFAS in food packaging"},{st:"CA",bill:"SB 54",status:"passed",title:"California Plastic Pollution Prevention and Packaging Producer Responsibility Act (2022)"}]
+},
+"polyethylene": {
+  name:"Polyethylene (PE)", aka:["PE","HDPE","LDPE","LLDPE","High-density polyethylene","Low-density polyethylene","Plastic #2","Plastic #4"],
+  cas:"9002-88-4",
+  chemClass:{name:"Polyolefin plastics",def:"Polymers made from simple olefin monomers (ethylene, propylene). Polyethylene is the most produced plastic in the world — over 100 million tonnes annually. Comes in high-density (HDPE, #2) and low-density (LDPE, #4) forms."},
+  desc:"The most widely produced plastic in the world. HDPE is used for milk jugs, detergent bottles, and pipes. LDPE is used for plastic bags, squeeze bottles, and cling wrap. Considered one of the safer plastics in terms of chemical leaching — the polyethylene polymer itself is chemically inert. However, PE products contain additives (antioxidants, UV stabilizers, slip agents) that can migrate, and PE is a major source of microplastic pollution. Plastic bags are a global symbol of plastic waste.",
+  formula:"(C2H4)n", molWeight:"Polymer",
+  structure:null,
+  toxicity:[
+    {label:"Relatively low concern",val:"PE polymer backbone is chemically inert and does not leach monomers. Considered one of the safer food-contact plastics when uncolored and without additives."},
+    {label:"Additive migration",val:"Antioxidants (BHT, Irganox), UV stabilizers, and slip agents in PE products can migrate into food and beverages, especially with heat exposure."},
+    {label:"Microplastics",val:"PE is the most common microplastic found in oceans and drinking water. HDPE and LDPE fragment into persistent microparticles that accumulate in the food chain."},
+    {label:"Ecological",val:"Plastic bags take 10-1,000 years to degrade. Major source of marine debris. Single-use PE packaging is a primary driver of the global plastic waste crisis."}
+  ],
+  gs:{bm:4,label:"Benchmark 4 — Prefer",detail:"PE polymer itself is relatively low hazard compared to PVC, PS, or PC. However, the microplastic and waste management concerns are significant. HDPE and LDPE are among the more recyclable plastics."},
+  parents:["Ethylene (monomer)","Petroleum/natural gas"],
+  children:["Microplastics (degradation)"],
+  products:["Milk jugs and detergent bottles (HDPE)","Plastic bags and films (LDPE)","Squeeze bottles","Pipes and fittings","Toys","Geomembranes","Agricultural mulch film"],
+  func:"Versatile thermoplastic with excellent chemical resistance. HDPE is rigid and strong; LDPE is flexible and transparent. Both are lightweight and inexpensive.",
+  manufacturers:[{name:"ExxonMobil Chemical",note:"Largest PE producer globally."},{name:"Dow Chemical",note:"Major LDPE and LLDPE producer."},{name:"LyondellBasell",note:"Major HDPE and LDPE producer."},{name:"SABIC",note:"Major PE producer."},{name:"Chevron Phillips Chemical",note:"Major US PE producer."}],
+  links:[{t:"Resin identification codes",u:"https://www.epa.gov/facts-and-figures-about-materials-waste-and-recycling"}]
+},
+"polypropylene": {
+  name:"Polypropylene (PP)", aka:["PP","Plastic #5"],
+  cas:"9003-07-0",
+  chemClass:{name:"Polyolefin plastics",def:"Polymer of propylene. Second most produced plastic globally. Known for heat resistance — microwave safe designation. Resin code #5."},
+  desc:"The second most widely produced plastic. Used for yogurt containers, bottle caps, food containers marked microwave-safe, automotive parts, and medical devices. Like PE, the PP polymer backbone is relatively inert. PP has better heat resistance than PE, which is why it is used for hot-fill food containers. However, PP microplastics are increasingly found in food, water, and human tissue. Baby bottles made of PP release millions of microplastic particles when heated with formula.",
+  formula:"(C3H6)n", molWeight:"Polymer",
+  structure:null,
+  toxicity:[
+    {label:"Relatively low concern",val:"PP polymer is chemically inert. Considered among the safer food-contact plastics. No significant monomer leaching."},
+    {label:"Microplastics from heating",val:"PP baby bottles release up to 16 million microplastic particles per liter when heated. Boiling water in PP kettles also releases microplastics. A 2020 Nature Food study brought this to public attention."},
+    {label:"Additive concerns",val:"Contains antioxidants, clarifying agents, and nucleating agents. Some PP food containers contain DEHP or other additives not in the polymer itself."},
+    {label:"Ecological",val:"Low recycling rate (~1-2% in the US despite being technically recyclable). Major contributor to landfill waste and microplastic pollution."}
+  ],
+  gs:{bm:4,label:"Benchmark 4 — Prefer",detail:"PP is considered one of the safer plastics for food contact. The microplastic release from heating is concerning but the chemical leaching profile is relatively favorable compared to PVC, PS, or PC."},
+  parents:["Propylene (monomer)","Petroleum/natural gas"],
+  children:["Microplastics (degradation)"],
+  products:["Yogurt containers","Bottle caps","Microwave-safe food containers","Automotive parts","Medical devices and syringes","Diapers (nonwoven PP)","Rope and twine","Reusable food storage"],
+  func:"Thermoplastic with good heat resistance, chemical resistance, and fatigue resistance. Suitable for living hinges (flip-top caps). Higher melting point than PE.",
+  manufacturers:[{name:"LyondellBasell",note:"World's largest PP producer."},{name:"ExxonMobil",note:"Major PP producer."},{name:"SABIC",note:"Major PP producer."},{name:"Braskem",note:"Brazilian company. Largest PP producer in the Americas."}],
+  links:[{t:"Nature Food microplastics study",u:"https://doi.org/10.1038/s43016-020-00171-y"}]
+},
+"polystyrene": {
+  name:"Polystyrene (PS)", aka:["PS","Styrofoam","Expanded polystyrene","EPS","XPS","Plastic #6"],
+  cas:"9003-53-6",
+  chemClass:{name:"Styrenic plastics",def:"Polymer of styrene monomer. Exists as solid (crystal PS), foam (expanded/EPS, often called Styrofoam), and extruded foam (XPS insulation). Styrene monomer is a probable human carcinogen (IARC 2A)."},
+  desc:"Made from styrene monomer — an IARC Group 2A probable human carcinogen. Polystyrene foam (often incorrectly called Styrofoam) is one of the most problematic plastics: it breaks into persistent microplastics, is nearly impossible to recycle, and leaches styrene into food especially when heated. Many states and cities have banned PS food containers. EPS/XPS building insulation historically contained HBCD (now a Stockholm Convention POP). PS is being phased out of food packaging but remains widespread in building insulation and protective packaging.",
+  formula:"(C8H8)n", molWeight:"Polymer",
+  structure:null,
+  toxicity:[
+    {label:"Cancer (monomer)",val:"Styrene monomer is IARC Group 2A (probable human carcinogen). Residual styrene in PS products can migrate into food — especially hot, fatty, or acidic foods. Occupational exposure in PS manufacturing is the primary cancer risk."},
+    {label:"Endocrine disruption",val:"Styrene and its metabolite styrene-7,8-oxide are suspected endocrine disruptors. PS food containers leach more when microwaved or used with hot liquids."},
+    {label:"HBCD in insulation",val:"EPS and XPS building insulation historically contained HBCD (Stockholm Convention POP). Legacy HBCD in buildings contaminates recycled polystyrene — circular economy contamination."},
+    {label:"Ecological",val:"PS foam is among the most common marine debris. Fragments into persistent microplastics. Nearly impossible to recycle economically. Many cities and states have banned PS food containers."}
+  ],
+  gs:{bm:2,label:"Benchmark 2 — Use but search for safer alternatives",detail:"BM-2 due to styrene monomer carcinogenicity (IARC 2A), leaching concerns, and catastrophic end-of-life environmental profile. HBCD contamination in building insulation adds another layer of concern."},
+  parents:["Styrene (monomer)","Benzene","Ethylene"],
+  children:["Microplastics (degradation)","Styrene (leachate)"],
+  products:["Foam food containers and cups","Protective packaging (peanuts)","Building insulation (EPS/XPS)","CD cases and disposable cutlery","Yogurt cups","Egg cartons","Meat trays"],
+  func:"Lightweight, rigid, and inexpensive thermoplastic. Foam forms provide excellent insulation. Solid PS is clear and brittle. Valued for low cost but increasingly being phased out of food packaging.",
+  manufacturers:[{name:"INEOS Styrolution",note:"World's largest styrenics producer."},{name:"Americas Styrenics (AmSty)",note:"Major US PS producer."},{name:"Trinseo",note:"PS and styrene producer."},{name:"Dart Container",note:"Largest manufacturer of PS foam cups and containers."},{name:"Owens Corning",note:"Major XPS insulation producer (Foamular brand)."}],
+  saferAlternatives:[
+    {context:"Food containers",alt:"Molded fiber (bagasse, bamboo), PLA (with caveats), paper-based containers, reusable containers",note:"Multiple states have banned PS food containers. Molded fiber alternatives are widely available and compostable."},
+    {context:"Building insulation",alt:"Mineral wool, cellulose insulation, fiberglass, polyisocyanurate (with caveats)",note:"Non-PS insulation avoids both styrene and HBCD concerns. Mineral wool is non-combustible."},
+    {context:"Protective packaging",alt:"Corrugated cardboard inserts, mushroom-based packaging (Ecovative), air pillows (PE-based)",note:"Mushroom packaging is fully compostable and growing in commercial availability."}
+  ],
+  altSource:"Beyond Plastics, state PS ban legislation",
+  links:[{t:"TFF styrene page",u:"https://toxicfreefuture.org/toxic-chemicals/styrene/"},{t:"IARC styrene",u:"https://monographs.iarc.who.int/wp-content/uploads/2018/06/mono121.pdf"}],
+  legislation:[{st:"WA",bill:"HB 1799",status:"passed",title:"Washington banned expanded polystyrene food containers (2023)"},{st:"ME",bill:"LD 1532",status:"passed",title:"Maine banned PS food containers (2021)"},{st:"MD",bill:"SB 285",status:"passed",title:"Maryland banned PS food containers (2020)"},{st:"NY",bill:"Budget bill",status:"passed",title:"New York State banned PS foam food containers (2022)"}]
+},
+"pet": {
+  name:"Polyethylene terephthalate (PET)", aka:["PET","PETE","Polyester","Plastic #1","rPET"],
+  cas:"25038-59-9",
+  chemClass:{name:"Polyester plastics",def:"Polymer of ethylene glycol and terephthalic acid. Most commonly recycled plastic. Resin code #1. Also the base material for polyester textile fiber."},
+  desc:"The plastic used for water bottles, soda bottles, and polyester clothing. PET is the most commonly recycled plastic, but even so, less than 30% of PET bottles are recycled in the US. PET uses antimony trioxide as a polymerization catalyst — antimony leaches into water, especially when bottles are heated or stored for long periods. PET bottles release microplastics into water. Polyester textiles (also PET) shed microfibers with every wash — a major source of ocean microplastic pollution.",
+  formula:"(C10H8O4)n", molWeight:"Polymer",
+  structure:null,
+  toxicity:[
+    {label:"Antimony leaching",val:"PET uses antimony trioxide (Sb2O3) as catalyst. Antimony leaches into bottled water — levels increase with heat exposure, storage time, and sunlight. Antimony is toxic to the liver and heart."},
+    {label:"Endocrine disruption",val:"Studies have detected estrogenic activity in water stored in PET bottles. The source may be antimony, PET degradation products, or additives rather than the polymer itself."},
+    {label:"Microfiber shedding",val:"Polyester textiles (PET fiber) shed 700,000 microfibers per wash load. This is a primary source of microplastic in oceans. Microfiber filters for washing machines can capture 80-90%."},
+    {label:"Ecological",val:"PET bottles are the most commonly recycled plastic but still a major litter and marine debris source. Polyester microfiber pollution is found in the deepest ocean trenches and on Mount Everest."}
+  ],
+  gs:{bm:3,label:"Benchmark 3 — Use but identify safer alternatives",detail:"BM-3 due to antimony catalyst leaching, microfiber shedding from textiles, and single-use waste profile. PET is relatively better than PVC or PS but not benign."},
+  parents:["Ethylene glycol","Terephthalic acid","Antimony trioxide (catalyst)"],
+  children:["Microplastics","Microfibers","Antimony (leachate)"],
+  products:["Water and soda bottles","Food containers","Polyester clothing and textiles","Carpet fiber","Strapping and tape","Film and sheet"],
+  func:"Clear, strong thermoplastic with good barrier properties. Suitable for carbonated beverages (withstands pressure). Polyester fiber is durable, wrinkle-resistant, and inexpensive.",
+  manufacturers:[{name:"Indorama Ventures",note:"World's largest PET producer."},{name:"Far Eastern New Century",note:"Major PET and polyester producer."},{name:"Alpek (Grupo Alfa)",note:"Major PET resin producer in the Americas."},{name:"DAK Americas",note:"Major US PET resin producer."},{name:"Eastman Chemical",note:"PET and specialty polyester producer."}],
+  saferAlternatives:[
+    {context:"Beverage bottles",alt:"Glass bottles, aluminum cans, reusable stainless steel or glass bottles",note:"Reusable bottles eliminate single-use waste entirely. Aluminum is infinitely recyclable."},
+    {context:"Textiles",alt:"Natural fibers (organic cotton, wool, linen, hemp), Tencel/lyocell (wood-pulp based)",note:"Natural fibers biodegrade and do not shed persistent microfibers. Microfiber filters (Cora Ball, Guppyfriend) reduce shedding from synthetic textiles."},
+    {context:"Food packaging",alt:"Glass jars, aluminum, paper-based packaging",note:"Glass does not leach chemicals. Aluminum has excellent barrier properties."}
+  ],
+  altSource:"Plastic Pollution Coalition, microfiber research",
+  links:[{t:"EPA plastics recycling",u:"https://www.epa.gov/facts-and-figures-about-materials-waste-and-recycling"}]
+},
+"polyurethane": {
+  name:"Polyurethane (PU)", aka:["PU","PUR","Polyurethane foam","Memory foam","Spray foam insulation"],
+  cas:"Multiple (class)",
+  chemClass:{name:"Polyurethane polymers",def:"Polymers formed by reacting diisocyanates (MDI, TDI) with polyols. Not a single material — PU spans rigid foams (insulation), flexible foams (furniture, mattresses), coatings, adhesives, and elastomers. The diisocyanate precursors (MDI and TDI) are highly toxic."},
+  desc:"Found in mattresses, couches, car seats, insulation, shoes, and coatings. Polyurethane foam is the cushioning in virtually all upholstered furniture and most mattresses. The manufacturing process uses diisocyanates (MDI and TDI) — potent respiratory sensitizers that are the leading cause of occupational asthma from chemical exposure. Flexible PU foam historically contained toxic flame retardants (now restricted in many states). Spray foam insulation uses MDI and requires full respiratory protection during application. Once cured, PU is relatively stable, but off-gassing of unreacted isocyanates and flame retardants from new foam products is a concern.",
+  formula:"Various (urethane linkage: -NH-CO-O-)", molWeight:"Polymer",
+  structure:null,
+  toxicity:[
+    {label:"Isocyanate exposure",val:"MDI and TDI used in PU manufacturing are potent respiratory sensitizers — the leading chemical cause of occupational asthma. Once sensitized, extremely small exposures trigger reactions. Spray foam installers are at highest risk."},
+    {label:"Flame retardant additives",val:"Flexible PU foam historically contained organohalogen and organophosphate flame retardants (TDCIPP, TCEP, Firemaster 550). WA, CA, and other states now restrict FRs in furniture foam."},
+    {label:"Off-gassing",val:"New PU foam products (mattresses, furniture) off-gas VOCs including unreacted isocyanates, amine catalysts, and flame retardants. Off-gassing is highest when products are new."},
+    {label:"Ecological",val:"PU foam is difficult to recycle. Landfilled foam breaks into fragments but does not biodegrade. Spray foam insulation makes building materials harder to recycle at end of life."}
+  ],
+  gs:{bm:2,label:"Benchmark 2 — Use but search for safer alternatives",detail:"BM-2 due to isocyanate manufacturing hazards, historical flame retardant use, and off-gassing concerns. Cured PU is more stable, but the lifecycle hazards are significant."},
+  parents:["Diisocyanates (MDI, TDI)","Polyols","Flame retardants (additives)"],
+  children:["Microplastics (foam degradation)"],
+  products:["Mattresses and pillows","Upholstered furniture cushions","Car seats","Spray foam insulation","Shoe soles","Coatings and adhesives","Spandex/Lycra (PU fiber)","Medical devices"],
+  func:"Extremely versatile polymer family. Flexible foams provide cushioning. Rigid foams provide insulation. Coatings provide abrasion resistance. Elastomers provide stretch and recovery.",
+  manufacturers:[{name:"Covestro",note:"World's largest MDI/TDI and PU systems producer."},{name:"BASF",note:"Major MDI producer. Largest single MDI plant in the world (Geismar, LA)."},{name:"Dow Chemical",note:"Major PU systems producer."},{name:"Huntsman",note:"Major MDI/TDI producer."},{name:"Tempur Sealy",note:"Major PU foam mattress manufacturer."},{name:"Carpenter Co.",note:"Largest US flexible PU foam producer."}],
+  saferAlternatives:[
+    {context:"Mattresses",alt:"Natural latex (Dunlop or Talalay), organic cotton, wool",note:"Natural latex mattresses avoid both isocyanate chemistry and flame retardant additives. Certified organic options available."},
+    {context:"Furniture cushions",alt:"Natural latex foam, FR-free PU foam (meeting TB 117-2013), down/feather",note:"FR-free PU foam is widely available since CA TB 117-2013 eliminated the open-flame test for residential furniture."},
+    {context:"Insulation",alt:"Mineral wool, cellulose, fiberglass, cork",note:"Mineral wool avoids isocyanate chemistry entirely. Cork is a renewable, non-toxic option."}
+  ],
+  altSource:"TFF flame retardant research, healthy mattress guides",
+  links:[{t:"TFF flame retardants",u:"https://toxicfreefuture.org/toxic-chemicals/toxic-flame-retardants/"},{t:"EPA isocyanates",u:"https://www.epa.gov/assessing-and-managing-chemicals-under-tsca/methylene-diphenyl-diisocyanate-mdi-and-related"}]
+},
+"polycarbonate": {
+  name:"Polycarbonate (PC)", aka:["PC","Lexan","Makrolon","Plastic #7"],
+  cas:"25037-45-0",
+  chemClass:{name:"Polycarbonate plastics",def:"Thermoplastic polymer produced by reacting bisphenol A (BPA) with phosgene or diphenyl carbonate. Clear, strong, and impact-resistant. Resin code #7 (other). The BPA connection is the primary health concern."},
+  desc:"A tough, clear plastic made from bisphenol A (BPA). Used in eyeglass lenses, electronic components, automotive parts, and historically in baby bottles and reusable water bottles (Nalgene). The discovery that BPA leaches from polycarbonate products — especially when heated, scratched, or washed with harsh detergents — was a landmark moment in chemical safety awareness. Most baby bottle and water bottle manufacturers have shifted away from PC, but it remains widely used in electronics and construction.",
+  formula:"(C16H14O3)n", molWeight:"Polymer",
+  structure:null,
+  toxicity:[
+    {label:"BPA leaching",val:"BPA leaches from PC products, especially when heated, scratched, aged, or exposed to acidic/alkaline substances. BPA is an endocrine disruptor affecting reproductive development at very low doses."},
+    {label:"Endocrine disruption",val:"BPA from PC activates estrogen receptors at parts-per-trillion levels. Developmental exposure linked to reproductive abnormalities, obesity, and behavioral changes in animal studies."},
+    {label:"Regrettable substitution risk",val:"Some BPA-free polycarbonate alternatives use BPS or BPF, which have similar estrogenic activity. Switching to a different bisphenol may not reduce hazard — true alternatives require different polymer chemistry."},
+    {label:"Ecological",val:"PC is resin code #7 (other) and is rarely recycled. BPA is an aquatic endocrine disruptor detected in rivers and wastewater globally."}
+  ],
+  gs:{bm:1,label:"Benchmark 1 — Avoid",detail:"BM-1 due to BPA monomer. BPA is a well-documented endocrine disruptor at very low exposure levels. The direct chemical connection between the polymer and its hazardous monomer makes PC a clear avoidance candidate for food-contact applications."},
+  parents:["Bisphenol A (BPA)","Phosgene"],
+  children:["BPA (leachate)"],
+  products:["Eyeglass lenses","Electronic components","Automotive headlamp covers","Safety equipment","Construction glazing","Baby bottles (historical — largely phased out)","5-gallon water jugs","CDs and DVDs"],
+  func:"Tough, optically clear thermoplastic with high impact resistance. Valued where transparency and strength are both required.",
+  manufacturers:[{name:"Covestro",note:"World's largest PC producer (Makrolon brand). Spun off from Bayer."},{name:"SABIC",note:"Major PC producer (Lexan brand, acquired from GE Plastics)."},{name:"Mitsubishi Engineering-Plastics",note:"Major Asian PC producer."},{name:"Teijin",note:"Japanese PC producer."}],
+  saferAlternatives:[
+    {context:"Baby bottles / food contact",alt:"Glass, stainless steel, polypropylene (#5), Tritan copolyester (BPA-free)",note:"Most baby bottle manufacturers switched to PP or PPSU. Avoid BPS/BPF replacements — choose non-bisphenol polymers."},
+    {context:"Water bottles",alt:"Stainless steel, glass, Tritan copolyester",note:"Nalgene switched from PC to Tritan (Eastman) after BPA concerns."},
+    {context:"Eyewear and safety equipment",alt:"CR-39 resin, Trivex, acrylic",note:"PC alternatives available for most optical applications."}
+  ],
+  altSource:"BPA research, healthy product guides",
+  links:[{t:"NIEHS BPA info",u:"https://www.niehs.nih.gov/health/topics/agents/sya-bpa"}],
+  legislation:[{st:"US",bill:"FDA",status:"passed",title:"FDA banned BPA in baby bottles and sippy cups (2012)"},{st:"EU",bill:"Commission Regulation",status:"passed",title:"EU banned BPA in baby bottles (2011) and food contact materials (2024)"},{st:"WA",bill:"RCW 70A.340",status:"passed",title:"Washington restricted BPA in reusable food/beverage containers"}]
+},
+"nylon": {
+  name:"Nylon (polyamide)", aka:["Nylon","Polyamide","PA","Nylon 6","Nylon 6,6","PA6","PA66"],
+  cas:"25038-54-4",
+  chemClass:{name:"Polyamide plastics",def:"Synthetic polymers with amide linkages. Nylon 6 is made from caprolactam; Nylon 6,6 from hexamethylenediamine and adipic acid. Invented by DuPont in the 1930s. Used in textiles, engineering plastics, and fishing line."},
+  desc:"The first commercially successful synthetic fiber, invented by DuPont in 1935. Used in clothing, carpets, automotive parts, and food packaging. Caprolactam (Nylon 6 monomer) is a skin and respiratory irritant. Nylon textile production involves significant chemical processing and generates nitrous oxide (N2O), a potent greenhouse gas. Like all synthetic textiles, nylon sheds microfibers during washing.",
+  formula:"Various (amide linkage: -CO-NH-)", molWeight:"Polymer",
+  structure:null,
+  toxicity:[
+    {label:"Caprolactam exposure",val:"Nylon 6 monomer. Occupational irritant (eyes, skin, respiratory tract). Can migrate from nylon food packaging at low levels. Not classified as carcinogenic."},
+    {label:"Microfiber shedding",val:"Nylon textiles shed microfibers during laundering. Nylon microfibers are among the most persistent synthetic fibers found in marine environments."},
+    {label:"Climate impact",val:"Nylon 6,6 production generates nitrous oxide (N2O) — a greenhouse gas 265x more potent than CO2. Adipic acid production for Nylon 6,6 is one of the largest industrial N2O sources."},
+    {label:"Ecological",val:"Fishing nets and lines (mostly nylon) are a major source of ocean plastic pollution — ghost fishing kills marine life for years after nets are lost or abandoned."}
+  ],
+  gs:{bm:3,label:"Benchmark 3 — Use but identify safer alternatives",detail:"BM-3 — lower direct toxicity than PVC or PS but significant environmental concerns from microfiber pollution, ghost fishing gear, and greenhouse gas emissions from production."},
+  parents:["Caprolactam (Nylon 6)","Hexamethylenediamine + adipic acid (Nylon 6,6)"],
+  children:["Microfibers (shedding)"],
+  products:["Clothing (stockings, activewear)","Carpet fiber","Automotive parts","Food packaging film","Fishing nets and line","Toothbrush bristles","Cable ties","3D printing filament"],
+  func:"Strong, abrasion-resistant thermoplastic with good fatigue resistance. Used as both fiber (textiles) and engineering plastic (automotive, industrial).",
+  manufacturers:[{name:"INVISTA (Koch Industries)",note:"World's largest Nylon 6,6 producer."},{name:"BASF",note:"Major Nylon 6 producer (Ultramid brand)."},{name:"DuPont (now DuPont de Nemours)",note:"Invented nylon. Still a major producer."},{name:"Toray Industries",note:"Major Japanese nylon fiber producer."},{name:"Ascend Performance Materials",note:"Major US Nylon 6,6 producer."}],
+  links:[{t:"Ocean Conservancy",u:"https://oceanconservancy.org/trash-free-seas/"}]
+},
+"microplastics": {
+  name:"Microplastics & nanoplastics", aka:["Microplastics","Nanoplastics","Microfibers","Plastic particles","MP","NP"],
+  cas:"N/A (physical form, not single chemical)",
+  chemClass:{name:"Micro- and nanoplastics",def:"Plastic particles smaller than 5mm (microplastics) or smaller than 1 micrometer (nanoplastics). All plastics eventually fragment into these particles. They are not a single chemical but carry the hazards of their parent polymer plus adsorbed environmental contaminants. Found in human blood, lungs, placenta, brain, and testes."},
+  desc:"The endpoint of all plastic pollution. Microplastics have been found in human blood, placenta, lungs, liver, kidneys, brain tissue, and testes. They are in drinking water, food (especially seafood and salt), air, rain, and snow — from the deepest ocean trenches to the summit of Mount Everest. Microplastics are not chemically inert carriers — they concentrate persistent organic pollutants (POPs) from the environment onto their surfaces and transport them into biological tissue. Nanoplastics are small enough to cross cell membranes and the blood-brain barrier. The health effects of chronic microplastic exposure are under intensive investigation, with early evidence linking them to inflammation, oxidative stress, and cardiovascular disease.",
+  formula:"Various polymer fragments", molWeight:"Varies",
+  structure:null,
+  toxicity:[
+    {label:"Ubiquitous exposure",val:"Found in human blood, placenta, lungs, brain, testes, liver, and kidneys. Average person may ingest 5 grams of plastic per week (one credit card's worth). Exposure is unavoidable at current pollution levels."},
+    {label:"Chemical carriers",val:"Microplastics adsorb POPs (PCBs, DDT, PAHs, PFAS) from the environment and concentrate them up to 1 million times ambient levels. When ingested, these chemicals can desorb in the gut and enter the body."},
+    {label:"Inflammatory response",val:"Microplastics trigger inflammatory responses in human cell studies and animal models. Associated with oxidative stress, gut microbiome disruption, and immune activation. A 2024 NEJM study linked microplastics in carotid artery plaque to increased cardiovascular risk."},
+    {label:"Ecological",val:"Found in every ocean, every continent, every ecosystem studied. Marine organisms from plankton to whales ingest microplastics. Microfibers from synthetic textiles are the most abundant type in marine environments."}
+  ],
+  gs:{bm:"U",label:"Unscreened",detail:"Microplastics are a physical form, not a single chemical, so GreenScreen does not assess them directly. The hazard depends on the parent polymer and adsorbed contaminants. The emerging health evidence is deeply concerning."},
+  parents:["All plastic types (fragmentation)","Synthetic textiles (microfibers)","Tire wear particles","Paint flaking"],
+  children:[],
+  products:["Not a product — microplastics are a contaminant","Found in: bottled water, tap water, seafood, salt, honey, beer, fruits, vegetables","Sources: synthetic textiles, tire wear, packaging degradation, personal care products (microbeads)"],
+  func:"Not intentionally produced (except microbeads, now banned in many countries). Microplastics are the degradation endpoint of all plastic products and the wear products of synthetic textiles and tires.",
+  saferAlternatives:[
+    {context:"Reduce exposure",alt:"Use glass/stainless steel for food and water, avoid heating food in plastic, use natural fiber clothing, install microfiber-catching laundry filters",note:"Individual actions reduce personal exposure but systemic change requires reducing plastic production."},
+    {context:"Textile microfibers",alt:"Wear natural fibers (cotton, wool, linen), use Guppyfriend wash bag or Cora Ball, install washing machine filter",note:"Microfiber filters capture 80-90% of shed fibers. Front-loading washers shed fewer fibers than top-loaders."},
+    {context:"Systemic solutions",alt:"Reduce plastic production, ban single-use plastics, improve wastewater treatment, support the UN Global Plastics Treaty",note:"Individual exposure reduction is important but the crisis requires upstream production limits — the focus of the Global Plastics Treaty negotiations."}
+  ],
+  altSource:"UN Global Plastics Treaty, microplastic research",
+  links:[{t:"NEJM cardiovascular study",u:"https://doi.org/10.1056/NEJMoa2309822"},{t:"UNEP microplastics",u:"https://www.unep.org/topics/chemicals-and-pollution-action/pollution-action/plastics"},{t:"5 Gyres Institute",u:"https://www.5gyres.org/"}],
+  legislation:[{st:"US",bill:"Microbead-Free Waters Act",status:"passed",title:"Banned plastic microbeads in rinse-off personal care products (2015)"},{st:"CA",bill:"SB 1422",status:"passed",title:"California required microplastic testing in drinking water (first in the world)"},{st:"EU",bill:"REACH restriction",status:"passed",title:"EU banned intentionally added microplastics in products (2023)"}]
+},
+"abs": {
+  name:"ABS (Acrylonitrile butadiene styrene)", aka:["ABS","Acrylonitrile butadiene styrene"],
+  cas:"9003-56-9",
+  chemClass:{name:"Styrenic copolymers",def:"A terpolymer of three monomers: acrylonitrile (carcinogen), butadiene (carcinogen), and styrene (probable carcinogen). All three monomers are hazardous, making ABS manufacturing particularly concerning for workers."},
+  desc:"A tough engineering plastic used in LEGO bricks, electronics housings, automotive trim, 3D printing filament, and pipe fittings. All three of its monomers are hazardous: acrylonitrile is an IARC Group 2B carcinogen, butadiene is IARC Group 1, and styrene is IARC Group 2A. For consumers, the cured polymer is relatively stable, but 3D printing with ABS releases ultrafine particles and volatile organics (styrene, acrylonitrile) that are respiratory and potential cancer hazards — adequate ventilation is essential.",
+  formula:"(C8H8·C4H6·C3H3N)n", molWeight:"Polymer",
+  structure:null,
+  toxicity:[
+    {label:"Monomer hazards",val:"All three monomers are carcinogenic or probably carcinogenic: acrylonitrile (IARC 2B), butadiene (IARC 1), styrene (IARC 2A). Occupational exposure during ABS production is the primary concern."},
+    {label:"3D printing emissions",val:"Heating ABS for 3D printing releases ultrafine particles, styrene, and other VOCs. Studies recommend ventilation or enclosed printers. PLA is a lower-emission alternative for 3D printing."},
+    {label:"Flame retardant additives",val:"ABS in electronics often contains brominated flame retardants. DecaBDE was commonly added to ABS electronics housings before its Stockholm Convention listing."},
+    {label:"Ecological",val:"ABS is technically recyclable but rarely recycled in practice. E-waste containing ABS housings with brominated FRs contaminates recycling streams."}
+  ],
+  gs:{bm:2,label:"Benchmark 2 — Use but search for safer alternatives",detail:"BM-2 due to carcinogenic monomers (especially butadiene, IARC Group 1). Cured ABS is relatively stable for consumers but manufacturing and 3D printing exposures are concerning."},
+  parents:["Acrylonitrile","Butadiene","Styrene"],
+  children:["Ultrafine particles (3D printing emissions)"],
+  products:["LEGO bricks","Electronics housings (monitors, keyboards)","Automotive interior trim","3D printing filament","Pipe fittings (DWV)","Musical instruments","Luggage"],
+  func:"Engineering thermoplastic combining toughness (butadiene), rigidity (acrylonitrile), and processability (styrene). Good impact resistance and surface finish.",
+  manufacturers:[{name:"INEOS Styrolution",note:"Major ABS producer."},{name:"LG Chem",note:"Major Korean ABS producer."},{name:"Chi Mei Corporation",note:"Major Taiwanese ABS producer."},{name:"SABIC",note:"ABS producer."},{name:"Trinseo",note:"ABS producer."}],
+  links:[{t:"3D printing emissions study",u:"https://doi.org/10.1016/j.envint.2019.105272"}]
+},
+"bioplastics": {
+  name:"Bioplastics (PLA & bio-based)", aka:["PLA","Polylactic acid","Bio-based plastics","Compostable plastics","Biodegradable plastics"],
+  cas:"26100-51-6 (PLA)",
+  chemClass:{name:"Bio-based and biodegradable polymers",def:"Plastics derived from renewable resources (corn starch, sugarcane, cellulose) rather than fossil fuels, or plastics designed to biodegrade under specific conditions. PLA (polylactic acid) is the most common. Important distinction: bio-based does not automatically mean biodegradable, and biodegradable does not mean it breaks down in the ocean or a home compost pile."},
+  desc:"Marketed as a sustainable alternative to conventional plastics, but the reality is complex. PLA (polylactic acid, made from corn starch) is the dominant bioplastic. It requires industrial composting facilities (140F+ for weeks) to break down — it will not degrade in a home compost, landfill, or ocean. PLA contaminates conventional plastic recycling streams. Bio-based PE and bio-based PET are chemically identical to their fossil counterparts — they are not biodegradable. Some bioplastics contain PFAS or other toxic additives. The term bioplastic is more of a marketing category than a meaningful environmental distinction.",
+  formula:"(C3H4O2)n (PLA)", molWeight:"Polymer",
+  structure:null,
+  toxicity:[
+    {label:"Relatively low concern",val:"PLA itself has low chemical toxicity. The lactic acid monomer is a natural metabolic product. No significant leaching concerns from PLA food contact materials."},
+    {label:"Additives and PFAS",val:"Some compostable food packaging contains PFAS for grease resistance — negating the environmental benefit. Toxic Substances in Packaging Clearinghouse (TPCH) has flagged this. Always check for PFAS-free certification."},
+    {label:"Misleading claims",val:"Greenwashing is rampant. Products labeled biodegradable or compostable often require industrial conditions unavailable to most consumers. Bio-based PE is just PE made from sugarcane — it does not biodegrade."},
+    {label:"Ecological",val:"PLA that escapes to the environment persists similarly to conventional plastics under ambient conditions. Contaminates PET recycling streams (similar appearance). Agricultural feedstock (corn) raises food-vs-fuel concerns and involves pesticide use."}
+  ],
+  gs:{bm:4,label:"Benchmark 4 — Prefer",detail:"PLA itself is BM-4 from a chemical toxicity standpoint. The concerns are about misleading marketing, PFAS additives in some compostable products, recycling contamination, and the gap between industrial composting requirements and real-world disposal."},
+  parents:["Lactic acid (PLA)","Corn starch / sugarcane","Various bio-based feedstocks"],
+  children:[],
+  products:["Compostable food containers and cups","3D printing filament","Compostable bags","Packaging peanuts","Mulch film (agriculture)","Medical implants (absorbable sutures, screws)"],
+  func:"Thermoplastic derived from renewable resources. PLA is clear, rigid, and suitable for cold food packaging. Not suitable for hot liquids (softens at 140F). Medical-grade PLA is used for absorbable implants.",
+  manufacturers:[{name:"NatureWorks",note:"World's largest PLA producer (Ingeo brand). Joint venture of Cargill and PTT Global Chemical."},{name:"Total Energies Corbion",note:"Major PLA producer (Luminy brand)."},{name:"Novamont",note:"Italian company. Produces Mater-Bi starch-based bioplastics."},{name:"Braskem",note:"Produces bio-based PE from sugarcane (I'm Green brand)."}],
+  links:[{t:"Biodegradable Products Institute",u:"https://bpiworld.org/"},{t:"Plastics Industry Association bioplastics",u:"https://www.plasticsindustry.org/bioplastics"}],
+  legislation:[{st:"WA",bill:"HB 1799",status:"passed",title:"Washington requires compostable food service products to meet ASTM D6400 or D6868 standards"},{st:"CA",bill:"SB 270",status:"passed",title:"California truth-in-labeling law for compostable and biodegradable claims"}]
+},
 "hydrogen": {
   name:"Hydrogen", aka:["H","H2"],
   cas:"1333-74-0",
@@ -3578,6 +3879,18 @@ Object.entries(CURATED_DB).forEach(([key, val]) => {
 });
 // Extra common search aliases
 const EXTRA_ALIASES = {
+  "plastics":"plastics","plastic":"plastics","plastic pollution":"plastics","synthetic polymers":"plastics",
+  "polyethylene":"polyethylene","pe":"polyethylene","hdpe":"polyethylene","ldpe":"polyethylene","plastic 2":"polyethylene","plastic 4":"polyethylene",
+  "polypropylene":"polypropylene","pp":"polypropylene","plastic 5":"polypropylene",
+  "polystyrene":"polystyrene","ps":"polystyrene","styrofoam":"polystyrene","eps":"polystyrene","xps":"polystyrene","plastic 6":"polystyrene","expanded polystyrene":"polystyrene",
+  "pet":"pet","pete":"pet","polyester":"pet","plastic 1":"pet","polyethylene terephthalate":"pet",
+  "polyurethane":"polyurethane","pu":"polyurethane","memory foam":"polyurethane","spray foam":"polyurethane",
+  "polycarbonate":"polycarbonate","pc plastic":"polycarbonate","lexan":"polycarbonate","makrolon":"polycarbonate","plastic 7":"polycarbonate",
+  "nylon":"nylon","polyamide":"nylon","pa6":"nylon","pa66":"nylon",
+  "microplastics":"microplastics","nanoplastics":"microplastics","microfibers":"microplastics","microbeads":"microplastics","plastic particles":"microplastics",
+  "abs":"abs","acrylonitrile butadiene styrene":"abs","lego plastic":"abs",
+  "bioplastics":"bioplastics","pla":"bioplastics","polylactic acid":"bioplastics","compostable plastic":"bioplastics","biodegradable plastic":"bioplastics",
+  "quats":"quaternary ammonium compounds","qacs":"quaternary ammonium compounds","qac":"quaternary ammonium compounds","benzalkonium chloride":"quaternary ammonium compounds","bac disinfectant":"quaternary ammonium compounds","adbac":"quaternary ammonium compounds","ddac":"quaternary ammonium compounds","cetylpyridinium chloride":"quaternary ammonium compounds","quaternium-15":"quaternary ammonium compounds","quaternium":"quaternary ammonium compounds",
   "mercury":"heavy metals","hg":"heavy metals","quicksilver":"heavy metals",
   "arsenic":"heavy metals","as element":"heavy metals",
   "chromium":"hexavalent chromium","cr":"hexavalent chromium",
