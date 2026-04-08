@@ -1071,6 +1071,124 @@ const CURATED_DB = {
   links:[{t:"Biodegradable Products Institute",u:"https://bpiworld.org/"},{t:"Plastics Industry Association bioplastics",u:"https://www.plasticsindustry.org/bioplastics"}],
   legislation:[{st:"WA",bill:"HB 1799",status:"passed",title:"Washington requires compostable food service products to meet ASTM D6400 or D6868 standards"},{st:"CA",bill:"SB 270",status:"passed",title:"California truth-in-labeling law for compostable and biodegradable claims"}]
 },
+"perchlorate": {
+  name:"Perchlorate", aka:["Perchlorate","Ammonium perchlorate","Potassium perchlorate","ClO4"],
+  cas:"14797-73-0",
+  chemClass:{name:"Inorganic oxidizers",def:"Salts containing the perchlorate ion (ClO4-). Powerful oxidizers used in rocket fuel, explosives, fireworks, and road flares. Also occurs naturally in some arid soils. Contaminates drinking water for tens of millions of Americans. A thyroid disruptor that inhibits iodide uptake."},
+  desc:"A thyroid-disrupting contaminant found in the drinking water of tens of millions of Americans. Perchlorate blocks the thyroid gland from absorbing iodide, which is essential for making thyroid hormones that regulate metabolism and brain development. Fetuses, infants, and people with iodine deficiency are most vulnerable. The primary contamination sources are military sites, aerospace facilities, and fireworks. EPA has spent over two decades debating whether to set a drinking water standard — a regulation was finally proposed in 2019 but the Trump administration withdrew it, and the Biden administration re-proposed it. The regulatory saga is a case study in how the chemical industry delays public health protections.",
+  formula:"ClO4-", molWeight:"99.45",
+  structure:null,
+  toxicity:[
+    {label:"Thyroid disruption",val:"Competitively inhibits the sodium-iodide symporter (NIS), blocking iodide uptake by the thyroid. Reduces thyroid hormone (T4, T3) production. The mechanism is well understood and not disputed."},
+    {label:"Developmental",val:"Thyroid hormones are critical for fetal brain development. Perchlorate exposure during pregnancy is associated with lower IQ, impaired cognitive development, and ADHD-like behavior in children. Effects most severe in iodine-deficient populations."},
+    {label:"Widespread exposure",val:"Detected in drinking water supplies serving tens of millions of Americans. Also found in food (lettuce, milk — from perchlorate in irrigation water and feed). CDC biomonitoring detects perchlorate in virtually all Americans tested."},
+    {label:"Ecological",val:"Contaminates groundwater at military and aerospace sites. Persists in water due to high chemical stability. Affects thyroid function in fish and amphibians."}
+  ],
+  gs:{bm:1,label:"Benchmark 1 — Avoid",detail:"BM-1 based on thyroid disruption at low doses, developmental neurotoxicity, and widespread drinking water contamination. The science is clear — regulatory action has been delayed by industry opposition."},
+  parents:["Ammonium perchlorate (rocket fuel)","Potassium perchlorate (fireworks)","Chilean nitrate fertilizer (natural)"],
+  children:[],
+  products:["Rocket fuel and propellant","Fireworks and road flares","Explosives and munitions","Chilean nitrate fertilizer (natural perchlorate)","Contaminated drinking water (not a product — an exposure route)"],
+  func:"Powerful oxidizer providing oxygen for combustion in solid rocket fuel, fireworks, and explosives. Thyroid-disrupting contaminant in drinking water is an unintended consequence of military and industrial use.",
+  manufacturers:[{name:"Aerojet Rocketdyne (now L3Harris)",note:"Largest historical perchlorate polluter. Rancho Cordova, CA site contaminated Sacramento-area groundwater."},{name:"Northrop Grumman (formerly Kerr-McGee)",note:"Henderson, NV perchlorate plant contaminated Lake Mead and Colorado River — affecting drinking water for millions in NV, AZ, CA."},{name:"Department of Defense",note:"Military bases nationwide are perchlorate contamination sources from rocket fuel testing and munitions."}],
+  saferAlternatives:[
+    {context:"Drinking water",alt:"Activated carbon filtration, ion exchange, biological reduction",note:"Point-of-use reverse osmosis filters remove perchlorate. Municipal treatment is effective but not universally implemented."},
+    {context:"Rocket propellant",alt:"Research into perchlorate-free solid propellants is ongoing but no drop-in replacement exists for most applications",note:"Some alternative propellants use ammonium dinitramide (ADN) but adoption is limited."},
+    {context:"Fireworks",alt:"Nitrogen-based oxidizers, compressed air launches, drone light shows",note:"Drone light shows are increasingly replacing fireworks at public events, eliminating perchlorate contamination entirely."}
+  ],
+  altSource:"EPA, California OEHHA, Endocrine Society EDC resources",
+  links:[{t:"EPA perchlorate",u:"https://www.epa.gov/sdwa/perchlorate-drinking-water"},{t:"ATSDR perchlorate",u:"https://www.atsdr.cdc.gov/toxprofiles/tp162.pdf"},{t:"Endocrine Society EDCs",u:"https://www.endocrine.org/topics/edc/what-edcs-are/common-edcs"}],
+  legislation:[{st:"US",bill:"EPA MCL",status:"proposed",title:"EPA proposed drinking water MCL of 56 ppb — withdrawn by Trump admin, re-proposed by Biden admin"},{st:"CA",bill:"Title 22",status:"passed",title:"California set perchlorate MCL of 6 ppb — 10x more protective than proposed federal standard"},{st:"MA",bill:"DEP",status:"passed",title:"Massachusetts set perchlorate MCL of 2 ppb — most protective in the US"}]
+},
+"diethylstilbestrol": {
+  name:"Diethylstilbestrol (DES)", aka:["DES","Stilbestrol","Distilbene"],
+  cas:"56-53-1",
+  chemClass:{name:"Synthetic estrogens",def:"A synthetic nonsteroidal estrogen first synthesized in 1938. Prescribed to millions of pregnant women from the 1940s through 1971 to prevent miscarriage — a use later shown to be ineffective and harmful. DES is the foundational case that launched the entire field of endocrine disruption science."},
+  desc:"The chemical that launched the science of endocrine disruption. DES was prescribed to an estimated 5-10 million pregnant women between the 1940s and 1971 to prevent miscarriage. In 1971, a landmark study linked DES exposure in utero to a rare vaginal cancer (clear cell adenocarcinoma) in the daughters of women who took it. Subsequent research revealed a devastating range of effects in DES daughters and sons: reproductive tract malformations, infertility, breast cancer, and testicular abnormalities. Most remarkably, studies now show effects extending to the grandchildren (third generation) who were never directly exposed — demonstrating transgenerational epigenetic inheritance of chemical harm. The DES story is foundational to understanding why low-dose exposures during critical developmental windows matter.",
+  formula:"C18H20O2", molWeight:"268.35",
+  structure:null,
+  toxicity:[
+    {label:"Cancer",val:"DES daughters have increased risk of clear cell adenocarcinoma of the vagina and cervix (identified 1971), breast cancer (2x risk after age 40), and cervical/vaginal dysplasia. DES sons have increased testicular cancer risk."},
+    {label:"Reproductive",val:"DES daughters: T-shaped uterus, cervical abnormalities, ectopic pregnancy, infertility, premature birth. DES sons: epididymal cysts, undescended testes, reduced semen quality. Effects manifested years to decades after in-utero exposure."},
+    {label:"Transgenerational",val:"Third-generation effects documented: DES granddaughters have increased risk of menstrual irregularities, infertility, and possibly cancer. Demonstrates that endocrine disruption can be inherited across generations without continued exposure."},
+    {label:"Ecological",val:"DES was also used as a growth promoter in cattle and poultry (banned in US livestock in 1979). Contamination from pharmaceutical manufacturing and livestock operations has been detected in waterways."}
+  ],
+  gs:{bm:1,label:"Benchmark 1 — Avoid",detail:"BM-1 — known human carcinogen and reproductive toxicant. DES is no longer prescribed for pregnancy but remains available for some cancer treatments. Its legacy as the foundational EDC case makes it essential knowledge for chemical safety advocacy."},
+  parents:["Synthetic estrogen chemistry"],
+  children:[],
+  products:["Pharmaceutical (historical — miscarriage prevention)","Livestock growth promoter (historical — banned)","Prostate cancer treatment (still used in some countries)","Morning-after pill (historical)"],
+  func:"Synthetic estrogen that mimics natural estradiol. Was prescribed based on the (incorrect) theory that miscarriages were caused by insufficient estrogen. Later shown to be ineffective for this purpose AND harmful.",
+  links:[{t:"CDC DES info",u:"https://www.cdc.gov/des/"},{t:"NCI DES research",u:"https://www.cancer.gov/about-cancer/causes-prevention/risk/hormones/des-fact-sheet"},{t:"Endocrine Society EDCs",u:"https://www.endocrine.org/topics/edc/what-edcs-are/common-edcs"}],
+  legislation:[{st:"US",bill:"FDA",status:"passed",title:"FDA withdrew approval for DES in pregnancy (1971) after link to vaginal cancer in daughters"},{st:"US",bill:"FDA",status:"passed",title:"FDA banned DES as livestock growth promoter (1979)"},{st:"EU",bill:"Directive",status:"passed",title:"EU banned DES in livestock (1981)"}]
+},
+"vinclozolin": {
+  name:"Vinclozolin", aka:["Ronilan","Curalan","Touche"],
+  cas:"50471-44-8",
+  chemClass:{name:"Dicarboximide fungicides",def:"A systemic fungicide used on fruits, vegetables, and ornamental plants. One of the most studied anti-androgenic endocrine disruptors. Key research chemical in Michael Skinner laboratory studies on transgenerational epigenetic inheritance — alongside methoxychlor, vinclozolin is one of the two chemicals that most powerfully demonstrated that chemical exposures can cause disease across multiple generations."},
+  desc:"A fungicide that became one of the most important chemicals in endocrine disruption science. Vinclozolin is an anti-androgen — it blocks testosterone from binding to its receptor. Michael Skinner and colleagues at Washington State University showed that vinclozolin exposure in pregnant rats caused reproductive disease not just in the first generation of offspring, but in the F3 generation (great-grandchildren) who were never exposed. This was one of the first demonstrations that environmental chemicals can cause transgenerational epigenetic inheritance of disease — altered DNA methylation patterns passed from parent to offspring without changes to the DNA sequence itself. Vinclozolin is banned in the EU but still used in some countries.",
+  formula:"C12H9Cl2NO3", molWeight:"286.11",
+  structure:null,
+  toxicity:[
+    {label:"Anti-androgenic",val:"Potent androgen receptor antagonist. Blocks testosterone signaling. Causes feminization of male offspring in animal studies — hypospadias, reduced sperm production, cryptorchidism."},
+    {label:"Transgenerational",val:"Skinner lab landmark studies: vinclozolin exposure in pregnant rats caused reproductive disease, kidney disease, obesity, and behavioral changes in F1, F2, and F3 generations through epigenetic mechanisms (altered DNA methylation). One of the most important findings in toxicology."},
+    {label:"Reproductive",val:"Reduces fertility in both sexes across multiple generations. Male offspring show testicular atrophy, reduced sperm count, and prostate disease. Female offspring show ovarian dysfunction."},
+    {label:"Ecological",val:"Toxic to aquatic organisms. Detected in European surface waters and groundwater. Endocrine-disrupting effects on fish reproduction at environmentally relevant concentrations."}
+  ],
+  gs:{bm:1,label:"Benchmark 1 — Avoid",detail:"BM-1 based on potent anti-androgenic activity and transgenerational epigenetic effects. The scientific importance of vinclozolin in demonstrating transgenerational toxicity cannot be overstated — it fundamentally changed how we think about chemical safety."},
+  parents:["Glycine","Dichloroaniline"],
+  children:[],
+  products:["Fungicide for grapes, wine grapes","Fungicide for lettuce, beans, rapeseed","Ornamental plant treatment","Turf grass fungicide"],
+  func:"Systemic dicarboximide fungicide that inhibits fungal spore germination and mycelial growth. Used primarily on fruit and vegetable crops susceptible to Botrytis and Sclerotinia fungal diseases.",
+  links:[{t:"Skinner lab transgenerational research",u:"https://pubmed.ncbi.nlm.nih.gov/15585810/"},{t:"EPA vinclozolin",u:"https://www.epa.gov/ingredients-used-pesticide-products/vinclozolin"},{t:"Endocrine Society EDCs",u:"https://www.endocrine.org/topics/edc/what-edcs-are/common-edcs"}],
+  legislation:[{st:"EU",bill:"Reg 1107/2009",status:"passed",title:"EU did not renew vinclozolin approval — effectively banned"},{st:"US",bill:"EPA",status:"passed",title:"All US registrations voluntarily canceled by manufacturer (2006)"}]
+},
+"phytoestrogens": {
+  name:"Phytoestrogens", aka:["Isoflavones","Genistein","Daidzein","Soy estrogen","Plant estrogens","Lignans","Coumestrol"],
+  cas:"Multiple (class)",
+  chemClass:{name:"Plant-derived estrogen mimics",def:"Naturally occurring compounds in plants that structurally resemble estradiol and can bind to estrogen receptors. Found in soy, flaxseed, legumes, and many other plant foods. Unlike synthetic EDCs, phytoestrogens have been part of the human diet for millennia. The health effects are debated — some studies suggest protective effects (reduced breast cancer risk), while others raise concerns about thyroid disruption and reproductive effects at high intakes."},
+  desc:"Plant compounds that weakly mimic estrogen. Found in soy (genistein, daidzein), flaxseed (lignans), and other plant foods. The Endocrine Society lists phytoestrogens as EDCs, but they are fundamentally different from synthetic EDCs: they are natural, have been consumed by humans for millennia, are generally weaker than synthetic estrogen mimics, and some evidence suggests health benefits (reduced breast cancer risk in Asian populations with high lifelong soy intake). The debate centers on whether concentrated soy supplements or soy-based infant formula could have adverse effects at high doses — particularly on thyroid function and infant development. Most dietary exposure through normal food consumption is not considered a health concern.",
+  formula:"Various (C15H10O5 for genistein)", molWeight:"Varies",
+  structure:null,
+  toxicity:[
+    {label:"Weak estrogen activity",val:"Bind to estrogen receptors (preferentially ERbeta) but with much lower potency than estradiol or synthetic estrogens like DES or BPA. Can have both estrogenic and anti-estrogenic effects depending on dose and tissue."},
+    {label:"Thyroid concern",val:"High-dose soy isoflavone supplements may interfere with thyroid function, particularly in people with iodine deficiency or existing thyroid conditions. Soy-based infant formula has raised concerns but evidence of harm is limited."},
+    {label:"Potential benefits",val:"Epidemiological evidence suggests lifelong dietary soy consumption (as in traditional Asian diets) may reduce breast cancer risk. May reduce menopausal symptoms. The health picture is not simply negative."},
+    {label:"Not equivalent to synthetic EDCs",val:"Important context: phytoestrogens are naturally occurring, rapidly metabolized, and have been part of human diets for millennia. They are not equivalent to persistent synthetic EDCs like BPA, phthalates, or PFAS in terms of risk."}
+  ],
+  gs:{bm:4,label:"Benchmark 4 — Prefer",detail:"BM-4 in the context of EDC classification. Phytoestrogens are natural dietary compounds, not industrial contaminants. Normal dietary exposure is not a health concern for most people. High-dose supplements warrant caution, especially for people with thyroid conditions."},
+  parents:["Naturally occurring in plants"],
+  children:["Genistein (soy)","Daidzein (soy)","Equol (gut metabolite of daidzein)","Lignans (flax, sesame)","Coumestrol (clover, alfalfa)"],
+  products:["Soy foods (tofu, tempeh, edamame, soy milk)","Soy-based infant formula","Flaxseed and flaxseed oil","Legumes (lentils, chickpeas)","Isoflavone dietary supplements","Red clover supplements"],
+  func:"Plant secondary metabolites that structurally mimic mammalian estrogens. In plants, they serve as defense compounds and signaling molecules. In humans, they weakly activate estrogen receptors.",
+  links:[{t:"NIH phytoestrogens",u:"https://www.ncbi.nlm.nih.gov/books/NBK569327/"},{t:"Endocrine Society EDCs",u:"https://www.endocrine.org/topics/edc/what-edcs-are/common-edcs"}]
+},
+"uv filters": {
+  name:"UV filters (sunscreen chemicals)", aka:["Oxybenzone","Benzophenone-3","Octinoxate","Octyl methoxycinnamate","Homosalate","Octocrylene","Avobenzone","Chemical sunscreens"],
+  cas:"131-57-7 (oxybenzone)",
+  chemClass:{name:"Organic UV-absorbing chemicals",def:"Synthetic chemicals that absorb ultraviolet radiation to protect skin from sun damage. Found in sunscreen, cosmetics, and personal care products. Several are confirmed or suspected endocrine disruptors. Oxybenzone and octinoxate are the most studied and most restricted due to endocrine disruption in humans and coral reef damage."},
+  desc:"Chemical sunscreen ingredients found in thousands of personal care products — sunscreen, moisturizer, lip balm, foundation, hair spray, and nail polish. Oxybenzone (benzophenone-3) is the most concerning: it is detected in 97% of Americans tested by CDC, crosses the placenta, is found in breast milk, and has estrogenic, anti-androgenic, and anti-thyroid activity. Oxybenzone and octinoxate also cause coral bleaching at very low concentrations, leading Hawaii, Palau, the US Virgin Islands, Key West, and parts of Mexico to ban them in sunscreen. The Endocrine Society identifies UV filters as a category of EDCs found in personal care products.",
+  formula:"C14H12O3 (oxybenzone)", molWeight:"228.24 (oxybenzone)",
+  structure:null,
+  toxicity:[
+    {label:"Endocrine disruption",val:"Oxybenzone has estrogenic, anti-androgenic, and anti-thyroid activity. Detected in 97% of Americans (CDC NHANES). Crosses the placenta and is found in breast milk. Associated with altered birth weight and gestational age in epidemiological studies."},
+    {label:"Reproductive",val:"Animal studies link oxybenzone to reduced sperm count, delayed puberty, and altered reproductive organ weights. Octinoxate affects thyroid function and reproductive development. Homosalate has anti-androgenic activity."},
+    {label:"Coral reef damage",val:"Oxybenzone causes coral bleaching, DNA damage, and larval deformity at concentrations as low as 62 parts per trillion. An estimated 14,000 tons of sunscreen enter coral reefs annually. Hawaii, Palau, USVI, and Key West have banned oxybenzone and octinoxate."},
+    {label:"Ecological",val:"UV filters are ubiquitous in waterways, wastewater, and marine environments. Found in fish tissue, dolphins, and sea turtle blood. Persist in sediment. Wastewater treatment does not fully remove them."}
+  ],
+  gs:{bm:2,label:"Benchmark 2 — Use but search for safer alternatives",detail:"BM-2 for chemical UV filters with documented endocrine activity (oxybenzone, octinoxate, homosalate). Mineral sunscreens (zinc oxide, titanium dioxide) are the primary alternative. Sun protection is important — the goal is safer sunscreen, not no sunscreen."},
+  parents:["Benzophenone (oxybenzone parent)","Cinnamic acid derivatives (octinoxate)"],
+  children:[],
+  products:["Sunscreen","Moisturizer with SPF","Foundation and BB cream","Lip balm with SPF","Hair spray and conditioner","Nail polish","Anti-aging products","Body lotion"],
+  func:"Absorb UV-A and/or UV-B radiation to protect skin from sunburn and long-term UV damage. Different UV filters absorb different wavelength ranges — products often combine several for broad-spectrum protection.",
+  manufacturers:[{name:"BASF",note:"Major UV filter producer (Uvinul brand)."},{name:"DSM (now dsm-firmenich)",note:"Produces UV filters for cosmetics industry."},{name:"Symrise",note:"Major cosmetic ingredient supplier including UV filters."},{name:"Johnson & Johnson (Neutrogena)",note:"Major sunscreen brand using chemical UV filters."},{name:"Bayer (Coppertone)",note:"Major sunscreen brand — Coppertone contains oxybenzone in many formulations."}],
+  saferAlternatives:[
+    {context:"Sunscreen",alt:"Mineral sunscreens using zinc oxide and/or titanium dioxide (non-nano preferred)",note:"Mineral UV filters sit on the skin surface rather than being absorbed. Zinc oxide provides broad-spectrum protection without endocrine disruption concerns. EWG Sunscreen Guide rates products."},
+    {context:"Daily moisturizer",alt:"Mineral SPF moisturizers, sun-protective clothing (UPF-rated), hats, shade-seeking behavior",note:"Physical barriers (clothing, hats, shade) are the most effective and chemical-free sun protection."},
+    {context:"Coral-safe swimming",alt:"Mineral-only reef-safe sunscreen, sun-protective swimwear (rash guards)",note:"Look for products specifically labeled reef-safe AND free of oxybenzone, octinoxate, and octocrylene. Not all reef-safe claims are verified."}
+  ],
+  altSource:"EWG Sunscreen Guide, Hawaii/Palau sunscreen bans, Endocrine Society",
+  links:[{t:"EWG Sunscreen Guide",u:"https://www.ewg.org/sunscreen/"},{t:"Endocrine Society EDCs",u:"https://www.endocrine.org/topics/edc/what-edcs-are/common-edcs"},{t:"NOAA coral and sunscreen",u:"https://oceanservice.noaa.gov/news/sunscreen-702.html"}],
+  legislation:[{st:"HI",bill:"SB 2571",status:"passed",title:"Hawaii banned sale of sunscreens containing oxybenzone and octinoxate (2018, effective 2021)"},{st:"USVI",bill:"Act 8186",status:"passed",title:"US Virgin Islands banned oxybenzone, octinoxate, and octocrylene in sunscreens (2020)"},{st:"Palau",bill:"National law",status:"passed",title:"Palau banned reef-toxic sunscreen chemicals (2020)"},{st:"EU",bill:"SCCS opinion",status:"proposed",title:"EU Scientific Committee on Consumer Safety reviewing concentration limits for several UV filters"}]
+},
 "hydrogen": {
   name:"Hydrogen", aka:["H","H2"],
   cas:"1333-74-0",
@@ -3879,6 +3997,11 @@ Object.entries(CURATED_DB).forEach(([key, val]) => {
 });
 // Extra common search aliases
 const EXTRA_ALIASES = {
+  "perchlorate":"perchlorate","ammonium perchlorate":"perchlorate","rocket fuel chemical":"perchlorate",
+  "des":"diethylstilbestrol","diethylstilbestrol":"diethylstilbestrol","stilbestrol":"diethylstilbestrol",
+  "vinclozolin":"vinclozolin","ronilan":"vinclozolin",
+  "phytoestrogens":"phytoestrogens","isoflavones":"phytoestrogens","genistein":"phytoestrogens","soy estrogen":"phytoestrogens","plant estrogens":"phytoestrogens",
+  "uv filters":"uv filters","oxybenzone":"uv filters","benzophenone-3":"uv filters","octinoxate":"uv filters","homosalate":"uv filters","octocrylene":"uv filters","chemical sunscreen":"uv filters","sunscreen chemicals":"uv filters","reef safe":"uv filters",
   "plastics":"plastics","plastic":"plastics","plastic pollution":"plastics","synthetic polymers":"plastics",
   "polyethylene":"polyethylene","pe":"polyethylene","hdpe":"polyethylene","ldpe":"polyethylene","plastic 2":"polyethylene","plastic 4":"polyethylene",
   "polypropylene":"polypropylene","pp":"polypropylene","plastic 5":"polypropylene",
