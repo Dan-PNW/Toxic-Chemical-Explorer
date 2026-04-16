@@ -37,7 +37,7 @@ const CURATED_DB = {
   gs:{bm:1,label:"Benchmark 1 — Avoid",detail:"GreenScreen Benchmark 1 chemicals are those of highest concern. Vinyl chloride receives this designation due to its classification as a known human carcinogen with strong evidence of mutagenicity, organ toxicity, and neurotoxicity. BM-1 chemicals should be avoided and phased out."},
   parents:["Ethylene","Chlorine"],
   children:["Polyvinyl chloride (PVC)"],
-  products:["PVC pipes","Vinyl flooring","Wire insulation","Packaging film","Credit cards","Window frames","Medical tubing"],
+  products:[{name:"Aerosol propellant",status:"banned",note:"FDA banned as aerosol propellant (1974) after liver cancer link"},{name:"Hair spray propellant",status:"banned",note:"Banned in cosmetics (1974)"},"PVC pipes","Vinyl flooring","Wire insulation","Packaging film","Credit cards","Window frames","Medical tubing"],
   func:"Monomer polymerized to produce PVC plastic — the third most widely produced synthetic polymer globally.",
   manufacturers:[{name:"Westlake Chemical",note:"#1 US vinyl chloride air polluter (185,807 lbs in 2021). Plants in LA, KY, MS."},{name:"Formosa Plastics",note:"#2 polluter (86,595 lbs). Plant in Point Comfort, TX. $50M settlement for illegal pellet dumping."},{name:"Occidental Chemical (OxyChem)",note:"Produced the vinyl chloride in 3 rail cars that derailed in East Palestine, OH."},{name:"Shintech",note:"Subsidiary of Shin-Etsu Chemical (Japan). Plants in Plaquemine and Addis, LA."},{name:"Orbia (Mexichem)",note:"Mexican multinational. Significant US PVC production."}],
   triSearch:"https://edap.epa.gov/public/extensions/TRIToxicsTracker/TRIToxicsTracker.html",
@@ -96,7 +96,7 @@ const CURATED_DB = {
   gs:{bm:1,label:"Benchmark 1 — Avoid",detail:"BM-1 due to known carcinogenicity (IARC Group 1), mutagenicity, respiratory sensitization, and skin sensitization. One of the most well-studied toxic chemicals. Safer preservative alternatives exist for personal care and building products."},
   parents:["Methanol"],
   children:["DMDM hydantoin","Quaternium-15","Urea-formaldehyde resins","Imidazolidinyl urea","Diazolidinyl urea"],
-  products:["Hair straightening treatments","Pressed wood products","Insulation (UFFI)","Nail polish & hardeners","Personal care preservatives","Textile finishes","Adhesives"],
+  products:[{name:"Cosmetics & personal care",status:"banned",note:"WA Toxic-Free Cosmetics Act banned formaldehyde and 25 releasers (2023)"},{name:"Pressed wood products",status:"partial",note:"EPA TSCA Title VI and CARB Phase 2 set strict emission limits"},"Hair straightening treatments","Insulation (UFFI)","Textile finishes","Adhesives"],
   func:"Preservative (antimicrobial), binder/adhesive in resins, crosslinking agent in textiles. In personal care, it or its releasers prevent microbial contamination.",
   manufacturers:[{name:"Celanese",note:"Major US formaldehyde producer. Plants in TX and VA."},{name:"Hexion (formerly Momentive)",note:"Produces formaldehyde-based resins."},{name:"Georgia-Pacific Chemicals",note:"Koch Industries subsidiary. Major formaldehyde resin producer."},{name:"BASF",note:"Global formaldehyde producer."},{name:"Methanex",note:"World's largest methanol producer (formaldehyde precursor)."}],
   triSearch:"https://edap.epa.gov/public/extensions/TRIToxicsTracker/TRIToxicsTracker.html",
@@ -151,7 +151,7 @@ const CURATED_DB = {
   gs:{bm:1,label:"Benchmark 1 — Avoid (class)",detail:"The PFAS class is designated BM-1. The essential-use framework recommends eliminating PFAS from all non-essential uses. Extreme environmental persistence alone justifies class-wide avoidance."},
   parents:["Fluorine / hydrogen fluoride"],
   children:["PFOA","PFOS","GenX","Fluorotelomers"],
-  products:["Nonstick cookware","Waterproof clothing","Food packaging","Firefighting foam (AFFF)","Stain-resistant carpets","Dental floss","Cosmetics","Ski wax","Semiconductor mfg"],
+  products:[{name:"Food packaging",status:"partial",note:"WA, CA, MN and other states banned PFAS in food packaging"},{name:"Firefighting foam (AFFF)",status:"partial",note:"WA and several states banned PFAS foam"},{name:"Carpets and rugs",status:"partial",note:"WA restricted PFAS in carpets (Cycle 1)"},{name:"Cosmetics",status:"partial",note:"WA Toxic-Free Cosmetics Act banned PFAS in cosmetics (2023)"},"Nonstick cookware","Waterproof clothing","Dental floss","Ski wax","Semiconductor mfg"],
   func:"Water, oil, and stain resistance. Used as surfactants, coatings, and processing aids. Their unique chemistry makes surfaces repel both water and oil simultaneously.",
   manufacturers:[{name:"3M",note:"Produced PFOS via electrochemical fluorination until 2002. $10.3B settlement for water contamination (2023)."},{name:"DuPont / Chemours",note:"Produced PFOA for Teflon manufacturing. Chemours spun off from DuPont in 2015. $1.18B settlement."},{name:"Daikin Industries",note:"Japanese fluorochemical producer. Major PFAS manufacturer."},{name:"Solvay",note:"Belgian chemical company. PFAS production in West Deptford, NJ."},{name:"AGC Chemicals (Asahi Glass)",note:"Japanese producer of fluoropolymers and PFAS surfactants."}],
   triSearch:"https://edap.epa.gov/public/extensions/TRIToxicsTracker/TRIToxicsTracker.html",
@@ -269,7 +269,7 @@ const CURATED_DB = {
   gs:{bm:1,label:"Benchmark 1 — Avoid",detail:"BM-1 due to endocrine disruption, reproductive toxicity, and developmental toxicity. FDA banned BPA from baby bottles and sippy cups in 2012. EU banned BPA in food contact materials in 2025. GreenScreen notes that BPS and BPF replacements share similar hazard profiles (regrettable substitution)."},
   parents:["Phenol","Acetone"],
   children:["Polycarbonate plastic","Epoxy resins","BPS (substitute)","BPF (substitute)"],
-  products:["Can linings","Receipt paper (thermal)","Polycarbonate bottles","Food storage containers","Dental sealants","Eyeglass lenses","CDs/DVDs (legacy)","Water pipes"],
+  products:[{name:"Baby bottles",status:"banned",note:"FDA banned BPA in baby bottles and sippy cups (2012)"},{name:"Receipt paper",status:"partial",note:"WA restricted bisphenols in thermal paper (Cycle 1). EU ban 2025."},{name:"Can linings",status:"partial",note:"WA restricted in can linings (Cycle 1). Many brands transitioning."},{name:"Infant formula packaging",status:"banned",note:"FDA banned BPA in infant formula packaging (2013)"},"Polycarbonate bottles","Food storage containers","Dental sealants","Eyeglass lenses","Water pipes"],
   func:"Monomer for polycarbonate plastic and epoxy resins. Used as a coating in food and beverage cans to prevent corrosion.",
   manufacturers:[{name:"Bayer MaterialScience (now Covestro)",note:"Major BPA producer for polycarbonate plastics."},{name:"SABIC",note:"Saudi-based. Major BPA and polycarbonate producer."},{name:"Hexion",note:"Produces BPA-based epoxy resins."},{name:"Momentive Specialty Chemicals",note:"Epoxy resin producer."},{name:"Nan Ya Plastics (Formosa Group)",note:"Major Asian BPA producer."},{name:"Kumho P&B Chemicals",note:"Korean BPA producer."}],
   saferAlternatives:[
@@ -299,7 +299,7 @@ const CURATED_DB = {
   gs:{bm:1,label:"Benchmark 1 — Avoid (key members)",detail:"DEHP, DBP, and BBP are BM-1 due to reproductive toxicity and endocrine disruption. Other phthalates vary — some like DINP are BM-2. GreenScreen recommends avoiding the entire ortho-phthalate class where possible."},
   parents:["Phthalic anhydride","Various alcohols"],
   children:["DEHP","DBP","BBP","DEP","DINP"],
-  products:["Flexible PVC products","Vinyl flooring","Fragranced products","Nail polish","Hair spray","Lotions","Food packaging","Medical tubing","Toys (legacy)","Shower curtains"],
+  products:[{name:"Toys",status:"banned",note:"Banned in US children's toys (CPSIA 2008), EU, and many countries"},{name:"Fragranced personal care",status:"partial",note:"WA restricted ortho-phthalates in personal care fragrances (Cycle 1)"},{name:"Vinyl flooring",status:"partial",note:"WA restricted ortho-phthalates in vinyl flooring (Cycle 1)"},"Flexible PVC products","Nail polish","Hair spray","Lotions","Food packaging","Medical tubing","Shower curtains"],
   func:"Plasticizers that make PVC flexible. Solvents in cosmetics that help fragrances last. Fixatives in hair products.",
   manufacturers:[{name:"ExxonMobil Chemical",note:"Major producer of DEHP, DINP, and other phthalate plasticizers (Jayflex brand)."},{name:"BASF",note:"Produces Palatinol-brand phthalate plasticizers."},{name:"Eastman Chemical",note:"Major plasticizer producer including 168 brand (non-phthalate alternatives too)."},{name:"UPC Technology",note:"Taiwanese phthalate manufacturer."},{name:"Aekyung Chemical",note:"Korean phthalate producer."}],
   triSearch:"https://edap.epa.gov/public/extensions/TRIToxicsTracker/TRIToxicsTracker.html",
@@ -455,7 +455,7 @@ const CURATED_DB = {
   gs:{bm:1,label:"Benchmark 1 — Avoid",detail:"BM-1 — all forms of asbestos are known human carcinogens with no safe exposure level. EPA finalized a comprehensive ban on chrysotile asbestos under TSCA in 2024. The only form still legally imported into the US, chrysotile was used in chlor-alkali plants."},
   parents:[],
   children:[],
-  products:["Roofing materials","Brake pads (legacy)","Insulation (legacy)","Floor tiles (legacy)","Cement products","Gaskets","Chlor-alkali industry (now banned)"],
+  products:[{name:"All chrysotile uses",status:"banned",note:"EPA final rule banning chrysotile asbestos (2024)"},{name:"Chlor-alkali industry",status:"banned",note:"Last significant US use — banned under 2024 rule"},{name:"Building insulation (legacy)",status:"banned",note:"Present in millions of older buildings. Removal requires licensed abatement."},"Cement products","Gaskets"],
   func:"Heat resistance, insulation, fire retardancy, and reinforcement of materials. Extremely durable fiber historically used in construction and industrial applications.",
   manufacturers:[{name:"No current US producers",note:"All US asbestos mines closed. Last US chrysotile asbestos use was in chlor-alkali plants, now banned."},{name:"Uralasbest (Russia)",note:"World's largest asbestos mine, Asbest, Russia. Supplies most remaining global demand."},{name:"Brazil (formerly)",note:"Brazil banned asbestos mining in 2017 (Supreme Court ruling)."},{name:"Legacy manufacturers",note:"Johns Manville, W.R. Grace, Owens Corning — subject to massive asbestos litigation trusts."}],
   links:[{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/toxic-chemicals/asbestos/"},{t:"EPA asbestos ban",u:"https://www.epa.gov/assessing-and-managing-chemicals-under-tsca/risk-management-asbestos"},{t:"ATSDR",u:"https://www.atsdr.cdc.gov/toxprofiles/tp61.pdf"}],
@@ -568,7 +568,7 @@ const CURATED_DB = {
   gs:{bm:1,label:"Benchmark 1 — Avoid",detail:"BM-1 — no safe level of exposure identified. Lead is one of the most well-characterized toxic substances. Banned from gasoline and residential paint but legacy contamination and ongoing industrial uses continue to expose millions."},
   parents:[],
   children:["Lead paint (legacy)","Lead solder (legacy)","Lead-acid batteries"],
-  products:["Lead-acid batteries","Ammunition","Lead pipe/solder (legacy)","Lead paint (pre-1978 housing)","PVC stabilizers","Aviation gasoline","Radiation shielding","Fishing weights"],
+  products:[{name:"Residential paint",status:"banned",note:"Banned in US residential paint (1978)"},{name:"Gasoline",status:"banned",note:"Banned worldwide (2021). Greatest public health victory."},{name:"Water pipes (new installation)",status:"banned",note:"New lead pipes banned. EPA requiring replacement of lead service lines."},"Lead-acid batteries","Ammunition","PVC stabilizers","Aviation gasoline","Radiation shielding","Fishing weights"],
   func:"Dense, malleable, corrosion-resistant metal. Used in batteries, radiation shielding, and historically in paint, gasoline, plumbing, and solder.",
   manufacturers:[{name:"Doe Run Company",note:"Operates the only primary lead smelter in the US (until 2013 closure of Herculaneum, MO). Now processes recycled lead."},{name:"Glencore",note:"Swiss mining/commodities company. Major global lead producer."},{name:"Johnson Controls / Clarios",note:"World's largest lead-acid battery manufacturer."},{name:"East Penn Manufacturing",note:"Major lead-acid battery producer (Deka brand)."},{name:"Sherwin-Williams (legacy)",note:"Major producer of lead paint before the 1978 ban. Subject of ongoing lead paint litigation."}],
   triSearch:"https://edap.epa.gov/public/extensions/TRIToxicsTracker/TRIToxicsTracker.html",
@@ -754,7 +754,7 @@ const CURATED_DB = {
   gs:{bm:1,label:"Benchmark 1 — Avoid (most members)",detail:"Most halogenated flame retardants are BM-1 due to persistence, bioaccumulation, and toxicity. The pattern of regrettable substitution — replacing banned FRs with structurally similar but equally harmful chemicals — argues for restricting the class, not individual chemicals."},
   parents:[],
   children:["PBDEs (banned)","HBCD (restricted)","TDCPP","TCEP","Dechlorane Plus","Chlorinated paraffins"],
-  products:["Furniture foam","Electronics","Building insulation","Children's products (legacy)","Car seats","Mattresses","Carpet padding","Wire & cable insulation","Recycled plastics"],
+  products:[{name:"Children's products",status:"partial",note:"WA and several states restrict FRs in children's products"},{name:"Furniture foam (CA, WA)",status:"partial",note:"CA TB 117-2013 removed need for FRs. WA restricts in recreational foam."},{name:"Electronics (WA)",status:"partial",note:"WA restricts organohalogen FRs in electronics (Cycle 1)"},"Building insulation","Car seats","Mattresses","Carpet padding","Wire & cable insulation","Recycled plastics"],
   func:"Slow ignition and flame spread by interrupting combustion chemistry. Added to meet flammability standards, many of which were established through tobacco industry lobbying.",
   manufacturers:[{name:"ICL Group (formerly Israel Chemicals)",note:"World's largest producer of brominated flame retardants. Also produces organophosphate FRs."},{name:"Albemarle",note:"Major bromine and brominated FR producer. Plants in AR and globally."},{name:"Lanxess",note:"German chemical company. Produces organophosphate and brominated FRs."},{name:"BASF",note:"Produces Firemaster-type FRs and non-halogenated alternatives."},{name:"Chemtura (now Lanxess)",note:"Produced Firemaster 550 and other controversial FR mixtures."}],
   triSearch:"https://edap.epa.gov/public/extensions/TRIToxicsTracker/TRIToxicsTracker.html",
@@ -886,7 +886,7 @@ const CURATED_DB = {
   gs:{bm:2,label:"Benchmark 2 — Use but search for safer alternatives",detail:"BM-2 due to styrene monomer carcinogenicity (IARC 2A), leaching concerns, and catastrophic end-of-life environmental profile. HBCD contamination in building insulation adds another layer of concern."},
   parents:["Styrene (monomer)","Benzene","Ethylene"],
   children:["Microplastics (degradation)","Styrene (leachate)"],
-  products:["Foam food containers and cups","Protective packaging (peanuts)","Building insulation (EPS/XPS)","CD cases and disposable cutlery","Yogurt cups","Egg cartons","Meat trays"],
+  products:[{name:"Foam food containers",status:"partial",note:"Banned in WA, NY, ME, MD, and many cities"},{name:"Disposable foam cups",status:"partial",note:"Banned in multiple states and cities"},"Protective packaging (peanuts)","Building insulation (EPS/XPS)","Yogurt cups","Egg cartons","Meat trays"],
   func:"Lightweight, rigid, and inexpensive thermoplastic. Foam forms provide excellent insulation. Solid PS is clear and brittle. Valued for low cost but increasingly being phased out of food packaging.",
   manufacturers:[{name:"INEOS Styrolution",note:"World's largest styrenics producer."},{name:"Americas Styrenics (AmSty)",note:"Major US PS producer."},{name:"Trinseo",note:"PS and styrene producer."},{name:"Dart Container",note:"Largest manufacturer of PS foam cups and containers."},{name:"Owens Corning",note:"Major XPS insulation producer (Foamular brand)."}],
   saferAlternatives:[
@@ -3096,7 +3096,7 @@ const CURATED_DB = {
   gs:{bm:1,label:"Benchmark 1 — Avoid",detail:"BM-1 due to endocrine disruption, contribution to antimicrobial resistance, environmental persistence, and aquatic toxicity. No evidence of health benefit over regular soap."},
   parents:["2,4-Dichlorophenol","p-Chlorophenol"],
   children:["Methyl triclosan (environmental metabolite)","Dioxins (photodegradation product)"],
-  products:["Toothpaste (some brands)","Antibacterial soaps (banned for OTC wash)","Deodorants","Cosmetics","First aid products","Cutting boards"],
+  products:[{name:"Antibacterial soaps",status:"banned",note:"FDA banned triclosan in consumer antiseptic wash (2016)"},{name:"Hand sanitizers",status:"banned",note:"FDA ruled against triclosan in hand sanitizers (2019)"},{name:"Toothpaste",status:"abandoned",note:"Colgate removed from Total (2019). Not formally banned."},{name:"Consumer products (MN)",status:"partial",note:"Minnesota banned triclosan in consumer products (2017)"},"Deodorants","Cosmetics","First aid products","Cutting boards"],
   func:"Broad-spectrum antimicrobial. Inhibits bacterial fatty acid synthesis. Added to products to prevent microbial growth.",
   manufacturers:[{name:"BASF (formerly Ciba Specialty Chemicals)",note:"Invented triclosan (Irgasan brand). Primary manufacturer."},{name:"Colgate-Palmolive",note:"Used triclosan in Colgate Total toothpaste for decades. Removed in 2019 reformulation."},{name:"Various consumer product companies",note:"Thousands of products formerly contained triclosan. Most major brands have reformulated."}],
   saferAlternatives:[
@@ -3262,7 +3262,7 @@ const CURATED_DB = {
   gs:{bm:1,label:"Benchmark 1 — Avoid",detail:"BM-1 due to probable carcinogenicity, neurotoxicity, and environmental persistence. EPA proposed banning most uses under TSCA. The degradation chain to TCE and vinyl chloride compounds the hazard."},
   parents:["Ethylene","Chlorine"],
   children:["TCE (degradation product)","Vinyl chloride (degradation product)"],
-  products:["Dry cleaning solvent","Metal degreasing","Spot remover","Automotive brake cleaner","Adhesives","Textile processing"],
+  products:[{name:"Dry cleaning (CA phasing out)",status:"partial",note:"CA phasing out PCE in dry cleaning. Transition assistance available."},{name:"Consumer spot removers",status:"partial",note:"EPA TSCA rule restricts consumer uses"},"Metal degreasing","Automotive brake cleaner","Adhesives","Textile processing"],
   func:"Excellent nonflammable solvent for grease, oils, and waxes. Dominant in dry cleaning because it cleans fabrics without water damage. Being replaced by wet cleaning and liquid CO₂ methods.",
   manufacturers:[{name:"Olin Corporation",note:"Major chlorinated solvent producer."},{name:"Westlake Chemical",note:"Chlorinated solvents producer."},{name:"Occidental Chemical",note:"Chlor-alkali products."},{name:"Thousands of dry cleaners",note:"Major user category — predominantly small businesses, often immigrant-owned."}],
   triSearch:"https://edap.epa.gov/public/extensions/TRIToxicsTracker/TRIToxicsTracker.html",
@@ -3340,7 +3340,7 @@ const CURATED_DB = {
   gs:{bm:1,label:"Benchmark 1 — Avoid",detail:"BM-1 due to neurodevelopmental toxicity, acute neurotoxicity, and environmental persistence. EPA revoked food tolerances in 2021 after decades of advocacy. Some agricultural uses continue under contested legal status."},
   parents:["3,5,6-Trichloro-2-pyridinol","Diethyl thiophosphoryl chloride"],
   children:["Chlorpyrifos-oxon (active metabolite)","TCP (degradation product)"],
-  products:["Agricultural insecticide (field crops, orchards)","Golf course treatment","Commercial pest control","Termite treatment (restricted)","Indoor use banned since 2000"],
+  products:[{name:"Residential/indoor use",status:"banned",note:"EPA banned residential use (2001)"},{name:"All food crop uses",status:"banned",note:"EPA revoked all food tolerances (2022)"},"Golf course treatment","Commercial pest control","Termite treatment (restricted)"],
   func:"Broad-spectrum organophosphate insecticide. Kills insects by irreversibly inhibiting acetylcholinesterase, causing nervous system failure.",
   manufacturers:[{name:"Corteva Agriscience (formerly Dow AgroSciences)",note:"Invented and primary producer of chlorpyrifos (brand: Lorsban/Dursban). Aggressively fought EPA regulation for decades."},{name:"Gharda Chemicals",note:"Indian manufacturer, major global chlorpyrifos supplier."},{name:"Various generic producers",note:"Off-patent since 2000s. Multiple manufacturers in China and India."}],
   saferAlternatives:[
@@ -3663,7 +3663,7 @@ const CURATED_DB = {
   gs:{bm:1,label:"Benchmark 1 — Avoid (outdoor use)",detail:"BM-1 for outdoor use due to devastating pollinator and ecosystem impacts. The EU banned three neonics for outdoor use in 2018. EPA continues to allow widespread use in the US despite scientific consensus on pollinator harm."},
   parents:["Nicotine (natural analog)","Chloropyridine chemistry"],
   children:["Imidacloprid (Bayer)","Clothianidin (Bayer)","Thiamethoxam (Syngenta)","Acetamiprid","Dinotefuran"],
-  products:["Seed treatments (corn, soy, canola, cotton)","Foliar agricultural insecticide","Turf & ornamental treatment","Pet flea treatment (imidacloprid — Advantage)","Termite treatment","Systemic tree injection"],
+  products:[{name:"Outdoor use (EU)",status:"banned",note:"EU banned outdoor use of 3 major neonics (2018)"},{name:"Consumer garden (some states)",status:"partial",note:"CT, NY restricted consumer sales"},"Seed treatments (corn, soy, canola, cotton)","Foliar agricultural insecticide","Turf & ornamental treatment","Pet flea treatment (imidacloprid)","Termite treatment","Systemic tree injection"],
   func:"Systemic insecticides absorbed by plants through roots or leaves and translocated to all tissues, including pollen and nectar. Kill sap-feeding and chewing insects. Persist in soil for months to years.",
   manufacturers:[{name:"Bayer CropScience",note:"Invented and produces imidacloprid (Gaucho/Admire) and clothianidin (Poncho). Dominant neonicotinoid producer."},{name:"Syngenta/ChemChina",note:"Produces thiamethoxam (Actara/Cruiser). Second-largest neonic producer."},{name:"Corteva Agriscience",note:"Produces acetamiprid."},{name:"Mitsui Chemicals",note:"Japanese producer of acetamiprid."},{name:"Sumitomo Chemical",note:"Produces dinotefuran."}],
   saferAlternatives:[
@@ -4861,10 +4861,31 @@ Provide 4 toxicity entries covering human health AND ecological hazards. For Gre
 
           {/* Products & function */}
           <Section label="Products & function">
+            {/* Legend — only show if any products have status */}
+            {(c.products || []).some(p => typeof p === "object" && p.status) && (
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 10, padding: "8px 12px", background: COLORS.surfaceAlt, borderRadius: 8, border: `1px solid ${COLORS.border}`, fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: COLORS.textMid, alignItems: "center" }}>
+                <span style={{ fontWeight: 600, color: COLORS.text, marginRight: 2 }}>Status:</span>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}><span style={{ width: 10, height: 10, borderRadius: 3, background: "#F5DEDE", border: "1px solid #D4A0A0" }}/> Banned</span>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}><span style={{ width: 10, height: 10, borderRadius: 3, background: "#FDE8CC", border: "1px solid #D4B882" }}/> Partially banned</span>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}><span style={{ width: 10, height: 10, borderRadius: 3, background: "#FFF3D6", border: "1px solid #D4C882" }}/> Abandoned by industry</span>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}><span style={{ width: 10, height: 10, borderRadius: 3, background: COLORS.surfaceAlt, border: `1px solid ${COLORS.border}` }}/> Active use</span>
+              </div>
+            )}
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
-              {(c.products || []).map((p, i) => (
-                <span key={i} style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, padding: "4px 10px", borderRadius: 6, background: COLORS.surfaceAlt, color: COLORS.textMid }}>{p}</span>
-              ))}
+              {(c.products || []).map((p, i) => {
+                const isObj = typeof p === "object" && p.name;
+                const name = isObj ? p.name : p;
+                const status = isObj ? p.status : null;
+                const statusStyles = {
+                  banned: { background: "#F5DEDE", color: "#791F1F", border: "1px solid #D4A0A0" },
+                  partial: { background: "#FDE8CC", color: "#7A4A0B", border: "1px solid #D4B882" },
+                  abandoned: { background: "#FFF3D6", color: "#6B5A10", border: "1px solid #D4C882" },
+                };
+                const sty = status && statusStyles[status] ? statusStyles[status] : { background: COLORS.surfaceAlt, color: COLORS.textMid, border: `1px solid transparent` };
+                return (
+                  <span key={i} title={isObj && p.note ? p.note : undefined} style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, padding: "4px 10px", borderRadius: 6, cursor: isObj && p.note ? "help" : "default", ...sty }}>{name}</span>
+                );
+              })}
             </div>
             <div style={{ fontSize: 14, lineHeight: 1.6, color: COLORS.textMid }}>{c.func}</div>
           </Section>
