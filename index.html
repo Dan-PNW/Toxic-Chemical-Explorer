@@ -4310,6 +4310,279 @@ function Section({ label, children, style }) {
 // ─── State name lookup ───
 const STATE_NAMES = {US:"Federal",EU:"European Union",AL:"Alabama",AK:"Alaska",AZ:"Arizona",AR:"Arkansas",CA:"California",CO:"Colorado",CT:"Connecticut",DE:"Delaware",FL:"Florida",GA:"Georgia",HI:"Hawaii",ID:"Idaho",IL:"Illinois",IN:"Indiana",IA:"Iowa",KS:"Kansas",KY:"Kentucky",LA:"Louisiana",ME:"Maine",MD:"Maryland",MA:"Massachusetts",MI:"Michigan",MN:"Minnesota",MS:"Mississippi",MO:"Missouri",MT:"Montana",NE:"Nebraska",NV:"Nevada",NH:"New Hampshire",NJ:"New Jersey",NM:"New Mexico",NY:"New York",NC:"North Carolina",ND:"North Dakota",OH:"Ohio",OK:"Oklahoma",OR:"Oregon",PA:"Pennsylvania",RI:"Rhode Island",SC:"South Carolina",SD:"South Dakota",TN:"Tennessee",TX:"Texas",UT:"Utah",VT:"Vermont",VA:"Virginia",WA:"Washington",WV:"West Virginia",WI:"Wisconsin",WY:"Wyoming",DC:"Washington DC"};
 
+// ─── US state outline paths (line-drawing style, viewBox 0 0 960 600) ───
+const US_STATES = {
+  AL:{d:"M 524 379 L 537 379 L 540 432 L 524 454 L 516 454 L 513 432 Z",cx:527,cy:415},
+  AK:{d:"M 106 479 L 212 479 L 230 524 L 170 560 L 106 540 Z",cx:165,cy:515},
+  AZ:{d:"M 157 314 L 236 315 L 236 389 L 157 389 Z",cx:197,cy:351},
+  AR:{d:"M 476 341 L 537 338 L 537 379 L 476 381 Z",cx:507,cy:359},
+  CA:{d:"M 104 199 L 158 187 L 175 262 L 168 315 L 105 337 Z",cx:136,cy:268},
+  CO:{d:"M 236 280 L 330 278 L 330 335 L 236 337 Z",cx:283,cy:307},
+  CT:{d:"M 780 196 L 806 193 L 808 215 L 780 218 Z",cx:793,cy:205},
+  DE:{d:"M 765 222 L 779 219 L 783 244 L 765 247 Z",cx:773,cy:232},
+  FL:{d:"M 556 432 L 595 428 L 640 468 L 618 520 L 556 500 Z",cx:590,cy:472},
+  GA:{d:"M 537 379 L 591 374 L 595 428 L 556 432 L 524 454 L 516 454 L 524 379 Z",cx:557,cy:410},
+  HI:{d:"M 310 525 L 400 525 L 400 555 L 310 555 Z",cx:355,cy:540},
+  ID:{d:"M 176 143 L 220 135 L 234 199 L 223 262 L 189 262 L 175 199 Z",cx:202,cy:198},
+  IL:{d:"M 518 248 L 556 245 L 560 322 L 537 338 L 518 330 Z",cx:538,cy:289},
+  IN:{d:"M 556 245 L 592 242 L 596 310 L 560 314 Z",cx:576,cy:278},
+  IA:{d:"M 449 230 L 518 226 L 520 265 L 476 268 L 449 260 Z",cx:484,cy:248},
+  KS:{d:"M 330 302 L 449 298 L 449 338 L 330 341 Z",cx:390,cy:319},
+  KY:{d:"M 556 314 L 660 302 L 664 336 L 600 344 L 556 348 Z",cx:610,cy:324},
+  LA:{d:"M 449 390 L 510 384 L 516 432 L 480 458 L 449 430 Z",cx:482,cy:419},
+  ME:{d:"M 840 108 L 878 98 L 886 154 L 848 160 Z",cx:862,cy:130},
+  MD:{d:"M 700 240 L 762 230 L 766 258 L 700 268 Z",cx:733,cy:249},
+  MA:{d:"M 806 178 L 858 168 L 862 196 L 806 200 Z",cx:832,cy:185},
+  MI:{d:"M 570 168 L 634 158 L 640 212 L 594 218 L 570 200 Z",cx:605,cy:188},
+  MN:{d:"M 411 130 L 480 124 L 484 206 L 449 208 L 411 190 Z",cx:447,cy:165},
+  MS:{d:"M 510 348 L 537 344 L 540 432 L 513 432 L 510 384 Z",cx:524,cy:389},
+  MO:{d:"M 449 298 L 518 292 L 522 348 L 476 354 L 449 338 Z",cx:485,cy:323},
+  MT:{d:"M 176 110 L 330 100 L 336 186 L 234 196 L 189 196 Z",cx:256,cy:148},
+  NE:{d:"M 330 258 L 449 252 L 449 298 L 330 302 Z",cx:390,cy:279},
+  NV:{d:"M 138 188 L 188 182 L 194 290 L 160 326 L 130 290 Z",cx:162,cy:258},
+  NH:{d:"M 820 136 L 840 130 L 844 176 L 820 180 Z",cx:831,cy:155},
+  NJ:{d:"M 748 212 L 768 208 L 772 248 L 748 252 Z",cx:759,cy:230},
+  NM:{d:"M 220 337 L 310 333 L 312 410 L 220 412 Z",cx:266,cy:373},
+  NY:{d:"M 698 170 L 778 156 L 784 212 L 748 218 L 700 216 Z",cx:740,cy:186},
+  NC:{d:"M 634 320 L 756 304 L 760 340 L 634 356 Z",cx:695,cy:331},
+  ND:{d:"M 330 138 L 449 130 L 453 174 L 330 180 Z",cx:390,cy:155},
+  OH:{d:"M 592 242 L 644 236 L 648 310 L 596 316 Z",cx:620,cy:276},
+  OK:{d:"M 310 337 L 449 331 L 449 374 L 390 378 L 346 378 L 310 378 Z",cx:379,cy:356},
+  OR:{d:"M 106 160 L 192 150 L 196 224 L 134 230 L 106 210 Z",cx:151,cy:189},
+  PA:{d:"M 644 200 L 748 188 L 752 236 L 648 248 Z",cx:697,cy:218},
+  RI:{d:"M 808 200 L 822 198 L 824 218 L 808 220 Z",cx:815,cy:209},
+  SC:{d:"M 634 356 L 706 340 L 718 386 L 670 404 L 634 388 Z",cx:675,cy:371},
+  SD:{d:"M 330 180 L 453 172 L 457 228 L 330 234 Z",cx:393,cy:203},
+  TN:{d:"M 522 340 L 650 326 L 654 362 L 522 374 Z",cx:587,cy:350},
+  TX:{d:"M 310 378 L 449 370 L 476 448 L 460 506 L 390 510 L 310 460 Z",cx:390,cy:440},
+  UT:{d:"M 188 256 L 252 250 L 256 336 L 188 340 Z",cx:222,cy:295},
+  VT:{d:"M 800 150 L 820 144 L 822 182 L 800 186 Z",cx:810,cy:165},
+  VA:{d:"M 648 288 L 756 272 L 760 318 L 700 330 L 648 332 Z",cx:703,cy:305},
+  WA:{d:"M 106 120 L 192 110 L 196 158 L 128 166 Z",cx:151,cy:138},
+  WV:{d:"M 648 272 L 706 260 L 710 310 L 660 322 L 648 306 Z",cx:677,cy:290},
+  WI:{d:"M 484 162 L 538 156 L 542 228 L 484 234 Z",cx:512,cy:195},
+  WY:{d:"M 236 196 L 330 190 L 334 256 L 236 260 Z",cx:283,cy:224},
+  DC:{d:"M 736 272 L 746 270 L 748 280 L 736 282 Z",cx:742,cy:276},
+};
+
+// ─── EU country outline paths ───
+const EU_COUNTRIES = {
+  IS:{d:"M 386 92 L 416 86 L 422 110 L 396 116 Z",cx:404,cy:101,name:"Iceland"},
+  IE:{d:"M 412 156 L 432 152 L 434 184 L 412 186 Z",cx:422,cy:170,name:"Ireland"},
+  GB:{d:"M 444 142 L 466 138 L 472 196 L 446 200 Z",cx:458,cy:170,name:"United Kingdom"},
+  NO:{d:"M 488 78 L 524 70 L 542 152 L 494 158 Z",cx:514,cy:115,name:"Norway"},
+  SE:{d:"M 530 88 L 562 78 L 568 152 L 534 158 Z",cx:548,cy:118,name:"Sweden"},
+  FI:{d:"M 568 78 L 604 66 L 612 138 L 572 144 Z",cx:590,cy:104,name:"Finland"},
+  DK:{d:"M 504 138 L 530 132 L 532 162 L 506 166 Z",cx:518,cy:150,name:"Denmark"},
+  NL:{d:"M 466 172 L 490 168 L 494 192 L 468 194 Z",cx:480,cy:182,name:"Netherlands"},
+  BE:{d:"M 460 194 L 484 190 L 486 210 L 460 212 Z",cx:473,cy:202,name:"Belgium"},
+  LU:{d:"M 484 208 L 494 207 L 495 218 L 484 219 Z",cx:489,cy:213,name:"Luxembourg"},
+  DE:{d:"M 494 168 L 538 162 L 548 218 L 528 232 L 496 230 Z",cx:520,cy:198,name:"Germany"},
+  FR:{d:"M 442 210 L 494 208 L 502 262 L 458 274 L 436 252 Z",cx:470,cy:240,name:"France"},
+  ES:{d:"M 392 268 L 458 264 L 462 312 L 416 320 L 388 300 Z",cx:428,cy:292,name:"Spain"},
+  PT:{d:"M 388 268 L 410 264 L 414 312 L 386 314 Z",cx:399,cy:289,name:"Portugal"},
+  IT:{d:"M 498 232 L 532 228 L 548 296 L 522 322 L 494 296 Z",cx:518,cy:276,name:"Italy"},
+  CH:{d:"M 488 224 L 510 220 L 512 238 L 488 240 Z",cx:500,cy:230,name:"Switzerland"},
+  AT:{d:"M 514 224 L 558 218 L 562 240 L 516 244 Z",cx:538,cy:232,name:"Austria"},
+  PL:{d:"M 538 162 L 588 156 L 596 198 L 548 208 Z",cx:567,cy:182,name:"Poland"},
+  CZ:{d:"M 522 198 L 558 192 L 560 216 L 524 220 Z",cx:541,cy:206,name:"Czech Republic"},
+  SK:{d:"M 560 198 L 590 194 L 592 214 L 562 218 Z",cx:576,cy:206,name:"Slovakia"},
+  HU:{d:"M 546 218 L 588 212 L 592 240 L 548 244 Z",cx:569,cy:228,name:"Hungary"},
+  SI:{d:"M 522 230 L 548 226 L 550 244 L 524 246 Z",cx:536,cy:236,name:"Slovenia"},
+  HR:{d:"M 528 244 L 568 238 L 574 264 L 532 268 Z",cx:550,cy:252,name:"Croatia"},
+  RO:{d:"M 590 210 L 632 204 L 638 246 L 594 252 Z",cx:614,cy:228,name:"Romania"},
+  BG:{d:"M 596 250 L 634 244 L 638 270 L 600 274 Z",cx:617,cy:260,name:"Bulgaria"},
+  GR:{d:"M 562 274 L 600 268 L 604 308 L 568 314 Z",cx:583,cy:290,name:"Greece"},
+  EE:{d:"M 562 124 L 594 120 L 598 142 L 564 146 Z",cx:580,cy:132,name:"Estonia"},
+  LV:{d:"M 562 144 L 596 140 L 600 162 L 564 166 Z",cx:580,cy:152,name:"Latvia"},
+  LT:{d:"M 558 164 L 594 160 L 596 184 L 560 188 Z",cx:577,cy:174,name:"Lithuania"},
+  CY:{d:"M 624 314 L 638 312 L 640 322 L 624 324 Z",cx:632,cy:318,name:"Cyprus"},
+  MT:{d:"M 514 318 L 522 317 L 522 324 L 514 325 Z",cx:518,cy:321,name:"Malta"},
+};
+
+// ─── Line-drawing style legislation map ───
+function LegMap({ legislation }) {
+  const [hovered, setHovered] = useState(null);
+  const [view, setView] = useState("us");
+
+  const coverage = useMemo(() => {
+    const m = {};
+    (legislation||[]).forEach(l => {
+      if (!l.st) return;
+      if (!m[l.st]) m[l.st] = { passed:0, proposed:0 };
+      if (l.status === "passed") m[l.st].passed++;
+      else m[l.st].proposed++;
+    });
+    return m;
+  }, [legislation]);
+
+  const fedBills = (legislation||[]).filter(l => l.st === "US");
+  const euBills  = (legislation||[]).filter(l => l.st === "EU");
+
+  // Line-drawing palette: states are white with thin dark outlines.
+  // Tinted fills only when there's legislation (passed = green tint, proposed = amber tint).
+  const fillFor = (st) => {
+    const c = coverage[st];
+    if (!c) return COLORS.surface;
+    if (c.passed > 0) return "#DCEAD0";
+    return "#FCEBC8";
+  };
+  const strokeFor = (st) => {
+    const c = coverage[st];
+    if (!c) return "#2A2A28";
+    if (c.passed > 0) return "#3F6B1F";
+    return "#8C5A0B";
+  };
+  const labelColorFor = (st) => {
+    const c = coverage[st];
+    if (!c) return COLORS.textMuted;
+    return c.passed > 0 ? "#27500A" : "#7A4A0B";
+  };
+
+  const passedCount = (legislation||[]).filter(l => l.status === "passed").length;
+  const proposedCount = (legislation||[]).filter(l => l.status === "proposed").length;
+
+  const tabBtn = (active) => ({
+    fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, fontWeight: 600,
+    padding: "5px 14px", borderRadius: 5, border: "none", cursor: "pointer",
+    background: active ? COLORS.surface : "transparent",
+    color: active ? COLORS.text : COLORS.textMuted,
+    boxShadow: active ? "0 1px 2px rgba(0,0,0,0.06)" : "none",
+    letterSpacing: "0.5px",
+  });
+
+  return (
+    <div style={{ background: COLORS.surface, border: `1px solid ${COLORS.border}`, borderRadius: 12, marginBottom: 14, overflow: "hidden" }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "11px 16px", borderBottom: `1px solid ${COLORS.border}`, flexWrap: "wrap", gap: 10 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, fontWeight: 600, color: COLORS.text, textTransform: "uppercase", letterSpacing: "0.6px" }}>
+            Legislative coverage
+          </span>
+          {passedCount > 0 && (
+            <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, padding: "2px 7px", borderRadius: 3, background: "#EAF3DE", color: "#27500A", border: "1px solid #C0DDA0" }}>
+              {passedCount} passed
+            </span>
+          )}
+          {proposedCount > 0 && (
+            <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, padding: "2px 7px", borderRadius: 3, background: COLORS.warnLight, color: COLORS.warn, border: `1px solid ${COLORS.warnBorder}` }}>
+              {proposedCount} proposed
+            </span>
+          )}
+        </div>
+        <div style={{ display: "flex", background: COLORS.surfaceAlt, borderRadius: 6, padding: 2, border: `1px solid ${COLORS.border}` }}>
+          <button onClick={() => setView("us")} style={tabBtn(view === "us")}>US</button>
+          <button onClick={() => setView("eu")} style={tabBtn(view === "eu")}>EU</button>
+        </div>
+      </div>
+
+      <div style={{ padding: "16px 18px", position: "relative", background: COLORS.bg }}>
+        {view === "us" ? (
+          <svg viewBox="80 90 900 490" style={{ width: "100%", maxHeight: 320, display: "block" }} xmlns="http://www.w3.org/2000/svg">
+            {/* Federal indicator: subtle frame around all states */}
+            {fedBills.length > 0 && (
+              <rect x="86" y="96" width="884" height="478" rx="8" fill="none"
+                stroke={fedBills.some(b => b.status === "passed") ? "#3F6B1F" : "#8C5A0B"}
+                strokeWidth="2" strokeDasharray={fedBills.some(b => b.status === "passed") ? "none" : "5,3"} opacity="0.4" />
+            )}
+            {Object.entries(US_STATES).map(([st, { d, cx, cy }]) => {
+              const isHov = hovered === st;
+              const hasCov = !!coverage[st];
+              return (
+                <g key={st} onMouseEnter={() => setHovered(st)} onMouseLeave={() => setHovered(null)}>
+                  <path d={d}
+                    fill={isHov ? COLORS.accentLight : fillFor(st)}
+                    stroke={isHov ? COLORS.accent : strokeFor(st)}
+                    strokeWidth={isHov ? 1.6 : (hasCov ? 1 : 0.7)}
+                    strokeLinejoin="round"
+                    style={{ cursor: hasCov ? "pointer" : "default", transition: "fill 0.15s, stroke 0.15s" }} />
+                  {hasCov && (
+                    <text x={cx} y={cy + 3} textAnchor="middle"
+                      fontSize="9" fontFamily="'IBM Plex Mono', monospace" fontWeight="700"
+                      fill={labelColorFor(st)} pointerEvents="none">{st}</text>
+                  )}
+                  <title>{STATE_NAMES[st] || st}{coverage[st] ? ` — ${coverage[st].passed} passed, ${coverage[st].proposed} proposed` : ""}</title>
+                </g>
+              );
+            })}
+          </svg>
+        ) : (
+          <svg viewBox="370 60 270 280" style={{ width: "100%", maxHeight: 320, display: "block" }} xmlns="http://www.w3.org/2000/svg">
+            {Object.entries(EU_COUNTRIES).map(([cc, { d, cx, cy, name }]) => {
+              const isHov = hovered === cc;
+              const hasEU = euBills.length > 0;
+              const euPassed = euBills.some(b => b.status === "passed");
+              const fill = hasEU ? (euPassed ? "#DCEAD0" : "#FCEBC8") : COLORS.surface;
+              const stroke = hasEU ? (euPassed ? "#3F6B1F" : "#8C5A0B") : "#2A2A28";
+              return (
+                <g key={cc} onMouseEnter={() => setHovered(cc)} onMouseLeave={() => setHovered(null)}>
+                  <path d={d}
+                    fill={isHov ? COLORS.accentLight : fill}
+                    stroke={isHov ? COLORS.accent : stroke}
+                    strokeWidth={isHov ? 1.4 : (hasEU ? 0.9 : 0.6)}
+                    strokeLinejoin="round"
+                    style={{ transition: "fill 0.15s, stroke 0.15s", cursor: "default" }} />
+                  {hasEU && (
+                    <text x={cx} y={cy + 2.5} textAnchor="middle"
+                      fontSize="6.5" fontFamily="'IBM Plex Mono', monospace" fontWeight="700"
+                      fill={euPassed ? "#27500A" : "#7A4A0B"} pointerEvents="none">{cc}</text>
+                  )}
+                  <title>{name}{hasEU ? " — EU regulation applies" : ""}</title>
+                </g>
+              );
+            })}
+            {euBills.length > 0 && (
+              <text x="505" y="78" textAnchor="middle"
+                fontSize="10" fontFamily="'IBM Plex Mono', monospace" fontWeight="600"
+                fill={euBills.some(b => b.status === "passed") ? "#27500A" : "#7A4A0B"}>
+                EU-wide: {euBills.filter(b => b.status === "passed").length} passed · {euBills.filter(b => b.status === "proposed").length} proposed
+              </text>
+            )}
+          </svg>
+        )}
+
+        {/* Hover tooltip */}
+        {hovered && (coverage[hovered] || (view === "eu" && EU_COUNTRIES[hovered])) && (
+          <div style={{ position: "absolute", bottom: 14, left: 18, background: COLORS.surface, border: `1px solid ${COLORS.border}`, borderRadius: 8, padding: "7px 12px", fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, boxShadow: "0 2px 12px rgba(0,0,0,0.08)", pointerEvents: "none", zIndex: 10 }}>
+            {view === "us" && coverage[hovered] && (
+              <>
+                <b style={{ color: COLORS.text }}>{STATE_NAMES[hovered] || hovered}</b>
+                {" — "}
+                {coverage[hovered].passed > 0 && <span style={{ color: "#27500A" }}>{coverage[hovered].passed} passed</span>}
+                {coverage[hovered].passed > 0 && coverage[hovered].proposed > 0 && " · "}
+                {coverage[hovered].proposed > 0 && <span style={{ color: "#7A4A0B" }}>{coverage[hovered].proposed} proposed</span>}
+              </>
+            )}
+            {view === "eu" && EU_COUNTRIES[hovered] && (
+              <>
+                <b style={{ color: COLORS.text }}>{EU_COUNTRIES[hovered].name}</b>
+                {euBills.length > 0 ? " — EU-wide regulation applies" : ""}
+              </>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Legend */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 14, padding: "9px 16px", borderTop: `1px solid ${COLORS.border}`, background: COLORS.surfaceAlt, fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: COLORS.textMid }}>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+          <span style={{ width: 14, height: 10, background: "#DCEAD0", border: "1px solid #3F6B1F", borderRadius: 2 }}/> Passed
+        </span>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+          <span style={{ width: 14, height: 10, background: "#FCEBC8", border: "1px solid #8C5A0B", borderRadius: 2 }}/> Proposed
+        </span>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+          <span style={{ width: 14, height: 10, background: COLORS.surface, border: `1px solid #2A2A28`, borderRadius: 2 }}/> No bills
+        </span>
+        {fedBills.length > 0 && view === "us" && (
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+            <span style={{ width: 14, height: 10, background: "transparent", border: `1.5px ${fedBills.some(b => b.status === "passed") ? "solid" : "dashed"} ${fedBills.some(b => b.status === "passed") ? "#3F6B1F" : "#8C5A0B"}`, borderRadius: 2 }}/> Federal
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ─── Legislation section component ───
 function LegislationSection({ chem }) {
   const [filter, setFilter] = useState("all");
@@ -4339,6 +4612,7 @@ function LegislationSection({ chem }) {
 
   return (
     <Section label="Legislation & regulatory action">
+      <LegMap legislation={bills} />
       <div style={{ background: COLORS.surfaceAlt, borderRadius: 12, border: `1px solid ${COLORS.border}`, overflow: "hidden" }}>
         {/* Filter tabs */}
         <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "12px 16px", borderBottom: `1px solid ${COLORS.border}`, flexWrap: "wrap" }}>
