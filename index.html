@@ -1189,6 +1189,218 @@ const CURATED_DB = {
   links:[{t:"EWG Sunscreen Guide",u:"https://www.ewg.org/sunscreen/"},{t:"Endocrine Society EDCs",u:"https://www.endocrine.org/topics/edc/what-edcs-are/common-edcs"},{t:"NOAA coral and sunscreen",u:"https://oceanservice.noaa.gov/news/sunscreen-702.html"}],
   legislation:[{st:"HI",bill:"SB 2571",status:"passed",title:"Hawaii banned sale of sunscreens containing oxybenzone and octinoxate (2018, effective 2021)"},{st:"USVI",bill:"Act 8186",status:"passed",title:"US Virgin Islands banned oxybenzone, octinoxate, and octocrylene in sunscreens (2020)"},{st:"Palau",bill:"National law",status:"passed",title:"Palau banned reef-toxic sunscreen chemicals (2020)"},{st:"EU",bill:"SCCS opinion",status:"proposed",title:"EU Scientific Committee on Consumer Safety reviewing concentration limits for several UV filters"}]
 },
+"melamine": {
+  name:"Melamine", aka:["Cyanuramide","Triaminotriazine","2,4,6-Triamino-1,3,5-triazine"],
+  cas:"108-78-1",
+  chemClass:{name:"Triazine compounds",def:"A nitrogen-rich organic compound used to make melamine-formaldehyde resin (dishware, laminates, wood-composite adhesives), flame retardants, and fertilizers. Detected in 62-92% of US breast milk samples (TFF 2026 Nature study). Notorious for the 2008 Chinese infant formula scandal that sickened 300,000 babies and killed 6 — the result of fraudulent protein-content padding."},
+  desc:"A nitrogen-rich industrial chemical that became infamous in 2008 when Chinese manufacturers fraudulently added it to infant formula to fake higher protein content — sickening over 300,000 babies and killing at least 6 from kidney failure and stones. Melamine is used legitimately to make dishware (the hard plastic plates and bowls labeled melamine), kitchen laminates, wood composite adhesives, flame retardants, and slow-release fertilizers. The 2026 TFF/Nature breast milk study detected melamine in 62-92% of US breast milk samples (median 0.48 ng/mL) — pointing to widespread exposure from food contact materials and dishware. Combined with cyanuric acid, melamine forms insoluble crystals that cause kidney damage at much lower doses than either chemical alone.",
+  formula:"C3H6N6", molWeight:"126.12",
+  structure:null,
+  toxicity:[
+    {label:"Kidney damage",val:"Forms insoluble crystals (melamine-cyanurate) in kidney tubules. Causes kidney stones, urinary tract obstruction, and acute kidney failure. The 2008 Chinese infant formula scandal sickened 300,000+ babies with kidney stones and caused at least 6 deaths."},
+    {label:"Synergistic with cyanuric acid",val:"Melamine alone has limited absorption, but combined with cyanuric acid (also detected in breast milk and pool water) forms highly insoluble crystals that cause nephrotoxicity at much lower doses. This combination caused the 2007 US pet food deaths from Chinese wheat gluten adulteration."},
+    {label:"Widespread exposure",val:"Detected in 62-92% of US breast milk samples (TFF/Nature 2026). Migrates from melamine dishware into hot/acidic foods. Found in 77% of Iranian breast milk samples (2025 systematic review). Children using melamine dishware show higher urinary melamine levels."},
+    {label:"Bladder cancer (animals)",val:"Long-term high-dose exposure causes bladder cancer in rats. IARC Group 2B (possibly carcinogenic to humans). Mechanism involves urinary stone formation rather than direct DNA damage."}
+  ],
+  gs:{bm:2,label:"Benchmark 2 — Use but search for safer alternatives",detail:"BM-2 based on kidney toxicity (especially in synergy with cyanuric acid), widespread breast milk and infant exposure, and IARC 2B classification. The lessons of the 2008 infant formula scandal remain relevant for food contact materials."},
+  parents:["Urea (manufacturing precursor)","Cyanamide"],
+  children:["Melamine-formaldehyde resin","Melamine cyanurate (kidney crystal)"],
+  products:[{name:"Melamine dishware (plates, bowls, cups)",status:"partial",note:"FDA recommends not microwaving melamine dishware. EU restricts migration limits."},{name:"Infant formula (illegal adulterant)",status:"banned",note:"Banned globally as food adulterant after 2008 China scandal"},"Kitchen laminates and countertops","Wood composite adhesives (MUF resins)","Flame retardants (melamine cyanurate)","Slow-release fertilizers","Fire-resistant fabrics (treated)","Whiteboard surfaces"],
+  func:"Used as a monomer to make melamine-formaldehyde resin — a hard, heat-resistant plastic. Also functions as a nitrogen source in fertilizers and a flame retardant via gas-phase nitrogen release.",
+  saferAlternatives:[
+    {context:"Dishware",alt:"Glass, ceramic, stainless steel, BPA-free polypropylene",note:"Avoid heating food on melamine dishware. Use glass or ceramic for hot foods and microwaving."},
+    {context:"Food contact materials",alt:"Glass, stainless steel, silicone, paper-based packaging",note:"For infants and children especially, avoid melamine dishware for hot foods."}
+  ],
+  altSource:"FDA melamine guidance, TFF research",
+  links:[{t:"TFF breast milk study (2026)",u:"https://toxicfreefuture.org/research/endocrine-disrupting-plastic-chemicals-in-breast-milk/"},{t:"Nature peer-reviewed study",u:"https://www.nature.com/articles/s41370-026-00844-z"},{t:"FDA melamine info",u:"https://www.fda.gov/food/chemicals/melamine-pet-food"},{t:"IARC melamine",u:"https://monographs.iarc.who.int/wp-content/uploads/2018/06/mono119.pdf"}],
+  legislation:[{st:"Global",bill:"Codex Alimentarius",status:"passed",title:"International maximum limits: 1 mg/kg in infant formula, 2.5 mg/kg in other foods (2010)"},{st:"US",bill:"FDA guidance",status:"passed",title:"FDA set 1 ppm tolerable intake for infant formula (2008)"},{st:"EU",bill:"Regulation 10/2011",status:"passed",title:"EU restricts melamine migration from food contact materials to 2.5 mg/kg"}]
+},
+"cyanuric acid": {
+  name:"Cyanuric acid", aka:["1,3,5-Triazine-2,4,6-triol","Isocyanuric acid","CYA"],
+  cas:"108-80-5",
+  chemClass:{name:"Triazine compounds",def:"A chemical used to stabilize chlorine in swimming pools, as a slow-release nitrogen fertilizer, and as a precursor to melamine resin. Detected in 84% of US breast milk samples. The combination of cyanuric acid with melamine is significantly more toxic to kidneys than either chemical alone — this combination caused the 2007 US pet food deaths."},
+  desc:"The chemical you swim in if you have a pool. Cyanuric acid (also called pool stabilizer or pool conditioner) protects swimming pool chlorine from UV degradation, allowing pool chemicals to last longer in sunlight. It is also a slow-release nitrogen fertilizer, a precursor to melamine resin manufacturing, and a structural intermediate in many products. The 2026 TFF/Nature breast milk study detected cyanuric acid in 84% of US breast milk samples (median 0.59 ng/mL) — higher than melamine detection rates. The exposure routes include pool water absorption, food contact materials, and unknown sources. When combined with melamine, cyanuric acid forms insoluble crystals that cause kidney damage at doses where either chemical alone would be safer — this synergistic combination caused the 2007 US pet food deaths from Chinese wheat gluten adulteration.",
+  formula:"C3H3N3O3", molWeight:"129.07",
+  structure:null,
+  toxicity:[
+    {label:"Synergistic kidney toxicity",val:"Cyanuric acid alone has relatively low toxicity, but combined with melamine forms melamine-cyanurate crystals in kidney tubules — causing nephrotoxicity at doses where either chemical alone would not. This is the mechanism that killed thousands of US pets in 2007."},
+    {label:"Widespread exposure",val:"Detected in 84% of US breast milk samples (TFF/Nature 2026). Found in 84% of Iranian breast milk samples. Pool swimmers absorb cyanuric acid through skin and inhalation. Cumulative pool exposure leads to detectable urinary levels."},
+    {label:"Pool water contamination",val:"Levels in heavily stabilized pools can exceed 100 ppm, beyond CDC and WHO recommended maximums of 90 ppm. High cyanuric acid reduces chlorine effectiveness against pathogens — creating both chemical exposure and biological hazards."},
+    {label:"Ecological",val:"Persistent in water. Discharge from pools and agricultural runoff contaminates surface water. Slowly biodegrades but accumulates in heavily-used water systems."}
+  ],
+  gs:{bm:2,label:"Benchmark 2 — Use but search for safer alternatives",detail:"BM-2 based on synergistic kidney toxicity with melamine and widespread breast milk detection. Pool exposure is a major route. Alone, cyanuric acid has lower hazard than melamine — the combination is the key concern."},
+  parents:["Urea (manufacturing)","Cyanic acid"],
+  children:["Melamine cyanurate","Trichloroisocyanuric acid (pool chlorine tablets)"],
+  products:["Pool chlorine stabilizer (conditioner)","Trichloroisocyanuric acid pool tablets","Slow-release fertilizers","Melamine resin precursor","Industrial cleaning products","Cosmetics (preservative ingredient)"],
+  func:"Stabilizes hypochlorite (chlorine) in pool water against UV degradation. Also serves as a nitrogen source in fertilizers and an industrial chemical intermediate.",
+  saferAlternatives:[
+    {context:"Pool sanitation",alt:"Salt-chlorine generators with low stabilizer, UV sanitizers, ozone systems, mineral sanitizers (silver/copper)",note:"Salt chlorine generators reduce stabilizer needs. UV and ozone systems can reduce chlorine demand. CDC recommends keeping cyanuric acid below 90 ppm."},
+    {context:"Outdoor pools",alt:"Maintain 30-50 ppm cyanuric acid range, never exceed 90 ppm",note:"Lower stabilizer levels mean better sanitization. Test regularly and partially drain pools when cyanuric acid creeps too high."}
+  ],
+  altSource:"CDC pool water guidance, WHO recreational water standards",
+  links:[{t:"TFF breast milk study (2026)",u:"https://toxicfreefuture.org/research/endocrine-disrupting-plastic-chemicals-in-breast-milk/"},{t:"Nature peer-reviewed study",u:"https://www.nature.com/articles/s41370-026-00844-z"},{t:"CDC pool chemicals",u:"https://www.cdc.gov/healthywater/swimming/pdf/operating-public-pools-fact-sheet.pdf"}]
+},
+"carbon black": {
+  name:"Carbon black", aka:["Furnace black","Channel black","Lamp black","Pigment black 7","C.I. 77266"],
+  cas:"1333-86-4",
+  chemClass:{name:"Carbonaceous pigments",def:"Nearly pure elemental carbon in the form of fine particles produced by incomplete combustion of hydrocarbons. The world's most widely used black pigment — found in tire rubber (the largest use), inks, coatings, plastics, and cosmetics (mascara, eyeliner). IARC Group 2B (possibly carcinogenic to humans) when inhaled."},
+  desc:"The pigment that makes tires, mascara, and printer toner black. Carbon black is produced by burning oil or natural gas in controlled conditions, creating extremely fine carbon particles. It is one of the top 50 highest-volume chemicals produced globally, with ~70% going into tire manufacturing. Carbon black is also a major cosmetic ingredient — found in nearly all mascara, eyeliner, eye shadow, and many tattoo inks. The California Safe Cosmetics Program identifies carbon black as a frequently-reported cosmetic ingredient. IARC classifies carbon black as Group 2B (possibly carcinogenic) based on lung cancer in workers chronically exposed to high airborne concentrations. The concern is primarily occupational, but nano-scale carbon black raises emerging questions about cosmetic exposure.",
+  formula:"C", molWeight:"12.01",
+  structure:null,
+  toxicity:[
+    {label:"Cancer (occupational)",val:"IARC Group 2B (possibly carcinogenic to humans) by inhalation. Lung cancer documented in carbon black production workers. The risk applies to long-term high-concentration airborne exposure — primarily occupational, not consumer."},
+    {label:"Respiratory effects",val:"Inhaled carbon black causes inflammation, reduced lung function, and pneumoconiosis-like changes in workers. Carbon black anthracosis (lung blackening) is a documented occupational disease."},
+    {label:"Nanoparticle concerns",val:"Modern carbon blacks include nanoscale particles (under 100 nm) that may cross biological barriers more readily. Nano-carbon black in mascara is under investigation for potential ocular and dermal absorption."},
+    {label:"Ecological",val:"Carbon black persists in the environment as fine particulate matter. Tire wear particles (containing carbon black) are a major source of microplastic and microparticle pollution in waterways."}
+  ],
+  gs:{bm:2,label:"Benchmark 2 — Use but search for safer alternatives",detail:"BM-2 — IARC Group 2B carcinogen by inhalation. Primary concern is occupational. Consumer exposure through cosmetics is generally low but nanoparticle forms warrant ongoing study. CSCP frequently-reported ingredient."},
+  parents:["Petroleum/natural gas (feedstock)","Aromatic hydrocarbons"],
+  children:["Carbon nanoparticles","Tire wear particles"],
+  products:[{name:"Tire rubber",status:"partial",note:"70% of carbon black goes to tires. Tire wear is a major source of microparticle pollution."},{name:"Mascara, eyeliner, eye shadow",status:"partial",note:"CSCP frequently-reported cosmetic ingredient. Prop 65 lists airborne unbound carbon black."},"Printing inks and toner","Plastics (UV protection, conductive)","Paint and coatings","Tattoo inks","Battery electrodes","Cable jacketing (electrical conductivity)"],
+  func:"Provides black coloration, UV protection (in plastics), electrical conductivity (in batteries and cables), and reinforcement (in rubber). The reinforcement of tire rubber is the largest application.",
+  manufacturers:[{name:"Cabot Corporation",note:"Largest US carbon black producer. Major global supplier."},{name:"Birla Carbon",note:"World's largest carbon black producer (India-based, Aditya Birla Group)."},{name:"Orion Engineered Carbons",note:"Major European/global carbon black producer (Luxembourg-based)."},{name:"Continental Carbon",note:"Major US carbon black producer."}],
+  saferAlternatives:[
+    {context:"Cosmetic black pigment",alt:"Iron oxide black (CI 77499), vegetable charcoal",note:"Iron oxide blacks are non-carcinogenic mineral pigments widely used in clean beauty brands."},
+    {context:"Tattoo inks",alt:"Vegan inks with iron oxide or vegetable carbon",note:"Several tattoo ink brands now offer carbon-black-free options."}
+  ],
+  altSource:"CSCP, EWG Skin Deep, clean beauty industry standards",
+  links:[{t:"IARC carbon black",u:"https://monographs.iarc.who.int/wp-content/uploads/2018/06/mono93.pdf"},{t:"CSCP database",u:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},{t:"OSHA carbon black",u:"https://www.osha.gov/chemicaldata/643"}]
+},
+"toluene": {
+  name:"Toluene", aka:["Methylbenzene","Phenylmethane","Toluol"],
+  cas:"108-88-3",
+  chemClass:{name:"Aromatic hydrocarbons (BTEX)",def:"A volatile aromatic solvent. Part of the BTEX group (Benzene, Toluene, Ethylbenzene, Xylene) found in gasoline and crude oil. Used as a solvent in paint thinners, nail polish, adhesives, and rubber. A known reproductive toxicant and neurotoxicant. California Prop 65 listed as developmental toxicant. Common in nail salons — a major occupational health concern."},
+  desc:"The solvent in nail polish that makes it brushable, paint thinner that makes it spread, and gasoline that makes your car go. Toluene is a colorless aromatic hydrocarbon used as an industrial solvent and in countless consumer products. Nail salon workers — predominantly women, often immigrants — face among the highest occupational toluene exposures, alongside formaldehyde and dibutyl phthalate (the toxic trio of nail products). Toluene is a confirmed developmental toxicant: prenatal exposure causes a fetal alcohol syndrome-like condition called fetal solvent syndrome (formerly fetal toluene syndrome). The California Safe Cosmetics Program frequently identifies toluene as a reported cosmetic ingredient, particularly in nail products and hair dyes.",
+  formula:"C7H8", molWeight:"92.14",
+  structure:null,
+  toxicity:[
+    {label:"Developmental",val:"California Prop 65 listed developmental toxicant. Prenatal exposure causes fetal solvent syndrome — facial abnormalities, growth deficiency, intellectual disability. Risk is highest from chronic occupational exposure during pregnancy."},
+    {label:"Neurotoxicity",val:"Acute exposure causes headache, dizziness, confusion, and intoxication (toluene huffing). Chronic exposure causes permanent cognitive impairment, memory loss, hearing loss, and visual deficits. Nail salon workers commonly report symptoms."},
+    {label:"Reproductive",val:"Spontaneous abortion linked to occupational exposure. Menstrual irregularities in nail salon workers. Male reproductive effects (reduced sperm count) at higher exposure levels."},
+    {label:"Ecological",val:"Volatile organic compound (VOC) — contributes to ground-level ozone and smog formation. Acute aquatic toxicity. Major component of urban air pollution from gasoline emissions."}
+  ],
+  gs:{bm:1,label:"Benchmark 1 — Avoid",detail:"BM-1 based on Prop 65 developmental toxicity listing, neurotoxicity, and reproductive effects. CSCP frequently-reported cosmetic ingredient. Nail salon workers face the highest exposure burden — an environmental justice concern."},
+  parents:["Crude oil (petroleum)","Coal tar (historical source)"],
+  children:["Benzene (metabolite)","Toluene diisocyanate (TDI — polyurethane precursor)"],
+  products:[{name:"Nail polish",status:"abandoned",note:"Major brands removed toluene from nail polish (toxic trio removal). Still found in some products. Look for 3-free, 5-free, or 10-free labeling."},{name:"Cosmetics",status:"partial",note:"CSCP frequently-reported ingredient. Some hair dyes still contain toluene. WA Toxic-Free Cosmetics Act does not specifically ban toluene."},"Paint thinners","Adhesives and rubber cement","Gasoline (8-22% in many blends)","Industrial solvents","Lacquers and coatings","Manufacture of TDI for polyurethane","Octane booster in fuel"],
+  func:"Solvent for paints, lacquers, adhesives, and nail products. Octane booster in gasoline. Industrial intermediate for benzene, TDI, and other chemicals. Valued for its ability to dissolve a wide range of organic compounds.",
+  saferAlternatives:[
+    {context:"Nail polish",alt:"Water-based nail polish, 7-free or 10-free formulations (toluene, formaldehyde, DBP, etc. excluded)",note:"Major brands (Sally Hansen, Zoya, OPI) offer toluene-free lines. Look for 5-free, 7-free, 10-free, or 21-free labeling."},
+    {context:"Paint thinning",alt:"Citrus-based solvents (d-limonene), mineral spirits with lower aromatic content, water-based paints",note:"Water-based latex paints avoid the need for toluene-containing thinners entirely."},
+    {context:"Nail salon practices",alt:"Ventilation requirements, nitrile gloves, masks, EPA Safer Choice products",note:"OSHA recommends local exhaust ventilation for nail salons. California has nail salon worker protection programs."}
+  ],
+  altSource:"California Healthy Nail Salon Collaborative, CSCP, EWG",
+  links:[{t:"CSCP database",u:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},{t:"OEHHA toluene",u:"https://oehha.ca.gov/proposition-65/chemicals/toluene"},{t:"ATSDR toluene",u:"https://www.atsdr.cdc.gov/toxprofiles/tp56.pdf"},{t:"CA Healthy Nail Salon",u:"https://www.cahealthynailsalons.org/"}],
+  legislation:[{st:"CA",bill:"Prop 65",status:"passed",title:"California Prop 65 listed toluene as developmental toxicant (1991)"},{st:"CA",bill:"Various",status:"passed",title:"California Healthy Nail Salon Recognition Program incentivizes toluene-free salons"}]
+},
+"coal tar": {
+  name:"Coal tar", aka:["Coal tar pitch","Coal tar solution","Crude coal tar","Pix carbonis","Coal tar distillate"],
+  cas:"8007-45-2",
+  chemClass:{name:"Coal-derived complex mixtures",def:"A black, viscous byproduct of coal carbonization (coke production). Contains thousands of compounds including polycyclic aromatic hydrocarbons (PAHs), benzene, toluene, phenol, cresols, and naphthalene — many of them carcinogens. IARC Group 1 (definite human carcinogen). Used in dandruff shampoo, psoriasis treatment, hair dyes, sealcoating, and wood preservation. Banned in cosmetics in the EU but still used in OTC drugs in the US."},
+  desc:"A black tar made as a byproduct of coal coke manufacturing — used for over a century in medicinal shampoos to treat dandruff and psoriasis, even though it is an IARC Group 1 confirmed human carcinogen. Coal tar contains thousands of compounds, dozens of which are themselves listed carcinogens including benzene, naphthalene, and benzo(a)pyrene. The therapeutic use exploits coal tar's anti-inflammatory and anti-mitotic effects on skin — but this means deliberately applying a carcinogenic mixture to broken or inflamed skin. The CSCP frequently reports coal tar in over-the-counter dandruff shampoos (Neutrogena T/Gel, Denorex, MG217). The EU banned coal tar in cosmetics entirely; the FDA continues to allow it as an active ingredient in OTC drugs at concentrations up to 5%.",
+  formula:"Complex mixture", molWeight:"Varies",
+  structure:null,
+  toxicity:[
+    {label:"Cancer (Group 1)",val:"IARC Group 1 confirmed human carcinogen. Causes skin, scrotal, lung, and bladder cancer in workers chronically exposed (occupational use in roofing, paving, aluminum smelting). Topical pharmaceutical use is debated — limited population data."},
+    {label:"PAH content",val:"Contains polycyclic aromatic hydrocarbons (PAHs) including benzo(a)pyrene, benzo(a)anthracene, and chrysene — all genotoxic carcinogens. PAH absorption from coal tar shampoos has been documented in users."},
+    {label:"Photosensitization",val:"Coal tar causes phototoxicity — increases skin sensitivity to UV radiation and significantly elevates skin cancer risk in sun-exposed users. Patients are warned to avoid sun exposure during treatment."},
+    {label:"Reproductive",val:"California Prop 65 listed for developmental and reproductive toxicity. Pregnant women advised against use."}
+  ],
+  gs:{bm:1,label:"Benchmark 1 — Avoid",detail:"BM-1 — IARC Group 1 confirmed human carcinogen. EU banned in cosmetics. US FDA continues to allow in OTC drugs at up to 5%, which is increasingly questioned. CSCP frequently-reported ingredient."},
+  parents:["Coal","Bituminous coal carbonization"],
+  children:["Naphthalene","Benzene","Benzo(a)pyrene","Creosote (related coal-tar product)","PAHs"],
+  products:[{name:"Cosmetics (EU)",status:"banned",note:"EU Cosmetic Regulation prohibits coal tar in cosmetic products"},"Anti-dandruff shampoo (Neutrogena T/Gel, Denorex, MG217)","Psoriasis treatment (topical)","Hair dye (some formulations)","Pavement sealcoating","Wood preservative (creosote)","Roofing materials","Aluminum smelter anode binder"],
+  func:"As pharmaceutical: anti-inflammatory and anti-proliferative effects on skin cells make it effective for psoriasis and dandruff. As industrial product: binder for paving, roofing, and wood preservation; carbon source for aluminum smelting.",
+  manufacturers:[{name:"Johnson & Johnson (Neutrogena T/Gel)",note:"Major OTC coal tar shampoo brand"},{name:"Combe Inc. (Denorex)",note:"Coal tar shampoo manufacturer"},{name:"Triton Consumer Products (MG217)",note:"Coal tar psoriasis and dandruff product line"},{name:"Koppers Inc.",note:"Major US coal tar pitch and creosote producer"},{name:"Rütgers (now Rain Carbon)",note:"Major European coal tar refiner"}],
+  saferAlternatives:[
+    {context:"Dandruff",alt:"Ketoconazole (Nizoral), zinc pyrithione (Head & Shoulders), selenium sulfide (Selsun Blue), salicylic acid",note:"Multiple effective non-carcinogenic anti-dandruff active ingredients are FDA-approved and widely available."},
+    {context:"Psoriasis",alt:"Topical calcipotriene, corticosteroids, calcineurin inhibitors, UVB phototherapy, biologic medications",note:"Modern psoriasis treatments are more effective and avoid carcinogenic exposure. Coal tar use has declined dramatically."},
+    {context:"Pavement sealcoating",alt:"Asphalt-based sealcoat (replaces coal-tar sealcoat)",note:"Coal-tar sealcoat contains 1,000x more PAHs than asphalt-based sealcoat. Multiple states and cities have banned coal-tar pavement sealants."}
+  ],
+  altSource:"EU Cosmetic Regulation, multiple state/local sealcoat bans",
+  links:[{t:"CSCP database",u:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},{t:"IARC coal-tar pitch",u:"https://monographs.iarc.who.int/wp-content/uploads/2018/06/mono100F-15.pdf"},{t:"NTP coal tars",u:"https://ntp.niehs.nih.gov/sites/default/files/ntp/roc/content/profiles/coaltars.pdf"},{t:"USGS sealcoat PAHs",u:"https://www.usgs.gov/centers/upper-midwest-water-science-center/science/coal-tar-based-pavement-sealcoat"}],
+  legislation:[{st:"EU",bill:"Reg 1223/2009",status:"passed",title:"EU Cosmetic Regulation prohibits coal tar in cosmetics"},{st:"CA",bill:"Prop 65",status:"passed",title:"California Prop 65 listed coal tars as carcinogens (1988)"},{st:"WA",bill:"Local ordinances",status:"passed",title:"Washington (multiple cities), Minnesota, DC, NY have banned coal-tar pavement sealcoat"}]
+},
+"retinyl palmitate": {
+  name:"Retinyl palmitate (Vitamin A palmitate)", aka:["Retinyl palmitate","Vitamin A palmitate","Vitamin A ester","Retinol palmitate"],
+  cas:"79-81-2",
+  chemClass:{name:"Vitamin A esters",def:"An ester form of vitamin A (retinol) bound to palmitic acid. The most stable form of vitamin A — used as a food fortification additive, in dietary supplements, and ubiquitously in anti-aging cosmetics. Topical retinyl palmitate accelerates skin tumor development under UV light in animal studies — raising particular concern when used in sunscreens, daytime moisturizers, and lip products marketed for sun-exposed use. CSCP frequently-reported ingredient."},
+  desc:"The most common form of vitamin A in cosmetics — found in anti-aging creams, moisturizers, sunscreens, and lip balms. While vitamin A is essential for health when consumed orally in normal amounts, topical retinyl palmitate raises specific concerns: NIH/NTP studies showed it accelerates skin tumor formation under UV exposure in animal models, suggesting it may worsen rather than prevent sun damage. The CSCP frequently reports retinyl palmitate as a cosmetic ingredient — particularly concerning given its widespread inclusion in sunscreens, where the very purpose is daytime sun exposure. EWG has flagged retinyl palmitate in sunscreens as a top concern for over a decade. The science is debated, but the precautionary case for avoidance in sun-exposed products is strong.",
+  formula:"C36H60O2", molWeight:"524.86",
+  structure:null,
+  toxicity:[
+    {label:"Photo-carcinogenicity",val:"NIH/NTP animal studies showed accelerated skin tumor formation in mice topically exposed to retinyl palmitate plus UV radiation. The findings led EWG to recommend avoiding retinyl palmitate in daytime sun-exposed products."},
+    {label:"Developmental (oral high dose)",val:"Oral high-dose vitamin A is a known teratogen (causes birth defects). The CIR (Cosmetic Ingredient Review) found topical doses generally safe but cautions during pregnancy. Some derivatives (retinoic acid) are explicit teratogens (Accutane class)."},
+    {label:"Reproductive",val:"California Prop 65 listed retinol and retinyl esters in 2022 for developmental toxicity at high oral doses. Topical risk is lower but pregnant women are advised to limit topical vitamin A use."},
+    {label:"Irritation",val:"Common skin irritation, redness, and peeling. Increases skin sensitivity to UV radiation regardless of any cancer concerns."}
+  ],
+  gs:{bm:2,label:"Benchmark 2 — Use but search for safer alternatives",detail:"BM-2 based on photo-carcinogenicity concerns (especially in sun-exposed products) and Prop 65 developmental toxicity listing. Use in non-sun-exposed products (nighttime retinol) is less concerning than daytime use."},
+  parents:["Vitamin A (retinol)","Palmitic acid"],
+  children:["Retinol","Retinoic acid (active metabolite)"],
+  products:[{name:"Sunscreen",status:"abandoned",note:"EWG has advocated against retinyl palmitate in sunscreens for over a decade. Many major brands have removed it. Look for retinyl-palmitate-free SPF products."},{name:"Anti-aging creams and serums",status:"partial",note:"CSCP frequently-reported cosmetic ingredient. CA Prop 65 listed (2022)."},"Lip balm and lipstick","Moisturizers","Body lotion","Dietary supplements","Fortified milk and breakfast cereals (food use)"],
+  func:"In food: vitamin A fortification (essential nutrient). In cosmetics: marketed for anti-aging effects (collagen stimulation, exfoliation, reduced fine lines). Skin penetration is limited but the metabolite retinoic acid is biologically active.",
+  saferAlternatives:[
+    {context:"Anti-aging actives",alt:"Bakuchiol (plant-based retinol alternative), peptides, vitamin C (L-ascorbic acid), niacinamide",note:"Bakuchiol shows similar anti-aging effects without retinoid concerns. EWG-recommended alternatives widely available in clean beauty brands."},
+    {context:"Sunscreen",alt:"Mineral sunscreens (zinc oxide, titanium dioxide) without added retinyl palmitate",note:"Look for sunscreens with simple ingredient lists. EWG Sunscreen Guide rates products and avoids retinyl palmitate."}
+  ],
+  altSource:"EWG Skin Deep, NIH/NTP photocarcinogenicity studies",
+  links:[{t:"CSCP database",u:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},{t:"EWG retinyl palmitate",u:"https://www.ewg.org/sunscreen/report/the-trouble-with-vitamin-a/"},{t:"OEHHA retinol listing",u:"https://oehha.ca.gov/proposition-65/chemicals/retinol-retinyl-esters"}],
+  legislation:[{st:"CA",bill:"Prop 65",status:"passed",title:"California Prop 65 listed retinol and retinyl esters as developmental toxicants (2022)"}]
+},
+"ethanolamines": {
+  name:"Ethanolamines (DEA, TEA, MEA)", aka:["DEA","Diethanolamine","Cocamide DEA","TEA","Triethanolamine","MEA","Monoethanolamine","Lauramide DEA"],
+  cas:"111-42-2 (DEA), 102-71-6 (TEA), 141-43-5 (MEA)",
+  chemClass:{name:"Ethanolamine surfactants and pH adjusters",def:"A family of amine compounds — monoethanolamine (MEA), diethanolamine (DEA), and triethanolamine (TEA) — used as surfactants, emulsifiers, and pH adjusters in personal care products. DEA and its derivatives (cocamide DEA, lauramide DEA) are particularly concerning because they can react with nitrosating agents to form NDELA (nitrosodiethanolamine) — an IARC Group 2B carcinogen. The EU restricts DEA in cosmetics; the US allows continued use."},
+  desc:"A family of surfactants and pH adjusters in shampoo, soap, sunscreen, and shaving cream. The diethanolamine (DEA) form is the most concerning: it can react with nitrosating preservatives or formaldehyde releasers commonly found in the same products to form NDELA (N-nitrosodiethanolamine), an IARC Group 2B carcinogen. NDELA has been detected in cosmetic products even when DEA itself isn't listed as an ingredient (formed in the product during shelf life). The California Safe Cosmetics Program identifies cocamide DEA, DEA, and TEA as frequently-reported cosmetic ingredients. The EU restricted DEA in cosmetics to address nitrosamine formation; the US has no equivalent restriction.",
+  formula:"C4H11NO2 (DEA), C6H15NO3 (TEA), C2H7NO (MEA)", molWeight:"105.14 (DEA)",
+  structure:null,
+  toxicity:[
+    {label:"Cancer (nitrosamine formation)",val:"DEA and DEA-derivatives can react with nitrosating agents (sodium nitrite preservative, formaldehyde releasers) to form NDELA — IARC Group 2B (possibly carcinogenic). NDELA causes liver and kidney cancer in animal studies. Detection in cosmetic products has been documented."},
+    {label:"Cocamide DEA",val:"California OEHHA listed cocamide DEA as a Prop 65 carcinogen (2012). The listing prompted lawsuits against major shampoo manufacturers. Many brands reformulated to remove it."},
+    {label:"Skin sensitization",val:"TEA and MEA cause contact dermatitis and allergic reactions in sensitive individuals. Common contact allergens in personal care products."},
+    {label:"Ecological",val:"DEA and TEA are persistent in water and toxic to aquatic organisms at elevated concentrations. Wastewater contains residual DEA from personal care product use."}
+  ],
+  gs:{bm:2,label:"Benchmark 2 — Use but search for safer alternatives",detail:"BM-2 — DEA concerns relate to NDELA nitrosamine formation in cosmetic products. Cocamide DEA is Prop 65 listed. CSCP frequently-reported ingredient. EU restricts DEA in cosmetics; US does not."},
+  parents:["Ethylene oxide","Ammonia"],
+  children:["Cocamide DEA","Lauramide DEA","NDELA (nitrosamine byproduct)","TEA-lauryl sulfate"],
+  products:[{name:"Cocamide DEA in shampoo",status:"abandoned",note:"After CA Prop 65 listing (2012), many shampoo brands voluntarily removed cocamide DEA. Look for ingredient lists."},{name:"Cosmetics (EU)",status:"partial",note:"EU restricts DEA to address nitrosamine formation. US has no equivalent restriction."},"Shampoo and conditioner (TEA as pH adjuster)","Liquid hand soap","Shaving cream and gel","Sunscreen (TEA as emulsifier)","Body wash","Hair dye","Mascara"],
+  func:"Surfactants (cleansers and foaming agents), emulsifiers (helping water and oil mix), and pH adjusters in cosmetic and personal care formulations. DEA and TEA are versatile multi-functional ingredients.",
+  saferAlternatives:[
+    {context:"Surfactants (DEA replacement)",alt:"Cocamidopropyl betaine, decyl glucoside, lauryl glucoside, sodium cocoyl isethionate",note:"Mild plant-derived surfactants are widely used in clean beauty brands. EPA Safer Choice lists several alternatives."},
+    {context:"pH adjusters (TEA replacement)",alt:"Citric acid, sodium hydroxide, sodium citrate",note:"Simple inorganic and organic acid/base pH adjusters avoid amine chemistry concerns."},
+    {context:"Whole product alternatives",alt:"Castile soap (Dr. Bronner\'s style), syndet bars without DEA/TEA, EWG VERIFIED products",note:"EWG VERIFIED program certifies products free of major chemicals of concern including ethanolamines."}
+  ],
+  altSource:"EWG Skin Deep, EPA Safer Choice, EU Cosmetic Regulation",
+  links:[{t:"CSCP database",u:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},{t:"OEHHA cocamide DEA",u:"https://oehha.ca.gov/proposition-65/chemicals/cocamide-diethanolamine"},{t:"EWG ethanolamines",u:"https://www.ewg.org/skindeep/ingredients/702434-DIETHANOLAMINE/"}],
+  legislation:[{st:"CA",bill:"Prop 65",status:"passed",title:"California Prop 65 listed cocamide DEA as carcinogen (2012)"},{st:"EU",bill:"Reg 1223/2009 Annex III",status:"passed",title:"EU Cosmetic Regulation restricts DEA in cosmetic products"}]
+},
+"peg compounds": {
+  name:"PEG compounds (Polyethylene glycols)", aka:["PEG","PPG","Polyethylene glycol","Polypropylene glycol","Polyoxyethylene","Polysorbate","Ceteareth","Laureth","Steareth"],
+  cas:"25322-68-3 (PEG generic)",
+  chemClass:{name:"Polyethylene/polypropylene glycols",def:"A vast family of polymers made by ethoxylation — reacting ethylene oxide (or propylene oxide) with various base molecules. Used as emulsifiers, surfactants, thickeners, humectants, and penetration enhancers in cosmetics, pharmaceuticals, and food. The contamination concern is ethylene oxide (IARC Group 1) and 1,4-dioxane (IARC Group 2B) — manufacturing byproducts that can remain in finished products unless removed by vacuum stripping. CSCP frequently-reported ingredient class."},
+  desc:"A family of ingredients found in thousands of cosmetics and personal care products — typically listed with numbers indicating molecular size (PEG-40, PEG-100, etc.) or as ethoxylated derivatives (laureth-7, ceteareth-20, polysorbate 80). PEG compounds themselves are generally low-toxicity, but the manufacturing process uses ethylene oxide (IARC Group 1 known human carcinogen) and creates 1,4-dioxane (IARC Group 2B possibly carcinogenic) as a byproduct. Vacuum stripping removes most 1,4-dioxane, but tests by independent labs and government agencies regularly find detectable levels in finished cosmetic products. New York State enacted the first US 1,4-dioxane limit on cosmetics (10 ppm in 2022, 1 ppm in 2023). The CSCP frequently identifies PEG-related ingredients in cosmetics — they are among the most widely-used ingredient classes in the database.",
+  formula:"H(OCH2CH2)nOH (PEG)", molWeight:"Varies (200 to 10000+)",
+  structure:null,
+  toxicity:[
+    {label:"1,4-dioxane contamination",val:"Ethoxylation creates 1,4-dioxane as a byproduct. NY State testing found 1,4-dioxane in 80%+ of tested cosmetic products. IARC Group 2B carcinogen. EPA classifies as likely human carcinogen. Persistent water contaminant."},
+    {label:"Ethylene oxide residual",val:"Manufacturing uses ethylene oxide (IARC Group 1 known human carcinogen). Trace residuals in finished products are a quality concern but typically below detection in well-manufactured products."},
+    {label:"Penetration enhancement",val:"PEG ingredients increase skin penetration of other compounds — meaning they can enhance absorption of other ingredients in the product (including any contaminants). Important for sensitive areas like genital products and broken skin."},
+    {label:"Ecological",val:"1,4-dioxane is a persistent water contaminant. Found in groundwater near consumer product manufacturing facilities. Wastewater treatment does not effectively remove 1,4-dioxane."}
+  ],
+  gs:{bm:3,label:"Benchmark 3 — Use but identify safer alternatives",detail:"BM-3 — PEG compounds themselves are relatively low hazard, but 1,4-dioxane contamination is widespread. Vacuum-stripped, low-dioxane products are available. CSCP frequently-reported ingredient class."},
+  parents:["Ethylene oxide (manufacturing input)","Propylene oxide (PPG)"],
+  children:["1,4-dioxane (contaminant byproduct)","Ethylene oxide (manufacturing residual)"],
+  products:[{name:"Personal care (NY)",status:"partial",note:"NY State 1,4-dioxane limit: 10 ppm (2022), 1 ppm (2023). First US limit on dioxane in cosmetics."},"Shampoo and conditioner (laureth sulfate, etc.)","Body wash and liquid soap","Moisturizers and serums","Foundation and makeup primers","Sunscreen emulsifiers (PEG-40 castor oil)","Pharmaceutical excipients","Food emulsifiers (polysorbate 80, polysorbate 60)","Laundry detergent","Stool softeners (PEG 3350 — Miralax)"],
+  func:"Multifunctional ingredients: emulsifiers (helping water and oil mix), surfactants (cleansing), humectants (drawing water to skin), thickeners (texture), and penetration enhancers (helping other ingredients absorb). Their versatility makes them ubiquitous.",
+  saferAlternatives:[
+    {context:"Emulsifiers",alt:"Lecithin, beeswax, candelilla wax, plant-derived emulsifying wax (NF), cetearyl olivate",note:"Natural emulsifiers avoid ethoxylation chemistry. Cetearyl olivate (from olives) is widely used in clean beauty."},
+    {context:"Surfactants",alt:"Coco-glucoside, decyl glucoside, sodium cocoyl isethionate, castile soap",note:"Sugar-derived (glucoside) surfactants avoid both ethoxylation and DEA concerns."},
+    {context:"Whole product selection",alt:"EWG VERIFIED products, MADE SAFE certified products",note:"Third-party certifications (EWG VERIFIED, MADE SAFE) avoid PEG ingredients and ethoxylated compounds with 1,4-dioxane potential."}
+  ],
+  altSource:"NY State 1,4-dioxane regulation, EWG, MADE SAFE",
+  links:[{t:"CSCP database",u:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},{t:"EWG 1,4-dioxane",u:"https://www.ewg.org/research/1-4-dioxane"},{t:"NY 1,4-dioxane law",u:"https://www.dec.ny.gov/chemical/116307.html"},{t:"OEHHA 1,4-dioxane",u:"https://oehha.ca.gov/proposition-65/chemicals/14-dioxane"}],
+  legislation:[{st:"NY",bill:"S4389B",status:"passed",title:"New York 1,4-dioxane limit on cosmetics: 10 ppm (2022), 1 ppm (2023) — first US state limit"},{st:"CA",bill:"Prop 65",status:"passed",title:"California Prop 65 listed 1,4-dioxane as carcinogen (1988)"}]
+},
 "hydrogen": {
   name:"Hydrogen", aka:["H","H2"],
   cas:"1333-74-0",
@@ -3997,6 +4209,14 @@ Object.entries(CURATED_DB).forEach(([key, val]) => {
 });
 // Extra common search aliases
 const EXTRA_ALIASES = {
+  "melamine":"melamine","cyanuramide":"melamine","triaminotriazine":"melamine",
+  "cyanuric acid":"cyanuric acid","cya":"cyanuric acid","pool stabilizer":"cyanuric acid","isocyanuric acid":"cyanuric acid",
+  "carbon black":"carbon black","pigment black 7":"carbon black","furnace black":"carbon black","lamp black":"carbon black",
+  "toluene":"toluene","methylbenzene":"toluene","toluol":"toluene",
+  "coal tar":"coal tar","coal tar pitch":"coal tar","creosote":"coal tar","crude coal tar":"coal tar","pix carbonis":"coal tar",
+  "retinyl palmitate":"retinyl palmitate","vitamin a palmitate":"retinyl palmitate","retinol palmitate":"retinyl palmitate","retinol":"retinyl palmitate","vitamin a":"retinyl palmitate",
+  "ethanolamines":"ethanolamines","dea":"ethanolamines","diethanolamine":"ethanolamines","cocamide dea":"ethanolamines","tea":"ethanolamines","triethanolamine":"ethanolamines","mea":"ethanolamines","monoethanolamine":"ethanolamines","lauramide dea":"ethanolamines",
+  "peg":"peg compounds","peg compounds":"peg compounds","polyethylene glycol":"peg compounds","ppg":"peg compounds","polypropylene glycol":"peg compounds","laureth":"peg compounds","ceteareth":"peg compounds","steareth":"peg compounds","polysorbate":"peg compounds","polyoxyethylene":"peg compounds","1,4-dioxane":"peg compounds",
   "perchlorate":"perchlorate","ammonium perchlorate":"perchlorate","rocket fuel chemical":"perchlorate",
   "des":"diethylstilbestrol","diethylstilbestrol":"diethylstilbestrol","stilbestrol":"diethylstilbestrol",
   "vinclozolin":"vinclozolin","ronilan":"vinclozolin",
@@ -4310,279 +4530,6 @@ function Section({ label, children, style }) {
 // ─── State name lookup ───
 const STATE_NAMES = {US:"Federal",EU:"European Union",AL:"Alabama",AK:"Alaska",AZ:"Arizona",AR:"Arkansas",CA:"California",CO:"Colorado",CT:"Connecticut",DE:"Delaware",FL:"Florida",GA:"Georgia",HI:"Hawaii",ID:"Idaho",IL:"Illinois",IN:"Indiana",IA:"Iowa",KS:"Kansas",KY:"Kentucky",LA:"Louisiana",ME:"Maine",MD:"Maryland",MA:"Massachusetts",MI:"Michigan",MN:"Minnesota",MS:"Mississippi",MO:"Missouri",MT:"Montana",NE:"Nebraska",NV:"Nevada",NH:"New Hampshire",NJ:"New Jersey",NM:"New Mexico",NY:"New York",NC:"North Carolina",ND:"North Dakota",OH:"Ohio",OK:"Oklahoma",OR:"Oregon",PA:"Pennsylvania",RI:"Rhode Island",SC:"South Carolina",SD:"South Dakota",TN:"Tennessee",TX:"Texas",UT:"Utah",VT:"Vermont",VA:"Virginia",WA:"Washington",WV:"West Virginia",WI:"Wisconsin",WY:"Wyoming",DC:"Washington DC"};
 
-// ─── US state outline paths (line-drawing style, viewBox 0 0 960 600) ───
-const US_STATES = {
-  AL:{d:"M 524 379 L 537 379 L 540 432 L 524 454 L 516 454 L 513 432 Z",cx:527,cy:415},
-  AK:{d:"M 106 479 L 212 479 L 230 524 L 170 560 L 106 540 Z",cx:165,cy:515},
-  AZ:{d:"M 157 314 L 236 315 L 236 389 L 157 389 Z",cx:197,cy:351},
-  AR:{d:"M 476 341 L 537 338 L 537 379 L 476 381 Z",cx:507,cy:359},
-  CA:{d:"M 104 199 L 158 187 L 175 262 L 168 315 L 105 337 Z",cx:136,cy:268},
-  CO:{d:"M 236 280 L 330 278 L 330 335 L 236 337 Z",cx:283,cy:307},
-  CT:{d:"M 780 196 L 806 193 L 808 215 L 780 218 Z",cx:793,cy:205},
-  DE:{d:"M 765 222 L 779 219 L 783 244 L 765 247 Z",cx:773,cy:232},
-  FL:{d:"M 556 432 L 595 428 L 640 468 L 618 520 L 556 500 Z",cx:590,cy:472},
-  GA:{d:"M 537 379 L 591 374 L 595 428 L 556 432 L 524 454 L 516 454 L 524 379 Z",cx:557,cy:410},
-  HI:{d:"M 310 525 L 400 525 L 400 555 L 310 555 Z",cx:355,cy:540},
-  ID:{d:"M 176 143 L 220 135 L 234 199 L 223 262 L 189 262 L 175 199 Z",cx:202,cy:198},
-  IL:{d:"M 518 248 L 556 245 L 560 322 L 537 338 L 518 330 Z",cx:538,cy:289},
-  IN:{d:"M 556 245 L 592 242 L 596 310 L 560 314 Z",cx:576,cy:278},
-  IA:{d:"M 449 230 L 518 226 L 520 265 L 476 268 L 449 260 Z",cx:484,cy:248},
-  KS:{d:"M 330 302 L 449 298 L 449 338 L 330 341 Z",cx:390,cy:319},
-  KY:{d:"M 556 314 L 660 302 L 664 336 L 600 344 L 556 348 Z",cx:610,cy:324},
-  LA:{d:"M 449 390 L 510 384 L 516 432 L 480 458 L 449 430 Z",cx:482,cy:419},
-  ME:{d:"M 840 108 L 878 98 L 886 154 L 848 160 Z",cx:862,cy:130},
-  MD:{d:"M 700 240 L 762 230 L 766 258 L 700 268 Z",cx:733,cy:249},
-  MA:{d:"M 806 178 L 858 168 L 862 196 L 806 200 Z",cx:832,cy:185},
-  MI:{d:"M 570 168 L 634 158 L 640 212 L 594 218 L 570 200 Z",cx:605,cy:188},
-  MN:{d:"M 411 130 L 480 124 L 484 206 L 449 208 L 411 190 Z",cx:447,cy:165},
-  MS:{d:"M 510 348 L 537 344 L 540 432 L 513 432 L 510 384 Z",cx:524,cy:389},
-  MO:{d:"M 449 298 L 518 292 L 522 348 L 476 354 L 449 338 Z",cx:485,cy:323},
-  MT:{d:"M 176 110 L 330 100 L 336 186 L 234 196 L 189 196 Z",cx:256,cy:148},
-  NE:{d:"M 330 258 L 449 252 L 449 298 L 330 302 Z",cx:390,cy:279},
-  NV:{d:"M 138 188 L 188 182 L 194 290 L 160 326 L 130 290 Z",cx:162,cy:258},
-  NH:{d:"M 820 136 L 840 130 L 844 176 L 820 180 Z",cx:831,cy:155},
-  NJ:{d:"M 748 212 L 768 208 L 772 248 L 748 252 Z",cx:759,cy:230},
-  NM:{d:"M 220 337 L 310 333 L 312 410 L 220 412 Z",cx:266,cy:373},
-  NY:{d:"M 698 170 L 778 156 L 784 212 L 748 218 L 700 216 Z",cx:740,cy:186},
-  NC:{d:"M 634 320 L 756 304 L 760 340 L 634 356 Z",cx:695,cy:331},
-  ND:{d:"M 330 138 L 449 130 L 453 174 L 330 180 Z",cx:390,cy:155},
-  OH:{d:"M 592 242 L 644 236 L 648 310 L 596 316 Z",cx:620,cy:276},
-  OK:{d:"M 310 337 L 449 331 L 449 374 L 390 378 L 346 378 L 310 378 Z",cx:379,cy:356},
-  OR:{d:"M 106 160 L 192 150 L 196 224 L 134 230 L 106 210 Z",cx:151,cy:189},
-  PA:{d:"M 644 200 L 748 188 L 752 236 L 648 248 Z",cx:697,cy:218},
-  RI:{d:"M 808 200 L 822 198 L 824 218 L 808 220 Z",cx:815,cy:209},
-  SC:{d:"M 634 356 L 706 340 L 718 386 L 670 404 L 634 388 Z",cx:675,cy:371},
-  SD:{d:"M 330 180 L 453 172 L 457 228 L 330 234 Z",cx:393,cy:203},
-  TN:{d:"M 522 340 L 650 326 L 654 362 L 522 374 Z",cx:587,cy:350},
-  TX:{d:"M 310 378 L 449 370 L 476 448 L 460 506 L 390 510 L 310 460 Z",cx:390,cy:440},
-  UT:{d:"M 188 256 L 252 250 L 256 336 L 188 340 Z",cx:222,cy:295},
-  VT:{d:"M 800 150 L 820 144 L 822 182 L 800 186 Z",cx:810,cy:165},
-  VA:{d:"M 648 288 L 756 272 L 760 318 L 700 330 L 648 332 Z",cx:703,cy:305},
-  WA:{d:"M 106 120 L 192 110 L 196 158 L 128 166 Z",cx:151,cy:138},
-  WV:{d:"M 648 272 L 706 260 L 710 310 L 660 322 L 648 306 Z",cx:677,cy:290},
-  WI:{d:"M 484 162 L 538 156 L 542 228 L 484 234 Z",cx:512,cy:195},
-  WY:{d:"M 236 196 L 330 190 L 334 256 L 236 260 Z",cx:283,cy:224},
-  DC:{d:"M 736 272 L 746 270 L 748 280 L 736 282 Z",cx:742,cy:276},
-};
-
-// ─── EU country outline paths ───
-const EU_COUNTRIES = {
-  IS:{d:"M 386 92 L 416 86 L 422 110 L 396 116 Z",cx:404,cy:101,name:"Iceland"},
-  IE:{d:"M 412 156 L 432 152 L 434 184 L 412 186 Z",cx:422,cy:170,name:"Ireland"},
-  GB:{d:"M 444 142 L 466 138 L 472 196 L 446 200 Z",cx:458,cy:170,name:"United Kingdom"},
-  NO:{d:"M 488 78 L 524 70 L 542 152 L 494 158 Z",cx:514,cy:115,name:"Norway"},
-  SE:{d:"M 530 88 L 562 78 L 568 152 L 534 158 Z",cx:548,cy:118,name:"Sweden"},
-  FI:{d:"M 568 78 L 604 66 L 612 138 L 572 144 Z",cx:590,cy:104,name:"Finland"},
-  DK:{d:"M 504 138 L 530 132 L 532 162 L 506 166 Z",cx:518,cy:150,name:"Denmark"},
-  NL:{d:"M 466 172 L 490 168 L 494 192 L 468 194 Z",cx:480,cy:182,name:"Netherlands"},
-  BE:{d:"M 460 194 L 484 190 L 486 210 L 460 212 Z",cx:473,cy:202,name:"Belgium"},
-  LU:{d:"M 484 208 L 494 207 L 495 218 L 484 219 Z",cx:489,cy:213,name:"Luxembourg"},
-  DE:{d:"M 494 168 L 538 162 L 548 218 L 528 232 L 496 230 Z",cx:520,cy:198,name:"Germany"},
-  FR:{d:"M 442 210 L 494 208 L 502 262 L 458 274 L 436 252 Z",cx:470,cy:240,name:"France"},
-  ES:{d:"M 392 268 L 458 264 L 462 312 L 416 320 L 388 300 Z",cx:428,cy:292,name:"Spain"},
-  PT:{d:"M 388 268 L 410 264 L 414 312 L 386 314 Z",cx:399,cy:289,name:"Portugal"},
-  IT:{d:"M 498 232 L 532 228 L 548 296 L 522 322 L 494 296 Z",cx:518,cy:276,name:"Italy"},
-  CH:{d:"M 488 224 L 510 220 L 512 238 L 488 240 Z",cx:500,cy:230,name:"Switzerland"},
-  AT:{d:"M 514 224 L 558 218 L 562 240 L 516 244 Z",cx:538,cy:232,name:"Austria"},
-  PL:{d:"M 538 162 L 588 156 L 596 198 L 548 208 Z",cx:567,cy:182,name:"Poland"},
-  CZ:{d:"M 522 198 L 558 192 L 560 216 L 524 220 Z",cx:541,cy:206,name:"Czech Republic"},
-  SK:{d:"M 560 198 L 590 194 L 592 214 L 562 218 Z",cx:576,cy:206,name:"Slovakia"},
-  HU:{d:"M 546 218 L 588 212 L 592 240 L 548 244 Z",cx:569,cy:228,name:"Hungary"},
-  SI:{d:"M 522 230 L 548 226 L 550 244 L 524 246 Z",cx:536,cy:236,name:"Slovenia"},
-  HR:{d:"M 528 244 L 568 238 L 574 264 L 532 268 Z",cx:550,cy:252,name:"Croatia"},
-  RO:{d:"M 590 210 L 632 204 L 638 246 L 594 252 Z",cx:614,cy:228,name:"Romania"},
-  BG:{d:"M 596 250 L 634 244 L 638 270 L 600 274 Z",cx:617,cy:260,name:"Bulgaria"},
-  GR:{d:"M 562 274 L 600 268 L 604 308 L 568 314 Z",cx:583,cy:290,name:"Greece"},
-  EE:{d:"M 562 124 L 594 120 L 598 142 L 564 146 Z",cx:580,cy:132,name:"Estonia"},
-  LV:{d:"M 562 144 L 596 140 L 600 162 L 564 166 Z",cx:580,cy:152,name:"Latvia"},
-  LT:{d:"M 558 164 L 594 160 L 596 184 L 560 188 Z",cx:577,cy:174,name:"Lithuania"},
-  CY:{d:"M 624 314 L 638 312 L 640 322 L 624 324 Z",cx:632,cy:318,name:"Cyprus"},
-  MT:{d:"M 514 318 L 522 317 L 522 324 L 514 325 Z",cx:518,cy:321,name:"Malta"},
-};
-
-// ─── Line-drawing style legislation map ───
-function LegMap({ legislation }) {
-  const [hovered, setHovered] = useState(null);
-  const [view, setView] = useState("us");
-
-  const coverage = useMemo(() => {
-    const m = {};
-    (legislation||[]).forEach(l => {
-      if (!l.st) return;
-      if (!m[l.st]) m[l.st] = { passed:0, proposed:0 };
-      if (l.status === "passed") m[l.st].passed++;
-      else m[l.st].proposed++;
-    });
-    return m;
-  }, [legislation]);
-
-  const fedBills = (legislation||[]).filter(l => l.st === "US");
-  const euBills  = (legislation||[]).filter(l => l.st === "EU");
-
-  // Line-drawing palette: states are white with thin dark outlines.
-  // Tinted fills only when there's legislation (passed = green tint, proposed = amber tint).
-  const fillFor = (st) => {
-    const c = coverage[st];
-    if (!c) return COLORS.surface;
-    if (c.passed > 0) return "#DCEAD0";
-    return "#FCEBC8";
-  };
-  const strokeFor = (st) => {
-    const c = coverage[st];
-    if (!c) return "#2A2A28";
-    if (c.passed > 0) return "#3F6B1F";
-    return "#8C5A0B";
-  };
-  const labelColorFor = (st) => {
-    const c = coverage[st];
-    if (!c) return COLORS.textMuted;
-    return c.passed > 0 ? "#27500A" : "#7A4A0B";
-  };
-
-  const passedCount = (legislation||[]).filter(l => l.status === "passed").length;
-  const proposedCount = (legislation||[]).filter(l => l.status === "proposed").length;
-
-  const tabBtn = (active) => ({
-    fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, fontWeight: 600,
-    padding: "5px 14px", borderRadius: 5, border: "none", cursor: "pointer",
-    background: active ? COLORS.surface : "transparent",
-    color: active ? COLORS.text : COLORS.textMuted,
-    boxShadow: active ? "0 1px 2px rgba(0,0,0,0.06)" : "none",
-    letterSpacing: "0.5px",
-  });
-
-  return (
-    <div style={{ background: COLORS.surface, border: `1px solid ${COLORS.border}`, borderRadius: 12, marginBottom: 14, overflow: "hidden" }}>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "11px 16px", borderBottom: `1px solid ${COLORS.border}`, flexWrap: "wrap", gap: 10 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, fontWeight: 600, color: COLORS.text, textTransform: "uppercase", letterSpacing: "0.6px" }}>
-            Legislative coverage
-          </span>
-          {passedCount > 0 && (
-            <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, padding: "2px 7px", borderRadius: 3, background: "#EAF3DE", color: "#27500A", border: "1px solid #C0DDA0" }}>
-              {passedCount} passed
-            </span>
-          )}
-          {proposedCount > 0 && (
-            <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, padding: "2px 7px", borderRadius: 3, background: COLORS.warnLight, color: COLORS.warn, border: `1px solid ${COLORS.warnBorder}` }}>
-              {proposedCount} proposed
-            </span>
-          )}
-        </div>
-        <div style={{ display: "flex", background: COLORS.surfaceAlt, borderRadius: 6, padding: 2, border: `1px solid ${COLORS.border}` }}>
-          <button onClick={() => setView("us")} style={tabBtn(view === "us")}>US</button>
-          <button onClick={() => setView("eu")} style={tabBtn(view === "eu")}>EU</button>
-        </div>
-      </div>
-
-      <div style={{ padding: "16px 18px", position: "relative", background: COLORS.bg }}>
-        {view === "us" ? (
-          <svg viewBox="80 90 900 490" style={{ width: "100%", maxHeight: 320, display: "block" }} xmlns="http://www.w3.org/2000/svg">
-            {/* Federal indicator: subtle frame around all states */}
-            {fedBills.length > 0 && (
-              <rect x="86" y="96" width="884" height="478" rx="8" fill="none"
-                stroke={fedBills.some(b => b.status === "passed") ? "#3F6B1F" : "#8C5A0B"}
-                strokeWidth="2" strokeDasharray={fedBills.some(b => b.status === "passed") ? "none" : "5,3"} opacity="0.4" />
-            )}
-            {Object.entries(US_STATES).map(([st, { d, cx, cy }]) => {
-              const isHov = hovered === st;
-              const hasCov = !!coverage[st];
-              return (
-                <g key={st} onMouseEnter={() => setHovered(st)} onMouseLeave={() => setHovered(null)}>
-                  <path d={d}
-                    fill={isHov ? COLORS.accentLight : fillFor(st)}
-                    stroke={isHov ? COLORS.accent : strokeFor(st)}
-                    strokeWidth={isHov ? 1.6 : (hasCov ? 1 : 0.7)}
-                    strokeLinejoin="round"
-                    style={{ cursor: hasCov ? "pointer" : "default", transition: "fill 0.15s, stroke 0.15s" }} />
-                  {hasCov && (
-                    <text x={cx} y={cy + 3} textAnchor="middle"
-                      fontSize="9" fontFamily="'IBM Plex Mono', monospace" fontWeight="700"
-                      fill={labelColorFor(st)} pointerEvents="none">{st}</text>
-                  )}
-                  <title>{STATE_NAMES[st] || st}{coverage[st] ? ` — ${coverage[st].passed} passed, ${coverage[st].proposed} proposed` : ""}</title>
-                </g>
-              );
-            })}
-          </svg>
-        ) : (
-          <svg viewBox="370 60 270 280" style={{ width: "100%", maxHeight: 320, display: "block" }} xmlns="http://www.w3.org/2000/svg">
-            {Object.entries(EU_COUNTRIES).map(([cc, { d, cx, cy, name }]) => {
-              const isHov = hovered === cc;
-              const hasEU = euBills.length > 0;
-              const euPassed = euBills.some(b => b.status === "passed");
-              const fill = hasEU ? (euPassed ? "#DCEAD0" : "#FCEBC8") : COLORS.surface;
-              const stroke = hasEU ? (euPassed ? "#3F6B1F" : "#8C5A0B") : "#2A2A28";
-              return (
-                <g key={cc} onMouseEnter={() => setHovered(cc)} onMouseLeave={() => setHovered(null)}>
-                  <path d={d}
-                    fill={isHov ? COLORS.accentLight : fill}
-                    stroke={isHov ? COLORS.accent : stroke}
-                    strokeWidth={isHov ? 1.4 : (hasEU ? 0.9 : 0.6)}
-                    strokeLinejoin="round"
-                    style={{ transition: "fill 0.15s, stroke 0.15s", cursor: "default" }} />
-                  {hasEU && (
-                    <text x={cx} y={cy + 2.5} textAnchor="middle"
-                      fontSize="6.5" fontFamily="'IBM Plex Mono', monospace" fontWeight="700"
-                      fill={euPassed ? "#27500A" : "#7A4A0B"} pointerEvents="none">{cc}</text>
-                  )}
-                  <title>{name}{hasEU ? " — EU regulation applies" : ""}</title>
-                </g>
-              );
-            })}
-            {euBills.length > 0 && (
-              <text x="505" y="78" textAnchor="middle"
-                fontSize="10" fontFamily="'IBM Plex Mono', monospace" fontWeight="600"
-                fill={euBills.some(b => b.status === "passed") ? "#27500A" : "#7A4A0B"}>
-                EU-wide: {euBills.filter(b => b.status === "passed").length} passed · {euBills.filter(b => b.status === "proposed").length} proposed
-              </text>
-            )}
-          </svg>
-        )}
-
-        {/* Hover tooltip */}
-        {hovered && (coverage[hovered] || (view === "eu" && EU_COUNTRIES[hovered])) && (
-          <div style={{ position: "absolute", bottom: 14, left: 18, background: COLORS.surface, border: `1px solid ${COLORS.border}`, borderRadius: 8, padding: "7px 12px", fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, boxShadow: "0 2px 12px rgba(0,0,0,0.08)", pointerEvents: "none", zIndex: 10 }}>
-            {view === "us" && coverage[hovered] && (
-              <>
-                <b style={{ color: COLORS.text }}>{STATE_NAMES[hovered] || hovered}</b>
-                {" — "}
-                {coverage[hovered].passed > 0 && <span style={{ color: "#27500A" }}>{coverage[hovered].passed} passed</span>}
-                {coverage[hovered].passed > 0 && coverage[hovered].proposed > 0 && " · "}
-                {coverage[hovered].proposed > 0 && <span style={{ color: "#7A4A0B" }}>{coverage[hovered].proposed} proposed</span>}
-              </>
-            )}
-            {view === "eu" && EU_COUNTRIES[hovered] && (
-              <>
-                <b style={{ color: COLORS.text }}>{EU_COUNTRIES[hovered].name}</b>
-                {euBills.length > 0 ? " — EU-wide regulation applies" : ""}
-              </>
-            )}
-          </div>
-        )}
-      </div>
-
-      {/* Legend */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 14, padding: "9px 16px", borderTop: `1px solid ${COLORS.border}`, background: COLORS.surfaceAlt, fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: COLORS.textMid }}>
-        <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-          <span style={{ width: 14, height: 10, background: "#DCEAD0", border: "1px solid #3F6B1F", borderRadius: 2 }}/> Passed
-        </span>
-        <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-          <span style={{ width: 14, height: 10, background: "#FCEBC8", border: "1px solid #8C5A0B", borderRadius: 2 }}/> Proposed
-        </span>
-        <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-          <span style={{ width: 14, height: 10, background: COLORS.surface, border: `1px solid #2A2A28`, borderRadius: 2 }}/> No bills
-        </span>
-        {fedBills.length > 0 && view === "us" && (
-          <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-            <span style={{ width: 14, height: 10, background: "transparent", border: `1.5px ${fedBills.some(b => b.status === "passed") ? "solid" : "dashed"} ${fedBills.some(b => b.status === "passed") ? "#3F6B1F" : "#8C5A0B"}`, borderRadius: 2 }}/> Federal
-          </span>
-        )}
-      </div>
-    </div>
-  );
-}
-
 // ─── Legislation section component ───
 function LegislationSection({ chem }) {
   const [filter, setFilter] = useState("all");
@@ -4612,7 +4559,6 @@ function LegislationSection({ chem }) {
 
   return (
     <Section label="Legislation & regulatory action">
-      <LegMap legislation={bills} />
       <div style={{ background: COLORS.surfaceAlt, borderRadius: 12, border: `1px solid ${COLORS.border}`, overflow: "hidden" }}>
         {/* Filter tabs */}
         <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "12px 16px", borderBottom: `1px solid ${COLORS.border}`, flexWrap: "wrap" }}>
@@ -4977,7 +4923,7 @@ Provide 4 toxicity entries covering human health AND ecological hazards. For Gre
             display: "flex", gap: 24, padding: "16px 0", marginTop: 20, borderTop: `1px solid ${COLORS.border}`,
             fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: COLORS.textMuted,
           }}>
-            <span><strong style={{ color: COLORS.accent, fontSize: 16 }}>181</strong> chemicals &amp; elements</span>
+            <span><strong style={{ color: COLORS.accent, fontSize: 16 }}>206</strong> chemicals &amp; elements</span>
             <span><strong style={{ color: COLORS.accent, fontSize: 16 }}>61</strong> with manufacturer data</span>
             <span>AI-powered lookup for unlisted chemicals</span>
           </div>
