@@ -4,22 +4,288 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Toxic Chemical Explorer</title>
-  <meta name="description" content="Explore toxic chemicals in products — their health hazards, who manufactures them, GreenScreen benchmarks, and which laws are working to restrict them.">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #FAFAF7; min-height: 100vh; }
-    #root { max-width: 100%; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'IBM Plex Sans', sans-serif; min-height: 100vh; }
+    :root {
+      --bg: #F4F3EE; --surface: #FFFFFF; --surface2: #ECEAE3; --surface3: #E2E0D7;
+      --text: #17171A; --text-mid: #3D3D42; --text-muted: #7A7A82;
+      --accent: #1A3A5C; --accent-light: #E8EEF5; --accent-mid: #A8BDD4;
+      --teal: #2D7D6A; --teal-light: #E3F2EE; --teal-mid: #A5CECA;
+      --danger: #B5320A; --danger-light: #FBF0EC; --danger-border: #E8C4B0;
+      --warn: #8A5C0A; --warn-light: #FBF4E8; --warn-border: #E0C88A;
+      --border: #D8D6CE; --border-strong: #B8B6AE;
+      --mono: 'IBM Plex Mono', monospace; --serif: 'IBM Plex Serif', Georgia, serif;
+    }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes shimmer { 0% { left:-60%; } 100% { left:120%; } }
+    .fade-up { animation: fadeUp 0.3s ease forwards; }
+    ::-webkit-scrollbar { width:5px; height:5px; }
+    ::-webkit-scrollbar-track { background:transparent; }
+    ::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+
+    #app-shell { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Header ── */
+    .app-header {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:18px 0 16px; border-bottom:1px solid var(--border);
+    }
+    .logo { display:flex; align-items:center; gap:12px; cursor:pointer; border:none; background:none; padding:0; }
+    .logo-mark {
+      width:36px; height:36px; border-radius:10px; background:var(--accent);
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    }
+    .logo-name { font-size:17px; font-weight:600; color:var(--text); letter-spacing:-0.3px; }
+    .logo-sub { font-size:11px; color:var(--text-muted); font-family:var(--mono); }
+    .back-btn {
+      font-family:'IBM Plex Sans',sans-serif; font-size:12px; font-weight:500;
+      color:var(--accent); background:var(--accent-light); border:1px solid var(--accent-mid);
+      border-radius:8px; padding:7px 14px; cursor:pointer; white-space:nowrap;
+    }
+
+    /* ── Search Hero ── */
+    .search-hero { padding:52px 0 40px; text-align:center; }
+    .hero-title {
+      font-family:var(--serif); font-size:34px; font-weight:600;
+      color:var(--text); line-height:1.2; margin-bottom:10px; letter-spacing:-0.5px;
+    }
+    .hero-sub {
+      font-size:15px; color:var(--text-mid); line-height:1.65;
+      max-width:500px; margin:0 auto 30px;
+    }
+    .search-wrap { position:relative; max-width:580px; margin:0 auto; }
+    .search-icon { position:absolute; left:15px; top:50%; transform:translateY(-50%); color:var(--text-muted); pointer-events:none; }
+    .search-input {
+      width:100%; padding:14px 100px 14px 46px;
+      font-family:'IBM Plex Sans',sans-serif; font-size:15px;
+      border:2px solid var(--border); border-radius:14px;
+      background:var(--surface); color:var(--text); outline:none;
+      box-shadow:0 2px 12px rgba(0,0,0,0.06); transition:border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-input:focus { border-color:var(--accent); box-shadow:0 2px 20px rgba(26,58,92,0.12); }
+    .search-input::placeholder { color:var(--text-muted); }
+    .search-btn {
+      position:absolute; right:7px; top:50%; transform:translateY(-50%);
+      background:var(--accent); color:#fff; border:none; border-radius:9px;
+      padding:8px 18px; font-family:'IBM Plex Sans',sans-serif; font-size:13px; font-weight:500;
+      cursor:pointer; transition:background 0.15s;
+    }
+    .search-btn:hover { background:#142e4a; }
+    .autocomplete {
+      position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:50;
+      background:var(--surface); border:1px solid var(--border); border-radius:12px;
+      box-shadow:0 8px 32px rgba(0,0,0,0.10); overflow:hidden; max-height:280px; overflow-y:auto;
+    }
+    .autocomplete-item {
+      display:flex; align-items:center; gap:10px; padding:11px 16px; cursor:pointer;
+      border-bottom:1px solid var(--surface2); transition:background 0.1s;
+    }
+    .autocomplete-item:last-child { border-bottom:none; }
+    .autocomplete-item:hover { background:var(--surface2); }
+    .ac-name { font-size:14px; font-weight:500; color:var(--text); }
+    .ac-aka { font-size:11px; color:var(--text-muted); font-family:var(--mono); }
+
+    /* Quick access */
+    .quick-wrap { max-width:580px; margin:22px auto 0; text-align:center; }
+    .quick-label { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin-bottom:10px; font-family:var(--mono); }
+    .chips { display:flex; flex-wrap:wrap; gap:7px; justify-content:center; }
+    .chip {
+      font-family:'IBM Plex Sans',sans-serif; font-size:12px; font-weight:500;
+      padding:6px 14px; border-radius:20px; border:1px solid var(--border);
+      background:var(--surface); color:var(--text-mid); cursor:pointer; transition:all 0.15s;
+    }
+    .chip:hover { background:var(--accent-light); border-color:var(--accent-mid); color:var(--accent); }
+
+    /* Stats */
+    .stats-bar {
+      display:flex; align-items:center; justify-content:center; gap:40px;
+      margin-top:40px; padding:20px 0; border-top:1px solid var(--border);
+    }
+    .stat-num { display:block; font-family:var(--mono); font-size:24px; font-weight:600; color:var(--accent); }
+    .stat-lbl { font-size:11px; color:var(--text-muted); margin-top:2px; }
+
+    /* ── Detail Layout ── */
+    .detail-layout {
+      display:grid; grid-template-columns:268px 1fr;
+      align-items:start; min-height:calc(100vh - 72px);
+    }
+
+    /* Sidebar */
+    .sidebar {
+      border-right:1px solid var(--border); padding:28px 22px;
+      position:sticky; top:0; height:calc(100vh - 72px); overflow-y:auto;
+      display:flex; flex-direction:column; gap:18px;
+    }
+    .sb-name { font-family:var(--serif); font-size:20px; font-weight:600; line-height:1.2; color:var(--text); }
+    .sb-aka { font-size:11px; color:var(--text-muted); font-family:var(--mono); margin-top:4px; line-height:1.5; }
+    .sb-cas { display:inline-block; font-family:var(--mono); font-size:11px; padding:2px 8px; border-radius:4px; background:var(--surface2); color:var(--text-mid); margin-top:6px; }
+    .sb-divider { height:1px; background:var(--border); }
+    .sb-section-lbl { font-family:var(--mono); font-size:9px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin-bottom:6px; }
+
+    /* GreenScreen big badge */
+    .gs-big { border-radius:12px; padding:14px 16px; }
+    .gs-lbl { font-family:var(--mono); font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:1px; opacity:.7; }
+    .gs-title { font-family:'IBM Plex Sans',sans-serif; font-size:16px; font-weight:700; line-height:1.1; margin:4px 0; }
+    .gs-pips { display:flex; gap:4px; margin-top:6px; }
+    .gs-pip { height:5px; flex:1; border-radius:3px; }
+
+    /* Reg badges */
+    .reg-badge {
+      display:flex; align-items:center; gap:7px; padding:6px 10px; border-radius:8px;
+      font-family:'IBM Plex Sans',sans-serif; font-size:11px; font-weight:600;
+      text-decoration:none; transition:filter 0.15s; margin-bottom:5px;
+    }
+    .reg-badge:hover { filter:brightness(0.95); }
+    .reg-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+
+    /* Section nav */
+    .nav-btn {
+      width:100%; text-align:left; font-family:'IBM Plex Sans',sans-serif; font-size:12px;
+      color:var(--text-muted); padding:5px 8px; border-radius:6px; cursor:pointer;
+      border:none; background:none; transition:all 0.12s; display:block;
+    }
+    .nav-btn:hover { color:var(--accent); background:var(--accent-light); }
+
+    /* Related chips */
+    .related-chip {
+      font-family:var(--mono); font-size:11px; padding:5px 10px; border-radius:7px;
+      border:1px solid var(--border); background:var(--surface); color:var(--text-muted);
+      cursor:default; transition:all 0.12s;
+    }
+    .related-chip.link { color:var(--accent); border-color:var(--accent-mid); cursor:pointer; }
+    .related-chip.link:hover { background:var(--accent-light); }
+
+    /* ── Main ── */
+    .main { padding:32px 36px 56px; }
+    .section { margin-bottom:36px; }
+    .section-hd { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+    .section-lbl { font-family:var(--mono); font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); white-space:nowrap; }
+    .section-line { flex:1; height:1px; background:var(--border); }
+    .body-text { font-size:15px; line-height:1.75; color:var(--text-mid); }
+
+    /* Chem class pill */
+    .class-pill { display:inline-block; padding:3px 12px; border-radius:6px; font-size:12px; font-weight:600; background:var(--accent-light); color:var(--accent); font-family:var(--mono); margin-bottom:8px; }
+
+    /* Animated molecule */
+    .mol-wrap { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+    .mol-formula { text-align:center; padding:8px 12px 12px; font-family:var(--mono); font-size:11px; color:var(--text-muted); border-top:1px solid var(--border); background:var(--surface2); }
+
+    /* Hazard rows */
+    .hazard-list { display:flex; flex-direction:column; gap:8px; }
+    .hazard-row {
+      display:flex; flex-direction:column;
+      gap:6px; padding:12px 14px 12px 16px;
+      background:var(--surface); border:1px solid var(--border); border-radius:10px;
+      position:relative;
+    }
+    .hz-header { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    .hz-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; font-family:var(--mono); }
+    .hz-text { font-size:13px; line-height:1.6; color:var(--text-mid); }
+    .hz-pips { display:flex; gap:3px; align-items:center; flex-shrink:0; }
+    .hz-pip { width:8px; height:8px; border-radius:2px; }
+
+    /* GreenScreen detail box */
+    .gs-detail { border-radius:10px; padding:14px 18px; }
+    .gs-detail p { font-size:14px; line-height:1.7; color:var(--text-mid); }
+    .gs-detail a { display:inline-block; margin-top:8px; font-size:12px; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent-mid); }
+
+    /* Products */
+    .prod-legend {
+      display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; padding:8px 12px;
+      background:var(--surface2); border-radius:8px; border:1px solid var(--border);
+      font-family:var(--mono); font-size:11px; color:var(--text-muted); align-items:center;
+    }
+    .prod-chips { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
+    .prod-chip { font-family:'IBM Plex Sans',sans-serif; font-size:12px; padding:4px 10px; border-radius:6px; }
+
+    /* Manufacturers */
+    .mfr-table { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+    .mfr-row { display:grid; grid-template-columns:160px 1fr; gap:12px; padding:11px 16px; border-bottom:1px solid var(--border); align-items:flex-start; }
+    .mfr-row:last-child { border-bottom:none; }
+    .mfr-name { font-size:13px; font-weight:600; color:var(--text); font-family:var(--mono); }
+    .mfr-note { font-size:12.5px; line-height:1.5; color:var(--text-mid); }
+    .mfr-links { display:flex; flex-wrap:wrap; gap:6px; padding:10px 16px; border-top:1px solid var(--border); background:var(--surface2); }
+    .ext-link {
+      font-family:'IBM Plex Sans',sans-serif; font-size:11px; font-weight:500;
+      padding:5px 12px; border-radius:6px; text-decoration:none; transition:all 0.12s;
+      border:1px solid var(--border); color:var(--text-muted); background:var(--surface);
+    }
+    .ext-link:hover { color:var(--accent); border-color:var(--accent-mid); }
+    .ext-link.primary { background:var(--accent-light); color:var(--accent); border-color:var(--accent-mid); }
+
+    /* Alternatives */
+    .alt-table { background:#EEF7E8; border:1px solid #B8DDA0; border-radius:12px; overflow:hidden; }
+    .alt-row { display:grid; grid-template-columns:130px 1fr; gap:12px; padding:11px 16px; border-bottom:1px solid #C8E4B0; align-items:flex-start; }
+    .alt-row:last-child { border-bottom:none; }
+    .alt-ctx { display:flex; align-items:flex-start; gap:5px; font-size:12px; font-weight:600; color:#1F5010; font-family:var(--mono); }
+    .alt-name { font-size:13px; font-weight:500; color:var(--text); }
+    .alt-note { font-size:11.5px; color:var(--text-muted); margin-top:2px; }
+    .alt-source { padding:8px 16px; border-top:1px solid #C8E4B0; background:#F5FBF0; font-size:11px; color:var(--text-muted); font-family:var(--mono); }
+
+    /* Legislation */
+    .leg-filters { display:flex; gap:6px; margin-bottom:12px; flex-wrap:wrap; }
+    .leg-filter {
+      font-family:var(--mono); font-size:11px; font-weight:600; padding:5px 12px;
+      border-radius:6px; cursor:pointer; border:1px solid var(--border);
+      background:var(--surface); color:var(--text-muted); transition:all 0.12s;
+    }
+    .leg-filter.on { background:var(--accent); color:#fff; border-color:var(--accent); }
+    .leg-list { display:flex; flex-direction:column; gap:7px; }
+    .leg-item { display:flex; align-items:flex-start; gap:10px; padding:10px 14px; border-radius:10px; background:var(--surface); border:1px solid var(--border); }
+    .leg-state { font-family:var(--mono); font-size:11px; font-weight:600; padding:3px 6px; border-radius:5px; flex-shrink:0; min-width:34px; text-align:center; margin-top:1px; }
+    .leg-bill { font-family:var(--mono); font-size:12px; font-weight:500; color:var(--text); }
+    .leg-status { font-family:var(--mono); font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; padding:2px 7px; border-radius:4px; }
+    .leg-title { font-size:13px; line-height:1.45; color:var(--text-mid); margin-top:2px; }
+    .leg-ext { display:flex; flex-wrap:wrap; gap:6px; padding-top:10px; }
+
+    /* Map */
+    .map-wrap { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:14px; }
+    .map-header { display:flex; align-items:center; justify-content:space-between; padding:10px 14px; border-bottom:1px solid var(--border); }
+    .map-title { font-family:var(--mono); font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); }
+    .map-svg { width:100%; height:auto; display:block; }
+    .map-legend { display:flex; gap:14px; padding:8px 14px; border-top:1px solid var(--border); background:var(--surface2); }
+    .map-legend-item { display:flex; align-items:center; gap:5px; font-size:11px; color:var(--text-muted); font-family:var(--mono); }
+    .map-swatch { width:10px; height:10px; border-radius:3px; }
+
+    /* Two-col */
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:0; }
+
+    /* AI warning */
+    .ai-warn { display:flex; align-items:center; gap:8px; padding:9px 14px; border-radius:8px; background:var(--warn-light); border:1px solid var(--warn-border); font-size:12px; color:var(--warn); margin-bottom:20px; }
+
+    /* Loading */
+    .loading { text-align:center; padding:72px 24px; }
+    .loading-bar { width:48px; height:3px; background:var(--accent-light); border-radius:2px; margin:20px auto 0; overflow:hidden; position:relative; }
+    .loading-bar::after { content:''; position:absolute; left:-60%; top:0; width:60%; height:100%; background:var(--accent); border-radius:2px; animation:shimmer 1.2s ease-in-out infinite; }
+
+    .error-box { text-align:center; padding:40px 24px; background:var(--danger-light); border:1px solid var(--danger-border); border-radius:12px; }
+
+    /* Footer */
+    .footer { padding:20px 0 28px; margin-top:8px; border-top:1px solid var(--border); font-size:11px; color:var(--text-muted); text-align:center; line-height:1.8; font-family:var(--mono); }
+    .footer a { color:var(--accent); text-decoration:none; }
+
+    @media (max-width:820px) {
+      .detail-layout { grid-template-columns:1fr; }
+      .sidebar { position:static; height:auto; border-right:none; border-bottom:1px solid var(--border); }
+      .two-col { grid-template-columns:1fr; gap:16px; }
+      .hazard-row { }
+      .mfr-row { grid-template-columns:1fr; }
+      .alt-row { grid-template-columns:1fr; }
+    }
   </style>
 </head>
 <body>
-  <div id="root"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
-  <script type="text/babel">
-const { useState, useEffect, useRef, useCallback } = React;
+<div id="root"></div>
 
-// ─── Curated database of chemicals central to advocacy work ───
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+
+<!-- Chemical database (plain JS, no Babel needed) -->
+<script>
+// Auto-generated chemical database
 const CURATED_DB = {
 "vinyl chloride": {
   name:"Vinyl chloride", aka:["Chloroethene","VCM","Chloroethylene"],
@@ -4199,15 +4465,15 @@ const CURATED_DB = {
 }
 };
 
-// Key lookup aliases
+// Build ALIASES lookup table
 const ALIASES = {};
 Object.entries(CURATED_DB).forEach(([key, val]) => {
   ALIASES[key] = key;
   ALIASES[val.name.toLowerCase()] = key;
-  val.aka.forEach(a => { ALIASES[a.toLowerCase()] = key; });
+  (val.aka || []).forEach(a => { ALIASES[a.toLowerCase()] = key; });
   if (val.cas && val.cas !== "Multiple (class)" && !val.cas.includes(",")) ALIASES[val.cas] = key;
 });
-// Extra common search aliases
+
 const EXTRA_ALIASES = {
   "melamine":"melamine","cyanuramide":"melamine","triaminotriazine":"melamine",
   "cyanuric acid":"cyanuric acid","cya":"cyanuric acid","pool stabilizer":"cyanuric acid","isocyanuric acid":"cyanuric acid",
@@ -4337,884 +4603,820 @@ const EXTRA_ALIASES = {
   "pentachlorophenol":"pentachlorophenol","pcp":"pentachlorophenol","penta wood preservative":"pentachlorophenol",
   "decabde":"decabde","bde-209":"decabde","decabromodiphenyl ether":"decabde","dbdpo":"decabde",
 };
+
 Object.entries(EXTRA_ALIASES).forEach(([alias, target]) => {
   if (!ALIASES[alias] && ALIASES[target]) ALIASES[alias] = ALIASES[target];
+  else if (ALIASES[target]) ALIASES[alias] = ALIASES[target];
 });
 
-// ─── Color scheme: environmental/scientific editorial ───
-const COLORS = {
-  bg: "#FAFAF7",
-  surface: "#FFFFFF",
-  surfaceAlt: "#F3F2ED",
-  text: "#1A1A18",
-  textMid: "#4A4A46",
-  textMuted: "#8A8A84",
-  accent: "#0A5E47",
-  accentLight: "#E3F0EB",
-  accentMid: "#C0DDD2",
-  danger: "#9A2E2E",
-  dangerLight: "#FCF0F0",
-  dangerBorder: "#E8C4C4",
-  warn: "#7A5A0B",
-  warnLight: "#FDF6E3",
-  warnBorder: "#E8D9A8",
-  info: "#1A5A94",
-  infoLight: "#EBF3FA",
-  border: "#E0DFD8",
-  borderHover: "#C8C7C0",
+// Expose to window for the redesigned UI
+window.CURATED_DB = CURATED_DB;
+window.ALIASES = ALIASES;
+
+</script>
+
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback, useMemo } = React;
+
+// ── Tweaks panel (inlined) ─────────────────────────────────────
+const TWEAKS_CSS = `
+  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:9999;width:280px;max-height:calc(100vh - 32px);display:flex;flex-direction:column;background:rgba(250,249,247,.9);color:#29261b;-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border:.5px solid rgba(255,255,255,.6);border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.18);font:11.5px/1.4 'IBM Plex Sans',sans-serif;overflow:hidden}
+  .twk-hd{display:flex;align-items:center;justify-content:space-between;padding:10px 8px 10px 14px;cursor:move;user-select:none;border-bottom:1px solid rgba(0,0,0,.08)}
+  .twk-hd b{font-size:12px;font-weight:600}
+  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.5);width:22px;height:22px;border-radius:6px;cursor:pointer;font-size:13px;line-height:22px;text-align:center}
+  .twk-x:hover{background:rgba(0,0,0,.08)}
+  .twk-body{padding:8px 14px 14px;display:flex;flex-direction:column;gap:10px;overflow-y:auto}
+  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(41,38,27,.45);padding:6px 0 0}
+  .twk-row{display:flex;flex-direction:column;gap:5px}
+  .twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+  .twk-lbl{display:flex;justify-content:space-between;color:rgba(41,38,27,.72)}
+  .twk-lbl>span:first-child{font-weight:500}
+  .twk-val{color:rgba(41,38,27,.5);font-variant-numeric:tabular-nums}
+  .twk-slider{appearance:none;-webkit-appearance:none;width:100%;height:4px;border-radius:999px;background:rgba(0,0,0,.12);outline:none;margin:4px 0}
+  .twk-slider::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#fff;border:.5px solid rgba(0,0,0,.15);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:pointer}
+  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;background:rgba(0,0,0,.06);user-select:none}
+  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);transition:left .15s,width .15s}
+  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;border-radius:6px;cursor:pointer;padding:4px 6px;line-height:1.2}
+  .twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;background:rgba(0,0,0,.15);transition:background .15s;cursor:pointer;padding:0}
+  .twk-toggle[data-on="1"]{background:#34c759}
+  .twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+  .twk-toggle[data-on="1"] i{transform:translateX(14px)}
+`;
+
+function useTweaks(defaults) {
+  const [values, setValues] = useState(defaults);
+  const setTweak = useCallback((keyOrEdits, val) => {
+    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null ? keyOrEdits : { [keyOrEdits]: val };
+    setValues(prev => ({ ...prev, ...edits }));
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+  }, []);
+  return { tweaks: values, setTweak };
+}
+
+function TweaksPanel({ children }) {
+  const [open, setOpen] = useState(false);
+  const panelRef = useRef(null);
+  useEffect(() => {
+    const handler = e => {
+      if (e?.data?.type === '__activate_edit_mode') setOpen(true);
+      if (e?.data?.type === '__deactivate_edit_mode') setOpen(false);
+    };
+    window.addEventListener('message', handler);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', handler);
+  }, []);
+  const dismiss = () => { setOpen(false); window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*'); };
+  if (!open) return null;
+  return (
+    <>
+      <style>{TWEAKS_CSS}</style>
+      <div ref={panelRef} className="twk-panel">
+        <div className="twk-hd"><b>Tweaks</b><button className="twk-x" onClick={dismiss}>✕</button></div>
+        <div className="twk-body">{children}</div>
+      </div>
+    </>
+  );
+}
+function TweakSection({ title }) { return <div className="twk-sect">{title}</div>; }
+function TweakSlider({ id, label, value, min, max, step, onChange }) {
+  return (
+    <div className="twk-row">
+      <div className="twk-lbl"><span>{label}</span><span className="twk-val">{value}</span></div>
+      <input type="range" className="twk-slider" min={min} max={max} step={step} value={value} onChange={e => onChange(Number(e.target.value))} />
+    </div>
+  );
+}
+function TweakToggle({ id, label, value, onChange }) {
+  return (
+    <div className="twk-row twk-row-h">
+      <span style={{fontWeight:500,color:'rgba(41,38,27,.72)'}}>{label}</span>
+      <button type="button" className="twk-toggle" data-on={value?'1':'0'} onClick={() => onChange(!value)}><i/></button>
+    </div>
+  );
+}
+function TweakRadio({ id, label, value, options, onChange }) {
+  const opts = options.map(o => typeof o === 'object' ? o : { value: o, label: o });
+  const idx = Math.max(0, opts.findIndex(o => o.value === value));
+  const n = opts.length;
+  return (
+    <div className="twk-row">
+      <div className="twk-lbl"><span style={{fontWeight:500,color:'rgba(41,38,27,.72)'}}>{label}</span></div>
+      <div className="twk-seg">
+        <div className="twk-seg-thumb" style={{ left:`calc(2px + ${idx}*(100% - 4px)/${n})`, width:`calc((100% - 4px)/${n})` }}/>
+        {opts.map(o => (
+          <button key={o.value} type="button" onClick={() => onChange(o.value)}>{o.label}</button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ── GreenScreen config ─────────────────────────────────────────
+const GS = {
+  1: { bg:"#FCF0F0", color:"#791F1F", border:"#E8C4C4", label:"BM-1", title:"Avoid", pips:1 },
+  2: { bg:"#FDF3EE", color:"#712B13", border:"#E8CFC0", label:"BM-2", title:"Use, Seek Safer", pips:2 },
+  3: { bg:"#FDF6E3", color:"#633806", border:"#E8D9A8", label:"BM-3", title:"Use, Identify Safer", pips:3 },
+  4: { bg:"#EEF5E6", color:"#27500A", border:"#C0DDA0", label:"BM-4", title:"Prefer", pips:4 },
+  "U":{ bg:"#F3F2ED", color:"#4A4A46", border:"#D8D7D0", label:"BM-U", title:"Unscreened", pips:0 },
 };
 
-const GS_STYLES = {
-  1: { bg: "#FCF0F0", color: "#791F1F", border: "#E8C4C4", label: "BM-1" },
-  2: { bg: "#FDF3EE", color: "#712B13", border: "#E8CFC0", label: "BM-2" },
-  3: { bg: "#FDF6E3", color: "#633806", border: "#E8D9A8", label: "BM-3" },
-  4: { bg: "#EEF5E6", color: "#27500A", border: "#C0DDA0", label: "BM-4" },
-  "U": { bg: "#F3F2ED", color: "#4A4A46", border: "#D8D7D0", label: "BM-U" },
-};
-
-// ─── Molecule renderer ───
-function MoleculeCanvas({ structure, width = 280, height = 200 }) {
+// ── Animated Molecule ──────────────────────────────────────────
+function AnimatedMolecule({ structure, width=250, height=180 }) {
   const canvasRef = useRef(null);
+  const rafRef = useRef(null);
+  const angleRef = useRef(0);
 
   useEffect(() => {
     if (!canvasRef.current || !structure) return;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     const dpr = window.devicePixelRatio || 1;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
+    canvas.width = width * dpr; canvas.height = height * dpr;
     ctx.scale(dpr, dpr);
-    ctx.clearRect(0, 0, width, height);
 
-    const pad = 30;
-    const W = width - pad * 2;
-    const H = height - pad * 2;
-    const tx = (r) => pad + r * W;
-    const ty = (r) => pad + r * H;
+    const EL_COLORS = { C:"#2C2C2C",O:"#C94040",N:"#2060A8",Cl:"#18805A",F:"#B05A20",H:"#AAAAAA",Si:"#6A5ABB",S:"#AA7010","◯":"#888" };
+    const getColor = el => EL_COLORS[el.replace(/[^A-Za-z◯]/g,"")] || "#666";
 
-    const elColors = { C: "#333", O: "#C94040", N: "#2060A8", Cl: "#18805A", F: "#C05A20", H: "#999", Si: "#6A5ABB", S: "#AA7010" };
-    const getColor = (el) => elColors[el.replace(/[^A-Za-z]/g, "")] || "#666";
+    // Detect dark mode from CSS var
+    const isDark = () => getComputedStyle(document.documentElement).getPropertyValue('--bg').trim().startsWith('#1') || getComputedStyle(document.documentElement).getPropertyValue('--bg').trim().startsWith('#0');
 
-    const { atoms = [], bonds = [], fAtoms, ring, extras, polymer, label: structLabel } = structure;
+    function draw(angle) {
+      const dark = isDark();
+      const bondColor = dark ? "rgba(220,218,210,0.35)" : "rgba(60,60,56,0.2)";
+      const atomBg = dark ? "#2A2C34" : "#FAFAF8";
+      const labelColor = dark ? "#9A9A94" : "#9A9A94";
 
-    // Bonds
-    ctx.lineWidth = 2;
-    bonds.forEach((b) => {
-      const a1 = atoms[b.a], a2 = atoms[b.b];
-      if (!a1 || !a2) return;
-      const x1 = tx(a1.x), y1 = ty(a1.y), x2 = tx(a2.x), y2 = ty(a2.y);
-      ctx.strokeStyle = "rgba(60,60,56,0.3)";
-      if (b.o === 2) {
-        const dx = x2 - x1, dy = y2 - y1, len = Math.sqrt(dx * dx + dy * dy) || 1;
-        const nx = (-dy / len) * 3, ny = (dx / len) * 3;
-        ctx.beginPath(); ctx.moveTo(x1 + nx, y1 + ny); ctx.lineTo(x2 + nx, y2 + ny); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(x1 - nx, y1 - ny); ctx.lineTo(x2 - nx, y2 - ny); ctx.stroke();
-      } else {
-        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+      ctx.clearRect(0,0,width,height);
+      const pad=30, W=width-pad*2, H=height-pad*2;
+      const tx=r=>pad+r*W, ty=r=>pad+r*H;
+      const wobble = Math.sin(angle)*0.035;
+      const py = y => y + wobble*(y-0.5)*0.4;
+      const { atoms=[], bonds=[], fAtoms, extras, polymer, label:sLabel } = structure;
+
+      // Bonds
+      ctx.lineWidth=1.8;
+      bonds.forEach(b => {
+        const a1=atoms[b.a],a2=atoms[b.b]; if(!a1||!a2) return;
+        const x1=tx(a1.x),y1=ty(py(a1.y)),x2=tx(a2.x),y2=ty(py(a2.y));
+        ctx.strokeStyle=bondColor;
+        if (b.o===2) {
+          const dx=x2-x1,dy=y2-y1,len=Math.sqrt(dx*dx+dy*dy)||1;
+          const nx=-dy/len*3,ny=dx/len*3;
+          ctx.beginPath(); ctx.moveTo(x1+nx,y1+ny); ctx.lineTo(x2+nx,y2+ny); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(x1-nx,y1-ny); ctx.lineTo(x2-nx,y2-ny); ctx.stroke();
+        } else { ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke(); }
+      });
+      // fAtoms (PFAS-style)
+      if (fAtoms) {
+        fAtoms.forEach((f,i)=>{ const p=atoms[Math.floor(i/2)]; if(!p) return; ctx.strokeStyle=bondColor; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(tx(p.x),ty(py(p.y))); ctx.lineTo(tx(f.x),ty(py(f.y))); ctx.stroke(); });
+        fAtoms.forEach(f=>{ ctx.fillStyle=atomBg; ctx.beginPath(); ctx.arc(tx(f.x),ty(py(f.y)),11,0,Math.PI*2); ctx.fill(); ctx.fillStyle=getColor(f.el); ctx.font="500 10px 'IBM Plex Mono',monospace"; ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.fillText(f.el,tx(f.x),ty(py(f.y))); });
       }
-    });
-
-    // F atoms for PFAS-style
-    if (fAtoms) {
-      fAtoms.forEach((f, i) => {
-        const parent = atoms[Math.floor(i / 2)];
-        if (!parent) return;
-        ctx.strokeStyle = "rgba(60,60,56,0.3)";
-        ctx.beginPath(); ctx.moveTo(tx(parent.x), ty(parent.y)); ctx.lineTo(tx(f.x), ty(f.y)); ctx.stroke();
+      // Extras
+      if (extras) {
+        extras.forEach(e=>{ const p=atoms[e.from]; if(!p) return; ctx.strokeStyle=bondColor; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(tx(p.x),ty(py(p.y))); ctx.lineTo(tx(e.x),ty(py(e.y))); ctx.stroke(); const r=e.el.length>2?18:12; ctx.fillStyle=atomBg; ctx.beginPath(); ctx.arc(tx(e.x),ty(py(e.y)),r,0,Math.PI*2); ctx.fill(); ctx.fillStyle=getColor(e.el); ctx.font=`500 ${r>12?9:10}px 'IBM Plex Mono',monospace`; ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.fillText(e.el,tx(e.x),ty(py(e.y))); });
+      }
+      // Polymer
+      if (polymer) { ctx.strokeStyle=bondColor; ctx.lineWidth=1.5; ctx.setLineDash([4,3]); ctx.strokeRect(tx(0.08),ty(0.06),tx(0.75)-tx(0.08),ty(0.82)-ty(0.06)); ctx.setLineDash([]); ctx.fillStyle=dark?"#888":"#999"; ctx.font="italic 12px 'IBM Plex Mono',monospace"; ctx.textAlign="left"; ctx.fillText("n",tx(0.78),ty(0.80)); }
+      // Atoms
+      atoms.forEach(a => {
+        const px2=tx(a.x),py2=ty(py(a.y)),el=a.el;
+        const r=el.length>2?18:el==="◯"?14:13;
+        ctx.save(); ctx.shadowColor=dark?"rgba(0,0,0,0.4)":"rgba(0,0,0,0.09)"; ctx.shadowBlur=5; ctx.shadowOffsetY=2;
+        ctx.fillStyle=atomBg; ctx.beginPath(); ctx.arc(px2,py2,r,0,Math.PI*2); ctx.fill();
+        ctx.restore();
+        ctx.strokeStyle=getColor(el)+(dark?"60":"40"); ctx.lineWidth=1.2;
+        ctx.beginPath(); ctx.arc(px2,py2,r,0,Math.PI*2); ctx.stroke();
+        ctx.fillStyle=getColor(el);
+        ctx.font=`600 ${el.length>2?8:10}px 'IBM Plex Mono',monospace`;
+        ctx.textAlign="center"; ctx.textBaseline="middle";
+        ctx.fillText(el,px2,py2);
       });
-      fAtoms.forEach((f) => {
-        ctx.fillStyle = "#FFF"; ctx.beginPath(); ctx.arc(tx(f.x), ty(f.y), 12, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = getColor(f.el); ctx.font = "500 12px system-ui"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
-        ctx.fillText(f.el, tx(f.x), ty(f.y));
-      });
+      if (sLabel) { ctx.fillStyle=labelColor; ctx.font="10px 'IBM Plex Sans',sans-serif"; ctx.textAlign="center"; ctx.fillText(sLabel,width/2,height-8); }
     }
 
-    // Extras for ring structures
-    if (extras) {
-      extras.forEach((e) => {
-        const parent = atoms[e.from];
-        if (!parent) return;
-        ctx.strokeStyle = "rgba(60,60,56,0.3)";
-        ctx.beginPath(); ctx.moveTo(tx(parent.x), ty(parent.y)); ctx.lineTo(tx(e.x), ty(e.y)); ctx.stroke();
-        ctx.fillStyle = "#FFF"; ctx.beginPath(); ctx.arc(tx(e.x), ty(e.y), e.el.length > 2 ? 22 : 12, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = getColor(e.el); ctx.font = "500 11px system-ui"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
-        ctx.fillText(e.el, tx(e.x), ty(e.y));
-      });
-    }
-
-    // Polymer brackets
-    if (polymer) {
-      ctx.strokeStyle = "rgba(60,60,56,0.25)"; ctx.lineWidth = 1.5; ctx.setLineDash([4, 3]);
-      ctx.strokeRect(tx(0.08), ty(0.06), tx(0.75) - tx(0.08), ty(0.82) - ty(0.06));
-      ctx.setLineDash([]);
-      ctx.fillStyle = "#888"; ctx.font = "italic 13px system-ui"; ctx.textAlign = "left";
-      ctx.fillText("n", tx(0.78), ty(0.80));
-    }
-
-    // Main atoms
-    atoms.forEach((a) => {
-      const r = a.el.length > 2 ? 20 : a.el === "◯" ? 16 : 14;
-      ctx.fillStyle = "#FFF";
-      ctx.beginPath(); ctx.arc(tx(a.x), ty(a.y), r, 0, Math.PI * 2); ctx.fill();
-      ctx.fillStyle = getColor(a.el);
-      ctx.font = a.el === "◯" ? "14px system-ui" : "500 13px system-ui";
-      ctx.textAlign = "center"; ctx.textBaseline = "middle";
-      ctx.fillText(a.el, tx(a.x), ty(a.y));
-    });
-
-    // Structure label
-    if (structLabel) {
-      ctx.fillStyle = "#888"; ctx.font = "11px system-ui"; ctx.textAlign = "center";
-      ctx.fillText(structLabel, width / 2, height - 10);
-    }
+    function animate() { angleRef.current += 0.007; draw(angleRef.current); rafRef.current = requestAnimationFrame(animate); }
+    animate();
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
   }, [structure, width, height]);
 
-  if (!structure) return <div style={{ color: COLORS.textMuted, fontSize: 13, textAlign: "center", padding: "2rem" }}>Structure data not available</div>;
-  return <canvas ref={canvasRef} width={width} height={height} style={{ width, height, display: "block", margin: "0 auto" }} />;
+  if (!structure) return <div style={{color:"var(--text-muted)",fontSize:13,textAlign:"center",padding:"2rem"}}>Structure not available</div>;
+  return <canvas ref={canvasRef} style={{width,height,display:"block",margin:"0 auto"}} />;
 }
 
-// ─── GreenScreen badge ───
-function GSBadge({ gs }) {
-  const s = GS_STYLES[gs.bm] || GS_STYLES["U"];
+// ── Hazard row with severity pips ──────────────────────────────
+function HazardRow({ label, val }) {
+  const isHuman = !/ecolog|aquatic|wildlife|environ/i.test(label);
+  const color = isHuman ? "var(--danger)" : "var(--teal)";
+  const sev = /cancer|carcinogen|known human carcinogen/i.test(val) ? 5
+    : /iarc group 1|parkinson|reproductive toxicit/i.test(val) ? 4
+    : /endocrine|organ damage|immune/i.test(val) ? 3
+    : /bioaccumul|persist|aquatic/i.test(val) ? 3 : 2;
   return (
-    <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "6px 14px", borderRadius: 8, background: s.bg, border: `1px solid ${s.border}`, fontSize: 13, fontWeight: 600, color: s.color, whiteSpace: "nowrap" }}>
-      <span style={{ width: 8, height: 8, borderRadius: "50%", background: s.color, opacity: 0.7 }} />
-      {gs.label}
+    <div className="hazard-row" style={{borderLeft:`3px solid ${color}`}}>
+      <div className="hz-header">
+        <div className="hz-label" style={{color}}>{label}</div>
+        <div className="hz-pips" title={`Severity ${sev}/5`}>
+          {[1,2,3,4,5].map(i => (
+            <div key={i} className="hz-pip" style={{ background: i<=sev ? color : "var(--border)", opacity: i<=sev ? 0.3+i*0.14 : 0.35 }} />
+          ))}
+        </div>
+      </div>
+      <div className="hz-text">{val}</div>
     </div>
   );
 }
 
-// ─── Toxicity icon mapping (inline SVG) ───
-const ToxIcon = ({ label, color, size = 14 }) => {
-  const s = size;
-  const sw = Math.max(1.2, s * 0.045); // proportional stroke
-  const swt = Math.max(1, s * 0.035); // thinner stroke
-  const lc = label.toLowerCase();
-  let d = null;
-  if (/cancer|carcinogen/.test(lc)) d = <path d={`M${s*.5} ${s*.15}L${s*.85} ${s*.85}H${s*.15}Z`} fill="none" stroke={color} strokeWidth={sw*1.1} strokeLinejoin="round"/>;
-  else if (/neuro|brain|cognitive|behavior/.test(lc)) d = <><circle cx={s*.5} cy={s*.35} r={s*.22} fill="none" stroke={color} strokeWidth={sw}/><path d={`M${s*.35} ${s*.58}Q${s*.5} ${s*.85} ${s*.65} ${s*.58}`} fill="none" stroke={color} strokeWidth={sw}/></>;
-  else if (/endocrine|thyroid|hormone/.test(lc)) d = <><circle cx={s*.5} cy={s*.5} r={s*.3} fill="none" stroke={color} strokeWidth={sw}/><path d={`M${s*.35} ${s*.35}L${s*.65} ${s*.65}M${s*.65} ${s*.35}L${s*.35} ${s*.65}`} stroke={color} strokeWidth={swt}/></>;
-  else if (/reproductive|fertility|sperm|pregnan/.test(lc)) d = <><ellipse cx={s*.45} cy={s*.55} rx={s*.2} ry={s*.25} fill="none" stroke={color} strokeWidth={sw}/><path d={`M${s*.6} ${s*.35}Q${s*.8} ${s*.2} ${s*.75} ${s*.45}`} fill="none" stroke={color} strokeWidth={sw}/></>;
-  else if (/develop|fetal|child|infant|transgen/.test(lc)) d = <><circle cx={s*.5} cy={s*.35} r={s*.15} fill="none" stroke={color} strokeWidth={sw}/><path d={`M${s*.5} ${s*.5}L${s*.5} ${s*.8}M${s*.35} ${s*.62}L${s*.65} ${s*.62}`} stroke={color} strokeWidth={sw}/></>;
-  else if (/liver/.test(lc)) d = <path d={`M${s*.25} ${s*.45}Q${s*.25} ${s*.2} ${s*.5} ${s*.2}Q${s*.75} ${s*.2} ${s*.75} ${s*.45}Q${s*.75} ${s*.75} ${s*.5} ${s*.8}Q${s*.25} ${s*.75} ${s*.25} ${s*.45}Z`} fill="none" stroke={color} strokeWidth={sw}/>;
-  else if (/kidney|renal/.test(lc)) d = <path d={`M${s*.35} ${s*.25}Q${s*.15} ${s*.5} ${s*.35} ${s*.75}Q${s*.5} ${s*.6} ${s*.65} ${s*.75}Q${s*.85} ${s*.5} ${s*.65} ${s*.25}Q${s*.5} ${s*.35} ${s*.35} ${s*.25}Z`} fill="none" stroke={color} strokeWidth={sw}/>;
-  else if (/respiratory|lung|inhala/.test(lc)) d = <><path d={`M${s*.5} ${s*.2}L${s*.5} ${s*.5}M${s*.5} ${s*.5}Q${s*.25} ${s*.55} ${s*.25} ${s*.7}Q${s*.25} ${s*.85} ${s*.4} ${s*.82}M${s*.5} ${s*.5}Q${s*.75} ${s*.55} ${s*.75} ${s*.7}Q${s*.75} ${s*.85} ${s*.6} ${s*.82}`} fill="none" stroke={color} strokeWidth={sw}/></>;
-  else if (/ecolog|aquatic|pollinat|wildlife|marine|ecosystem/.test(lc)) d = <><path d={`M${s*.15} ${s*.65}Q${s*.32} ${s*.42} ${s*.5} ${s*.65}Q${s*.68} ${s*.42} ${s*.85} ${s*.65}`} fill="none" stroke={color} strokeWidth={sw}/><circle cx={s*.5} cy={s*.32} r={s*.14} fill="none" stroke={color} strokeWidth={swt}/></>;
-  else if (/persist|half.life/.test(lc)) d = <><circle cx={s*.5} cy={s*.5} r={s*.32} fill="none" stroke={color} strokeWidth={sw}/><path d={`M${s*.5} ${s*.28}L${s*.5} ${s*.5}L${s*.67} ${s*.6}`} stroke={color} strokeWidth={sw} strokeLinecap="round"/></>;
-  else if (/bioaccumul|biomagnif/.test(lc)) d = <><path d={`M${s*.28} ${s*.78}L${s*.5} ${s*.22}L${s*.72} ${s*.78}`} fill="none" stroke={color} strokeWidth={sw}/><path d={`M${s*.34} ${s*.6}H${s*.66}M${s*.37} ${s*.72}H${s*.63}`} stroke={color} strokeWidth={swt}/></>;
-  else if (/immune|immuno/.test(lc)) d = <><path d={`M${s*.5} ${s*.18}L${s*.5} ${s*.82}M${s*.18} ${s*.5}L${s*.82} ${s*.5}M${s*.27} ${s*.27}L${s*.73} ${s*.73}M${s*.73} ${s*.27}L${s*.27} ${s*.73}`} stroke={color} strokeWidth={swt}/></>;
-  else if (/water|contam|runoff/.test(lc)) d = <path d={`M${s*.5} ${s*.15}Q${s*.22} ${s*.52} ${s*.5} ${s*.85}Q${s*.78} ${s*.52} ${s*.5} ${s*.15}Z`} fill="none" stroke={color} strokeWidth={sw}/>;
-  else if (/data.gap|emerging/.test(lc)) d = <><circle cx={s*.5} cy={s*.5} r={s*.34} fill="none" stroke={color} strokeWidth={sw}/><text x={s*.5} y={s*.66} textAnchor="middle" fill={color} fontSize={s*.5} fontWeight="bold">?</text></>;
-  else if (/diet|food|exposure route|indoor/.test(lc)) d = <><rect x={s*.22} y={s*.32} width={s*.56} height={s*.48} rx={s*.06} fill="none" stroke={color} strokeWidth={sw}/><path d={`M${s*.33} ${s*.32}L${s*.33} ${s*.2}L${s*.67} ${s*.2}L${s*.67} ${s*.32}`} fill="none" stroke={color} strokeWidth={swt}/></>;
-  else if (/acute|lethal|organ|cardiac|cardiov|blood|bone|skin|irritat|sensitiz|metabol|microb/.test(lc)) d = <><path d={`M${s*.5} ${s*.12}L${s*.88} ${s*.82}H${s*.12}Z`} fill="none" stroke={color} strokeWidth={sw} strokeLinejoin="round"/><line x1={s*.5} y1={s*.38} x2={s*.5} y2={s*.58} stroke={color} strokeWidth={sw*1.2} strokeLinecap="round"/><circle cx={s*.5} cy={s*.68} r={s*.035} fill={color}/></>;
-  else if (/dioxin|recycl|lifecycle|degrad|addit|leach|formaldehyde.rel/.test(lc)) d = <><circle cx={s*.5} cy={s*.5} r={s*.32} fill="none" stroke={color} strokeWidth={swt} strokeDasharray={`${s*.08} ${s*.05}`}/><circle cx={s*.5} cy={s*.5} r={s*.12} fill={color} opacity=".3"/></>;
-  else if (/justice|disproportionate|chronic/.test(lc)) d = <><rect x={s*.18} y={s*.38} width={s*.26} height={s*.45} fill="none" stroke={color} strokeWidth={swt}/><rect x={s*.56} y={s*.18} width={s*.26} height={s*.65} fill="none" stroke={color} strokeWidth={swt}/></>;
-  else if (/mutagen/.test(lc)) d = <><path d={`M${s*.3} ${s*.18}L${s*.3} ${s*.82}M${s*.7} ${s*.18}L${s*.7} ${s*.82}M${s*.3} ${s*.35}Q${s*.5} ${s*.52} ${s*.7} ${s*.35}M${s*.3} ${s*.65}Q${s*.5} ${s*.48} ${s*.7} ${s*.65}`} fill="none" stroke={color} strokeWidth={swt}/></>;
-  if (!d) return null;
-  return <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`} style={{ flexShrink: 0, marginTop: 1 }}>{d}</svg>;
+// ── US Map ────────────────────────────────────────────────────
+const STATE_RECTS_UNUSED = {
+  WA:{x:88,y:62},OR:{x:88,y:112},CA:{x:88,y:162},NV:{x:120,y:142},ID:{x:152,y:82},MT:{x:178,y:62},
+  WY:{x:192,y:112},UT:{x:152,y:162},AZ:{x:152,y:212},NM:{x:180,y:212},CO:{x:198,y:162},
+  ND:{x:258,y:62},SD:{x:258,y:102},NE:{x:254,y:142},KS:{x:254,y:182},OK:{x:250,y:222},TX:{x:226,y:252},
+  MN:{x:318,y:62},WI:{x:362,y:82},MI:{x:394,y:72},IA:{x:316,y:132},IL:{x:362,y:132},IN:{x:396,y:132},OH:{x:430,y:122},
+  MO:{x:318,y:172},KY:{x:390,y:172},WV:{x:440,y:152},VA:{x:468,y:162},TN:{x:370,y:212},NC:{x:464,y:202},
+  AR:{x:328,y:222},MS:{x:356,y:242},AL:{x:390,y:252},GA:{x:424,y:252},SC:{x:468,y:242},
+  LA:{x:340,y:282},FL:{x:416,y:282},
+  ME:{x:544,y:42},NH:{x:522,y:72},VT:{x:504,y:62},NY:{x:480,y:82},MA:{x:528,y:102},RI:{x:544,y:112},CT:{x:524,y:122},
+  NJ:{x:510,y:142},DE:{x:514,y:162},MD:{x:492,y:172},PA:{x:474,y:122},
+  AK:{x:100,y:320},HI:{x:188,y:340},DC:{x:506,y:188},
 };
 
-// ─── Section component ───
-function Section({ label, children, style }) {
+// Real approximate US state SVG paths — viewBox "0 0 960 600"
+const US_STATES = {
+  AL:{d:"M 524 379 L 537 379 L 540 432 L 524 454 L 516 454 L 513 432 Z",cx:527,cy:415},
+  AK:{d:"M 106 479 L 212 479 L 230 524 L 170 560 L 106 540 Z",cx:165,cy:515},
+  AZ:{d:"M 157 314 L 236 315 L 236 389 L 157 389 Z",cx:197,cy:351},
+  AR:{d:"M 476 341 L 537 338 L 537 379 L 476 381 Z",cx:507,cy:359},
+  CA:{d:"M 104 199 L 158 187 L 175 262 L 168 315 L 105 337 Z",cx:136,cy:268},
+  CO:{d:"M 236 280 L 330 278 L 330 335 L 236 337 Z",cx:283,cy:307},
+  CT:{d:"M 780 196 L 806 193 L 808 215 L 780 218 Z",cx:793,cy:205},
+  DE:{d:"M 765 222 L 779 219 L 783 244 L 765 247 Z",cx:773,cy:232},
+  FL:{d:"M 556 432 L 595 428 L 640 468 L 618 520 L 556 500 Z",cx:590,cy:472},
+  GA:{d:"M 537 379 L 591 374 L 595 428 L 556 432 L 524 454 L 516 454 L 524 379 Z",cx:557,cy:410},
+  HI:{d:"M 310 525 L 400 525 L 400 555 L 310 555 Z",cx:355,cy:540},
+  ID:{d:"M 176 143 L 220 135 L 234 199 L 223 262 L 189 262 L 175 199 Z",cx:202,cy:198},
+  IL:{d:"M 518 248 L 556 245 L 560 322 L 537 338 L 518 330 Z",cx:538,cy:289},
+  IN:{d:"M 556 245 L 592 242 L 596 310 L 560 314 Z",cx:576,cy:278},
+  IA:{d:"M 449 230 L 518 226 L 520 265 L 476 268 L 449 260 Z",cx:484,cy:248},
+  KS:{d:"M 330 302 L 449 298 L 449 338 L 330 341 Z",cx:390,cy:319},
+  KY:{d:"M 556 314 L 660 302 L 664 336 L 600 344 L 556 348 Z",cx:610,cy:324},
+  LA:{d:"M 449 390 L 510 384 L 516 432 L 480 458 L 449 430 Z",cx:482,cy:419},
+  ME:{d:"M 840 108 L 878 98 L 886 154 L 848 160 Z",cx:862,cy:130},
+  MD:{d:"M 700 240 L 762 230 L 766 258 L 700 268 Z",cx:733,cy:249},
+  MA:{d:"M 806 178 L 858 168 L 862 196 L 806 200 Z",cx:832,cy:185},
+  MI:{d:"M 570 168 L 634 158 L 640 212 L 594 218 L 570 200 Z",cx:605,cy:188},
+  MN:{d:"M 411 130 L 480 124 L 484 206 L 449 208 L 411 190 Z",cx:447,cy:165},
+  MS:{d:"M 510 348 L 537 344 L 540 432 L 513 432 L 510 384 Z",cx:524,cy:389},
+  MO:{d:"M 449 298 L 518 292 L 522 348 L 476 354 L 449 338 Z",cx:485,cy:323},
+  MT:{d:"M 176 110 L 330 100 L 336 186 L 234 196 L 189 196 Z",cx:256,cy:148},
+  NE:{d:"M 330 258 L 449 252 L 449 298 L 330 302 Z",cx:390,cy:279},
+  NV:{d:"M 138 188 L 188 182 L 194 290 L 160 326 L 130 290 Z",cx:162,cy:258},
+  NH:{d:"M 820 136 L 840 130 L 844 176 L 820 180 Z",cx:831,cy:155},
+  NJ:{d:"M 748 212 L 768 208 L 772 248 L 748 252 Z",cx:759,cy:230},
+  NM:{d:"M 220 337 L 310 333 L 312 410 L 220 412 Z",cx:266,cy:373},
+  NY:{d:"M 698 170 L 778 156 L 784 212 L 748 218 L 700 216 Z",cx:740,cy:186},
+  NC:{d:"M 634 320 L 756 304 L 760 340 L 634 356 Z",cx:695,cy:331},
+  ND:{d:"M 330 138 L 449 130 L 453 174 L 330 180 Z",cx:390,cy:155},
+  OH:{d:"M 592 242 L 644 236 L 648 310 L 596 316 Z",cx:620,cy:276},
+  OK:{d:"M 310 337 L 449 331 L 449 374 L 390 378 L 346 378 L 310 378 Z",cx:379,cy:356},
+  OR:{d:"M 106 160 L 192 150 L 196 224 L 134 230 L 106 210 Z",cx:151,cy:189},
+  PA:{d:"M 644 200 L 748 188 L 752 236 L 648 248 Z",cx:697,cy:218},
+  RI:{d:"M 808 200 L 822 198 L 824 218 L 808 220 Z",cx:815,cy:209},
+  SC:{d:"M 634 356 L 706 340 L 718 386 L 670 404 L 634 388 Z",cx:675,cy:371},
+  SD:{d:"M 330 180 L 453 172 L 457 228 L 330 234 Z",cx:393,cy:203},
+  TN:{d:"M 522 340 L 650 326 L 654 362 L 522 374 Z",cx:587,cy:350},
+  TX:{d:"M 310 378 L 449 370 L 476 448 L 460 506 L 390 510 L 310 460 Z",cx:390,cy:440},
+  UT:{d:"M 188 256 L 252 250 L 256 336 L 188 340 Z",cx:222,cy:295},
+  VT:{d:"M 800 150 L 820 144 L 822 182 L 800 186 Z",cx:810,cy:165},
+  VA:{d:"M 648 288 L 756 272 L 760 318 L 700 330 L 648 332 Z",cx:703,cy:305},
+  WA:{d:"M 106 120 L 192 110 L 196 158 L 128 166 Z",cx:151,cy:138},
+  WV:{d:"M 648 272 L 706 260 L 710 310 L 660 322 L 648 306 Z",cx:677,cy:290},
+  WI:{d:"M 484 162 L 538 156 L 542 228 L 484 234 Z",cx:512,cy:195},
+  WY:{d:"M 236 196 L 330 190 L 334 256 L 236 260 Z",cx:283,cy:224},
+  DC:{d:"M 736,272 L 746,270 L 748,280 L 736,282 Z",cx:742,cy:276},
+};
+
+
+// EU country approximate paths
+const EU_COUNTRIES = {
+  DE:{d:"M 498 178 L 536 172 L 546 206 L 530 226 L 498 228 Z",cx:520,cy:200,name:"Germany"},
+  FR:{d:"M 446 210 L 498 206 L 500 258 L 462 270 L 440 250 Z",cx:471,cy:238,name:"France"},
+  ES:{d:"M 398 262 L 460 258 L 462 310 L 416 318 L 394 298 Z",cx:430,cy:288,name:"Spain"},
+  IT:{d:"M 498 232 L 530 228 L 544 290 L 520 318 L 494 294 Z",cx:516,cy:272,name:"Italy"},
+  PL:{d:"M 536 160 L 580 154 L 588 196 L 546 206 Z",cx:561,cy:178,name:"Poland"},
+  SE:{d:"M 530 88 L 560 78 L 566 148 L 534 156 Z",cx:547,cy:117,name:"Sweden"},
+  NL:{d:"M 466 172 L 490 168 L 494 190 L 468 194 Z",cx:479,cy:181,name:"Netherlands"},
+  BE:{d:"M 460 192 L 484 188 L 486 208 L 460 212 Z",cx:473,cy:200,name:"Belgium"},
+  AT:{d:"M 530 218 L 566 212 L 568 236 L 530 240 Z",cx:549,cy:226,name:"Austria"},
+  DK:{d:"M 508 138 L 528 134 L 530 162 L 508 166 Z",cx:519,cy:150,name:"Denmark"},
+  FI:{d:"M 548 78 L 582 66 L 590 134 L 552 142 Z",cx:568,cy:102,name:"Finland"},
+  PT:{d:"M 392 262 L 410 258 L 412 306 L 390 308 Z",cx:401,cy:283,name:"Portugal"},
+  IE:{d:"M 412 156 L 432 152 L 434 180 L 412 182 Z",cx:422,cy:167,name:"Ireland"},
+  GR:{d:"M 558 270 L 590 264 L 594 304 L 560 310 Z",cx:575,cy:287,name:"Greece"},
+  CZ:{d:"M 530 196 L 560 190 L 562 214 L 530 218 Z",cx:546,cy:205,name:"Czech Republic"},
+  RO:{d:"M 570 210 L 612 202 L 618 244 L 572 250 Z",cx:593,cy:226,name:"Romania"},
+  HU:{d:"M 546 232 L 580 226 L 584 254 L 548 258 Z",cx:565,cy:242,name:"Hungary"},
+};
+
+function USLegMap({ legislation }) {
+  const [hovered, setHovered] = useState(null);
+  const [view, setView] = useState("us");
+
+  const coverage = useMemo(() => {
+    const m = {};
+    (legislation||[]).forEach(l => {
+      if (!l.st) return;
+      if (!m[l.st]) m[l.st]={passed:0,proposed:0};
+      if (l.status==="passed") m[l.st].passed++;
+      else m[l.st].proposed++;
+    });
+    return m;
+  }, [legislation]);
+
+  const fedBills = (legislation||[]).filter(l=>l.st==="US");
+  const euBills  = (legislation||[]).filter(l=>l.st==="EU");
+
+  const getFill   = st => { const d=coverage[st]; if(!d) return "var(--surface2)"; return d.passed>0?"#B8DDA0":"#FDE8CC"; };
+  const getStroke = st => { const d=coverage[st]; if(!d) return "var(--border)";   return d.passed>0?"#5A9A30":"#C8A840"; };
+
+  const fedColor  = fedBills.some(b=>b.status==="passed") ? "#5A9A30" : fedBills.length>0 ? "#C8A840" : null;
+  const fedDash   = fedBills.length>0 && !fedBills.some(b=>b.status==="passed") ? "6,3" : null;
+
+  const SN = {US:"Federal",EU:"European Union",AL:"Alabama",AK:"Alaska",AZ:"Arizona",AR:"Arkansas",CA:"California",CO:"Colorado",CT:"Connecticut",DE:"Delaware",FL:"Florida",GA:"Georgia",HI:"Hawaii",ID:"Idaho",IL:"Illinois",IN:"Indiana",IA:"Iowa",KS:"Kansas",KY:"Kentucky",LA:"Louisiana",ME:"Maine",MD:"Maryland",MA:"Massachusetts",MI:"Michigan",MN:"Minnesota",MS:"Mississippi",MO:"Missouri",MT:"Montana",NE:"Nebraska",NV:"Nevada",NH:"New Hampshire",NJ:"New Jersey",NM:"New Mexico",NY:"New York",NC:"North Carolina",ND:"North Dakota",OH:"Ohio",OK:"Oklahoma",OR:"Oregon",PA:"Pennsylvania",RI:"Rhode Island",SC:"South Carolina",SD:"South Dakota",TN:"Tennessee",TX:"Texas",UT:"Utah",VT:"Vermont",VA:"Virginia",WA:"Washington",WV:"West Virginia",WI:"Wisconsin",WY:"Wyoming",DC:"Washington DC"};
+
   return (
-    <div style={{ marginBottom: 28, ...style }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
-        <div style={{ width: 3, height: 16, borderRadius: 2, background: COLORS.accent, opacity: 0.5 }} />
-        <div style={{ fontSize: 13, fontWeight: 700, color: COLORS.text, textTransform: "uppercase", letterSpacing: "0.6px" }}>{label}</div>
+    <div className="map-wrap">
+      <div className="map-header">
+        <span className="map-title">Legislative coverage</span>
+        <div style={{display:"flex",gap:6,alignItems:"center",flexWrap:"wrap"}}>
+          <div style={{display:"flex",background:"var(--surface2)",borderRadius:6,padding:2,border:"1px solid var(--border)"}}>
+            {["us","eu"].map(v=>(
+              <button key={v} onClick={()=>setView(v)} style={{fontFamily:"var(--mono)",fontSize:10,fontWeight:600,padding:"3px 10px",borderRadius:4,border:"none",cursor:"pointer",background:view===v?"var(--surface)":"transparent",color:view===v?"var(--accent)":"var(--text-muted)",boxShadow:view===v?"0 1px 3px rgba(0,0,0,0.1)":"none"}}>{v==="us"?"US":"EU"}</button>
+            ))}
+          </div>
+          {fedBills.filter(b=>b.status==="passed").length>0&&<span style={{fontFamily:"var(--mono)",fontSize:10,background:"#EAF3DE",color:"#27500A",padding:"2px 8px",borderRadius:4,border:"1px solid #C0DDA0"}}>{fedBills.filter(b=>b.status==="passed").length} federal passed</span>}
+          {fedBills.filter(b=>b.status==="proposed").length>0&&<span style={{fontFamily:"var(--mono)",fontSize:10,background:"var(--warn-light)",color:"var(--warn)",padding:"2px 8px",borderRadius:4,border:"1px solid var(--warn-border)"}}>{fedBills.filter(b=>b.status==="proposed").length} federal proposed</span>}
+        </div>
+      </div>
+
+      <div style={{padding:"8px",position:"relative"}}>
+        {view==="us" ? (
+          <svg viewBox="80 90 900 490" className="map-svg" style={{maxHeight:256}}>
+            {fedColor&&<rect x="84" y="94" width="888" height="482" rx="6" fill="none" stroke={fedColor} strokeWidth="2.5" strokeDasharray={fedDash||"none"} opacity="0.45"/>}
+            {Object.entries(US_STATES).map(([st,{d,cx,cy}])=>{
+              const isHov=hovered===st, hasCov=!!coverage[st];
+              return (
+                <g key={st} onMouseEnter={()=>setHovered(st)} onMouseLeave={()=>setHovered(null)}>
+                  <path d={d} fill={isHov?"#B8D4F0":getFill(st)} stroke={isHov?"var(--accent)":getStroke(st)} strokeWidth={isHov?1.5:0.8} style={{cursor:hasCov?"pointer":"default",transition:"fill 0.15s"}}/>
+                  {hasCov&&<text x={cx} y={cy+3} textAnchor="middle" fontSize="8" fontFamily="'IBM Plex Mono',monospace" fontWeight="700" fill={coverage[st].passed>0?"#27500A":"#7A4A0B"} pointerEvents="none">{st}</text>}
+                  <title>{SN[st]||st}{coverage[st]?" — "+coverage[st].passed+" passed, "+coverage[st].proposed+" proposed":""}</title>
+                </g>
+              );
+            })}
+          </svg>
+        ) : (
+          <svg viewBox="380 60 260 270" className="map-svg" style={{maxHeight:256}}>
+            {euBills.length>0&&<text x="510" y="80" textAnchor="middle" fontSize="9" fontFamily="'IBM Plex Mono',monospace" fill={euBills.some(b=>b.status==="passed")?"#27500A":"#7A4A0B"} fontWeight="600">EU: {euBills.filter(b=>b.status==="passed").length} passed · {euBills.filter(b=>b.status==="proposed").length} proposed</text>}
+            {Object.entries(EU_COUNTRIES).map(([cc,{d,cx,cy,name}])=>{
+              const isHov=hovered===cc;
+              const euFill   = euBills.some(b=>b.status==="passed")?"#B8DDA0":euBills.some(b=>b.status==="proposed")?"#FDE8CC":"var(--surface2)";
+              const euStroke = euBills.some(b=>b.status==="passed")?"#5A9A30":euBills.some(b=>b.status==="proposed")?"#C8A840":"var(--border)";
+              return (
+                <g key={cc} onMouseEnter={()=>setHovered(cc)} onMouseLeave={()=>setHovered(null)}>
+                  <path d={d} fill={isHov?"#B8D4F0":euFill} stroke={isHov?"var(--accent)":euStroke} strokeWidth={isHov?1.5:0.7} style={{transition:"fill 0.15s",cursor:"default"}}/>
+                  <text x={cx} y={cy+3} textAnchor="middle" fontSize="7" fontFamily="'IBM Plex Mono',monospace" fontWeight="600" fill={euBills.some(b=>b.status==="passed")?"#27500A":"#7A4A0B"} pointerEvents="none">{cc}</text>
+                  <title>{name}{euBills.length>0?" — EU regulation applies":""}</title>
+                </g>
+              );
+            })}
+          </svg>
+        )}
+
+        {hovered&&(coverage[hovered]||EU_COUNTRIES[hovered])&&(
+          <div style={{position:"absolute",bottom:12,left:12,background:"var(--surface)",border:"1px solid var(--border)",borderRadius:8,padding:"7px 12px",fontFamily:"var(--mono)",fontSize:11,boxShadow:"0 2px 12px rgba(0,0,0,.1)",pointerEvents:"none",zIndex:10}}>
+            {view==="us"&&coverage[hovered]&&<><b>{SN[hovered]||hovered}</b>{" — "}{coverage[hovered].passed>0&&<span style={{color:"#27500A"}}>{coverage[hovered].passed} passed</span>}{coverage[hovered].passed>0&&coverage[hovered].proposed>0&&" · "}{coverage[hovered].proposed>0&&<span style={{color:"#7A4A0B"}}>{coverage[hovered].proposed} proposed</span>}</>}
+            {view==="eu"&&EU_COUNTRIES[hovered]&&<><b>{EU_COUNTRIES[hovered].name}</b>{euBills.length>0?" — EU-wide regulation":""}</>}
+          </div>
+        )}
+      </div>
+
+      <div className="map-legend">
+        <div className="map-legend-item"><div className="map-swatch" style={{background:"#B8DDA0",border:"1px solid #5A9A30"}}/> Passed</div>
+        <div className="map-legend-item"><div className="map-swatch" style={{background:"#FDE8CC",border:"1px solid #C8A840"}}/> Proposed</div>
+        <div className="map-legend-item"><div className="map-swatch" style={{background:"var(--surface2)",border:"1px solid var(--border)"}}/> No bills</div>
+        {fedColor&&<div className="map-legend-item"><div className="map-swatch" style={{background:"none",border:"2px "+(fedDash?"dashed":"solid")+" "+fedColor}}/> Federal</div>}
+      </div>
+    </div>
+  );
+}
+
+// ── Section wrapper ────────────────────────────────────────────
+function Sec({ id, label, children }) {
+  return (
+    <div className="section" id={id}>
+      <div className="section-hd">
+        <span className="section-lbl">{label}</span>
+        <div className="section-line"/>
       </div>
       {children}
     </div>
   );
 }
 
-// ─── State name lookup ───
+// ── Legislation section ────────────────────────────────────────
 const STATE_NAMES = {US:"Federal",EU:"European Union",AL:"Alabama",AK:"Alaska",AZ:"Arizona",AR:"Arkansas",CA:"California",CO:"Colorado",CT:"Connecticut",DE:"Delaware",FL:"Florida",GA:"Georgia",HI:"Hawaii",ID:"Idaho",IL:"Illinois",IN:"Indiana",IA:"Iowa",KS:"Kansas",KY:"Kentucky",LA:"Louisiana",ME:"Maine",MD:"Maryland",MA:"Massachusetts",MI:"Michigan",MN:"Minnesota",MS:"Mississippi",MO:"Missouri",MT:"Montana",NE:"Nebraska",NV:"Nevada",NH:"New Hampshire",NJ:"New Jersey",NM:"New Mexico",NY:"New York",NC:"North Carolina",ND:"North Dakota",OH:"Ohio",OK:"Oklahoma",OR:"Oregon",PA:"Pennsylvania",RI:"Rhode Island",SC:"South Carolina",SD:"South Dakota",TN:"Tennessee",TX:"Texas",UT:"Utah",VT:"Vermont",VA:"Virginia",WA:"Washington",WV:"West Virginia",WI:"Wisconsin",WY:"Wyoming",DC:"Washington DC"};
 
-// ─── Legislation section component ───
-function LegislationSection({ chem }) {
+function LegislationSec({ chem, showMap }) {
   const [filter, setFilter] = useState("all");
-  const c = chem;
-  const rawLeg = c.legislation || [];
-
-  // Normalize — handle both old string[] format and new object[] format
-  const bills = rawLeg.map((l, i) => {
-    if (typeof l === "string") return { st: "—", bill: "", status: "proposed", title: l, id: i };
-    return { ...l, id: i };
-  });
-
-  const filtered = filter === "all" ? bills : bills.filter(b => b.status === filter);
-  const passedCount = bills.filter(b => b.status === "passed").length;
-  const proposedCount = bills.filter(b => b.status === "proposed").length;
-
-  const searchName = c.name.split("(")[0].trim();
-  const stBtnStyle = (active) => ({
-    fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 500, padding: "5px 12px",
-    borderRadius: 6, border: `1px solid ${active ? COLORS.accent : COLORS.border}`,
-    background: active ? COLORS.accentLight : COLORS.surface, color: active ? COLORS.accent : COLORS.textMid,
-    cursor: "pointer", transition: "all 0.15s",
-  });
-  const statusStyle = (s) => s === "passed"
-    ? { background: "#EAF3DE", color: "#27500A", border: "1px solid #C0DDA0" }
-    : { background: COLORS.warnLight, color: COLORS.warn, border: `1px solid ${COLORS.warnBorder}` };
+  const bills = (chem.legislation||[]).map((l,i)=>typeof l==="string"?{st:"—",bill:"",status:"proposed",title:l,id:i}:{...l,id:i});
+  const filtered = filter==="all"?bills:bills.filter(b=>b.status===filter);
+  const passed=bills.filter(b=>b.status==="passed").length;
+  const proposed=bills.filter(b=>b.status==="proposed").length;
+  const searchName=chem.name.split("(")[0].trim();
 
   return (
-    <Section label="Legislation & regulatory action">
-      <div style={{ background: COLORS.surfaceAlt, borderRadius: 12, border: `1px solid ${COLORS.border}`, overflow: "hidden" }}>
-        {/* Filter tabs */}
-        <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "12px 16px", borderBottom: `1px solid ${COLORS.border}`, flexWrap: "wrap" }}>
-          <button onClick={() => setFilter("all")} style={stBtnStyle(filter === "all")}>
-            All ({bills.length})
-          </button>
-          <button onClick={() => setFilter("passed")} style={stBtnStyle(filter === "passed")}>
-            Passed ({passedCount})
-          </button>
-          <button onClick={() => setFilter("proposed")} style={stBtnStyle(filter === "proposed")}>
-            Proposed ({proposedCount})
-          </button>
-        </div>
-
-        {/* Bill list */}
-        <div style={{ padding: "4px 0" }}>
-          {filtered.length > 0 ? filtered.map((b, i) => (
-            <div key={b.id} style={{
-              display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 16px",
-              borderBottom: i < filtered.length - 1 ? `1px solid ${COLORS.border}` : "none",
-            }}>
-              {/* State badge */}
-              <div style={{
-                fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600,
-                minWidth: 32, textAlign: "center", padding: "3px 6px", borderRadius: 4,
-                background: b.st === "US" ? COLORS.infoLight : b.st === "EU" ? "#EEEDFE" : COLORS.surface,
-                color: b.st === "US" ? COLORS.info : b.st === "EU" ? "#534AB7" : COLORS.textMid,
-                border: `1px solid ${b.st === "US" ? "#B5D4F4" : b.st === "EU" ? "#CECBF6" : COLORS.border}`,
-                flexShrink: 0, marginTop: 1,
-              }} title={STATE_NAMES[b.st] || b.st}>
-                {b.st}
-              </div>
-
-              {/* Bill details */}
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
-                  {b.bill && (
-                    <span style={{ fontFamily: "var(--font-mono, monospace)", fontSize: 12, fontWeight: 500, color: COLORS.text }}>{b.bill}</span>
-                  )}
-                  <span style={{
-                    fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 600,
-                    textTransform: "uppercase", letterSpacing: "0.5px", padding: "2px 7px",
-                    borderRadius: 4, ...statusStyle(b.status),
-                  }}>{b.status}</span>
-                </div>
-                <div style={{ fontSize: 13, lineHeight: 1.5, color: COLORS.textMid, marginTop: 2 }}>{b.title}</div>
-              </div>
-            </div>
-          )) : (
-            <div style={{ padding: "16px", fontSize: 13, color: COLORS.textMuted, textAlign: "center", fontFamily: "'DM Sans', sans-serif" }}>
-              No {filter} legislation found for this chemical.
-            </div>
-          )}
-        </div>
-
-        {/* External tracker links */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, padding: "12px 16px", borderTop: `1px solid ${COLORS.border}`, background: COLORS.surface }}>
-          <a href={`https://www.saferstates.org/bill-tracker/?search=${encodeURIComponent(searchName)}`}
-            target="_blank" rel="noopener noreferrer"
-            style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 500, color: COLORS.accent, textDecoration: "none", padding: "5px 12px", borderRadius: 6, border: `1px solid ${COLORS.accentMid}`, background: COLORS.accentLight }}>
-            Safer States bill tracker &#8599;
-          </a>
-          <a href="https://www.saferstates.org/bill-tracker/" target="_blank" rel="noopener noreferrer"
-            style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 500, color: COLORS.textMid, textDecoration: "none", padding: "5px 12px", borderRadius: 6, border: `1px solid ${COLORS.border}` }}>
-            Browse all tracked bills &#8599;
-          </a>
-          <a href={`https://www.congress.gov/search?q=%7B%22source%22%3A%22legislation%22%2C%22search%22%3A%22${encodeURIComponent(searchName)}%22%7D`}
-            target="_blank" rel="noopener noreferrer"
-            style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 500, color: COLORS.textMid, textDecoration: "none", padding: "5px 12px", borderRadius: 6, border: `1px solid ${COLORS.border}` }}>
-            Search Congress.gov &#8599;
-          </a>
-        </div>
+    <Sec id="legislation" label="Legislation & Regulatory Action">
+      {showMap && <USLegMap legislation={bills}/>}
+      <div className="leg-filters">
+        {[["all",bills.length],["passed",passed],["proposed",proposed]].map(([f,ct])=>(
+          <button key={f} className={`leg-filter${filter===f?" on":""}`} onClick={()=>setFilter(f)}>{f} ({ct})</button>
+        ))}
       </div>
-    </Section>
+      <div className="leg-list">
+        {filtered.map((b,i)=>{
+          const isPassed=b.status==="passed";
+          const isUS=b.st==="US",isEU=b.st==="EU";
+          return (
+            <div key={b.id} className="leg-item">
+              <div className="leg-state" style={{background:isUS?"var(--accent-light)":isEU?"#EEEDFE":"var(--surface2)",color:isUS?"var(--accent)":isEU?"#534AB7":"var(--text-muted)",border:`1px solid ${isUS?"var(--accent-mid)":isEU?"#CECBF6":"var(--border)"}`}} title={STATE_NAMES[b.st]||b.st}>{b.st}</div>
+              <div style={{flex:1,minWidth:0}}>
+                <div style={{display:"flex",alignItems:"center",gap:6,flexWrap:"wrap"}}>
+                  {b.bill&&<span className="leg-bill">{b.bill}</span>}
+                  <span className="leg-status" style={{background:isPassed?"#EAF3DE":"var(--warn-light)",color:isPassed?"#27500A":"var(--warn)",border:`1px solid ${isPassed?"#C0DDA0":"var(--warn-border)"}`}}>{b.status}</span>
+                </div>
+                <div className="leg-title">{b.title}</div>
+              </div>
+            </div>
+          );
+        })}
+        {filtered.length===0&&<div style={{padding:"20px",textAlign:"center",color:"var(--text-muted)",fontSize:13,fontFamily:"var(--mono)"}}>No {filter} legislation tracked.</div>}
+      </div>
+      <div className="leg-ext">
+        <a className="ext-link primary" href={`https://www.saferstates.org/bill-tracker/?search=${encodeURIComponent(searchName)}`} target="_blank" rel="noopener noreferrer">Safer States tracker ↗</a>
+        <a className="ext-link" href="https://www.saferstates.org/bill-tracker/" target="_blank" rel="noopener noreferrer">All bills ↗</a>
+        <a className="ext-link" href={`https://www.congress.gov/search?q=%7B%22source%22%3A%22legislation%22%2C%22search%22%3A%22${encodeURIComponent(searchName)}%22%7D`} target="_blank" rel="noopener noreferrer">Congress.gov ↗</a>
+      </div>
+    </Sec>
   );
 }
 
-// ─── Main App ───
-function ChemicalExplorer() {
+// ── Tweak defaults ─────────────────────────────────────────────
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "theme": "light",
+  "accentHue": "forest",
+  "showMap": true
+}/*EDITMODE-END*/;
+
+const SCHEMES = {
+  navy:  { accent:"#1A3A5C", accentLight:"#E8EEF5", accentMid:"#A8BDD4" },
+  forest:{ accent:"#0A5E47", accentLight:"#E3F0EB", accentMid:"#C0DDD2" },
+  slate: { accent:"#3D3D56", accentLight:"#EDEDF5", accentMid:"#C0C0D8" },
+};
+
+// ── Main App ───────────────────────────────────────────────────
+function App() {
+  const tweaks = TWEAK_DEFAULTS; const setTweak = () => {};
   const [query, setQuery] = useState("");
-  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSug, setShowSug] = useState(false);
   const [activeChem, setActiveChem] = useState(null);
-  const [aiData, setAiData] = useState(null);
+  const [aiData, setAiData] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const inputRef = useRef(null);
   const sugRef = useRef(null);
 
-  const allEntries = Object.values(CURATED_DB);
-  const filteredSuggestions = query.trim()
-    ? allEntries.filter(c =>
-        c.name.toLowerCase().includes(query.toLowerCase()) ||
-        c.aka.some(a => a.toLowerCase().includes(query.toLowerCase())) ||
-        (c.cas && c.cas.toLowerCase().includes(query.toLowerCase()))
-      ).slice(0, 8)
-    : [];
+  // Apply theme + accent CSS vars
+  useEffect(() => {
+    const r = document.documentElement.style;
+    const s = SCHEMES[tweaks.accentHue] || SCHEMES.navy;
+    r.setProperty("--accent", s.accent);
+    r.setProperty("--accent-light", s.accentLight);
+    r.setProperty("--accent-mid", s.accentMid);
+    if (tweaks.theme === "dark") {
+      r.setProperty("--bg","#111215"); r.setProperty("--surface","#1A1B1E");
+      r.setProperty("--surface2","#22242A"); r.setProperty("--text","#E8E8EC");
+      r.setProperty("--text-mid","#A8A8B2"); r.setProperty("--text-muted","#5A5A66");
+      r.setProperty("--border","#2E3040");
+    } else {
+      r.setProperty("--bg","#F4F3EE"); r.setProperty("--surface","#FFFFFF");
+      r.setProperty("--surface2","#ECEAE3"); r.setProperty("--text","#17171A");
+      r.setProperty("--text-mid","#3D3D42"); r.setProperty("--text-muted","#7A7A82");
+      r.setProperty("--border","#D8D6CE");
+    }
+  }, [tweaks.theme, tweaks.accentHue]);
 
-  const lookupCurated = useCallback((searchTerm) => {
-    const key = ALIASES[searchTerm.toLowerCase()];
-    return key ? CURATED_DB[key] : null;
+  const DB = window.CURATED_DB || {};
+  const ALIASES = window.ALIASES || {};
+  const allEntries = useMemo(() => Object.values(DB), []);
+
+  useEffect(() => {
+    if (!query.trim()) { setSuggestions([]); return; }
+    const q = query.toLowerCase();
+    setSuggestions(allEntries.filter(c =>
+      c.name.toLowerCase().includes(q) ||
+      (c.aka||[]).some(a=>a.toLowerCase().includes(q)) ||
+      (c.cas&&c.cas.toLowerCase().includes(q))
+    ).slice(0,8));
+  }, [query]);
+
+  useEffect(() => {
+    const h = e => { if (sugRef.current&&!sugRef.current.contains(e.target)&&!inputRef.current?.contains(e.target)) setShowSug(false); };
+    document.addEventListener("mousedown", h);
+    return () => document.removeEventListener("mousedown", h);
   }, []);
 
-  const loadChemical = useCallback(async (searchTerm) => {
-    setShowSuggestions(false);
-    setError(null);
+  const lookupCurated = useCallback(name => {
+    const key = ALIASES[name.toLowerCase()];
+    return key ? DB[key] : null;
+  }, []);
 
-    // Check curated DB first
-    const curated = lookupCurated(searchTerm);
-    if (curated) {
-      setActiveChem(curated);
-      setAiData(null);
-      setLoading(false);
-      setQuery(curated.name);
-      return;
-    }
-
-    // Fall back to API lookup
-    setLoading(true);
-    setActiveChem(null);
-    setAiData(null);
-    setQuery(searchTerm);
-
+  const loadChemical = useCallback(async term => {
+    setShowSug(false); setError(null);
+    const curated = lookupCurated(term);
+    if (curated) { setActiveChem(curated); setAiData(false); setQuery(curated.name); window.scrollTo({top:0,behavior:"smooth"}); return; }
+    setLoading(true); setActiveChem(null); setAiData(false); setQuery(term);
     try {
-      const prompt = `You are a toxicology and environmental health expert. Provide detailed information about the chemical "${searchTerm}" in ONLY valid JSON format. No markdown, no preamble, no backticks. Just the JSON object.
-
-The JSON must have exactly these fields:
-{
-  "name": "Official chemical name",
-  "aka": ["list","of","alternate","names"],
-  "cas": "CAS number or 'Multiple (class)' if it's a class",
-  "chemClassName": "Name of the chemical class",
-  "chemClassDef": "One-paragraph definition of the chemical class",
-  "desc": "2-3 sentence description of the chemical, its primary uses, and why it matters",
-  "formula": "Molecular formula with subscripts",
-  "molWeight": "Molecular weight as string, or 'Varies' for classes",
-  "toxicity": [
-    {"label": "Category (e.g. Cancer, Endocrine, Respiratory, Ecological)", "val": "2-3 sentence description of the hazard"}
-  ],
-  "gsBm": 1,
-  "gsLabel": "Benchmark 1 — Avoid",
-  "gsDetail": "2-3 sentences explaining the GreenScreen benchmark rationale. If you don't know the exact benchmark, estimate based on the chemical's hazard profile and say 'estimated'.",
-  "parents": ["List of precursor chemicals"],
-  "children": ["List of chemicals derived from this one"],
-  "products": ["List of products it's found in"],
-  "func": "What function this chemical serves in products",
-  "legislation": [{"st": "US or 2-letter state code", "bill": "Bill number or rule name", "status": "passed or proposed", "title": "Short description of what the legislation does"}],
-  "links": [{"t": "Link title", "u": "URL"}]
-}
-
-Provide 4 toxicity entries covering human health AND ecological hazards. For GreenScreen benchmarks: BM-1 = Avoid (highest concern), BM-2 = Use but search for safer alternatives, BM-3 = Use but still identify safer alternatives, BM-4 = Prefer (safer chemical). If unsure, estimate conservatively. Include at least 2 real links to EPA, ATSDR, IARC, or other authoritative sources. For legislation, include both passed laws and proposed bills. Use 2-letter US state codes (e.g. CA, WA, NY), "US" for federal, "EU" for European Union.`;
-
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1000,
-          messages: [{ role: "user", content: prompt }],
-        }),
-      });
-
-      const data = await response.json();
-      const text = (data.content || []).map(c => c.text || "").join("");
-      const clean = text.replace(/```json|```/g, "").trim();
-      const parsed = JSON.parse(clean);
-
-      const formatted = {
-        name: parsed.name,
-        aka: parsed.aka || [],
-        cas: parsed.cas || "Unknown",
-        chemClass: { name: parsed.chemClassName || "Unknown", def: parsed.chemClassDef || "" },
-        desc: parsed.desc || "",
-        formula: parsed.formula || "",
-        molWeight: parsed.molWeight || "",
-        structure: null,
-        toxicity: parsed.toxicity || [],
-        gs: { bm: parsed.gsBm || "U", label: parsed.gsLabel || "Unscreened", detail: parsed.gsDetail || "" },
-        parents: parsed.parents || [],
-        children: parsed.children || [],
-        products: parsed.products || [],
-        func: parsed.func || "",
-        links: parsed.links || [],
-        legislation: parsed.legislation || [],
-      };
-
-      setAiData(formatted);
-      setActiveChem(formatted);
-    } catch (err) {
-      console.error(err);
-      setError(`Could not find information for "${searchTerm}". Try a more specific chemical name.`);
-    }
+      const resp = await window.claude.complete(`Toxicology expert. Return ONLY valid JSON (no markdown, no preamble) for chemical "${term}": {"name":"","aka":[],"cas":"","chemClass":{"name":"","def":""},"desc":"","formula":"","molWeight":"","toxicity":[{"label":"","val":""}],"gs":{"bm":1,"label":"Benchmark 1 — Avoid","detail":""},"parents":[],"children":[],"products":[],"func":"","legislation":[{"st":"","bill":"","status":"passed","title":""}],"links":[{"t":"","u":""}]}`);
+      const parsed = JSON.parse(resp.replace(/```json|```/g,"").trim());
+      setActiveChem({ ...parsed, structure:null }); setAiData(true);
+    } catch(e) { setError(`Could not find data for "${term}". Try a different name or CAS number.`); }
     setLoading(false);
   }, [lookupCurated]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (query.trim()) loadChemical(query.trim());
-  };
-
-  const handleRelatedClick = (name) => {
-    loadChemical(name);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const resetToHome = () => {
-    setActiveChem(null);
-    setAiData(null);
-    setQuery("");
-    setError(null);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    setTimeout(() => inputRef.current?.focus(), 100);
-  };
-
-  const featured = ["PFAS", "PFOA", "Formaldehyde", "6PPD", "BPA", "Glyphosate", "Vinyl chloride", "Phthalates", "DEHP", "Flame retardants", "Lead", "Atrazine", "Chlorpyrifos", "TCE"];
-
+  const reset = () => { setActiveChem(null); setAiData(false); setQuery(""); setError(null); setTimeout(()=>inputRef.current?.focus(),100); window.scrollTo({top:0,behavior:"smooth"}); };
   const c = activeChem;
+  const featured = ["PFAS","PFOA","Formaldehyde","6PPD","BPA","Glyphosate","Vinyl chloride","Phthalates","DEHP","Flame retardants","Lead","Atrazine","TCE","Dioxins"];
 
   return (
-    <div style={{ fontFamily: "'Literata', 'Georgia', serif", color: COLORS.text, maxWidth: 780, margin: "0 auto", padding: "0 20px" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,300;7..72,400;7..72,500;7..72,600;7..72,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-
+    <div id="app-shell">
       {/* Header */}
-      <div style={{ paddingBottom: 20, marginBottom: 28 }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }} onClick={resetToHome}>
-            <div style={{ width: 36, height: 36, borderRadius: 10, background: COLORS.accent, display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="7" cy="7" r="4.5" stroke="#fff" strokeWidth="1.8"/><circle cx="12" cy="10" r="3.5" stroke="#fff" strokeWidth="1.5" opacity=".7"/><line x1="11" y1="4" x2="8" y2="8" stroke="#fff" strokeWidth="1.5" opacity=".5"/></svg>
-            </div>
-            <div>
-              <h1 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 20, fontWeight: 600, color: COLORS.text, margin: 0, letterSpacing: "-0.3px" }}>
-                Toxic Chemical Explorer
-              </h1>
-              <p style={{ fontSize: 12, color: COLORS.textMuted, margin: "2px 0 0", fontFamily: "'DM Sans', sans-serif" }}>
-                Hazards · Benchmarks · Legislation · Manufacturers
-              </p>
-            </div>
+      <header className="app-header">
+        <button className="logo" onClick={reset}>
+          <div className="logo-mark">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <circle cx="7" cy="7" r="4.5" stroke="#fff" strokeWidth="1.8"/>
+              <circle cx="12.5" cy="11.5" r="3" stroke="#fff" strokeWidth="1.4" opacity=".65"/>
+              <line x1="11" y1="4.5" x2="8.5" y2="8.5" stroke="#fff" strokeWidth="1.4" opacity=".45"/>
+            </svg>
           </div>
-          {c && (
-            <button onClick={resetToHome} style={{
-              fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 500, color: COLORS.accent,
-              background: COLORS.accentLight, border: `1px solid ${COLORS.accentMid}`, borderRadius: 8,
-              padding: "8px 16px", cursor: "pointer", whiteSpace: "nowrap"
-            }}>
-              ← New search
-            </button>
-          )}
-        </div>
+          <div>
+            <div className="logo-name">Toxic Chemical Explorer</div>
+            <div className="logo-sub">Hazards · Benchmarks · Legislation · Manufacturers</div>
+          </div>
+        </button>
+        {c && <button className="back-btn" onClick={reset}>← New search</button>}
+      </header>
 
-        {/* Search */}
-        <form onSubmit={handleSubmit} style={{ position: "relative" }}>
-          <div style={{ position: "relative" }}>
-            <svg style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", width: 16, height: 16, color: COLORS.textMuted }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-            <input
-              ref={inputRef}
-              type="text"
-              value={query}
-              onChange={(e) => { setQuery(e.target.value); setShowSuggestions(true); }}
-              onFocus={() => setShowSuggestions(true)}
-              placeholder="Type a chemical name, CAS number, or class..."
-              style={{
-                width: "100%", boxSizing: "border-box", padding: "12px 80px 12px 40px",
-                fontFamily: "'DM Sans', sans-serif", fontSize: 15, border: `1px solid ${COLORS.border}`,
-                borderRadius: 12, background: COLORS.surface, color: COLORS.text, outline: "none",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.04)", transition: "border-color 0.2s, box-shadow 0.2s",
-              }}
-              onFocusCapture={(e) => { e.target.style.borderColor = COLORS.accentMid; e.target.style.boxShadow = `0 2px 12px rgba(10,94,71,0.08)`; }}
-              onBlurCapture={(e) => { e.target.style.borderColor = COLORS.border; e.target.style.boxShadow = "0 2px 8px rgba(0,0,0,0.04)"; }}
+      {/* Home */}
+      {!c && !loading && (
+        <div className="search-hero fade-up">
+          <h2 className="hero-title">Know what's in your products.</h2>
+          <p className="hero-sub">Search 206 toxic chemicals by name, CAS number, or class — health hazards, manufacturer data, and legislation in one place.</p>
+          <div className="search-wrap">
+            <svg className="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input ref={inputRef} className="search-input" type="text" placeholder="Chemical name, CAS number, or class…" value={query} autoFocus
+              onChange={e=>{setQuery(e.target.value);setShowSug(true);}}
+              onFocus={()=>setShowSug(true)}
+              onKeyDown={e=>{if(e.key==="Enter"&&query.trim()) loadChemical(query.trim());}}
             />
-            <button type="submit" style={{
-              position: "absolute", right: 6, top: "50%", transform: "translateY(-50%)",
-              fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 500,
-              background: COLORS.accent, color: "#fff", border: "none", borderRadius: 7,
-              padding: "7px 14px", cursor: "pointer",
-            }}>
-              Search
-            </button>
+            <button className="search-btn" onClick={()=>query.trim()&&loadChemical(query.trim())}>Search</button>
+            {showSug && suggestions.length>0 && (
+              <div className="autocomplete" ref={sugRef}>
+                {suggestions.map((s,i) => (
+                  <div key={i} className="autocomplete-item" onClick={()=>loadChemical(s.name)}>
+                    <div>
+                      <div className="ac-name">{s.name}</div>
+                      {s.aka&&s.aka[0]&&<div className="ac-aka">{s.aka[0]}</div>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
-
-          {showSuggestions && filteredSuggestions.length > 0 && (
-            <div ref={sugRef} style={{
-              position: "absolute", top: "100%", left: 0, right: 0, zIndex: 20,
-              background: COLORS.surface, border: `1px solid ${COLORS.border}`, borderRadius: 8,
-              marginTop: 4, maxHeight: 260, overflowY: "auto", boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
-            }}>
-              {filteredSuggestions.map((s, i) => (
-                <div key={i} onClick={() => loadChemical(s.name)}
-                  style={{ padding: "10px 16px", cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 14, borderBottom: i < filteredSuggestions.length - 1 ? `1px solid ${COLORS.surfaceAlt}` : "none" }}
-                  onMouseEnter={(e) => e.target.style.background = COLORS.surfaceAlt}
-                  onMouseLeave={(e) => e.target.style.background = "transparent"}
-                >
-                  {s.name}
-                  {s.aka[0] && <span style={{ color: COLORS.textMuted, marginLeft: 8, fontSize: 12 }}>{s.aka[0]}</span>}
-                </div>
-              ))}
-            </div>
-          )}
-        </form>
-      </div>
+          <div className="quick-wrap">
+            <div className="quick-label">Quick access</div>
+            <div className="chips">{featured.map(n=><button key={n} className="chip" onClick={()=>loadChemical(n)}>{n}</button>)}</div>
+          </div>
+          <div className="stats-bar">
+            <div style={{textAlign:"center"}}><span className="stat-num">206</span><div className="stat-lbl">chemicals &amp; elements</div></div>
+            <div style={{textAlign:"center"}}><span className="stat-num">80</span><div className="stat-lbl">with manufacturer data</div></div>
+            <div style={{textAlign:"center"}}><span className="stat-num">AI</span><div className="stat-lbl">lookup for unlisted</div></div>
+          </div>
+        </div>
+      )}
 
       {/* Loading */}
       {loading && (
-        <div style={{ textAlign: "center", padding: "3rem 1rem", fontFamily: "'DM Sans', sans-serif" }}>
-          <div style={{ fontSize: 15, color: COLORS.textMid, marginBottom: 8 }}>Researching {query}...</div>
-          <div style={{ fontSize: 13, color: COLORS.textMuted }}>Pulling toxicity data, benchmarks, and legislative context</div>
-          <div style={{ marginTop: 16, width: 40, height: 3, background: COLORS.accentLight, borderRadius: 2, margin: "16px auto 0", overflow: "hidden", position: "relative" }}>
-            <div style={{ position: "absolute", width: "50%", height: "100%", background: COLORS.accent, borderRadius: 2, animation: "slide 1.2s ease-in-out infinite" }} />
-          </div>
-          <style>{`@keyframes slide { 0% { left: -50%; } 100% { left: 100%; } }`}</style>
+        <div className="loading">
+          <div style={{fontSize:15,color:"var(--text-mid)"}}>Researching <em>{query}</em>…</div>
+          <div style={{fontSize:13,color:"var(--text-muted)",marginTop:6}}>Pulling toxicity data, benchmarks, and legislative context</div>
+          <div className="loading-bar"/>
         </div>
       )}
 
       {/* Error */}
       {error && (
-        <div style={{ textAlign: "center", padding: "2rem", background: COLORS.dangerLight, borderRadius: 10, border: `1px solid ${COLORS.dangerBorder}`, fontFamily: "'DM Sans', sans-serif" }}>
-          <div style={{ fontSize: 14, color: COLORS.danger }}>{error}</div>
-          <button onClick={resetToHome} style={{ marginTop: 12, fontSize: 13, color: COLORS.accent, background: "none", border: `1px solid ${COLORS.accent}`, borderRadius: 6, padding: "6px 16px", cursor: "pointer" }}>Start over</button>
+        <div className="error-box">
+          <div style={{fontSize:14,color:"var(--danger)"}}>{error}</div>
+          <button onClick={reset} style={{marginTop:12,fontSize:13,color:"var(--accent)",background:"none",border:"1px solid var(--accent)",borderRadius:6,padding:"6px 16px",cursor:"pointer"}}>Start over</button>
         </div>
       )}
 
-      {/* Home state */}
-      {!c && !loading && !error && (
-        <div style={{ padding: "2rem 0 2rem" }}>
-          {/* Hero area */}
-          <div style={{
-            background: `linear-gradient(135deg, ${COLORS.accent}08 0%, ${COLORS.accent}03 50%, ${COLORS.dangerLight} 100%)`,
-            borderRadius: 16, padding: "36px 32px 32px", marginBottom: 28, position: "relative", overflow: "hidden",
-            border: `1px solid ${COLORS.border}`,
-          }}>
-            {/* Decorative molecule dots */}
-            <div style={{ position: "absolute", top: 16, right: 20, opacity: 0.06 }}>
-              <svg width="120" height="80" viewBox="0 0 120 80"><circle cx="30" cy="20" r="8" fill={COLORS.accent}/><circle cx="70" cy="35" r="12" fill={COLORS.accent}/><circle cx="105" cy="18" r="6" fill={COLORS.accent}/><line x1="30" y1="20" x2="70" y2="35" stroke={COLORS.accent} strokeWidth="2"/><line x1="70" y1="35" x2="105" y2="18" stroke={COLORS.accent} strokeWidth="2"/><circle cx="20" cy="55" r="5" fill={COLORS.danger}/><circle cx="55" cy="65" r="9" fill={COLORS.danger}/><line x1="20" y1="55" x2="55" y2="65" stroke={COLORS.danger} strokeWidth="2"/></svg>
-            </div>
-            <div style={{ fontSize: 26, fontWeight: 600, fontFamily: "'Literata', serif", color: COLORS.text, marginBottom: 8, lineHeight: 1.2, position: "relative" }}>
-              Know what's in your products.
-            </div>
-            <div style={{ fontSize: 15, color: COLORS.textMid, lineHeight: 1.6, maxWidth: 540, marginBottom: 4, position: "relative" }}>
-              Explore toxic chemicals by name — their health hazards, who manufactures them, and which laws are working to restrict them.
-            </div>
-          </div>
-
-          {/* Quick access */}
-          <div style={{ marginBottom: 8 }}>
-            <div style={{ fontSize: 11, fontWeight: 600, color: COLORS.textMuted, textTransform: "uppercase", letterSpacing: "0.8px", marginBottom: 10, fontFamily: "'DM Sans', sans-serif" }}>Quick access</div>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-              {featured.map((name) => (
-                <button key={name} onClick={() => loadChemical(name)}
-                  style={{
-                    fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 500,
-                    padding: "8px 16px", borderRadius: 20, border: `1px solid ${COLORS.border}`,
-                    background: COLORS.surface, color: COLORS.text, cursor: "pointer",
-                    transition: "all 0.2s", boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
-                  }}
-                  onMouseEnter={(e) => { e.target.style.background = COLORS.accentLight; e.target.style.borderColor = COLORS.accentMid; e.target.style.color = COLORS.accent; e.target.style.boxShadow = "0 2px 8px rgba(10,94,71,0.1)"; }}
-                  onMouseLeave={(e) => { e.target.style.background = COLORS.surface; e.target.style.borderColor = COLORS.border; e.target.style.color = COLORS.text; e.target.style.boxShadow = "0 1px 3px rgba(0,0,0,0.04)"; }}
-                >{name}</button>
-              ))}
-            </div>
-          </div>
-
-          {/* Stats bar */}
-          <div style={{
-            display: "flex", gap: 24, padding: "16px 0", marginTop: 20, borderTop: `1px solid ${COLORS.border}`,
-            fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: COLORS.textMuted,
-          }}>
-            <span><strong style={{ color: COLORS.accent, fontSize: 16 }}>206</strong> chemicals &amp; elements</span>
-            <span><strong style={{ color: COLORS.accent, fontSize: 16 }}>61</strong> with manufacturer data</span>
-            <span>AI-powered lookup for unlisted chemicals</span>
-          </div>
-        </div>
-      )}
-
-      {/* Chemical detail view */}
+      {/* Detail page */}
       {c && !loading && (
-        <div style={{ animation: "fadeIn 0.3s ease" }}>
-          <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }`}</style>
+        <div className="detail-layout fade-up">
 
-          {/* Header row */}
-          <div style={{
-            display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 16, marginBottom: 28, flexWrap: "wrap",
-            paddingBottom: 24, borderBottom: `2px solid ${COLORS.accent}18`,
-          }}>
-            <div style={{ flex: 1, minWidth: 200 }}>
-              <h2 style={{ fontFamily: "'Literata', serif", fontSize: 26, fontWeight: 600, margin: 0, color: COLORS.text, lineHeight: 1.2 }}>{c.name}</h2>
-              {c.aka.length > 0 && <div style={{ fontSize: 13, color: COLORS.textMuted, marginTop: 5, fontFamily: "'DM Sans', sans-serif" }}>Also: {c.aka.join(", ")}</div>}
-              <div style={{ fontFamily: "monospace", fontSize: 12, color: COLORS.textMuted, marginTop: 4, background: COLORS.surfaceAlt, display: "inline-block", padding: "2px 8px", borderRadius: 4 }}>CAS: {c.cas}</div>
-              {c.spwa && (
-                <a href="https://ecology.wa.gov/waste-toxics/reducing-toxic-chemicals/washingtons-toxics-in-products-laws/safer-products" target="_blank" rel="noopener noreferrer" style={{
-                  display: "inline-flex", alignItems: "center", gap: 5, marginTop: 6, padding: "3px 10px",
-                  borderRadius: 6, background: "#EBF3FA", border: "1px solid #B5D4F4", fontSize: 11, fontWeight: 600,
-                  color: "#185FA5", fontFamily: "'DM Sans', sans-serif", textDecoration: "none", letterSpacing: "0.2px",
-                }}>
-                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#185FA5", opacity: 0.6 }} />
-                  WA Safer Products: {c.spwa}
-                </a>
-              )}
-              {c.tfca && (
-                <a href="https://ecology.wa.gov/waste-toxics/reducing-toxic-chemicals/washingtons-toxics-in-products-laws/toxic-free-cosmetics-act" target="_blank" rel="noopener noreferrer" style={{
-                  display: "inline-flex", alignItems: "center", gap: 5, marginTop: 4, padding: "3px 10px",
-                  borderRadius: 6, background: "#EEEDFE", border: "1px solid #CECBF6", fontSize: 11, fontWeight: 600,
-                  color: "#534AB7", fontFamily: "'DM Sans', sans-serif", textDecoration: "none", letterSpacing: "0.2px",
-                }}>
-                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#534AB7", opacity: 0.6 }} />
-                  WA Toxic-Free Cosmetics Act
-                </a>
-              )}
-              {c.waPBT && (
-                <a href="https://ecology.wa.gov/waste-toxics/reducing-toxic-chemicals/addressing-priority-toxic-chemicals" target="_blank" rel="noopener noreferrer" style={{
-                  display: "inline-flex", alignItems: "center", gap: 5, marginTop: 4, padding: "3px 10px",
-                  borderRadius: 6, background: "#FCF0F0", border: "1px solid #E8C4C4", fontSize: 11, fontWeight: 600,
-                  color: "#9A2E2E", fontFamily: "'DM Sans', sans-serif", textDecoration: "none", letterSpacing: "0.2px",
-                }}>
-                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#9A2E2E", opacity: 0.6 }} />
-                  WA PBT list / Chemical action plan
-                </a>
-              )}
+          {/* Sidebar */}
+          <aside className="sidebar">
+            <div>
+              <div className="sb-name">{c.name}</div>
+              {c.aka&&c.aka.length>0&&<div className="sb-aka">{c.aka.join(" · ")}</div>}
+              <div className="sb-cas">CAS {c.cas}</div>
             </div>
-            <GSBadge gs={c.gs} />
-          </div>
 
-          {aiData && (
-            <div style={{ padding: "8px 14px", borderRadius: 8, background: COLORS.warnLight, border: `1px solid ${COLORS.warnBorder}`, marginBottom: 20, fontSize: 12, color: COLORS.warn, fontFamily: "'DM Sans', sans-serif" }}>
-              Data generated by AI — verify critical details with authoritative sources linked below.
-            </div>
-          )}
-
-          {/* Chemical class */}
-          {c.chemClass && (
-            <Section label="Chemical class">
-              <div style={{ display: "inline-block", padding: "3px 12px", borderRadius: 6, background: COLORS.infoLight, color: COLORS.info, fontSize: 12, fontWeight: 600, fontFamily: "'DM Sans', sans-serif", marginBottom: 6 }}>{c.chemClass.name}</div>
-              <div style={{ fontSize: 14, lineHeight: 1.7, color: COLORS.textMid }}>{c.chemClass.def}</div>
-            </Section>
-          )}
-
-          {/* Description */}
-          <Section label="What is it">
-            <div style={{ fontSize: 15, lineHeight: 1.75, color: COLORS.text }}>{c.desc}</div>
-          </Section>
-
-          {/* Two column: structure + toxicity */}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1.3fr)", gap: 28, marginBottom: 8 }}>
-            <Section label="Molecular structure">
-              <div style={{ background: COLORS.surfaceAlt, borderRadius: 10, padding: "16px 8px 8px", border: `1px solid ${COLORS.border}` }}>
-                <MoleculeCanvas structure={c.structure} width={260} height={180} />
-                <div style={{ textAlign: "center", fontSize: 12, color: COLORS.textMuted, marginTop: 4, fontFamily: "monospace" }}>
-                  {c.formula}{c.molWeight && c.molWeight !== "Varies" && c.molWeight !== "Polymer" ? ` — MW: ${c.molWeight} g/mol` : c.molWeight ? ` — ${c.molWeight}` : ""}
-                </div>
-              </div>
-            </Section>
-
-            <Section label="Health & ecological hazards">
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-                {c.toxicity.map((t, i) => {
-                  const panelColor = i < 3 ? COLORS.danger : COLORS.accent;
-                  return (
-                  <div key={i} style={{ position: "relative", overflow: "hidden", background: COLORS.surfaceAlt, borderRadius: 8, padding: "12px 14px 12px 16px", borderLeft: `3px solid ${panelColor}` }}>
-                    <div style={{ position: "absolute", bottom: -8, right: -6, opacity: 0.14, pointerEvents: "none" }}>
-                      <ToxIcon label={t.label} color={panelColor} size={96} />
-                    </div>
-                    <div style={{ position: "relative", zIndex: 1 }}>
-                      <div style={{ fontSize: 11, fontWeight: 600, color: panelColor, marginBottom: 4, fontFamily: "'DM Sans', sans-serif", textTransform: "uppercase", letterSpacing: "0.3px" }}>{t.label}</div>
-                      <div style={{ fontSize: 12.5, lineHeight: 1.55, color: COLORS.textMid }}>{t.val}</div>
-                    </div>
+            {/* GreenScreen badge */}
+            {(() => {
+              const s = GS[c.gs?.bm] || GS["U"];
+              return (
+                <div className="gs-big" style={{background:s.bg,border:`1px solid ${s.border}`}}>
+                  <div className="gs-lbl" style={{color:s.color}}>{s.label} · GreenScreen™</div>
+                  <div className="gs-title" style={{color:s.color}}>{s.title}</div>
+                  <div className="gs-pips">
+                    {[1,2,3,4].map(i=>(
+                      <div key={i} className="gs-pip" style={{background:s.pips===0?"var(--border)":i<=s.pips?s.color:s.color+"28"}}/>
+                    ))}
                   </div>
-                  );
-                })}
-              </div>
-            </Section>
-          </div>
+                </div>
+              );
+            })()}
 
-          {/* GreenScreen detail */}
-          <Section label="GreenScreen benchmark details">
-            <div style={{ background: (GS_STYLES[c.gs.bm] || GS_STYLES["U"]).bg, borderRadius: 10, padding: "14px 18px", border: `1px solid ${(GS_STYLES[c.gs.bm] || GS_STYLES["U"]).border}` }}>
-              <div style={{ fontSize: 14, lineHeight: 1.7, color: COLORS.textMid }}>{c.gs.detail}</div>
-              <a href="https://www.greenscreenchemicals.org/learn/full-greenscreen-method" target="_blank" rel="noopener noreferrer"
-                style={{ display: "inline-block", marginTop: 8, fontSize: 12, color: COLORS.info, fontFamily: "'DM Sans', sans-serif", textDecoration: "none", borderBottom: `1px solid ${COLORS.info}` }}>
-                Learn about GreenScreen benchmarks
-              </a>
-            </div>
-          </Section>
-
-          {/* Related chemicals */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28 }}>
-            <Section label="Derived from">
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                {(c.parents || []).length > 0 ? c.parents.map((p, i) => {
-                  const pName = typeof p === "string" ? p : p.label || p;
-                  const clickable = lookupCurated(pName);
-                  return (
-                    <button key={i} onClick={() => clickable && handleRelatedClick(pName)}
-                      style={{
-                        fontFamily: "'DM Sans', sans-serif", fontSize: 13, padding: "6px 12px",
-                        borderRadius: 7, border: `1px solid ${COLORS.border}`, background: COLORS.surface,
-                        color: clickable ? COLORS.accent : COLORS.textMid,
-                        cursor: clickable ? "pointer" : "default",
-                        fontWeight: clickable ? 500 : 400,
-                      }}
-                    >{clickable && <span style={{ fontSize: 11, marginRight: 4 }}>&#8592;</span>}{pName}</button>
-                  );
-                }) : <span style={{ fontSize: 13, color: COLORS.textMuted, fontFamily: "'DM Sans', sans-serif" }}>Base chemical / feedstock</span>}
-              </div>
-            </Section>
-            <Section label="Used to make">
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                {(c.children || []).length > 0 ? c.children.map((ch, i) => {
-                  const chName = typeof ch === "string" ? ch : ch.label || ch;
-                  const clickable = lookupCurated(chName);
-                  return (
-                    <button key={i} onClick={() => clickable ? handleRelatedClick(chName) : loadChemical(chName)}
-                      style={{
-                        fontFamily: "'DM Sans', sans-serif", fontSize: 13, padding: "6px 12px",
-                        borderRadius: 7, border: `1px solid ${COLORS.border}`, background: COLORS.surface,
-                        color: COLORS.accent, cursor: "pointer", fontWeight: 500,
-                      }}
-                    >{chName}<span style={{ fontSize: 11, marginLeft: 4 }}>&#8594;</span></button>
-                  );
-                }) : <span style={{ fontSize: 13, color: COLORS.textMuted, fontFamily: "'DM Sans', sans-serif" }}>End-use chemical</span>}
-              </div>
-            </Section>
-          </div>
-
-          {/* Products & function */}
-          <Section label="Products & function">
-            {/* Legend — only show if any products have status */}
-            {(c.products || []).some(p => typeof p === "object" && p.status) && (
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 10, padding: "8px 12px", background: COLORS.surfaceAlt, borderRadius: 8, border: `1px solid ${COLORS.border}`, fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: COLORS.textMid, alignItems: "center" }}>
-                <span style={{ fontWeight: 600, color: COLORS.text, marginRight: 2 }}>Status:</span>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}><span style={{ width: 10, height: 10, borderRadius: 3, background: "#F5DEDE", border: "1px solid #D4A0A0" }}/> Banned</span>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}><span style={{ width: 10, height: 10, borderRadius: 3, background: "#FDE8CC", border: "1px solid #D4B882" }}/> Partially banned</span>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}><span style={{ width: 10, height: 10, borderRadius: 3, background: "#FFF3D6", border: "1px solid #D4C882" }}/> Abandoned by industry</span>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}><span style={{ width: 10, height: 10, borderRadius: 3, background: COLORS.surfaceAlt, border: `1px solid ${COLORS.border}` }}/> Active use</span>
+            {/* Regulatory badges */}
+            {(c.spwa||c.tfca||c.waPBT) && (
+              <div>
+                <div className="sb-section-lbl">Regulatory coverage</div>
+                {c.spwa&&<a href="https://ecology.wa.gov/waste-toxics/reducing-toxic-chemicals/washingtons-toxics-in-products-laws/safer-products" target="_blank" rel="noopener noreferrer" className="reg-badge" style={{background:"#EBF3FA",border:"1px solid #B5D4F4",color:"#185FA5"}}><div className="reg-dot" style={{background:"#185FA5"}}/> WA Safer Products: {c.spwa}</a>}
+                {c.tfca&&<a href="https://ecology.wa.gov/waste-toxics/reducing-toxic-chemicals/washingtons-toxics-in-products-laws/toxic-free-cosmetics-act" target="_blank" rel="noopener noreferrer" className="reg-badge" style={{background:"#EEEDFE",border:"1px solid #CECBF6",color:"#534AB7"}}><div className="reg-dot" style={{background:"#534AB7"}}/> Toxic-Free Cosmetics Act</a>}
+                {c.waPBT&&<a href="https://ecology.wa.gov/waste-toxics/reducing-toxic-chemicals/addressing-priority-toxic-chemicals" target="_blank" rel="noopener noreferrer" className="reg-badge" style={{background:"var(--danger-light)",border:"1px solid var(--danger-border)",color:"var(--danger)"}}><div className="reg-dot" style={{background:"var(--danger)"}}/> WA PBT / Action Plan</a>}
               </div>
             )}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
-              {(c.products || []).map((p, i) => {
-                const isObj = typeof p === "object" && p.name;
-                const name = isObj ? p.name : p;
-                const status = isObj ? p.status : null;
-                const statusStyles = {
-                  banned: { background: "#F5DEDE", color: "#791F1F", border: "1px solid #D4A0A0" },
-                  partial: { background: "#FDE8CC", color: "#7A4A0B", border: "1px solid #D4B882" },
-                  abandoned: { background: "#FFF3D6", color: "#6B5A10", border: "1px solid #D4C882" },
-                };
-                const sty = status && statusStyles[status] ? statusStyles[status] : { background: COLORS.surfaceAlt, color: COLORS.textMid, border: `1px solid transparent` };
-                return (
-                  <span key={i} title={isObj && p.note ? p.note : undefined} style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, padding: "4px 10px", borderRadius: 6, cursor: isObj && p.note ? "help" : "default", ...sty }}>{name}</span>
-                );
-              })}
-            </div>
-            <div style={{ fontSize: 14, lineHeight: 1.6, color: COLORS.textMid }}>{c.func}</div>
-          </Section>
 
-          {/* Manufacturers section */}
-          {c.manufacturers && c.manufacturers.length > 0 && (
-            <Section label="Key manufacturers & polluters">
-              <div style={{ background: COLORS.surfaceAlt, borderRadius: 10, border: `1px solid ${COLORS.border}`, overflow: "hidden" }}>
-                {c.manufacturers.map((m, i) => (
-                  <div key={i} style={{
-                    display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 14px",
-                    borderBottom: i < c.manufacturers.length - 1 ? `1px solid ${COLORS.border}` : "none",
-                  }}>
-                    <div style={{
-                      fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 600,
-                      color: COLORS.text, minWidth: 140, flexShrink: 0,
-                    }}>{m.name}</div>
-                    <div style={{ fontSize: 12.5, lineHeight: 1.5, color: COLORS.textMid }}>{m.note}</div>
-                  </div>
-                ))}
-                {c.triSearch && (
-                  <div style={{ padding: "10px 14px", borderTop: `1px solid ${COLORS.border}`, background: COLORS.surface }}>
-                    <a href={c.triSearch} target="_blank" rel="noopener noreferrer"
-                      style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 500, color: COLORS.accent, textDecoration: "none", padding: "5px 12px", borderRadius: 6, border: `1px solid ${COLORS.accentMid}`, background: COLORS.accentLight }}>
-                      EPA TRI Toxics Tracker — search facilities by chemical &#8599;
-                    </a>
-                    {" "}
-                    <a href="https://pedp-ejscreen.azurewebsites.net/" target="_blank" rel="noopener noreferrer"
-                      style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 500, color: COLORS.textMid, textDecoration: "none", padding: "5px 12px", borderRadius: 6, border: `1px solid ${COLORS.border}` }}>
-                      EJScreen mapping tool (preserved) &#8599;
-                    </a>
-                  </div>
-                )}
-              </div>
-            </Section>
-          )}
+            <div className="sb-divider"/>
 
-          {/* Safer alternatives section */}
-          {c.saferAlternatives && c.saferAlternatives.length > 0 && (
-            <Section label="Safer alternatives">
-              <div style={{ background: "#EEF5E6", borderRadius: 10, border: "1px solid #C0DDA0", overflow: "hidden" }}>
-                {c.saferAlternatives.map((a, i) => (
-                  <div key={i} style={{
-                    display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 14px",
-                    borderBottom: i < c.saferAlternatives.length - 1 ? "1px solid #C0DDA0" : "none",
-                  }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 6, minWidth: 130, flexShrink: 0 }}>
-                      <span style={{ color: "#27500A", fontSize: 13 }}>&#10003;</span>
-                      <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, color: "#27500A" }}>{a.context}</span>
-                    </div>
-                    <div>
-                      <div style={{ fontSize: 13, fontWeight: 500, color: COLORS.text, lineHeight: 1.4 }}>{a.alt}</div>
-                      <div style={{ fontSize: 11.5, color: COLORS.textMid, lineHeight: 1.4, marginTop: 2 }}>{a.note}</div>
-                    </div>
-                  </div>
-                ))}
-                {c.altSource && (
-                  <div style={{ padding: "8px 14px", borderTop: "1px solid #C0DDA0", background: "#F5FAF0", fontSize: 11, color: COLORS.textMuted, fontFamily: "'DM Sans', sans-serif" }}>
-                    Source: {c.altSource}
-                  </div>
-                )}
-              </div>
-            </Section>
-          )}
-
-          {/* Legislation section */}
-          <LegislationSection chem={c} />
-
-
-          {/* External links */}
-          <Section label="Learn more">
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-              {(c.links || []).map((l, i) => (
-                <a key={i} href={l.u || l.url} target="_blank" rel="noopener noreferrer"
-                  style={{
-                    fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 500,
-                    color: COLORS.info, textDecoration: "none", padding: "5px 12px",
-                    borderRadius: 6, border: `1px solid ${COLORS.border}`, background: COLORS.surface,
-                  }}
-                >{l.t || l.label} &#8599;</a>
+            {/* Page nav */}
+            <div>
+              <div className="sb-section-lbl">On this page</div>
+              {[["overview","Overview"],["structure","Structure"],["hazards","Hazards"],["greenscreen","GreenScreen"],["products","Products"],
+                ...(c.manufacturers?.length>0?[["manufacturers","Manufacturers"]]:[]),
+                ...(c.saferAlternatives?.length>0?[["alternatives","Safer alternatives"]]:[]),
+                ["legislation","Legislation"],["learn-more","Learn more"]
+              ].map(([id,lbl]) => (
+                <button key={id} className="nav-btn" onClick={()=>document.getElementById(id)?.scrollIntoView({behavior:"smooth",block:"start"})}>{lbl}</button>
               ))}
             </div>
-          </Section>
 
-          {/* Back to top */}
-          <div style={{ textAlign: "center", padding: "16px 0 8px", borderTop: `1px solid ${COLORS.border}` }}>
-            <button onClick={resetToHome} style={{
-              fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 500,
-              color: COLORS.accent, background: "none", border: `1px solid ${COLORS.accentMid}`,
-              borderRadius: 8, padding: "8px 20px", cursor: "pointer",
-            }}>
-              &#8592; Search another chemical
-            </button>
-          </div>
+            {/* Related chemicals */}
+            {((c.parents?.length>0)||(c.children?.length>0)) && (
+              <div>
+                <div className="sb-divider"/>
+                <div className="sb-section-lbl">Related</div>
+                <div style={{display:"flex",flexWrap:"wrap",gap:5}}>
+                  {(c.parents||[]).map((p,i)=>{ const name=typeof p==="string"?p:p.label||p; const cl=lookupCurated(name); return <button key={i} className={`related-chip${cl?" link":""}`} onClick={()=>cl&&loadChemical(name)}>← {name}</button>; })}
+                  {(c.children||[]).map((ch,i)=>{ const name=typeof ch==="string"?ch:ch.label||ch; return <button key={i} className="related-chip link" onClick={()=>loadChemical(name)}>{name} →</button>; })}
+                </div>
+              </div>
+            )}
+          </aside>
+
+          {/* Main content */}
+          <main className="main">
+            {aiData && (
+              <div className="ai-warn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><circle cx="12" cy="16" r="0.5" fill="currentColor"/></svg>
+                AI-generated data — verify with authoritative sources linked below.
+              </div>
+            )}
+
+            {/* Overview */}
+            <Sec id="overview" label="Chemical Class & Description">
+              {c.chemClass&&<div className="class-pill">{c.chemClass.name}</div>}
+              {c.chemClass&&<p className="body-text" style={{marginBottom:10}}>{c.chemClass.def}</p>}
+              <p className="body-text">{c.desc}</p>
+            </Sec>
+
+            {/* Two-col: structure + hazards */}
+            <div className="two-col">
+              <Sec id="structure" label="Molecular Structure">
+                <div className="mol-wrap">
+                  <div style={{display:"flex",alignItems:"center",justifyContent:"center",padding:"16px",minHeight:200}}>
+                    <AnimatedMolecule structure={c.structure} width={240} height={170}/>
+                  </div>
+                  <div className="mol-formula">
+                    {c.formula}{c.molWeight&&c.molWeight!=="Varies"&&c.molWeight!=="Polymer"?` — MW ${c.molWeight} g/mol`:c.molWeight?` — ${c.molWeight}`:""}
+                  </div>
+                </div>
+              </Sec>
+
+              <Sec id="hazards" label="Health & Ecological Hazards">
+                <div className="hazard-list">
+                  {(c.toxicity||[]).map((t,i) => <HazardRow key={i} label={t.label} val={t.val}/>)}
+                </div>
+              </Sec>
+            </div>
+
+            {/* GreenScreen */}
+            <Sec id="greenscreen" label="GreenScreen Benchmark">
+              <div className="gs-detail" style={{background:(GS[c.gs?.bm]||GS["U"]).bg,border:`1px solid ${(GS[c.gs?.bm]||GS["U"]).border}`}}>
+                <p>{c.gs?.detail}</p>
+                <a href="https://www.greenscreenchemicals.org/learn/full-greenscreen-method" target="_blank" rel="noopener noreferrer">Learn about GreenScreen benchmarks ↗</a>
+              </div>
+            </Sec>
+
+            {/* Products */}
+            <Sec id="products" label="Products & Function">
+              {(c.products||[]).some(p=>typeof p==="object"&&p.status)&&(
+                <div className="prod-legend">
+                  <span style={{fontWeight:600,color:"var(--text)",fontFamily:"var(--mono)",fontSize:11}}>Status: </span>
+                  {[["#F5DEDE","#D4A0A0","#791F1F","Banned"],["#FDE8CC","#D4B882","#7A4A0B","Partially restricted"],["#FFF3D6","#D4C882","#6B5A10","Abandoned by industry"],["var(--surface2)","var(--border)","var(--text-muted)","Active use"]].map(([bg,bd,tc,lbl])=>(
+                    <span key={lbl} style={{display:"inline-flex",alignItems:"center",gap:4,fontSize:11,fontFamily:"var(--mono)"}}><span style={{width:10,height:10,borderRadius:3,background:bg,border:`1px solid ${bd}`}}/><span style={{color:tc}}>{lbl}</span></span>
+                  ))}
+                </div>
+              )}
+              <div className="prod-chips">
+                {(c.products||[]).map((p,i)=>{ const isObj=typeof p==="object"&&p.name; const name=isObj?p.name:p; const st=isObj?p.status:null; const sty=st==="banned"?{background:"#F5DEDE",color:"#791F1F",border:"1px solid #D4A0A0"}:st==="partial"?{background:"#FDE8CC",color:"#7A4A0B",border:"1px solid #D4B882"}:st==="abandoned"?{background:"#FFF3D6",color:"#6B5A10",border:"1px solid #D4C882"}:{background:"var(--surface2)",color:"var(--text-mid)",border:"1px solid var(--border)"}; return <span key={i} className="prod-chip" title={isObj&&p.note?p.note:""} style={{...sty,cursor:isObj&&p.note?"help":"default"}}>{name}</span>; })}
+              </div>
+              {c.func&&<p className="body-text" style={{fontSize:14}}>{c.func}</p>}
+            </Sec>
+
+            {/* Manufacturers */}
+            {c.manufacturers?.length>0&&(
+              <Sec id="manufacturers" label="Key Manufacturers & Polluters">
+                <div className="mfr-table">
+                  {c.manufacturers.map((m,i)=>(
+                    <div key={i} className="mfr-row">
+                      <div className="mfr-name">{m.name}</div>
+                      <div className="mfr-note">{m.note}</div>
+                    </div>
+                  ))}
+                  {c.triSearch&&(
+                    <div className="mfr-links">
+                      <a href={c.triSearch} target="_blank" rel="noopener noreferrer" className="ext-link primary">EPA TRI Toxics Tracker ↗</a>
+                      <a href="https://pedp-ejscreen.azurewebsites.net/" target="_blank" rel="noopener noreferrer" className="ext-link">EJScreen mapping ↗</a>
+                    </div>
+                  )}
+                </div>
+              </Sec>
+            )}
+
+            {/* Safer alternatives */}
+            {c.saferAlternatives?.length>0&&(
+              <Sec id="alternatives" label="Safer Alternatives">
+                <div className="alt-table">
+                  {c.saferAlternatives.map((a,i)=>(
+                    <div key={i} className="alt-row">
+                      <div className="alt-ctx"><span style={{color:"#2D7D2A"}}>✓</span>{a.context}</div>
+                      <div><div className="alt-name">{a.alt}</div><div className="alt-note">{a.note}</div></div>
+                    </div>
+                  ))}
+                  {c.altSource&&<div className="alt-source">Source: {c.altSource}</div>}
+                </div>
+              </Sec>
+            )}
+
+            {/* Legislation */}
+            <LegislationSec chem={c} showMap={tweaks.showMap}/>
+
+            {/* Learn more */}
+            <Sec id="learn-more" label="Learn More">
+              <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
+                {(c.links||[]).map((l,i)=>(
+                  <a key={i} href={l.u||l.url} target="_blank" rel="noopener noreferrer" className="ext-link">{l.t||l.label} ↗</a>
+                ))}
+              </div>
+            </Sec>
+          </main>
         </div>
       )}
 
-      {/* Footer */}
-      <div style={{ marginTop: 32, paddingTop: 16, borderTop: `1px solid ${COLORS.border}`, textAlign: "center", fontSize: 11, color: COLORS.textMuted, fontFamily: "'DM Sans', sans-serif", lineHeight: 1.7 }}>
-        Chemical data from curated database and AI-assisted research. Always verify with authoritative sources.<br />
-        GreenScreen benchmarks via <a href="https://www.greenscreenchemicals.org/" target="_blank" rel="noopener noreferrer" style={{ color: COLORS.info, textDecoration: "none" }}>Clean Production Action</a>.
-        Legislation tracking via <a href="https://www.saferstates.org/bill-tracker/" target="_blank" rel="noopener noreferrer" style={{ color: COLORS.info, textDecoration: "none" }}>Safer States</a>.
+      <footer className="footer">
+        Chemical data from curated database and AI-assisted research. Always verify with authoritative sources.<br/>
+        GreenScreen benchmarks via <a href="https://www.greenscreenchemicals.org/" target="_blank" rel="noopener noreferrer">Clean Production Action</a>. Legislation via <a href="https://www.saferstates.org/bill-tracker/" target="_blank" rel="noopener noreferrer">Safer States</a>.
+      </footer>
+
       </div>
-    </div>
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<ChemicalExplorer />);
-  </script>
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
 </body>
 </html>
