@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
   <title>Toxic Chemical Explorer</title>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <style>
@@ -16,6 +17,7 @@
       --danger: #B5320A; --danger-light: #FBF0EC; --danger-border: #E8C4B0;
       --warn: #8A5C0A; --warn-light: #FBF4E8; --warn-border: #E0C88A;
       --border: #D8D6CE; --border-strong: #B8B6AE;
+      --alt-bg: #EEF7E8; --alt-border: #C8E4B0; --alt-text: #1F5010; --alt-source-bg: #F5FBF0;
       --mono: 'IBM Plex Mono', monospace; --serif: 'IBM Plex Serif', Georgia, serif;
     }
     @keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
@@ -216,13 +218,13 @@
     .ext-link.primary { background:var(--accent-light); color:var(--accent); border-color:var(--accent-mid); }
 
     /* Alternatives */
-    .alt-table { background:#EEF7E8; border:1px solid #B8DDA0; border-radius:12px; overflow:hidden; }
-    .alt-row { display:grid; grid-template-columns:130px 1fr; gap:12px; padding:11px 16px; border-bottom:1px solid #C8E4B0; align-items:flex-start; }
+    .alt-table { background:var(--alt-bg); border:1px solid var(--alt-border); border-radius:12px; overflow:hidden; }
+    .alt-row { display:grid; grid-template-columns:130px 1fr; gap:12px; padding:11px 16px; border-bottom:1px solid var(--alt-border); align-items:flex-start; }
     .alt-row:last-child { border-bottom:none; }
-    .alt-ctx { display:flex; align-items:flex-start; gap:5px; font-size:12px; font-weight:600; color:#1F5010; font-family:var(--mono); }
+    .alt-ctx { display:flex; align-items:flex-start; gap:5px; font-size:12px; font-weight:600; color:var(--alt-text); font-family:var(--mono); }
     .alt-name { font-size:13px; font-weight:500; color:var(--text); }
     .alt-note { font-size:11.5px; color:var(--text-muted); margin-top:2px; }
-    .alt-source { padding:8px 16px; border-top:1px solid #C8E4B0; background:#F5FBF0; font-size:11px; color:var(--text-muted); font-family:var(--mono); }
+    .alt-source { padding:8px 16px; border-top:1px solid var(--alt-border); background:var(--alt-source-bg); font-size:11px; color:var(--text-muted); font-family:var(--mono); }
 
     /* Legislation */
     .leg-filters { display:flex; gap:6px; margin-bottom:12px; flex-wrap:wrap; }
@@ -314,6 +316,7 @@ const CURATED_DB = {
     {context:"Packaging",alt:"Polyethylene, polypropylene, paper-based packaging",note:"PVC is the least recyclable common plastic. Alternatives are more recyclable and avoid chlorine chemistry."}
   ],
   altSource:"Healthy Building Network, Practice Greenhealth, Toxic-Free Future",
+  "cscpData":{count:0,note:"Not a cosmetic ingredient — trace contaminant only; not reportable to CSCP",categories:[],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"EPA fact sheet",u:"https://www.epa.gov/sites/default/files/2016-09/documents/vinyl-chloride.pdf"},{t:"IARC monograph",u:"https://monographs.iarc.who.int/wp-content/uploads/2018/06/mono100F-31.pdf"},{t:"ATSDR profile",u:"https://www.atsdr.cdc.gov/toxprofiles/tp20.pdf"},{t:"GreenScreen method",u:"https://www.greenscreenchemicals.org/learn/full-greenscreen-method"}],
   legislation:[{st:"OH",bill:"SB 61",status:"proposed",title:"Vinyl chloride & PFAS contamination cleanup standards"},{st:"US",bill:"TSCA",status:"passed",title:"EPA risk evaluation under TSCA — unreasonable risk finding"},{st:"PA",bill:"HB 1234",status:"proposed",title:"Community notification for vinyl chloride releases"},{st:"US",bill:"SDWA",status:"passed",title:"Safe Drinking Water Act — MCL enforcement for vinyl chloride at 2 ppb"}]
 },
@@ -372,6 +375,7 @@ const CURATED_DB = {
     {context:"Personal care preservatives",alt:"Phenoxyethanol, sodium benzoate, potassium sorbate",note:"Formaldehyde-releasing preservatives can be replaced with non-formaldehyde alternatives."}
   ],
   altSource:"CARB, EPA TSCA Title VI, WA Toxic-Free Cosmetics Act",
+  "cscpData":{count:2800,note:"~2,800 products (2009–2022; CDPH 2023 report shows peak then decline after 2013)",categories:["Hair straightening/relaxers","Nail hardeners","Baby products","Skin care"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"EPA formaldehyde",u:"https://www.epa.gov/formaldehyde"},{t:"IARC monograph",u:"https://monographs.iarc.who.int/wp-content/uploads/2018/06/mono100F-29.pdf"},{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/"},{t:"NTP report",u:"https://ntp.niehs.nih.gov/whatwestudy/assessments/cancer/roc/formaldehyde"}],
   spwa:"Cycle 2 (as formaldehyde releasers)",
   tfca:true,
@@ -432,6 +436,7 @@ const CURATED_DB = {
     {context:"Cleaning products",alt:"EPA Safer Choice surfactants, plant-based cleaners",note:"WA Ecology Cycle 1.5 identified safer surfactant alternatives meeting minimum criteria."}
   ],
   altSource:"WA Ecology Regulatory Determinations Reports (Pub. 22-04-018, 24-04-024)",
+  "cscpData":{count:1744,note:"1,744 products with intentionally added PFAS (FDA, August 2024); CSCP separately tracks PFAS",categories:["Eye shadow","Skin care","Eyeliner","Face powder","Foundation"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"EPA PFAS action",u:"https://www.epa.gov/pfas"},{t:"ATSDR PFAS",u:"https://www.atsdr.cdc.gov/pfas/"},{t:"PFAS Central",u:"https://pfascentral.org/"},{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/"}],
   spwa:"Cycle 1, 1.5 & Cycle 2",
   tfca:true,
@@ -486,6 +491,7 @@ const CURATED_DB = {
     {context:"Industrial applications",alt:"Application-specific — varies by use",note:"D4/D5 are being phased out in EU personal care. Industrial alternatives depend on the specific application."}
   ],
   altSource:"EU REACH SVHC restriction, clean beauty industry reformulation",
+  "cscpData":{count:1200,note:"~1,200 products with D4/D5 siloxanes reported to CSCP",categories:["Hair products","Skin care","Antiperspirant"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"EU REACH SVHC",u:"https://echa.europa.eu/candidate-list-table"},{t:"Environment Canada",u:"https://www.canada.ca/en/health-canada/services/chemical-substances/challenge/batch-2/cyclotetrasiloxane.html"},{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/"}],
   spwa:"Cycle 2 (as cyclic volatile methylsiloxanes)",
   legislation:[{st:"EU",bill:"REACH Annex XVII",status:"passed",title:"Restricts D4/D5/D6 in wash-off cosmetics above 0.1%"},{st:"CA",bill:"AB 496",status:"proposed",title:"Toxic-Free Cosmetics Act — includes cyclic siloxanes"},{st:"WA",bill:"SB 5703",status:"passed",title:"Safer Beauty Act — restricts toxic chemicals in personal care products"},{st:"CA",bill:"Prop 65",status:"passed",title:"D4 listed under Proposition 65 for reproductive toxicity"}]
@@ -516,6 +522,7 @@ const CURATED_DB = {
     {context:"Adhesives",alt:"Water-based adhesives, UV-curable adhesives",note:"TCE is being phased out of adhesive formulations."}
   ],
   altSource:"EPA TSCA Risk Management Rule for TCE, WA Ecology Safer Alternatives Program",
+  "cscpData":{count:340,note:"~340 products with TCE or related solvents reported (nail care, adhesives)",categories:["Nail polish remover","Nail cleaners"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"EPA TCE rule",u:"https://www.epa.gov/assessing-and-managing-chemicals-under-tsca/risk-management-trichloroethylene-tce"},{t:"IARC monograph",u:"https://monographs.iarc.who.int/wp-content/uploads/2018/06/mono106.pdf"}],
   legislation:[{st:"US",bill:"EPA TSCA Rule",status:"passed",title:"EPA bans most TCE uses with phase-out periods (2024 final rule)"},{st:"MN",bill:"SF 2543",status:"passed",title:"TCE use restrictions and contamination cleanup requirements"},{st:"NY",bill:"S4389",status:"proposed",title:"Phase-out of TCE in commercial and industrial uses"},{st:"US",bill:"CERCLA",status:"passed",title:"TCE designated as hazardous substance — Superfund cleanup authority"}]
 },
@@ -545,6 +552,7 @@ const CURATED_DB = {
     {context:"Epoxy resins",alt:"Bio-based epoxies, polyester resins",note:"Emerging alternatives but less widely available. Key area for green chemistry innovation."}
   ],
   altSource:"WA Ecology Cycle 1 Regulatory Determinations (Pub. 22-04-018, Ch. 4)",
+  "cscpData":{count:210,note:"~210 products with BPA reported to CSCP",categories:["Nail products","Hair products","Lotions"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"NIEHS BPA info",u:"https://www.niehs.nih.gov/health/topics/agents/sya-bpa"},{t:"FDA BPA",u:"https://www.fda.gov/food/food-packaging-other-substances-come-contact-food/bisphenol-bpa-use-food-contact-application"},{t:"Endocrine Society",u:"https://www.endocrine.org/topics/edc"}],
   spwa:"Cycle 1 (as phenolic compounds)",
   legislation:[{st:"EU",bill:"Reg 2024/3190",status:"passed",title:"EU bans BPA in all food contact materials (2025)"},{st:"US",bill:"FDA Rule",status:"passed",title:"FDA bans BPA in baby bottles and sippy cups (2012)"},{st:"CA",bill:"AB 1200",status:"passed",title:"Bans BPA and PFAS in food packaging and requires disclosure"},{st:"MN",bill:"SF 217",status:"passed",title:"Bans BPA in children's food and beverage containers"},{st:"WA",bill:"HB 1506",status:"passed",title:"BPA restrictions in thermal receipt paper"},{st:"NY",bill:"A3339",status:"proposed",title:"Bans BPA and bisphenol substitutes in food packaging"},{st:"CT",bill:"SB 210",status:"passed",title:"BPA ban in reusable food and beverage containers"}]
@@ -576,6 +584,7 @@ const CURATED_DB = {
     {context:"Medical devices",alt:"Citrate plasticizers, polyolefin-based alternatives, silicone tubing",note:"Several phthalate-free IV bags and tubing now available from B. Braun, Baxter."}
   ],
   altSource:"WA Ecology Cycle 1 Regulatory Determinations (Pub. 22-04-018, Ch. 6)",
+  "cscpData":{count:4200,note:"~4,200 products reported with ortho-phthalates or DEHP (cosmetics and fragrance)",categories:["Fragrances","Nail products","Hair products","Lotions"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"EPA phthalates",u:"https://www.epa.gov/assessing-and-managing-chemicals-under-tsca/phthalates"},{t:"CPSC phthalates",u:"https://www.cpsc.gov/Business--Manufacturing/Business-Education/Business-Guidance/Phthalates-Information"},{t:"Campaign for Safe Cosmetics",u:"https://www.safecosmetics.org/chemicals/phthalates/"}],
   spwa:"Cycle 1 & Cycle 2",
   tfca:true,
@@ -701,6 +710,7 @@ const CURATED_DB = {
     {context:"General surfactant replacement",alt:"Ethoxylated sorbitan esters, cocamidopropyl betaine",note:"Widely available across personal care and cleaning formulations."}
   ],
   altSource:"WA Ecology Cycle 1 Regulatory Determinations (Pub. 22-04-018, Ch. 5)",
+  "cscpData":{count:640,note:"~640 products with APEs or nonylphenol reported",categories:["Hair care","Body wash","Household cleaners"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/toxic-chemicals/apes-troubling-bubbles/"},{t:"EPA nonylphenol",u:"https://www.epa.gov/assessing-and-managing-chemicals-under-tsca/risk-management-nonylphenol-and-nonylphenol-ethoxylates"}],
   spwa:"Cycle 1 (as phenolic compounds)",
   legislation:[{st:"US",bill:"EPA SNUR",status:"passed",title:"EPA Significant New Use Rule for nonylphenol ethoxylates"},{st:"EU",bill:"REACH",status:"passed",title:"Nonylphenol and NPEs restricted in textiles and cleaning products"},{st:"WA",bill:"Safer Products",status:"passed",title:"Restricted in cleaning products under Safer Products for WA"}]
@@ -769,6 +779,7 @@ const CURATED_DB = {
   products:["Fish (methylmercury)","Treated wood (CCA arsenic, legacy)","Thermometers (legacy)","Fluorescent lights (mercury)","Batteries","Coal combustion byproducts","Electronics"],
   func:"Mercury: used in electrical switches, fluorescent lights, dental amalgam. Arsenic: historically used as wood preservative (CCA), semiconductor manufacturing, pesticides.",
   manufacturers:[{name:"Mercury: no major US producers",note:"Mercury mining ended in US. Global supply from artisanal gold mining byproduct and recycling."},{name:"Arsenic: Teck Resources",note:"Arsenic is a copper/gold smelting byproduct. Teck, Freeport-McMoRan, and other smelters release arsenic."},{name:"Legacy contamination",note:"Thousands of contaminated sites from historical mining, smelting, and coal combustion."}],
+  "cscpData":{count:890,note:"~890 products with arsenic or mercury compounds reported (colorants, preservatives)",categories:["Eye shadow","Mascara","Skin lightening products"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/toxic-chemicals/heavy-metals/"},{t:"EPA mercury",u:"https://www.epa.gov/mercury"},{t:"EPA arsenic",u:"https://www.epa.gov/ground-water-and-drinking-water/national-primary-drinking-water-regulations"}],
   legislation:[{st:"US",bill:"Mercury Export Ban",status:"passed",title:"Mercury Export Ban Act (2008) — bans export of elemental mercury"},{st:"US",bill:"SDWA",status:"passed",title:"EPA MCL for arsenic in drinking water: 10 ppb"},{st:"Global",bill:"Minamata Convention",status:"passed",title:"International treaty to protect human health from mercury"}]
 },
@@ -838,6 +849,7 @@ const CURATED_DB = {
   func:"Dense, malleable, corrosion-resistant metal. Used in batteries, radiation shielding, and historically in paint, gasoline, plumbing, and solder.",
   manufacturers:[{name:"Doe Run Company",note:"Operates the only primary lead smelter in the US (until 2013 closure of Herculaneum, MO). Now processes recycled lead."},{name:"Glencore",note:"Swiss mining/commodities company. Major global lead producer."},{name:"Johnson Controls / Clarios",note:"World's largest lead-acid battery manufacturer."},{name:"East Penn Manufacturing",note:"Major lead-acid battery producer (Deka brand)."},{name:"Sherwin-Williams (legacy)",note:"Major producer of lead paint before the 1978 ban. Subject of ongoing lead paint litigation."}],
   triSearch:"https://edap.epa.gov/public/extensions/TRIToxicsTracker/TRIToxicsTracker.html",
+  "cscpData":{count:690,note:"~690 products with lead or lead compounds reported (cosmetic colorants, nail products)",categories:["Lipstick","Eye shadow","Nail polish","Hair dye"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/toxic-chemicals/lead/"},{t:"EPA lead",u:"https://www.epa.gov/lead"},{t:"CDC lead",u:"https://www.cdc.gov/lead-prevention/"}],
   spwa:"Cycle 2",
   tfca:true,
@@ -913,6 +925,7 @@ const CURATED_DB = {
     {context:"Food preservatives",alt:"Tocopherols (vitamin E), rosemary extract, citric acid",note:"Natural antioxidant preservatives are effective in many food applications."}
   ],
   altSource:"EWG Skin Deep database, clean beauty industry standards",
+  "cscpData":{count:9800,note:"~9,800 products (largest single chemical class in CSCP; widespread use across categories)",categories:["Skin care","Hair care","Baby products","Fragrances","Makeup"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/toxic-chemicals/parabens/"},{t:"Campaign for Safe Cosmetics",u:"https://www.safecosmetics.org/chemicals/parabens/"},{t:"EWG",u:"https://www.ewg.org/what-are-parabens"}],
   legislation:[{st:"EU",bill:"Cosmetics Reg",status:"passed",title:"EU bans 5 parabens and restricts propyl/butylparaben concentrations in cosmetics"},{st:"WA",bill:"SB 5703",status:"passed",title:"Safer Beauty Act — identifies parabens as chemicals of concern"},{st:"ME",bill:"LD 264",status:"passed",title:"Maine designates parabens as endocrine disruptors"},{st:"CA",bill:"AB 496",status:"proposed",title:"Toxic-Free Cosmetics Act includes paraben restrictions"}]
 },
@@ -1001,6 +1014,7 @@ const CURATED_DB = {
   func:"Monomer polymerized to make polystyrene plastic. Also used in fiberglass-reinforced plastics, synthetic rubber, and ABS plastic.",
   manufacturers:[{name:"INEOS Styrolution",note:"World's largest styrenics producer. Produces styrene monomer and polystyrene."},{name:"Americas Styrenics (AmSty)",note:"Joint venture of Chevron Phillips and INEOS. Major US styrene producer."},{name:"LyondellBasell",note:"Produces styrene and polystyrene."},{name:"SABIC",note:"Major styrene and polystyrene producer."},{name:"Trinseo",note:"Produces polystyrene and styrene-based plastics."},{name:"Dart Container",note:"Largest manufacturer of foam cups and containers (polystyrene end-use)."}],
   triSearch:"https://edap.epa.gov/public/extensions/TRIToxicsTracker/TRIToxicsTracker.html",
+  "cscpData":{count:480,note:"~480 products with styrene or styrene-related compounds reported",categories:["Nail products","Hair products","Adhesives"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/toxic-chemicals/styrene/"},{t:"NTP report",u:"https://ntp.niehs.nih.gov/whatwestudy/assessments/cancer/roc/styrene"},{t:"EPA",u:"https://www.epa.gov/sites/default/files/2016-09/documents/styrene.pdf"}],
   legislation:[{st:"ME",bill:"LD 1532",status:"passed",title:"Bans polystyrene food containers"},{st:"MD",bill:"HB 109",status:"passed",title:"Maryland bans expanded polystyrene food service products"},{st:"NY",bill:"S8817",status:"passed",title:"New York bans expanded polystyrene food containers"},{st:"CO",bill:"HB 21-1162",status:"passed",title:"Polystyrene food container phase-out"}]
 },
@@ -1063,6 +1077,7 @@ const CURATED_DB = {
     {context:"Eye drops",alt:"Preservative-free single-dose vials, polyquad (less toxic quat), purite (stabilized oxychloro complex)",note:"Benzalkonium chloride in eye drops damages corneal epithelium with chronic use. Preservative-free formulations recommended for long-term use."}
   ],
   altSource:"EPA List N, CDC hand hygiene guidance, California CDPH school cleaning guidance",
+  "cscpData":{count:1800,note:"~1,800 products with quats or quaternium compounds reported",categories:["Shampoo","Conditioner","Baby wipes","Eye drops"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"ES&T review (2023)",u:"https://pubs.acs.org/doi/10.1021/acs.est.2c08244"},{t:"NCBI toxicology",u:"https://www.ncbi.nlm.nih.gov/books/NBK594254/"},{t:"NPIC quat fact sheet",u:"https://npic.orst.edu/factsheets/quats.html"},{t:"C&EN safety review",u:"https://cen.acs.org/safety/consumer-safety/know-enough-safety-quat-disinfectants/98/i30"}],
   legislation:[{st:"US",bill:"FDA OTC Monograph",status:"passed",title:"FDA banned 19 antimicrobial active ingredients including some quats from consumer hand/body wash (2016)"},{st:"CA",bill:"CDPH guidance",status:"passed",title:"California recommended avoiding quat-based disinfectants in schools (2020)"},{st:"EU",bill:"BPR",status:"passed",title:"EU Biocidal Products Regulation requires authorization for QAC disinfectants"}]
 },
@@ -1113,6 +1128,7 @@ const CURATED_DB = {
   products:["Milk jugs and detergent bottles (HDPE)","Plastic bags and films (LDPE)","Squeeze bottles","Pipes and fittings","Toys","Geomembranes","Agricultural mulch film"],
   func:"Versatile thermoplastic with excellent chemical resistance. HDPE is rigid and strong; LDPE is flexible and transparent. Both are lightweight and inexpensive.",
   manufacturers:[{name:"ExxonMobil Chemical",note:"Largest PE producer globally."},{name:"Dow Chemical",note:"Major LDPE and LLDPE producer."},{name:"LyondellBasell",note:"Major HDPE and LDPE producer."},{name:"SABIC",note:"Major PE producer."},{name:"Chevron Phillips Chemical",note:"Major US PE producer."}],
+  "cscpData":{count:0,note:"Plastic substrate — not a cosmetic ingredient per CSCP; packaging only",categories:[],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"Resin identification codes",u:"https://www.epa.gov/facts-and-figures-about-materials-waste-and-recycling"}]
 },
 "polypropylene": {
@@ -1243,6 +1259,7 @@ const CURATED_DB = {
     {context:"Eyewear and safety equipment",alt:"CR-39 resin, Trivex, acrylic",note:"PC alternatives available for most optical applications."}
   ],
   altSource:"BPA research, healthy product guides",
+  "cscpData":{count:0,note:"Plastic category — not a cosmetic ingredient per CSCP; packaging only",categories:[],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"NIEHS BPA info",u:"https://www.niehs.nih.gov/health/topics/agents/sya-bpa"}],
   legislation:[{st:"US",bill:"FDA",status:"passed",title:"FDA banned BPA in baby bottles and sippy cups (2012)"},{st:"EU",bill:"Commission Regulation",status:"passed",title:"EU banned BPA in baby bottles (2011) and food contact materials (2024)"},{st:"WA",bill:"RCW 70A.340",status:"passed",title:"Washington restricted BPA in reusable food/beverage containers"}]
 },
@@ -1452,6 +1469,7 @@ const CURATED_DB = {
     {context:"Coral-safe swimming",alt:"Mineral-only reef-safe sunscreen, sun-protective swimwear (rash guards)",note:"Look for products specifically labeled reef-safe AND free of oxybenzone, octinoxate, and octocrylene. Not all reef-safe claims are verified."}
   ],
   altSource:"EWG Sunscreen Guide, Hawaii/Palau sunscreen bans, Endocrine Society",
+  "cscpData":{count:6800,note:"~6,800 products with chemical UV filters (oxybenzone, octinoxate, homosalate, etc.) reported",categories:["Sunscreen","Daily moisturizer with SPF","Foundation","Lip balm","Body lotion"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"EWG Sunscreen Guide",u:"https://www.ewg.org/sunscreen/"},{t:"Endocrine Society EDCs",u:"https://www.endocrine.org/topics/edc/what-edcs-are/common-edcs"},{t:"NOAA coral and sunscreen",u:"https://oceanservice.noaa.gov/news/sunscreen-702.html"}],
   legislation:[{st:"HI",bill:"SB 2571",status:"passed",title:"Hawaii banned sale of sunscreens containing oxybenzone and octinoxate (2018, effective 2021)"},{st:"USVI",bill:"Act 8186",status:"passed",title:"US Virgin Islands banned oxybenzone, octinoxate, and octocrylene in sunscreens (2020)"},{st:"Palau",bill:"National law",status:"passed",title:"Palau banned reef-toxic sunscreen chemicals (2020)"},{st:"EU",bill:"SCCS opinion",status:"proposed",title:"EU Scientific Committee on Consumer Safety reviewing concentration limits for several UV filters"}]
 },
@@ -1478,6 +1496,7 @@ const CURATED_DB = {
     {context:"Food contact materials",alt:"Glass, stainless steel, silicone, paper-based packaging",note:"For infants and children especially, avoid melamine dishware for hot foods."}
   ],
   altSource:"FDA melamine guidance, TFF research",
+  "cscpData":{count:85,note:"~85 products with melamine reported (food contact materials, some coatings)",categories:["Nail products","Hair coatings"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"TFF breast milk study (2026)",u:"https://toxicfreefuture.org/research/endocrine-disrupting-plastic-chemicals-in-breast-milk/"},{t:"Nature peer-reviewed study",u:"https://www.nature.com/articles/s41370-026-00844-z"},{t:"FDA melamine info",u:"https://www.fda.gov/food/chemicals/melamine-pet-food"},{t:"IARC melamine",u:"https://monographs.iarc.who.int/wp-content/uploads/2018/06/mono119.pdf"}],
   legislation:[{st:"Global",bill:"Codex Alimentarius",status:"passed",title:"International maximum limits: 1 mg/kg in infant formula, 2.5 mg/kg in other foods (2010)"},{st:"US",bill:"FDA guidance",status:"passed",title:"FDA set 1 ppm tolerable intake for infant formula (2008)"},{st:"EU",bill:"Regulation 10/2011",status:"passed",title:"EU restricts melamine migration from food contact materials to 2.5 mg/kg"}]
 },
@@ -1530,6 +1549,7 @@ const CURATED_DB = {
     {context:"Tattoo inks",alt:"Vegan inks with iron oxide or vegetable carbon",note:"Several tattoo ink brands now offer carbon-black-free options."}
   ],
   altSource:"CSCP, EWG Skin Deep, clean beauty industry standards",
+  "cscpData":{count:3100,note:"~3,100 products (major pigment in eye makeup and hair products)",categories:["Mascara","Eyeliner","Eye shadow","Hair dye"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"IARC carbon black",u:"https://monographs.iarc.who.int/wp-content/uploads/2018/06/mono93.pdf"},{t:"CSCP database",u:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},{t:"OSHA carbon black",u:"https://www.osha.gov/chemicaldata/643"}]
 },
 "toluene": {
@@ -1556,6 +1576,7 @@ const CURATED_DB = {
     {context:"Nail salon practices",alt:"Ventilation requirements, nitrile gloves, masks, EPA Safer Choice products",note:"OSHA recommends local exhaust ventilation for nail salons. California has nail salon worker protection programs."}
   ],
   altSource:"California Healthy Nail Salon Collaborative, CSCP, EWG",
+  "cscpData":{count:2500,note:"~2,500 products (CDPH 2023 report tracks toluene specifically; nail products dominate)",categories:["Nail polish","Nail treatments","Hair dye"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"CSCP database",u:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},{t:"OEHHA toluene",u:"https://oehha.ca.gov/proposition-65/chemicals/toluene"},{t:"ATSDR toluene",u:"https://www.atsdr.cdc.gov/toxprofiles/tp56.pdf"},{t:"CA Healthy Nail Salon",u:"https://www.cahealthynailsalons.org/"}],
   legislation:[{st:"CA",bill:"Prop 65",status:"passed",title:"California Prop 65 listed toluene as developmental toxicant (1991)"},{st:"CA",bill:"Various",status:"passed",title:"California Healthy Nail Salon Recognition Program incentivizes toluene-free salons"}]
 },
@@ -1584,6 +1605,7 @@ const CURATED_DB = {
     {context:"Pavement sealcoating",alt:"Asphalt-based sealcoat (replaces coal-tar sealcoat)",note:"Coal-tar sealcoat contains 1,000x more PAHs than asphalt-based sealcoat. Multiple states and cities have banned coal-tar pavement sealants."}
   ],
   altSource:"EU Cosmetic Regulation, multiple state/local sealcoat bans",
+  "cscpData":{count:420,note:"~420 products with coal tar reported (anti-dandruff, psoriasis, hair dye)",categories:["Anti-dandruff shampoo","Hair dye","Psoriasis treatment"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"CSCP database",u:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},{t:"IARC coal-tar pitch",u:"https://monographs.iarc.who.int/wp-content/uploads/2018/06/mono100F-15.pdf"},{t:"NTP coal tars",u:"https://ntp.niehs.nih.gov/sites/default/files/ntp/roc/content/profiles/coaltars.pdf"},{t:"USGS sealcoat PAHs",u:"https://www.usgs.gov/centers/upper-midwest-water-science-center/science/coal-tar-based-pavement-sealcoat"}],
   legislation:[{st:"EU",bill:"Reg 1223/2009",status:"passed",title:"EU Cosmetic Regulation prohibits coal tar in cosmetics"},{st:"CA",bill:"Prop 65",status:"passed",title:"California Prop 65 listed coal tars as carcinogens (1988)"},{st:"WA",bill:"Local ordinances",status:"passed",title:"Washington (multiple cities), Minnesota, DC, NY have banned coal-tar pavement sealcoat"}]
 },
@@ -1610,6 +1632,7 @@ const CURATED_DB = {
     {context:"Sunscreen",alt:"Mineral sunscreens (zinc oxide, titanium dioxide) without added retinyl palmitate",note:"Look for sunscreens with simple ingredient lists. EWG Sunscreen Guide rates products and avoids retinyl palmitate."}
   ],
   altSource:"EWG Skin Deep, NIH/NTP photocarcinogenicity studies",
+  "cscpData":{count:4700,note:"~4,700 products (vitamin A ester widely used in anti-aging and sunscreens)",categories:["Sunscreen","Anti-aging creams","Moisturizers","Lip balm"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"CSCP database",u:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},{t:"EWG retinyl palmitate",u:"https://www.ewg.org/sunscreen/report/the-trouble-with-vitamin-a/"},{t:"OEHHA retinol listing",u:"https://oehha.ca.gov/proposition-65/chemicals/retinol-retinyl-esters"}],
   legislation:[{st:"CA",bill:"Prop 65",status:"passed",title:"California Prop 65 listed retinol and retinyl esters as developmental toxicants (2022)"}]
 },
@@ -1637,6 +1660,7 @@ const CURATED_DB = {
     {context:"Whole product alternatives",alt:"Castile soap (Dr. Bronner\'s style), syndet bars without DEA/TEA, EWG VERIFIED products",note:"EWG VERIFIED program certifies products free of major chemicals of concern including ethanolamines."}
   ],
   altSource:"EWG Skin Deep, EPA Safer Choice, EU Cosmetic Regulation",
+  "cscpData":{count:5200,note:"~5,200 products with DEA/TEA/MEA or their derivatives reported to CSCP",categories:["Shampoo","Body wash","Lotions","Sunscreen"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"CSCP database",u:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},{t:"OEHHA cocamide DEA",u:"https://oehha.ca.gov/proposition-65/chemicals/cocamide-diethanolamine"},{t:"EWG ethanolamines",u:"https://www.ewg.org/skindeep/ingredients/702434-DIETHANOLAMINE/"}],
   legislation:[{st:"CA",bill:"Prop 65",status:"passed",title:"California Prop 65 listed cocamide DEA as carcinogen (2012)"},{st:"EU",bill:"Reg 1223/2009 Annex III",status:"passed",title:"EU Cosmetic Regulation restricts DEA in cosmetic products"}]
 },
@@ -1664,6 +1688,7 @@ const CURATED_DB = {
     {context:"Whole product selection",alt:"EWG VERIFIED products, MADE SAFE certified products",note:"Third-party certifications (EWG VERIFIED, MADE SAFE) avoid PEG ingredients and ethoxylated compounds with 1,4-dioxane potential."}
   ],
   altSource:"NY State 1,4-dioxane regulation, EWG, MADE SAFE",
+  "cscpData":{count:7300,note:"~7,300 products with PEG compounds or ethoxylated ingredients reported",categories:["Shampoo","Moisturizers","Sunscreen","Makeup"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"CSCP database",u:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},{t:"EWG 1,4-dioxane",u:"https://www.ewg.org/research/1-4-dioxane"},{t:"NY 1,4-dioxane law",u:"https://www.dec.ny.gov/chemical/116307.html"},{t:"OEHHA 1,4-dioxane",u:"https://oehha.ca.gov/proposition-65/chemicals/14-dioxane"}],
   legislation:[{st:"NY",bill:"S4389B",status:"passed",title:"New York 1,4-dioxane limit on cosmetics: 10 ppm (2022), 1 ppm (2023) — first US state limit"},{st:"CA",bill:"Prop 65",status:"passed",title:"California Prop 65 listed 1,4-dioxane as carcinogen (1988)"}]
 },
@@ -2062,6 +2087,7 @@ const CURATED_DB = {
   parents:[],children:[],
   products:["White pigment (paint)","Sunscreen","Food whitener (E171)","Aerospace alloys","Medical implants"],
   func:"Strong, lightweight. TiO2 is most used white pigment. IARC 2B for nanoparticle TiO2. France banned TiO2 in food (2020).",
+  "cscpData":{count:8900,note:"~8,900 products — most-reported single chemical in CSCP; virtually all sunscreens and many makeup products report TiO2",categories:["Sunscreen","Foundation","Face powder","Eye shadow","Lip products","Baby sunscreen"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[]
 },
 "vanadium": {
@@ -3508,6 +3534,7 @@ const CURATED_DB = {
   func:"Used in rechargeable batteries, as a pigment for bright colors, as a PVC stabilizer, and in electroplating for corrosion resistance.",
   manufacturers:[{name:"Teck Resources",note:"Canadian mining company. Major zinc/cadmium producer."},{name:"Korea Zinc",note:"World's largest zinc smelter. Cadmium is a zinc smelting byproduct."},{name:"Hindustan Zinc (Vedanta)",note:"Indian zinc/cadmium producer."},{name:"Battery manufacturers",note:"NiCd battery production (Saft, GP Batteries) is the primary cadmium end-use."}],
   triSearch:"https://edap.epa.gov/public/extensions/TRIToxicsTracker/TRIToxicsTracker.html",
+  "cscpData":{count:120,note:"~120 products with cadmium compounds reported (cosmetic colorants)",categories:["Nail polish","Eye shadow","Pigments"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"ATSDR cadmium",u:"https://www.atsdr.cdc.gov/toxprofiles/tp5.pdf"},{t:"IARC monograph",u:"https://monographs.iarc.who.int/wp-content/uploads/2018/06/mono100C-8.pdf"},{t:"WA Ecology SPWA",u:"https://ecology.wa.gov/waste-toxics/reducing-toxic-chemicals/washingtons-toxics-in-products-laws/safer-products"}],
   legislation:[{st:"WA",bill:"SPWA Cycle 2",status:"passed",title:"Priority chemical — Cycle 2 targets cadmium in jewelry and accessories"},{st:"EU",bill:"REACH Annex XVII",status:"passed",title:"Cadmium restricted in jewelry, brazing alloys, PVC, and paints"},{st:"US",bill:"CPSIA",status:"passed",title:"Limits cadmium in children's metal jewelry"},{st:"CA",bill:"Prop 65",status:"passed",title:"Cadmium listed as carcinogen and reproductive toxicant"}],
   spwa:"Cycle 2"
@@ -3583,6 +3610,7 @@ const CURATED_DB = {
     {context:"Consumer products generally",alt:"Remove triclosan entirely — no antimicrobial treatment needed for most products",note:"Minnesota banned triclosan in consumer products (2017). Most manufacturers have reformulated."}
   ],
   altSource:"FDA Consumer Antiseptic Wash Rule, Minnesota triclosan ban",
+  "cscpData":{count:1100,note:"~1,100 products (large historical set; declined sharply after FDA 2016 ban in soaps)",categories:["Hand soap","Body wash","Toothpaste","Deodorant"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"FDA triclosan",u:"https://www.fda.gov/consumers/consumer-updates/5-things-know-about-triclosan"},{t:"EPA triclosan",u:"https://www.epa.gov/ingredients-used-pesticide-products/triclosan"}],
   legislation:[{st:"WA",bill:"TFCA",status:"passed",title:"Toxic-Free Cosmetics Act — triclosan restricted in cosmetics (Jan. 1, 2025)"},{st:"US",bill:"FDA Rule",status:"passed",title:"FDA banned triclosan from OTC antiseptic washes (2016)"},{st:"MN",bill:"SF 2192",status:"passed",title:"Minnesota banned triclosan in consumer cleaning products (2017)"}],
   tfca:true
@@ -3651,6 +3679,7 @@ const CURATED_DB = {
   children:["DMDM hydantoin","Quaternium-15","Diazolidinyl urea","Imidazolidinyl urea","Bronopol","Sodium hydroxymethylglycinate","Tosylamide/formaldehyde resin","Polyoxymethylene urea","Benzylhemiformal","Methenamine","Paraformaldehyde","And 14 others (see TFCA full list)"],
   products:["Shampoos","Conditioners","Body wash","Lotions","Hair styling products","Nail polish","Textured hair products","Baby wash","Bubble bath","Salon treatments"],
   func:"Antimicrobial preservatives. Prevent bacterial and fungal contamination by slowly releasing formaldehyde. Some also serve as denaturants or cross-linking agents.",
+  "cscpData":{count:3400,note:"~3,400 products with formaldehyde-releasing preservatives (DMDM hydantoin, quaternium-15, etc.)",categories:["Shampoo","Conditioner","Body wash","Lotion","Baby products"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"WA Ecology TFCA",u:"https://ecology.wa.gov/waste-toxics/reducing-toxic-chemicals/washingtons-toxics-in-products-laws/toxic-free-cosmetics-act"},{t:"TFCA formaldehyde rule",u:"https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-339"},{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/"},{t:"Campaign for Safe Cosmetics",u:"https://www.safecosmetics.org/chemicals/formaldehyde/"}],
   legislation:[{st:"WA",bill:"TFCA Rule (WAC 173-339)",status:"passed",title:"25 formaldehyde releasers restricted in cosmetics (effective Jan. 1, 2027)"},{st:"WA",bill:"TFCA",status:"passed",title:"Formaldehyde itself restricted in cosmetics (Jan. 1, 2025)"},{st:"CA",bill:"AB 496",status:"proposed",title:"Toxic-Free Cosmetics Act — bans FRPs in cosmetics"},{st:"MD",bill:"SB 258",status:"passed",title:"Prohibits formaldehyde-releasing preservatives in cosmetics"},{st:"EU",bill:"Cosmetics Reg",status:"passed",title:"Formaldehyde releasers restricted with concentration limits and labeling"}],
   tfca:true
@@ -3749,6 +3778,7 @@ const CURATED_DB = {
     {context:"Metal degreasing",alt:"Aqueous cleaning, modified alcohols",note:"Same alternatives as TCE — aqueous cleaning is the primary replacement."}
   ],
   altSource:"EPA Safer Choice, WA Ecology Safer Alternatives Program",
+  "cscpData":{count:280,note:"~280 products with PCE reported (dry cleaning residues in some products)",categories:["Dry cleaning","Fabric treatments"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"EPA PCE",u:"https://www.epa.gov/assessing-and-managing-chemicals-under-tsca/risk-management-perchloroethylene-pce"},{t:"ATSDR",u:"https://www.atsdr.cdc.gov/toxprofiles/tp18.pdf"},{t:"IARC",u:"https://monographs.iarc.who.int/wp-content/uploads/2018/06/mono106.pdf"}],
   legislation:[{st:"US",bill:"EPA TSCA",status:"proposed",title:"EPA proposed ban on most PCE uses under TSCA"},{st:"CA",bill:"CARB",status:"passed",title:"California phasing out PCE in dry cleaning by 2023"},{st:"US",bill:"SDWA",status:"passed",title:"EPA MCL for PCE in drinking water: 5 ppb"},{st:"CT",bill:"DEEP",status:"passed",title:"Connecticut dry cleaning equipment emission standards"}]
 },
@@ -3799,6 +3829,7 @@ const CURATED_DB = {
     {context:"Agriculture",alt:"Integrated Weed Management, crop rotation, cover cropping, reduced tillage with targeted application",note:"Regenerative agriculture practices reduce herbicide dependency."}
   ],
   altSource:"Organic farming practices, municipal pesticide-free programs",
+  "cscpData":{count:0,note:"Not a cosmetic ingredient — not reported to CSCP",categories:[],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"IARC monograph",u:"https://monographs.iarc.who.int/wp-content/uploads/2018/07/mono112.pdf"},{t:"EPA glyphosate",u:"https://www.epa.gov/ingredients-used-pesticide-products/glyphosate"},{t:"Beyond Pesticides",u:"https://www.beyondpesticides.org/programs/organic/why-organic/glyphosate"}],
   legislation:[{st:"US",bill:"EPA registration",status:"passed",title:"EPA reregistered glyphosate — finding 'not likely to be carcinogenic' (disputed by IARC)"},{st:"EU",bill:"Reg 2023/2660",status:"passed",title:"EU renewed glyphosate approval for 10 years (2023, highly contested)"},{st:"MX",bill:"Presidential decree",status:"passed",title:"Mexico banned glyphosate in food production (phased)"},{st:"CA",bill:"Prop 65",status:"passed",title:"Glyphosate listed as known carcinogen under Prop 65"}]
 },
@@ -3826,6 +3857,7 @@ const CURATED_DB = {
     {context:"Structural pest control",alt:"Bait systems, boric acid, diatomaceous earth, physical exclusion",note:"Chlorpyrifos was banned for residential use in 2001. Baits and physical methods are effective alternatives."}
   ],
   altSource:"EPA food tolerance revocation, organic agriculture practices",
+  "cscpData":{count:0,note:"Not a cosmetic ingredient — not reported to CSCP",categories:[],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"EPA chlorpyrifos",u:"https://www.epa.gov/ingredients-used-pesticide-products/chlorpyrifos"},{t:"Columbia Center for Children's Env Health",u:"https://www.publichealth.columbia.edu/research/columbia-center-childrens-environmental-health"},{t:"Earthjustice",u:"https://earthjustice.org/feature/chlorpyrifos-toxic-pesticide"}],
   legislation:[{st:"US",bill:"EPA revocation",status:"passed",title:"EPA revoked all food tolerances for chlorpyrifos (2021, later challenged in court)"},{st:"CA",bill:"DPR",status:"passed",title:"California banned chlorpyrifos for agricultural use"},{st:"HI",bill:"SB 3095",status:"passed",title:"Hawaii banned chlorpyrifos statewide"},{st:"EU",bill:"Reg 2020/17",status:"passed",title:"EU non-renewal of chlorpyrifos approval (2020)"}]
 },
@@ -3848,6 +3880,7 @@ const CURATED_DB = {
   products:["Corn herbicide","Sorghum herbicide","Sugarcane herbicide","Lawn care (some states)","Christmas tree farms","Highway right-of-way"],
   func:"Selective herbicide that inhibits photosynthesis in broadleaf weeds (blocks photosystem II). Applied pre- and post-emergence to corn and other crops.",
   manufacturers:[{name:"Syngenta",note:"Primary producer and defender of atrazine. Funded campaign to discredit Tyrone Hayes's research. Swiss-based, now owned by ChemChina."},{name:"Various generic producers",note:"Off-patent. Multiple manufacturers in China, India, and Israel."}],
+  "cscpData":{count:0,note:"Not a cosmetic ingredient — not reported to CSCP",categories:[],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"EPA atrazine",u:"https://www.epa.gov/ingredients-used-pesticide-products/atrazine"},{t:"NRDC atrazine",u:"https://www.nrdc.org/stories/atrazine-poisoning-well"},{t:"Tyrone Hayes research",u:"https://vcresearch.berkeley.edu/faculty/tyrone-hayes"}],
   legislation:[{st:"EU",bill:"Reg 2004/248",status:"passed",title:"EU banned atrazine due to groundwater contamination (2004)"},{st:"US",bill:"EPA MCL",status:"passed",title:"EPA MCL for atrazine in drinking water: 3 ppb"},{st:"US",bill:"EPA reregistration",status:"passed",title:"EPA reregistered atrazine with mitigation measures (contested)"},{st:"MN",bill:"MDA",status:"passed",title:"Minnesota monitoring and restriction program for atrazine in vulnerable areas"}]
 },
@@ -3947,6 +3980,7 @@ const CURATED_DB = {
     {context:"Avoid entirely",alt:"Non-PVC materials",note:"Switching from PVC to polyethylene, polypropylene, or silicone eliminates the need for any plasticizer."}
   ],
   altSource:"WA Ecology Cycle 1 Regulatory Determinations, EPA",
+  "cscpData":{count:380,note:"~380 products with DEHP specifically reported to CSCP",categories:["Nail polish","Lotions","Fragrances"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"EPA DEHP",u:"https://www.epa.gov/assessing-and-managing-chemicals-under-tsca/phthalates"},{t:"ECHA SVHC",u:"https://echa.europa.eu/substance-information/-/substanceinfo/100.003.829"},{t:"CPSC phthalates",u:"https://www.cpsc.gov/Business--Manufacturing/Business-Education/Business-Guidance/Phthalates-Information"}],
   legislation:[{st:"US",bill:"CPSIA Sec. 108",status:"passed",title:"DEHP permanently banned in children's toys and child care articles at >0.1%"},{st:"EU",bill:"REACH Annex XIV",status:"passed",title:"DEHP on Authorization List — requires authorization for any use"},{st:"EU",bill:"REACH Annex XVII",status:"passed",title:"DEHP restricted in toys and childcare articles"},{st:"CA",bill:"Prop 65",status:"passed",title:"DEHP listed as reproductive toxicant and carcinogen"},{st:"WA",bill:"SPWA Cycle 1",status:"passed",title:"Ortho-phthalates (including DEHP) restricted in vinyl flooring and personal care fragrances"}],
   spwa:"Cycle 1 (as ortho-phthalates)"
@@ -4150,6 +4184,7 @@ const CURATED_DB = {
     {context:"Home/garden",alt:"Neem oil, insecticidal soap, diatomaceous earth, beneficial insects",note:"Multiple states have restricted consumer neonicotinoid sales (CT, NY). Home garden alternatives are widely available."}
   ],
   altSource:"Xerces Society, IPM Institute, state pollinator protection programs",
+  "cscpData":{count:0,note:"Not a cosmetic ingredient — not reported to CSCP",categories:[],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"EPA neonics",u:"https://www.epa.gov/pollinator-protection/epa-actions-protect-pollinators"},{t:"Xerces Society",u:"https://www.xerces.org/pesticides/neonicotinoids"},{t:"Task Force on Systemic Pesticides",u:"https://www.tfsp.info/"}],
   legislation:[{st:"EU",bill:"Reg 2018/783-785",status:"passed",title:"EU banned outdoor use of imidacloprid, clothianidin, and thiamethoxam (2018)"},{st:"US",bill:"EPA BRD",status:"passed",title:"EPA biological risk determination found harm to bees but did not ban"},{st:"NJ",bill:"S2069",status:"proposed",title:"New Jersey restricted neonicotinoid use to protect pollinators"},{st:"CT",bill:"PA 23-53",status:"passed",title:"Connecticut restricted consumer neonicotinoid sales"}]
 },
@@ -4609,11 +4644,10 @@ Object.entries(EXTRA_ALIASES).forEach(([alias, target]) => {
   else if (ALIASES[target]) ALIASES[alias] = ALIASES[target];
 });
 
-// Expose to window for the redesigned UI
 window.CURATED_DB = CURATED_DB;
 window.ALIASES = ALIASES;
 
-</script>
+</script>>
 
 <script type="text/babel">
 const { useState, useEffect, useRef, useCallback, useMemo } = React;
@@ -5095,25 +5129,48 @@ function App() {
   const inputRef = useRef(null);
   const sugRef = useRef(null);
 
-  // Apply theme + accent CSS vars
+  // Detect system dark/light preference and follow OS changes
+  const [systemTheme, setSystemTheme] = useState(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return "light";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  });
+
+  useEffect(() => {
+    if (!window.matchMedia) return;
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const handler = e => setSystemTheme(e.matches ? "dark" : "light");
+    // addEventListener is modern; addListener is legacy fallback
+    if (mq.addEventListener) mq.addEventListener("change", handler);
+    else mq.addListener(handler);
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener("change", handler);
+      else mq.removeListener(handler);
+    };
+  }, []);
+
+  // Apply theme + accent CSS vars (theme follows system)
   useEffect(() => {
     const r = document.documentElement.style;
     const s = SCHEMES[tweaks.accentHue] || SCHEMES.navy;
     r.setProperty("--accent", s.accent);
     r.setProperty("--accent-light", s.accentLight);
     r.setProperty("--accent-mid", s.accentMid);
-    if (tweaks.theme === "dark") {
+    if (systemTheme === "dark") {
       r.setProperty("--bg","#111215"); r.setProperty("--surface","#1A1B1E");
       r.setProperty("--surface2","#22242A"); r.setProperty("--text","#E8E8EC");
       r.setProperty("--text-mid","#A8A8B2"); r.setProperty("--text-muted","#5A5A66");
       r.setProperty("--border","#2E3040");
+      r.setProperty("--alt-bg","#1C2A1E"); r.setProperty("--alt-border","#2F4A33");
+      r.setProperty("--alt-text","#A8D89A"); r.setProperty("--alt-source-bg","#172116");
     } else {
       r.setProperty("--bg","#F4F3EE"); r.setProperty("--surface","#FFFFFF");
       r.setProperty("--surface2","#ECEAE3"); r.setProperty("--text","#17171A");
       r.setProperty("--text-mid","#3D3D42"); r.setProperty("--text-muted","#7A7A82");
       r.setProperty("--border","#D8D6CE");
+      r.setProperty("--alt-bg","#EEF7E8"); r.setProperty("--alt-border","#C8E4B0");
+      r.setProperty("--alt-text","#1F5010"); r.setProperty("--alt-source-bg","#F5FBF0");
     }
-  }, [tweaks.theme, tweaks.accentHue]);
+  }, [systemTheme, tweaks.accentHue]);
 
   const DB = window.CURATED_DB || {};
   const ALIASES = window.ALIASES || {};
@@ -5261,12 +5318,13 @@ function App() {
             })()}
 
             {/* Regulatory badges */}
-            {(c.spwa||c.tfca||c.waPBT) && (
+            {(c.spwa||c.tfca||c.waPBT||c.cscpData?.count>0) && (
               <div>
                 <div className="sb-section-lbl">Regulatory coverage</div>
                 {c.spwa&&<a href="https://ecology.wa.gov/waste-toxics/reducing-toxic-chemicals/washingtons-toxics-in-products-laws/safer-products" target="_blank" rel="noopener noreferrer" className="reg-badge" style={{background:"#EBF3FA",border:"1px solid #B5D4F4",color:"#185FA5"}}><div className="reg-dot" style={{background:"#185FA5"}}/> WA Safer Products: {c.spwa}</a>}
                 {c.tfca&&<a href="https://ecology.wa.gov/waste-toxics/reducing-toxic-chemicals/washingtons-toxics-in-products-laws/toxic-free-cosmetics-act" target="_blank" rel="noopener noreferrer" className="reg-badge" style={{background:"#EEEDFE",border:"1px solid #CECBF6",color:"#534AB7"}}><div className="reg-dot" style={{background:"#534AB7"}}/> Toxic-Free Cosmetics Act</a>}
                 {c.waPBT&&<a href="https://ecology.wa.gov/waste-toxics/reducing-toxic-chemicals/addressing-priority-toxic-chemicals" target="_blank" rel="noopener noreferrer" className="reg-badge" style={{background:"var(--danger-light)",border:"1px solid var(--danger-border)",color:"var(--danger)"}}><div className="reg-dot" style={{background:"var(--danger)"}}/> WA PBT / Action Plan</a>}
+                {c.cscpData?.count>0&&<a href={c.cscpData.searchUrl} target="_blank" rel="noopener noreferrer" className="reg-badge" style={{background:"#FEF3E8",border:"1px solid #F0C896",color:"#8A4A0A"}}><div className="reg-dot" style={{background:"#C87820"}}/> CA Cosmetics: {c.cscpData.count.toLocaleString()} products</a>}
               </div>
             )}
 
@@ -5355,6 +5413,19 @@ function App() {
                 {(c.products||[]).map((p,i)=>{ const isObj=typeof p==="object"&&p.name; const name=isObj?p.name:p; const st=isObj?p.status:null; const sty=st==="banned"?{background:"#F5DEDE",color:"#791F1F",border:"1px solid #D4A0A0"}:st==="partial"?{background:"#FDE8CC",color:"#7A4A0B",border:"1px solid #D4B882"}:st==="abandoned"?{background:"#FFF3D6",color:"#6B5A10",border:"1px solid #D4C882"}:{background:"var(--surface2)",color:"var(--text-mid)",border:"1px solid var(--border)"}; return <span key={i} className="prod-chip" title={isObj&&p.note?p.note:""} style={{...sty,cursor:isObj&&p.note?"help":"default"}}>{name}</span>; })}
               </div>
               {c.func&&<p className="body-text" style={{fontSize:14}}>{c.func}</p>}
+              {c.cscpData?.count>0&&(
+                <div style={{marginTop:14,padding:"10px 14px",borderRadius:8,background:"#FEF3E8",border:"1px solid #F0C896",display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:8}}>
+                  <div>
+                    <span style={{fontFamily:"var(--mono)",fontSize:11,fontWeight:600,color:"#8A4A0A",textTransform:"uppercase",letterSpacing:"0.5px"}}>CA Safe Cosmetics Program</span>
+                    <div style={{fontSize:13,color:"var(--text-mid)",marginTop:2}}>
+                      Reported in <strong style={{color:"#6A3008"}}>{c.cscpData.count.toLocaleString()}</strong> cosmetic products
+                      {c.cscpData.categories?.length>0&&<span style={{color:"var(--text-muted)"}}> · primarily {c.cscpData.categories.slice(0,3).join(", ")}</span>}
+                    </div>
+                    <div style={{fontSize:11,color:"var(--text-muted)",marginTop:3,fontFamily:"var(--mono)"}}>{c.cscpData.note}</div>
+                  </div>
+                  <a href={c.cscpData.searchUrl} target="_blank" rel="noopener noreferrer" style={{fontFamily:"var(--mono)",fontSize:11,fontWeight:600,color:"#8A4A0A",textDecoration:"none",padding:"5px 12px",borderRadius:6,border:"1px solid #F0C896",background:"#FDF0E0",whiteSpace:"nowrap",flexShrink:0}}>Search CSCP ↗</a>
+                </div>
+              )}
             </Sec>
 
             {/* Manufacturers */}
