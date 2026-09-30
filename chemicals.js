@@ -148,6 +148,7 @@ const CURATED_DB = {
   ],
   altSource:"WA Ecology Regulatory Determinations Reports (Pub. 22-04-018, 24-04-024)",
   "cscpData":{count:1744,note:"1,744 products with intentionally added PFAS (FDA, August 2024); CSCP separately tracks PFAS",categories:["Eye shadow","Skin care","Eyeliner","Face powder","Foundation"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
+  plastchem:{group:"Per- and polyfluoroalkyl substances",hazards:{c:88,m:13,r:91,stot:94,edc:null},useCats:["Food-contact plastics","Textiles","Toys","Household items","Hygiene & medical"],note:"Present in every everyday use category analysed.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
   links:[{t:"EPA PFAS action",u:"https://www.epa.gov/pfas"},{t:"ATSDR PFAS",u:"https://www.atsdr.cdc.gov/pfas/"},{t:"PFAS Central",u:"https://pfascentral.org/"},{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/"}],
   spwa:"Cycle 1, 1.5 & Cycle 2",
   tfca:true,
@@ -173,9 +174,93 @@ const CURATED_DB = {
   products:["Vehicle tires (nearly all)","Industrial rubber goods","Conveyor belts","Rubber hoses","Rubber seals and gaskets"],
   func:"Antiozonant — protects rubber from cracking caused by ozone exposure. Without it (or an alternative), tires degrade much faster. Added at 1-2% by weight.",
   manufacturers:[{name:"Eastman Chemical (formerly Flexsys)",note:"Major 6PPD producer via subsidiary. Global supply."},{name:"Lanxess",note:"German chemical company. Major rubber antidegradant producer."},{name:"BASF",note:"Produces 6PPD for tire industry."},{name:"Kumho Petrochemical",note:"Korean producer of rubber chemicals including 6PPD."},{name:"Sinopec",note:"Chinese state-owned. Major 6PPD manufacturer."}],
+  plastchem:{group:"Aromatic amines",hazards:{c:100,m:100,r:100,stot:100,edc:null},note:"PPDs are aromatic amines — the single worst-performing group in EJF's analysis, hazardous on every endpoint assessed.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
   links:[{t:"WA Dept of Ecology 6PPD",u:"https://ecology.wa.gov/regulations-permits/emerging-topics/6ppd"},{t:"Science paper (Tian et al.)",u:"https://www.science.org/doi/10.1126/science.abd6951"},{t:"Safer States",u:"https://www.saferstates.org/"}],
   spwa:"Cycle 2 (designated by legislature)",
   legislation:[{st:"WA",bill:"SB 5931",status:"passed",title:"Requires identification of safer alternatives to 6PPD in tires"},{st:"CA",bill:"AB 1628",status:"proposed",title:"Study of tire-derived chemicals and 6PPD-quinone impacts"},{st:"WA",bill:"HB 1185",status:"proposed",title:"Stormwater management addressing tire wear particle contamination"},{st:"OR",bill:"SB 543",status:"proposed",title:"Tire chemical reduction and salmon habitat protection"}]
+},
+"azo dyes": {
+  name:"Azo dyes", aka:["Azo colorants","Azo pigments","Azo dyestuffs","Disperse dyes"],
+  cas:"Multiple (class)",
+  chemClass:{name:"Azo dyes",def:"The largest class of synthetic colorants, defined by a nitrogen-nitrogen double bond (-N=N-) linking two aromatic rings. Azo compounds account for roughly two-thirds of all synthetic dyes in commerce. The health concern is twofold: the dyes themselves, and the carcinogenic aromatic amines released when the azo bond is cleaved by gut bacteria, skin bacteria or metabolic enzymes."},
+  desc:"The colour in most of your clothes. Azo dyes are the workhorse colorants of the textile, leather, paper and plastics industries, and they are also used in some foods, cosmetics and tattoo inks. The central hazard is that the azo bond can be split by bacteria on skin, in the gut, or in the environment, releasing aromatic amines - a chemical group that includes confirmed human bladder carcinogens such as benzidine. The EU restricts azo dyes in textiles and leather that come into prolonged skin contact where they can release any of 22 listed aromatic amines, but this restriction covers only a fraction of azo chemistry in use. EJF found azo dyes to be hazardous across nearly every endpoint assessed.",
+  formula:"R-N=N-R", molWeight:"Varies",
+  structure:null,
+  toxicity:[
+    {label:"Cancer",val:"87% of assessed azo dyes are classified as carcinogenic in the PlastChem database. Cleavage of the azo bond releases aromatic amines including benzidine and 4-aminobiphenyl, both IARC Group 1 human bladder carcinogens."},
+    {label:"Mutagen",val:"96% of assessed azo dyes are classified as germ-cell mutagenic - the highest mutagenicity rate of any of EJF and PlastChem 15 priority groups."},
+    {label:"Reproductive",val:"83% of assessed members are classified as reproductive toxicants; 93% show specific target organ toxicity on repeated exposure."},
+    {label:"Ecological",val:"Textile dyeing wastewater is a major global water pollution source. Azo dyes resist conventional wastewater treatment, persist in surface water, block light penetration in receiving waters, and degrade anaerobically in sediment to release aromatic amines."}
+  ],
+  gs:{bm:1,label:"Benchmark 1 - Avoid",detail:"BM-1 based on carcinogenicity, very high mutagenicity, and reproductive toxicity across the assessed group, compounded by release of IARC Group 1 aromatic amines on cleavage. Regulation by group rather than by individual dye is the approach EJF and PlastChem recommend."},
+  parents:["Aromatic amines","Diazonium salts"],
+  children:["Benzidine (cleavage product)","4-Aminobiphenyl (cleavage product)","o-Toluidine (cleavage product)"],
+  products:[{name:"Textiles and leather (EU)",status:"partial",note:"EU REACH Annex XVII entry 43 restricts azo dyes releasing any of 22 listed aromatic amines in articles with prolonged skin contact"},"Clothing and upholstery dyes","Plastics and polymer colorants","Leather goods","Paper and printing inks","Cosmetics colorants","Tattoo inks","Some food colourings"],
+  func:"Provide colour across nearly every manufactured material. Azo chemistry is cheap, produces a very wide colour range, and bonds well to both natural and synthetic fibres, which is why it dominates the global dye market.",
+  saferAlternatives:[
+    {context:"Textiles",alt:"OEKO-TEX Standard 100 or GOTS-certified fabrics, low-impact fibre-reactive dyes, natural and mineral dyes",note:"OEKO-TEX and GOTS both screen for azo dyes that release restricted aromatic amines. Undyed and naturally pigmented fibres avoid the question entirely."},
+    {context:"Leather",alt:"Vegetable-tanned and undyed leather, Leather Working Group certified suppliers",note:"Skin-contact leather is where the EU restriction bites hardest - certification is the practical screen for consumers."},
+    {context:"Plastics colorants",alt:"Inorganic mineral pigments (iron oxides, ultramarine), uncoloured or naturally coloured polymers",note:"Mineral pigments avoid azo cleavage chemistry, though some carry their own heavy-metal concerns - check the specific pigment."}
+  ],
+  altSource:"OEKO-TEX, GOTS, EU REACH Annex XVII",
+  plastchem:{group:"Azo dyes",hazards:{c:87,m:96,r:83,stot:93,edc:null},note:"Among the worst-performing groups in EJF analysis, with the highest mutagenicity rate of all 15 priority groups.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
+  links:[{t:"EJF Poison Plastics (2026)",u:"https://ejfoundation.org/reports/poison-plastics"},{t:"PlastChem database",u:"https://plastchem-project.org/"},{t:"ECHA REACH restrictions",u:"https://echa.europa.eu/substances-restricted-under-reach"}],
+  legislation:[{st:"EU",bill:"REACH Annex XVII, entry 43",status:"passed",title:"Azo dyes releasing any of 22 listed carcinogenic aromatic amines banned in textiles and leather with prolonged skin contact"},{st:"Global",bill:"Global Plastics Treaty",status:"proposed",title:"EJF recommends group-based regulation of azo dyes to prevent regrettable substitution"}]
+},
+"aromatic amines": {
+  name:"Aromatic amines", aka:["Arylamines","Anilines","PPDs","p-Phenylenediamines","Benzidine","Toluidines"],
+  cas:"Multiple (class)",
+  chemClass:{name:"Aromatic amines",def:"Compounds with an amino group attached directly to an aromatic ring. The group includes several of the earliest recognised human carcinogens - benzidine, 2-naphthylamine and 4-aminobiphenyl caused an epidemic of bladder cancer among dye and rubber workers. Also includes p-phenylenediamines used as rubber antidegradants (6PPD) and hair dye couplers, and the amine building blocks of polyurethane and epoxy chemistry."},
+  desc:"The single worst-performing chemical group in EJF analysis of the PlastChem database: every assessed aromatic amine is classified as carcinogenic, mutagenic, reproductively toxic and organ-toxic. The group has a long and specific history in occupational health - bladder cancer among dye workers exposed to benzidine and 2-naphthylamine was one of the first industrial cancer clusters ever documented, and drove some of the earliest chemical bans. Aromatic amines remain in wide use as rubber antidegradants (6PPD in tires), hair dye couplers (PPD), polyurethane precursors (MDA, TDA), epoxy hardeners, and as the building blocks and breakdown products of azo dyes.",
+  formula:"Ar-NH2", molWeight:"Varies",
+  structure:null,
+  toxicity:[
+    {label:"Cancer",val:"100% of assessed aromatic amines are classified as carcinogenic. Benzidine, 2-naphthylamine and 4-aminobiphenyl are IARC Group 1 human carcinogens causing bladder cancer; historic exposure among dye and rubber workers produced some of the highest occupational cancer rates ever recorded."},
+    {label:"Mutagen",val:"100% of assessed members are classified as germ-cell mutagenic. Aromatic amines are metabolically activated to reactive intermediates that bind DNA directly."},
+    {label:"Reproductive",val:"100% of assessed members are classified as reproductive toxicants, and 100% show specific target organ toxicity on repeated exposure."},
+    {label:"Ecological",val:"6PPD, a p-phenylenediamine tire antidegradant, transforms in road runoff into 6PPD-quinone, which kills coho salmon at parts-per-billion concentrations. Aromatic amines released from azo dye breakdown persist in sediment."}
+  ],
+  gs:{bm:1,label:"Benchmark 1 - Avoid",detail:"BM-1 - the only group in EJF analysis rated hazardous on 100% of every endpoint with data. Several members are IARC Group 1 confirmed human carcinogens. EJF cites this group as the clearest case for regulating chemicals by class rather than one at a time."},
+  parents:["Benzene","Aniline"],
+  children:["6PPD","6PPD-quinone","Benzidine","p-Phenylenediamine (PPD)","o-Toluidine","4,4-Methylenedianiline (MDA)","Aniline"],
+  products:[{name:"Benzidine dyes",status:"banned",note:"Banned or severely restricted in most industrial countries after bladder cancer link established"},{name:"Azo dyes in skin-contact textiles (EU)",status:"partial",note:"EU REACH restricts azo dyes that release 22 listed aromatic amines"},"Tire rubber antidegradants (6PPD)","Permanent hair dye couplers (PPD)","Polyurethane precursors (MDA, TDA)","Epoxy curing agents","Dye and pigment intermediates","Rubber gloves and footwear"],
+  func:"Serve as antidegradants that protect rubber from ozone cracking, as couplers that develop colour in permanent hair dye, as curing agents in epoxy and polyurethane chemistry, and as the chemical backbone of most synthetic dyes.",
+  saferAlternatives:[
+    {context:"Hair colour",alt:"PPD-free and PTD-based permanent dyes, henna (pure, not compound henna), semi-permanent and temporary colour",note:"PPD is a leading cause of severe contact allergy. Compound henna often contains added PPD - only pure henna avoids it. Patch testing is standard practice for a reason."},
+    {context:"Tire antidegradants",alt:"No drop-in replacement for 6PPD is commercially available yet; interim measures focus on stormwater treatment and road runoff capture",note:"Being honest: this is an active research gap, not a solved substitution. Bioretention and rain gardens capture 6PPD-quinone before it reaches salmon streams."},
+    {context:"Rubber goods in skin contact",alt:"Nitrile, silicone or thermoplastic elastomer gloves and footwear",note:"Avoids both aromatic amine antidegradants and benzothiazole accelerators, the two main contact allergens in rubber."}
+  ],
+  altSource:"EJF Poison Plastics, WA Ecology 6PPD work, contact dermatitis clinical guidance",
+  plastchem:{group:"Aromatic amines",hazards:{c:100,m:100,r:100,stot:100,edc:null},note:"The only priority group rated 100% hazardous on every endpoint with conclusive data.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
+  links:[{t:"EJF Poison Plastics (2026)",u:"https://ejfoundation.org/reports/poison-plastics"},{t:"PlastChem database",u:"https://plastchem-project.org/"},{t:"IARC aromatic amines",u:"https://monographs.iarc.who.int/agents-classified-by-the-iarc/"}],
+  legislation:[{st:"EU",bill:"REACH Annex XVII, entry 43",status:"passed",title:"Restriction on azo dyes releasing 22 listed carcinogenic aromatic amines"},{st:"US",bill:"OSHA 29 CFR 1910.1003",status:"passed",title:"Benzidine, 2-naphthylamine and 4-aminobiphenyl regulated as OSHA-listed carcinogens"},{st:"WA",bill:"6PPD work",status:"passed",title:"Washington Ecology leading state action on 6PPD and 6PPD-quinone in stormwater"}]
+},
+"benzothiazoles": {
+  name:"Benzothiazoles", aka:["MBT","2-Mercaptobenzothiazole","Benzothiazole","MBTS","Rubber accelerators"],
+  cas:"149-30-4 (MBT)",
+  chemClass:{name:"Benzothiazoles",def:"A family of sulphur- and nitrogen-containing heterocyclic compounds used mainly as vulcanisation accelerators in rubber manufacturing, and as corrosion inhibitors in antifreeze and cooling systems. 2-Mercaptobenzothiazole (MBT) is the best-studied member and is an IARC Group 2A probable human carcinogen."},
+  desc:"The chemistry that makes rubber into rubber. Benzothiazoles speed up vulcanisation, the process that cross-links raw rubber into a durable elastic material, and they remain in the finished product. That puts them in tires, rubber gloves, footwear, wetsuits and elastic bands. MBT is an IARC Group 2A probable human carcinogen and one of the most common contact allergens in the standard dermatology patch test series - it is a recognised cause of occupational hand dermatitis in healthcare and food-service workers who wear rubber gloves. Like 6PPD, benzothiazoles wash off tires into road runoff and are now among the most frequently detected contaminants in urban stormwater.",
+  formula:"C7H5NS2 (MBT)", molWeight:"167.25 (MBT)",
+  structure:null,
+  toxicity:[
+    {label:"Cancer",val:"67% of assessed benzothiazoles are classified as carcinogenic. MBT is IARC Group 2A (probably carcinogenic to humans), based on bladder cancer findings in rubber industry workers."},
+    {label:"Skin sensitisation",val:"MBT and the mercapto mix are part of the standard contact dermatitis patch test series. Rubber glove dermatitis is a common occupational skin disease in healthcare, cleaning and food service."},
+    {label:"Reproductive",val:"40% of assessed members are classified as reproductive toxicants and 60% show specific target organ toxicity on repeated exposure - lower than most priority groups but still substantial."},
+    {label:"Water contamination",val:"Tire wear is a major source. Benzothiazoles are among the most frequently detected organic contaminants in urban stormwater, road dust and receiving waters, and are toxic to aquatic organisms."}
+  ],
+  gs:{bm:2,label:"Benchmark 2 - Use but search for safer alternatives",detail:"BM-2 based on IARC 2A carcinogenicity for MBT, strong skin sensitisation, and widespread stormwater contamination. Hazard rates across the group are lower than for aromatic amines or azo dyes, but the exposure pathways - skin contact and tire wear - are constant and unavoidable."},
+  parents:["Aniline","Carbon disulphide"],
+  children:["2-Mercaptobenzothiazole (MBT)","Benzothiazole-2-sulfenamide","MBTS (dibenzothiazyl disulfide)","2-Hydroxybenzothiazole (degradation product)"],
+  products:["Tire rubber","Rubber gloves (latex and synthetic)","Footwear and shoe soles","Wetsuits and swim caps","Elastic bands and seals","Antifreeze corrosion inhibitor","Cooling system additives","Road runoff (not a product - a contamination pathway)"],
+  func:"Accelerate the vulcanisation reaction that cross-links rubber, reducing cure time and improving the strength and elasticity of the finished material. Also inhibit corrosion of copper and brass in closed cooling systems.",
+  saferAlternatives:[
+    {context:"Gloves",alt:"Nitrile gloves labelled accelerator-free, polyisoprene surgical gloves, vinyl for low-risk tasks",note:"Accelerator-free nitrile gloves are widely available and specifically marketed to workers with diagnosed rubber accelerator allergy."},
+    {context:"Footwear",alt:"Leather, canvas, EVA foam or thermoplastic polyurethane soles",note:"Non-rubber soling avoids both benzothiazole accelerators and aromatic amine antidegradants."},
+    {context:"Stormwater",alt:"Bioretention cells, rain gardens, permeable pavement, street sweeping",note:"Tire chemistry cannot yet be substituted out, so capture is the practical intervention. The same green infrastructure that catches 6PPD-quinone catches benzothiazoles."}
+  ],
+  altSource:"Contact dermatitis clinical guidance, stormwater green infrastructure research",
+  plastchem:{group:"Benzothiazoles",hazards:{c:67,m:0,r:40,stot:60,edc:null},note:"Lower hazard rates than most priority groups, but constant skin-contact and tire-wear exposure pathways.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
+  links:[{t:"EJF Poison Plastics (2026)",u:"https://ejfoundation.org/reports/poison-plastics"},{t:"PlastChem database",u:"https://plastchem-project.org/"},{t:"IARC MBT monograph",u:"https://monographs.iarc.who.int/wp-content/uploads/2018/07/mono115.pdf"}]
 },
 "cyclotetrasiloxane": {
   name:"Cyclotetrasiloxane (D4)", aka:["Octamethylcyclotetrasiloxane","D4"],
@@ -264,6 +349,7 @@ const CURATED_DB = {
   ],
   altSource:"WA Ecology Cycle 1 Regulatory Determinations (Pub. 22-04-018, Ch. 4)",
   "cscpData":{count:210,note:"~210 products with BPA reported to CSCP",categories:["Nail products","Hair products","Lotions"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
+  plastchem:{group:"Bisphenols",hazards:{c:80,m:100,r:100,stot:100,edc:100},note:"Nearly all assessed bisphenols show adverse health impacts — the basis for regulating the group, not one chemical at a time.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
   links:[{t:"NIEHS BPA info",u:"https://www.niehs.nih.gov/health/topics/agents/sya-bpa"},{t:"FDA BPA",u:"https://www.fda.gov/food/food-packaging-other-substances-come-contact-food/bisphenol-bpa-use-food-contact-application"},{t:"Endocrine Society",u:"https://www.endocrine.org/topics/edc"}],
   spwa:"Cycle 1 (as phenolic compounds)",
   legislation:[{st:"EU",bill:"Reg 2024/3190",status:"passed",title:"EU bans BPA in all food contact materials (2025)"},{st:"US",bill:"FDA Rule",status:"passed",title:"FDA bans BPA in baby bottles and sippy cups (2012)"},{st:"CA",bill:"AB 1200",status:"passed",title:"Bans BPA and PFAS in food packaging and requires disclosure"},{st:"MN",bill:"SF 217",status:"passed",title:"Bans BPA in children's food and beverage containers"},{st:"WA",bill:"HB 1506",status:"passed",title:"BPA restrictions in thermal receipt paper"},{st:"NY",bill:"A3339",status:"proposed",title:"Bans BPA and bisphenol substitutes in food packaging"},{st:"CT",bill:"SB 210",status:"passed",title:"BPA ban in reusable food and beverage containers"}]
@@ -296,6 +382,7 @@ const CURATED_DB = {
   ],
   altSource:"WA Ecology Cycle 1 Regulatory Determinations (Pub. 22-04-018, Ch. 6)",
   "cscpData":{count:4200,note:"~4,200 products reported with ortho-phthalates or DEHP (cosmetics and fragrance)",categories:["Fragrances","Nail products","Hair products","Lotions"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
+  plastchem:{group:"Phthalates",hazards:{c:83,m:null,r:100,stot:100,edc:100},useCats:["Food-contact plastics","Textiles","Toys","Household items","Hygiene & medical"],note:"Present in every everyday use category analysed. Every assessed phthalate is a reproductive toxicant, organ toxicant and endocrine disruptor.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
   links:[{t:"EPA phthalates",u:"https://www.epa.gov/assessing-and-managing-chemicals-under-tsca/phthalates"},{t:"CPSC phthalates",u:"https://www.cpsc.gov/Business--Manufacturing/Business-Education/Business-Guidance/Phthalates-Information"},{t:"Campaign for Safe Cosmetics",u:"https://www.safecosmetics.org/chemicals/phthalates/"}],
   spwa:"Cycle 1 & Cycle 2",
   tfca:true,
@@ -422,6 +509,7 @@ const CURATED_DB = {
   ],
   altSource:"WA Ecology Cycle 1 Regulatory Determinations (Pub. 22-04-018, Ch. 5)",
   "cscpData":{count:640,note:"~640 products with APEs or nonylphenol reported",categories:["Hair care","Body wash","Household cleaners"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
+  plastchem:{group:"Alkylphenols",hazards:{c:50,m:67,r:92,stot:100,edc:100},useCats:["Food-contact plastics","Textiles","Toys","Household items","Hygiene & medical"],note:"One of only two groups EJF found present in every everyday use category analysed.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
   links:[{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/toxic-chemicals/apes-troubling-bubbles/"},{t:"EPA nonylphenol",u:"https://www.epa.gov/assessing-and-managing-chemicals-under-tsca/risk-management-nonylphenol-and-nonylphenol-ethoxylates"}],
   spwa:"Cycle 1 (as phenolic compounds)",
   legislation:[{st:"US",bill:"EPA SNUR",status:"passed",title:"EPA Significant New Use Rule for nonylphenol ethoxylates"},{st:"EU",bill:"REACH",status:"passed",title:"Nonylphenol and NPEs restricted in textiles and cleaning products"},{st:"WA",bill:"Safer Products",status:"passed",title:"Restricted in cleaning products under Safer Products for WA"}]
@@ -609,6 +697,7 @@ const CURATED_DB = {
   products:["PVC stabilizers","Marine antifouling paint (banned)","Fungicides","Wood preservatives","Silicone caulk catalysts","Industrial biocides"],
   func:"Heat and UV stabilizers in PVC processing. Formerly used as biocides in antifouling ship paints. Catalysts in silicone and polyurethane production.",
   manufacturers:[{name:"PMC Organometallix (formerly Galata Chemicals)",note:"Major organotin stabilizer producer."},{name:"Baerlocher",note:"German company. PVC stabilizer producer."},{name:"Valtris Specialty Chemicals",note:"Produces organotin and mixed-metal PVC stabilizers."},{name:"Songwon Industrial",note:"Korean chemical company. Tin stabilizer producer."}],
+  plastchem:{group:"Organometallics",hazards:{c:88,m:94,r:99,stot:100,edc:null},useCats:["Food-contact plastics","Textiles","Toys","Household items","Hygiene & medical"],note:"Organometallics are hazardous across nearly every endpoint assessed and appear in all five use categories.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
   links:[{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/toxic-chemicals/organotins/"},{t:"IMO antifouling convention",u:"https://www.imo.org/en/About/Conventions/Pages/International-Convention-on-the-Control-of-Harmful-Anti-fouling-Systems-on-Ships-(AFS).aspx"}],
   legislation:[{st:"Global",bill:"AFS Convention",status:"passed",title:"International Convention banning TBT in antifouling paints (2008)"},{st:"EU",bill:"REACH",status:"passed",title:"Restrictions on organotins in consumer products"},{st:"US",bill:"FIFRA",status:"passed",title:"TBT-based antifouling paints canceled for most uses"}]
 },
@@ -637,6 +726,7 @@ const CURATED_DB = {
   ],
   altSource:"EWG Skin Deep database, clean beauty industry standards",
   "cscpData":{count:9800,note:"~9,800 products (largest single chemical class in CSCP; widespread use across categories)",categories:["Skin care","Hair care","Baby products","Fragrances","Makeup"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
+  plastchem:{group:"Parabens",hazards:{c:null,m:0,r:0,stot:100,edc:100},note:"No assessed paraben is carcinogenic or mutagenic, but all assessed members are organ toxicants and endocrine disruptors.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
   links:[{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/toxic-chemicals/parabens/"},{t:"Campaign for Safe Cosmetics",u:"https://www.safecosmetics.org/chemicals/parabens/"},{t:"EWG",u:"https://www.ewg.org/what-are-parabens"}],
   legislation:[{st:"EU",bill:"Cosmetics Reg",status:"passed",title:"EU bans 5 parabens and restricts propyl/butylparaben concentrations in cosmetics"},{st:"WA",bill:"SB 5703",status:"passed",title:"Safer Beauty Act — identifies parabens as chemicals of concern"},{st:"ME",bill:"LD 264",status:"passed",title:"Maine designates parabens as endocrine disruptors"},{st:"CA",bill:"AB 496",status:"proposed",title:"Toxic-Free Cosmetics Act includes paraben restrictions"}]
 },
@@ -800,7 +890,7 @@ const CURATED_DB = {
   formula:"Various", molWeight:"Polymer",
   structure:null,
   toxicity:[
-    {label:"Chemical additives",val:"Plastics contain thousands of chemical additives — plasticizers, flame retardants, UV stabilizers, colorants, antimicrobials. Over 13,000 chemicals are associated with plastics; more than 3,200 are hazardous. Many leach from products during use."},
+    {label:"Chemical additives",val:"Plastics contain thousands of chemical additives — plasticizers, flame retardants, UV stabilizers, colorants, antimicrobials. PlastChem has now catalogued more than 16,000 chemicals present or marketed for use in plastics, of which over 4,200 are identified as hazardous to human health or the environment. Hazard information is missing entirely for more than 10,000 of them, and fewer than 6% are subject to any international regulation. Many leach from products during use."},
     {label:"Monomer hazards",val:"Many plastic monomers are toxic: vinyl chloride (carcinogen), styrene (probable carcinogen), BPA (endocrine disruptor), formaldehyde (carcinogen), acrylonitrile (carcinogen). Workers in plastic production face the highest exposure."},
     {label:"Microplastics",val:"All plastics eventually fragment into micro- and nanoplastics found in human blood, placenta, lungs, and brains. Microplastics carry adsorbed chemicals and cross biological barriers. Health effects are under intensive investigation."},
     {label:"Ecological",val:"8-10 million tonnes of plastic enter oceans annually. Entanglement, ingestion by wildlife, and chemical leaching. Plastic production is projected to account for 20% of global oil consumption by 2050. Incineration generates dioxins."}],
@@ -817,7 +907,21 @@ const CURATED_DB = {
     {context:"Food storage",alt:"Glass, stainless steel, silicone, beeswax wraps, ceramic",note:"Avoid heating food in plastic containers. Glass and stainless steel do not leach chemicals."}
   ],
   altSource:"Beyond Plastics, Break Free From Plastic, Healthy Building Network",
-  links:[{t:"Beyond Plastics",u:"https://www.beyondplastics.org/"},{t:"Break Free From Plastic",u:"https://www.breakfreefromplastic.org/"},{t:"UNEP plastics treaty",u:"https://www.unep.org/topics/chemicals-and-pollution-action/pollution-action/global-plastics-treaty"},{t:"PlastChem report",u:"https://www.plastchem-project.org/"}],
+  ejfAnalysis:{
+    title:"EJF analysis of everyday plastic items",
+    summary:"The Environmental Justice Foundation analysed the PlastChem database across five everyday use categories. Where data existed to assess both toxicity and exposure, 92.8% of chemicals were high risk. But 79.2% of chemicals in these categories lacked the data to assess toxicity, exposure or both. Of the high-risk chemicals identified, 82.9% are not regulated under any multilateral environmental agreement, and 54.2% are regulated neither internationally nor in the EU, Japan, South Korea or California.",
+    categories:[
+      {name:"Food-contact plastics",chemicals:2109,highRisk:91.6,dataGap:76.4,unregIntl:90.6,unregAnywhere:58.6,note:"Experts consulted by EJF named this the highest-priority exposure category — a daily, unavoidable ingestion route."},
+      {name:"Textiles",chemicals:2430,highRisk:92.8,dataGap:75.3,unregIntl:81.5,unregAnywhere:50.9,note:"Largest chemical count of the five categories. Skin contact and indoor dust inhalation are the main pathways."},
+      {name:"Toys",chemicals:522,highRisk:88.9,dataGap:53.4,unregIntl:84.7,unregAnywhere:52.8,note:"Mouthing and chewing behaviour makes children's exposure disproportionate to product volume."},
+      {name:"Household items",chemicals:1197,highRisk:92.4,dataGap:65.7,unregIntl:85.0,unregAnywhere:51.5,note:"Kitchen utensils, cleaning products, flooring and furniture. Indoor air carries far more microplastics than outdoor air."},
+      {name:"Hygiene & medical items",chemicals:247,highRisk:92.6,dataGap:50.6,unregIntl:92.0,unregAnywhere:61.9,note:"Highest international regulatory gap of the five. Direct bodily contact and internal administration; infants on infusion lines can face intakes far above safe limits."}
+    ],
+    caveat:"These figures cover only chemicals PlasticMAP could assign to a use category — about a quarter of the PlastChem database. EJF notes the real risk is therefore likely greater than these numbers show.",
+    source:"EJF (2026) Poison Plastics: How Chemicals in Everyday Plastics Are Harming Your Health",
+    url:"https://ejfoundation.org/reports/poison-plastics"
+  },
+  links:[{t:"EJF Poison Plastics (2026)",u:"https://ejfoundation.org/reports/poison-plastics"},{t:"Beyond Plastics",u:"https://www.beyondplastics.org/"},{t:"Break Free From Plastic",u:"https://www.breakfreefromplastic.org/"},{t:"UNEP plastics treaty",u:"https://www.unep.org/topics/chemicals-and-pollution-action/pollution-action/global-plastics-treaty"},{t:"PlastChem report",u:"https://www.plastchem-project.org/"}],
   legislation:[{st:"Global",bill:"UN Global Plastics Treaty",status:"proposed",title:"International negotiations for legally binding instrument on plastic pollution — INC-5 in Busan (2024)"},{st:"WA",bill:"Multiple",status:"passed",title:"Washington has banned plastic bags, PS food containers, and PFAS in food packaging"},{st:"CA",bill:"SB 54",status:"passed",title:"California Plastic Pollution Prevention and Packaging Producer Responsibility Act (2022)"}]
 },
 "polyethylene": {
@@ -1181,6 +1285,7 @@ const CURATED_DB = {
   ],
   altSource:"EWG Sunscreen Guide, Hawaii/Palau sunscreen bans, Endocrine Society",
   "cscpData":{count:6800,note:"~6,800 products with chemical UV filters (oxybenzone, octinoxate, homosalate, etc.) reported",categories:["Sunscreen","Daily moisturizer with SPF","Foundation","Lip balm","Body lotion"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
+  plastchem:{group:"Aceto- and benzophenones",hazards:{c:67,m:50,r:80,stot:100,edc:null},useCats:["Food-contact plastics","Textiles","Toys","Household items","Hygiene & medical"],note:"Benzophenone UV filters sit in a group hazardous across every endpoint with data, present in all five use categories.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
   links:[{t:"EWG Sunscreen Guide",u:"https://www.ewg.org/sunscreen/"},{t:"Endocrine Society EDCs",u:"https://www.endocrine.org/topics/edc/what-edcs-are/common-edcs"},{t:"NOAA coral and sunscreen",u:"https://oceanservice.noaa.gov/news/sunscreen-702.html"}],
   legislation:[{st:"HI",bill:"SB 2571",status:"passed",title:"Hawaii banned sale of sunscreens containing oxybenzone and octinoxate (2018, effective 2021)"},{st:"USVI",bill:"Act 8186",status:"passed",title:"US Virgin Islands banned oxybenzone, octinoxate, and octocrylene in sunscreens (2020)"},{st:"Palau",bill:"National law",status:"passed",title:"Palau banned reef-toxic sunscreen chemicals (2020)"},{st:"EU",bill:"SCCS opinion",status:"proposed",title:"EU Scientific Committee on Consumer Safety reviewing concentration limits for several UV filters"}]
 },
@@ -3692,6 +3797,7 @@ const CURATED_DB = {
   ],
   altSource:"WA Ecology Cycle 1 Regulatory Determinations, EPA",
   "cscpData":{count:380,note:"~380 products with DEHP specifically reported to CSCP",categories:["Nail polish","Lotions","Fragrances"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
+  plastchem:{group:"Phthalates",hazards:{c:83,m:null,r:100,stot:100,edc:100},useCats:["Food-contact plastics","Textiles","Toys","Household items","Hygiene & medical"],note:"DEHP sits in the phthalate group: 100% of assessed members are reprotoxic, organ-toxic and endocrine disrupting.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
   links:[{t:"EPA DEHP",u:"https://www.epa.gov/assessing-and-managing-chemicals-under-tsca/phthalates"},{t:"ECHA SVHC",u:"https://echa.europa.eu/substance-information/-/substanceinfo/100.003.829"},{t:"CPSC phthalates",u:"https://www.cpsc.gov/Business--Manufacturing/Business-Education/Business-Guidance/Phthalates-Information"}],
   legislation:[{st:"US",bill:"CPSIA Sec. 108",status:"passed",title:"DEHP permanently banned in children's toys and child care articles at >0.1%"},{st:"EU",bill:"REACH Annex XIV",status:"passed",title:"DEHP on Authorization List — requires authorization for any use"},{st:"EU",bill:"REACH Annex XVII",status:"passed",title:"DEHP restricted in toys and childcare articles"},{st:"CA",bill:"Prop 65",status:"passed",title:"DEHP listed as reproductive toxicant and carcinogen"},{st:"WA",bill:"SPWA Cycle 1",status:"passed",title:"Ortho-phthalates (including DEHP) restricted in vinyl flooring and personal care fragrances"}],
   spwa:"Cycle 1 (as ortho-phthalates)"
@@ -3984,6 +4090,7 @@ const CURATED_DB = {
   func:"Plasticizers and flame retardant additives in PVC and rubber. Extreme-pressure additives in metalworking fluids. Used wherever flexibility, flame resistance, and water resistance are needed at low cost.",
   manufacturers:[{name:"Dover Chemical",note:"Major US chlorinated paraffins producer (Dover, OH)."},{name:"INEOS Chlor",note:"European producer of chlorinated paraffins."},{name:"Various Chinese manufacturers",note:"China produces >50% of global chlorinated paraffins. Dozens of manufacturers."}],
   triSearch:"https://edap.epa.gov/public/extensions/TRIToxicsTracker/TRIToxicsTracker.html",
+  plastchem:{group:"Chlorinated paraffins",hazards:{c:100,m:0,r:50,stot:67,edc:null},useCats:["Food-contact plastics","Textiles","Toys","Household items","Hygiene & medical"],note:"Every assessed chlorinated paraffin is carcinogenic. Present in all five use categories.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
   links:[{t:"Stockholm Convention SCCPs",u:"https://www.pops.int/TheConvention/ThePOPs/TheNewPOPs/tabid/2511/Default.aspx"},{t:"ECHA SCCPs",u:"https://echa.europa.eu/substance-information/-/substanceinfo/100.084.273"},{t:"EPA SCCPs",u:"https://www.epa.gov/assessing-and-managing-chemicals-under-tsca/short-chain-chlorinated-paraffins-sccps"}],
   legislation:[{st:"Global",bill:"Stockholm Convention",status:"passed",title:"SCCPs listed in Annex A (2017). MCCPs listed in Annex A (2025)."},{st:"EU",bill:"POP Regulation",status:"passed",title:"SCCPs banned in EU. MCCPs restriction imminent following Stockholm listing."},{st:"US",bill:"EPA TSCA",status:"passed",title:"EPA TSCA rule restricting SCCPs in metalworking fluids"},{st:"CA",bill:"Prop 65",status:"passed",title:"SCCPs listed as carcinogen under Prop 65"}],
   waPBT:true
@@ -4073,6 +4180,7 @@ const CURATED_DB = {
   products:["Automotive coatings and plastics","Marine paints","Plastic packaging","Rubber products","Adhesives","Construction materials","Sports equipment","Furniture"],
   func:"UV absorber that protects polymers from photodegradation by absorbing harmful UV radiation and dissipating it as heat. Extends the service life of plastic and rubber products exposed to sunlight.",
   manufacturers:[{name:"BASF",note:"Produces UV-328 (Tinuvin 328 brand) as part of light stabilizer portfolio."},{name:"Songwon",note:"Korean producer of UV stabilizers."},{name:"Clariant",note:"Swiss specialty chemicals. UV stabilizer producer."}],
+  plastchem:{group:"Benzotriazoles",hazards:{c:100,m:0,r:100,stot:100,edc:null},useCats:["Food-contact plastics","Textiles","Toys","Household items","Hygiene & medical"],note:"Every assessed benzotriazole is carcinogenic, reprotoxic and organ-toxic. Present in all five use categories.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
   links:[{t:"Stockholm Convention UV-328",u:"https://www.pops.int/TheConvention/ThePOPs/TheNewPOPs/tabid/2511/Default.aspx"},{t:"ECHA",u:"https://echa.europa.eu/substance-information/-/substanceinfo/100.043.148"}],
   legislation:[{st:"Global",bill:"Stockholm Convention",status:"passed",title:"Listed in Annex A with specific exemptions (2023)"},{st:"EU",bill:"POP Regulation",status:"passed",title:"Restricted under EU POP Regulation"}]
 },
@@ -4204,6 +4312,7 @@ const CURATED_DB = {
   products:["Electronics enclosures (legacy)","Automotive textiles (legacy)","Upholstery back-coatings (legacy)","Wire & cable insulation","Recycled black plastics (contaminated)","E-waste"],
   func:"Additive flame retardant mixed into polymers (primarily HIPS and textile back-coatings) at 10-15% by weight. Not chemically bound — migrates out of products over time and during recycling.",
   manufacturers:[{name:"Albemarle (formerly Great Lakes Chemical)",note:"Major DecaBDE producer (Saytex 102E brand). Voluntarily phased out."},{name:"ICL Industrial Products",note:"Former DecaBDE producer."},{name:"Chemtura (now Lanxess)",note:"Former DecaBDE producer."}],
+  plastchem:{group:"Aromatic ethers",hazards:{c:null,m:100,r:100,stot:100,edc:null},note:"PBDEs including DecaBDE are aromatic ethers — every assessed member is mutagenic, reprotoxic and organ-toxic.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
   links:[{t:"Stockholm Convention DecaBDE",u:"https://www.pops.int/TheConvention/ThePOPs/TheNewPOPs/tabid/2511/Default.aspx"},{t:"TFF recycled plastics study",u:"https://toxicfreefuture.org/research/toxic-flame-retardants-in-recycled-plastics/"},{t:"EPA DecaBDE",u:"https://www.epa.gov/assessing-and-managing-chemicals-under-tsca/polybrominated-diphenyl-ethers-pbdes"}],
   legislation:[{st:"Global",bill:"Stockholm Convention",status:"passed",title:"Listed in Annex A with exemptions for spare parts and vehicles (2017)"},{st:"WA",bill:"RCW 70.76",status:"passed",title:"Washington — first state to ban DecaBDE (2007)"},{st:"ME",bill:"LD 1658",status:"passed",title:"Maine banned DecaBDE in mattresses, furniture, and electronics"},{st:"EU",bill:"POP Regulation",status:"passed",title:"Banned with 10 mg/kg limit in substances/mixtures, 500 mg/kg in articles"}],
   spwa:"Cycle 1 (as organohalogen flame retardant)",
@@ -4221,6 +4330,9 @@ Object.entries(CURATED_DB).forEach(([key, val]) => {
 });
 
 const EXTRA_ALIASES = {
+  "azo dyes":"azo dyes","azo dye":"azo dyes","azo colorants":"azo dyes","disperse dyes":"azo dyes","azo pigments":"azo dyes",
+  "aromatic amines":"aromatic amines","arylamines":"aromatic amines","benzidine":"aromatic amines","ppd":"aromatic amines","p-phenylenediamine":"aromatic amines","aniline":"aromatic amines","toluidine":"aromatic amines","mda":"aromatic amines",
+  "benzothiazoles":"benzothiazoles","mbt":"benzothiazoles","2-mercaptobenzothiazole":"benzothiazoles","mbts":"benzothiazoles","rubber accelerators":"benzothiazoles",
   "melamine":"melamine","cyanuramide":"melamine","triaminotriazine":"melamine",
   "cyanuric acid":"cyanuric acid","cya":"cyanuric acid","pool stabilizer":"cyanuric acid","isocyanuric acid":"cyanuric acid",
   "carbon black":"carbon black","pigment black 7":"carbon black","furnace black":"carbon black","lamp black":"carbon black",
@@ -4351,8 +4463,7 @@ const EXTRA_ALIASES = {
 };
 
 Object.entries(EXTRA_ALIASES).forEach(([alias, target]) => {
-  if (!ALIASES[alias] && ALIASES[target]) ALIASES[alias] = ALIASES[target];
-  else if (ALIASES[target]) ALIASES[alias] = ALIASES[target];
+  if (ALIASES[target]) ALIASES[alias] = ALIASES[target];
 });
 
 window.CURATED_DB = CURATED_DB;
