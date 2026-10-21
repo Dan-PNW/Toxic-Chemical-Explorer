@@ -4,7 +4,7 @@ An interactive reference tool for exploring toxic chemicals and elements — the
 
 ## What it does
 
-Search any of **209 chemicals and elements** by name, CAS number, or chemical class. Each entry includes:
+Search any of **210 chemicals and elements** by name, CAS number, or chemical class. Each entry includes:
 
 - **Health & ecological hazards** with severity pips (1–5) across cancer, neurotoxicity, endocrine disruption, reproductive harm, persistence, and more
 - **GreenScreen benchmark ratings** — BM-1 (Avoid) through BM-4 (Prefer) with color-coded pip indicators
@@ -29,12 +29,13 @@ README.md       — This file.
 
 ## Database coverage
 
-**209 total entries** across:
+**210 total entries** across:
 
 - **71 curated chemicals** — TFF Toxic Chemicals page, WA Safer Products Cycles 1/1.5/2, WA Toxic-Free Cosmetics Act, WA PBT Rule, Stockholm Convention POPs, GreenScreen BM-1 chemicals, WHO acute pesticides, EWG dietary pesticides
 - **110 periodic table elements** — all Z=1–118; 8 route via aliases to existing entries (Hg→heavy metals, As→heavy metals, Cr→hexavalent chromium, Pb→lead, Cd→cadmium, Sn→organotins, Sb→antimony, F→PFAS)
 - **12 plastics** — overview, polyethylene, polypropylene, polystyrene, PET, polyurethane, polycarbonate, nylon, microplastics, ABS, bioplastics/PLA (plus PVC in the original 71)
 - **5 EDCs** — perchlorate, diethylstilbestrol (DES), vinclozolin, phytoestrogens, UV filters (oxybenzone/octinoxate)
+- **1 industrial monomer** — glycidyl methacrylate (Prop 65 carcinogen, EU CMR; added because it falls through every list-based source)
 - **3 PlastChem priority groups** — azo dyes, aromatic amines, benzothiazoles
 - **8 CSCP/TFF chemicals** — melamine, cyanuric acid, carbon black, toluene, coal tar, retinyl palmitate, ethanolamines (DEA/TEA/MEA), PEG compounds
 
@@ -45,6 +46,7 @@ README.md       — This file.
 - [TFF Breast Milk Study 2026](https://toxicfreefuture.org/research/endocrine-disrupting-plastic-chemicals-in-breast-milk/) — Nature journal, peer-reviewed
 - [EJF, Poison Plastics (2026)](https://ejfoundation.org/reports/poison-plastics) — EJF analysis of the PlastChem database
 - [PlastChem project](https://plastchem-project.org/) — 16,000+ plastic chemicals, hazard criteria
+- [OEHHA Proposition 65 list](https://oehha.ca.gov/proposition-65/proposition-65-list) — CA carcinogens and reproductive toxicants
 - [CA Safe Cosmetics Program (CSCP)](https://cscpsearch.cdph.ca.gov/search/publicsearch) — CDPH open data
 - [Endocrine Society Common EDCs](https://www.endocrine.org/topics/edc/what-edcs-are/common-edcs)
 - [GreenScreen for Safer Chemicals](https://www.greenscreenchemicals.org/)
@@ -75,7 +77,7 @@ The database lives in `chemicals.js`. Each chemical entry follows this schema:
   desc: "Full description paragraph",
   formula: "C2H4",
   molWeight: "28.05",
-  toxicity: [{ label: "Cancer", val: "Description of cancer hazard" }],
+  toxicity: [{ label: "Cancer", val: "Description of cancer hazard", sev: 5 }],  // sev optional, 1-5; omit to use keyword heuristic
   gs: { bm: 1, label: "Benchmark 1 — Avoid", detail: "GreenScreen rationale" },
   parents: [], children: [],
   products: ["Product A", { name: "Product B", status: "banned", note: "Banned in 2016" }],
