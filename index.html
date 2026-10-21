@@ -584,10 +584,10 @@ function AnimatedMolecule({ structure, width=250, height=180 }) {
 }
 
 // ── Hazard row with severity pips ──────────────────────────────
-function HazardRow({ label, val }) {
+function HazardRow({ label, val, sev:sv }) {
   const isHuman = !/ecolog|aquatic|wildlife|environ/i.test(label);
   const color = isHuman ? "var(--danger)" : "var(--teal)";
-  const sev = /cancer|carcinogen|known human carcinogen/i.test(val) ? 5
+  const sev = typeof sv==="number" ? sv : /cancer|carcinogen|known human carcinogen/i.test(val) ? 5
     : /iarc group 1|parkinson|reproductive toxicit/i.test(val) ? 4
     : /endocrine|organ damage|immune/i.test(val) ? 3
     : /bioaccumul|persist|aquatic/i.test(val) ? 3 : 2;
@@ -924,7 +924,7 @@ function App() {
       {!c && !loading && (
         <div className="search-hero fade-up">
           <h2 className="hero-title">Know what's in your products.</h2>
-          <p className="hero-sub">Search 209 toxic chemicals by name, CAS number, or class — health hazards, manufacturer data, and legislation in one place.</p>
+          <p className="hero-sub">Search 210 toxic chemicals by name, CAS number, or class — health hazards, manufacturer data, and legislation in one place.</p>
           <div className="search-wrap">
             <svg className="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             <input ref={inputRef} className="search-input" type="text" placeholder="Chemical name, CAS number, or class…" value={query} autoFocus
@@ -951,7 +951,7 @@ function App() {
             <div className="chips">{featured.map(n=><button key={n} className="chip" onClick={()=>loadChemical(n)}>{n}</button>)}</div>
           </div>
           <div className="stats-bar">
-            <div style={{textAlign:"center"}}><span className="stat-num">209</span><div className="stat-lbl">chemicals &amp; elements</div></div>
+            <div style={{textAlign:"center"}}><span className="stat-num">210</span><div className="stat-lbl">chemicals &amp; elements</div></div>
             <div style={{textAlign:"center"}}><span className="stat-num">80</span><div className="stat-lbl">with manufacturer data</div></div>
             <div style={{textAlign:"center"}}><span className="stat-num">AI</span><div className="stat-lbl">lookup for unlisted</div></div>
           </div>
@@ -1072,7 +1072,7 @@ function App() {
 
               <Sec id="hazards" label="Health & Ecological Hazards">
                 <div className="hazard-list">
-                  {(c.toxicity||[]).map((t,i) => <HazardRow key={i} label={t.label} val={t.val}/>)}
+                  {(c.toxicity||[]).map((t,i) => <HazardRow key={i} label={t.label} val={t.val} sev={t.sev}/>)}
                 </div>
               </Sec>
             </div>
