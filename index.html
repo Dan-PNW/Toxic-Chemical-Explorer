@@ -131,6 +131,7 @@
     .gs-lbl { font-family:var(--mono); font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:1px; opacity:.7; }
     .gs-title { font-family:'IBM Plex Sans',sans-serif; font-size:16px; font-weight:700; line-height:1.1; margin:4px 0; }
     .gs-pips { display:flex; gap:4px; margin-top:6px; }
+    .gs-cf { font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; margin-top:8px; padding-top:7px; border-top:1px solid currentColor; opacity:0.85; }
     .gs-pip { height:5px; flex:1; border-radius:3px; }
 
     /* Reg badges */
@@ -924,7 +925,7 @@ function App() {
       {!c && !loading && (
         <div className="search-hero fade-up">
           <h2 className="hero-title">Know what's in your products.</h2>
-          <p className="hero-sub">Search 210 toxic chemicals by name, CAS number, or class — health hazards, manufacturer data, and legislation in one place.</p>
+          <p className="hero-sub">Search 212 toxic chemicals by name, CAS number, or class — health hazards, manufacturer data, and legislation in one place.</p>
           <div className="search-wrap">
             <svg className="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             <input ref={inputRef} className="search-input" type="text" placeholder="Chemical name, CAS number, or class…" value={query} autoFocus
@@ -951,7 +952,7 @@ function App() {
             <div className="chips">{featured.map(n=><button key={n} className="chip" onClick={()=>loadChemical(n)}>{n}</button>)}</div>
           </div>
           <div className="stats-bar">
-            <div style={{textAlign:"center"}}><span className="stat-num">210</span><div className="stat-lbl">chemicals &amp; elements</div></div>
+            <div style={{textAlign:"center"}}><span className="stat-num">212</span><div className="stat-lbl">chemicals &amp; elements</div></div>
             <div style={{textAlign:"center"}}><span className="stat-num">80</span><div className="stat-lbl">with manufacturer data</div></div>
             <div style={{textAlign:"center"}}><span className="stat-num">AI</span><div className="stat-lbl">lookup for unlisted</div></div>
           </div>
@@ -999,6 +1000,7 @@ function App() {
                       <div key={i} className="gs-pip" style={{background:s.pips===0?"var(--border)":i<=s.pips?s.color:s.color+"28"}}/>
                     ))}
                   </div>
+                  {c.chemforward&&<div className="gs-cf" style={{color:s.color}}>ChemFORWARD Band {c.chemforward.band}{c.chemforward.previousBand?` · was ${c.chemforward.previousBand}`:""}</div>}
                 </div>
               );
             })()}

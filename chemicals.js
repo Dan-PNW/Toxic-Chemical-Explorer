@@ -1,4 +1,6 @@
-// Auto-generated chemical database
+// Toxic Chemical Explorer — chemical database
+// Exposes window.CURATED_DB and window.ALIASES
+
 const CURATED_DB = {
 "vinyl chloride": {
   name:"Vinyl chloride", aka:["Chloroethene","VCM","Chloroethylene"],
@@ -83,7 +85,7 @@ const CURATED_DB = {
   saferAlternatives:[
     {context:"Wood composites (plywood, MDF)",alt:"No-added-formaldehyde (NAF) resins, soy-based adhesives, polyvinyl acetate (PVA)",note:"CARB Phase 2 / EPA TSCA Title VI require low-formaldehyde. NAF products are widely available from Columbia Forest Products, Purebond."},
     {context:"Building insulation",alt:"Formaldehyde-free fiberglass (Owens Corning EcoTouch), mineral wool, cellulose",note:"Major insulation brands now offer formaldehyde-free options."},
-    {context:"Personal care preservatives",alt:"Phenoxyethanol, sodium benzoate, potassium sorbate",note:"Formaldehyde-releasing preservatives can be replaced with non-formaldehyde alternatives."}
+    {context:"Personal care preservatives",alt:"Phenoxyethanol, sodium benzoate, potassium sorbate",note:"Formaldehyde-releasing preservatives can be replaced with non-formaldehyde alternatives. Caution on currency: these three were not reclassified, but replacement preservative chemistry is under active reassessment - caprylyl glycol and phenethyl alcohol, both widely used in the same role, moved to ChemFORWARD Band F (avoid) in 2026 on newly published reproductive toxicity data."}
   ],
   altSource:"CARB, EPA TSCA Title VI, WA Toxic-Free Cosmetics Act",
   "cscpData":{count:2800,note:"~2,800 products (2009–2022; CDPH 2023 report shows peak then decline after 2013)",categories:["Hair straightening/relaxers","Nail hardeners","Baby products","Skin care"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
@@ -721,7 +723,7 @@ const CURATED_DB = {
   func:"Antimicrobial preservatives that prevent bacterial and fungal growth in products with water content. Effective across a broad spectrum of microorganisms.",
   manufacturers:[{name:"Sharon Laboratories",note:"Israeli company. Major paraben preservative supplier to cosmetics industry."},{name:"Ueno Fine Chemicals",note:"Japanese paraben manufacturer."},{name:"Gujarat Organics",note:"Indian paraben producer."},{name:"Used by major cosmetics brands",note:"L'Oreal, Procter & Gamble, Unilever, Estée Lauder — though many are now reformulating to paraben-free."}],
   saferAlternatives:[
-    {context:"Cosmetic preservatives",alt:"Phenoxyethanol, sodium benzoate, potassium sorbate, ethylhexylglycerin",note:"Widely available paraben-free preservation systems. Most major brands now offer paraben-free lines."},
+    {context:"Cosmetic preservatives",alt:"Phenoxyethanol, sodium benzoate, potassium sorbate, ethylhexylglycerin",note:"Widely available paraben-free preservation systems. Most major brands now offer paraben-free lines. Caution on currency: none of these four were reclassified, but two ingredients from the same paraben-replacement preservative family - caprylyl glycol and phenethyl alcohol - were moved to ChemFORWARD Band F (avoid) in 2026 on reproductive toxicity data that post-dated their original assessments. Paraben-free is not the same as assessed-and-safer; check for a current hazard assessment."},
     {context:"Food preservatives",alt:"Tocopherols (vitamin E), rosemary extract, citric acid",note:"Natural antioxidant preservatives are effective in many food applications."}
   ],
   altSource:"EWG Skin Deep database, clean beauty industry standards",
@@ -729,6 +731,59 @@ const CURATED_DB = {
   plastchem:{group:"Parabens",hazards:{c:null,m:0,r:0,stot:100,edc:100},note:"No assessed paraben is carcinogenic or mutagenic, but all assessed members are organ toxicants and endocrine disruptors.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
   links:[{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/toxic-chemicals/parabens/"},{t:"Campaign for Safe Cosmetics",u:"https://www.safecosmetics.org/chemicals/parabens/"},{t:"EWG",u:"https://www.ewg.org/what-are-parabens"}],
   legislation:[{st:"EU",bill:"Cosmetics Reg",status:"passed",title:"EU bans 5 parabens and restricts propyl/butylparaben concentrations in cosmetics"},{st:"WA",bill:"SB 5703",status:"passed",title:"Safer Beauty Act — identifies parabens as chemicals of concern"},{st:"ME",bill:"LD 264",status:"passed",title:"Maine designates parabens as endocrine disruptors"},{st:"CA",bill:"AB 496",status:"proposed",title:"Toxic-Free Cosmetics Act includes paraben restrictions"}]
+},
+"caprylyl glycol": {
+  name:"Caprylyl glycol", aka:["1,2-Octanediol","Octane-1,2-diol","Capryl glycol","1,2-Dihydroxyoctane"],
+  cas:"1117-86-8",
+  chemClass:{name:"1,2-Alkanediols (preservative boosters)",def:"Short-chain diols used in personal care as humectants, skin conditioners and preservative boosters - they are mildly antimicrobial themselves and extend the activity of conventional preservatives, which lets formulators cut preservative load or market a product as gently preserved. The family includes 1,2-hexanediol, 1,2-pentanediol and ethylhexylglycerin. Almost all of them entered wide use as paraben and formaldehyde-releaser replacements."},
+  desc:"A workhorse of the clean beauty shelf, and now the clearest cautionary tale in the category. Caprylyl glycol appears in roughly 23% of the 156,594 US beauty and personal care products ChemFORWARD analysed for its 2026 profile - typically paired with phenoxyethanol as a preservative booster. It holds a certified GreenScreen Benchmark 2 from March 2024, which scored its reproductive toxicity Low on the strength of an OECD 421 screening study. In 2026 ChemFORWARD moved it from Hazard Band C to Band F, its avoid band, after reproductive toxicity data published since that assessment, with the reclassification confirmed by independent peer review. Nothing about the chemical changed. The evidence base did. That gap between a current certificate and current data is the single most useful thing in the report for anyone making substitution decisions.",
+  formula:"C8H18O2", molWeight:"146.23",
+  structure:null,
+  toxicity:[
+    {label:"Hazard reclassification",sev:4,val:"ChemFORWARD moved caprylyl glycol from Hazard Band C (moderate hazard and/or moderate risk) to Band F (high hazard and high risk - avoid) in its 2026 Beauty & Personal Care profile, on reproductive toxicity data published after the original Chemical Hazard Assessment. The change followed a 2025 review and independent peer review. Band F is ChemFORWARD highest-concern band."},
+    {label:"Developmental",sev:4,val:"The certified GreenScreen assessment (ToxServices LLC, 18 March 2024) scored developmental toxicity Moderate - dose-related litter loss and decreased fetal body weight meeting GHS Category 2 criteria. That single Moderate score is what held the chemical at Benchmark 2e rather than a higher benchmark."},
+    {label:"Data gap",sev:3,val:"Endocrine activity was a flat data gap in the 2024 GreenScreen assessment - no in vivo endocrine studies were found, though in vitro and modelling results were negative. The assessment states explicitly that if that gap were scored High, caprylyl glycol would be Benchmark 1. A chemical in roughly a quarter of US personal care products has never had an in vivo endocrine study."},
+    {label:"Irritation",sev:2,val:"Eye irritation scored High in the 2024 GreenScreen assessment. Single-dose neurotoxicity scored Moderate. Acute toxicity, repeated-dose toxicity, skin sensitisation and skin irritation all scored Low."},
+    {label:"Ecological",sev:2,val:"Moderate acute and chronic aquatic toxicity. Persistence and bioaccumulation both scored Very Low - it breaks down readily and does not build up in organisms, so the concern is hazard at the point of use rather than environmental accumulation."}
+  ],
+  gs:{bm:2,label:"Benchmark 2 - Use but search for safer alternatives",detail:"Benchmark 2e, certified 18 March 2024 by ToxServices LLC, valid to 18 March 2029 - but read that alongside the 2026 ChemFORWARD reclassification to Band F (avoid), which rests on reproductive toxicity data published after the GreenScreen assessment was completed. The two frameworks are not contradicting each other so much as reading different evidence bases: GreenScreen scored reproductive toxicity Low on an OECD 421 screening study, and newer data since then drove ChemFORWARD two bands down. The GreenScreen assessment also notes that its own unresolved endocrine data gap, if scored High, would move the chemical to Benchmark 1. Treat BM-2 here as the floor, not the verdict."},
+  parents:["Caprylic alcohol","1,2-Alkanediols"],
+  children:[],
+  products:["Moisturisers and serums","Facial cleansers","Preservative systems (usually paired with phenoxyethanol)","Shampoo and conditioner","Deodorant","Sunscreen","Baby care products","Makeup and foundation"],
+  func:"Humectant and skin conditioner that also acts as a preservative booster. Its mild antimicrobial activity lets formulators reduce the level of conventional preservative needed, which is why it became ubiquitous in products marketed as paraben-free or gently preserved.",
+  saferAlternatives:[
+    {context:"Honest answer on substitution",alt:"No assessed safer alternative identified",note:"Neither the ChemFORWARD report nor the GreenScreen assessment names a replacement, and this entry is a poor place to guess. Caprylyl glycol got where it is by being the substitute - naming an unassessed alternative here would repeat exactly the failure the 2026 report documents. The usable rule is to require a current Chemical Hazard Assessment, not a marketing claim, before swapping."},
+    {context:"Reducing preservative-system hazard overall",alt:"Formulation strategies that reduce preservation demand: anhydrous or waterless formats, airless and single-dose packaging, lower-water-activity systems",note:"These cut the need for antimicrobial load rather than substituting one booster for another. Practical for some product types and not others."}
+  ],
+  altSource:"No published alternatives assessment for caprylyl glycol was located. Substitution guidance here is deliberately limited to what is sourced.",
+  chemforward:{band:"F",previousBand:"C",bandLabel:"High hazard and high risk - avoid",reclassified:"2026",basis:"Reproductive toxicity data published after the original Chemical Hazard Assessment; 2025 review plus independent peer review",prevalence:"Approximately 23% of 156,594 US beauty and personal care products analysed",source:"ChemFORWARD (2026) Beauty & Personal Care Safer Chemistry Profile, Know Better Do Better Collaborative"},
+  links:[{t:"ChemFORWARD 2026 BPC profile",u:"https://www.chemforward.org/news/bpc-products-reveals-areas-to-strengthen-chemical-safety"},{t:"Certified GreenScreen assessment (IC2 CHAD)",u:"https://chad.theic2.org/assets/assessments/1117-86-8-Caprylyl-glycol-GS-592-v1_4-Certified-Mar-2024.pdf"},{t:"ChemFORWARD Chemical Hazard Data Trust",u:"https://www.chemforward.org/the-data-trust"}]
+},
+"phenethyl alcohol": {
+  name:"Phenethyl alcohol", aka:["2-Phenylethanol","Phenylethyl alcohol","Benzeneethanol","PEA","Rose alcohol"],
+  cas:"60-12-8",
+  chemClass:{name:"Aromatic alcohols (preservative and fragrance)",def:"An aromatic alcohol that occurs naturally in rose, carnation and jasmine oils and is also made synthetically at scale. It does double duty in cosmetics - it carries a rose-like scent and it is antimicrobial - which is why it turns up both as a declared fragrance component and as a preservative. Structurally adjacent to phenoxyethanol, the glycol ether that dominates paraben-free preservation, but a distinct chemical."},
+  desc:"One of the ingredients that made naturally preserved formulation possible, and now reclassified to the avoid band. Phenethyl alcohol is antimicrobial enough to preserve a product and fragrant enough to be listed as a scent component, and because it occurs naturally in rose oil it became a mainstay of formulations marketed as paraben-free or naturally preserved. In its 2026 Beauty & Personal Care profile ChemFORWARD moved it from Hazard Band C to Band F - its avoid band - on reproductive toxicity data published after the original Chemical Hazard Assessment, confirmed by independent peer review. Its dual fragrance-and-preservative role also means it can sit inside the undisclosed fragrance fraction that the same report found in about 24% of analysed products, which makes consumer avoidance harder than reading a preservative list.",
+  formula:"C8H10O", molWeight:"122.17",
+  structure:null,
+  toxicity:[
+    {label:"Hazard reclassification",sev:4,val:"ChemFORWARD moved phenethyl alcohol from Hazard Band C (moderate hazard and/or moderate risk) to Band F (high hazard and high risk - avoid) in its 2026 Beauty & Personal Care profile. The basis was reproductive toxicity data published after the original Chemical Hazard Assessment, following a 2025 review and independent peer review."},
+    {label:"Reproductive",sev:4,val:"Reproductive toxicity is the endpoint that drove the two-band downgrade. The underlying studies post-date the original assessment, which is why older ingredient ratings and clean beauty screens may still carry the superseded Band C."},
+    {label:"Disclosure",sev:2,val:"Because phenethyl alcohol functions as both fragrance and preservative, it can appear on a label as a named ingredient or be folded into an undisclosed fragrance blend. The same ChemFORWARD report found undisclosed fragrance ingredients in roughly 24% of the products analysed - more than 40,000 products - so label reading is not a reliable way to avoid it."},
+    {label:"Data gap",sev:3,val:"No certified GreenScreen assessment for phenethyl alcohol was located, so the Band F reclassification rests on the ChemFORWARD Chemical Hazard Assessment rather than on converging ratings from multiple frameworks. No regulatory restriction on its cosmetic use was identified either - this is a hazard-assessment signal that regulation has not acted on."}
+  ],
+  gs:{bm:"U",label:"Unscreened",detail:"No certified GreenScreen assessment for phenethyl alcohol was located. The strongest current signal is ChemFORWARD Hazard Band F (avoid), assigned in 2026 on reproductive toxicity grounds after a peer-reviewed reassessment. The absence of a GreenScreen score is itself informative: a preservative and fragrance ingredient in wide use has not been through that framework, which is the kind of gap the ChemFORWARD report was built to measure."},
+  parents:["Benzene derivatives","Aromatic alcohols"],
+  children:[],
+  products:["Fragrance and perfume","Preservative systems in products marketed paraben-free","Facial and body moisturisers","Shampoo and conditioner","Soap and body wash","Deodorant","Makeup","Baby care products"],
+  func:"Dual function. As a fragrance material it supplies a rose-like odour; as a preservative it provides broad antimicrobial activity, often alongside phenoxyethanol or an organic acid. That dual role is why it is common in products that avoid conventional preservative labelling.",
+  saferAlternatives:[
+    {context:"Honest answer on substitution",alt:"No assessed safer alternative identified",note:"The 2026 report names no replacement, and this entry will not invent one. Phenethyl alcohol is itself a paraben replacement - substituting on reputation rather than a current hazard assessment is how it ended up in this position."},
+    {context:"Fragrance exposure generally",alt:"Fragrance-free products (not unscented, which can still contain masking fragrance)",note:"For the fragrance half of its use, fragrance-free is the only reliable consumer-side control, given roughly 24% of analysed products carry undisclosed fragrance ingredients."}
+  ],
+  altSource:"No published alternatives assessment for phenethyl alcohol was located.",
+  chemforward:{band:"F",previousBand:"C",bandLabel:"High hazard and high risk - avoid",reclassified:"2026",basis:"Reproductive toxicity data published after the original Chemical Hazard Assessment; 2025 review plus independent peer review",source:"ChemFORWARD (2026) Beauty & Personal Care Safer Chemistry Profile, Know Better Do Better Collaborative"},
+  links:[{t:"ChemFORWARD 2026 BPC profile",u:"https://www.chemforward.org/news/bpc-products-reveals-areas-to-strengthen-chemical-safety"},{t:"ChemFORWARD Chemical Hazard Data Trust",u:"https://www.chemforward.org/the-data-trust"},{t:"Safer Chemistry Impact Metrics Framework",u:"https://www.saferchemistryimpactfund.org/metrics"}]
 },
 "pcbs": {
   name:"PCBs & DDT", aka:["Polychlorinated biphenyls","PCBs","DDT","Dichloro-diphenyl-trichloroethane"],
@@ -4348,16 +4403,9 @@ const CURATED_DB = {
 }
 };
 
-// Build ALIASES lookup table
-const ALIASES = {};
-Object.entries(CURATED_DB).forEach(([key, val]) => {
-  ALIASES[key] = key;
-  ALIASES[val.name.toLowerCase()] = key;
-  (val.aka || []).forEach(a => { ALIASES[a.toLowerCase()] = key; });
-  if (val.cas && val.cas !== "Multiple (class)" && !val.cas.includes(",")) ALIASES[val.cas] = key;
-});
-
 const EXTRA_ALIASES = {
+  "caprylyl glycol":"caprylyl glycol","1,2-octanediol":"caprylyl glycol","octane-1,2-diol":"caprylyl glycol","capryl glycol":"caprylyl glycol",
+  "phenethyl alcohol":"phenethyl alcohol","2-phenylethanol":"phenethyl alcohol","phenylethyl alcohol":"phenethyl alcohol","benzeneethanol":"phenethyl alcohol","pea":"phenethyl alcohol",
   "glycidyl methacrylate":"glycidyl methacrylate","gma":"glycidyl methacrylate","2,3-epoxypropyl methacrylate":"glycidyl methacrylate","glycidol":"glycidyl methacrylate","methacrylic acid glycidyl ester":"glycidyl methacrylate","epoxypropyl methacrylate":"glycidyl methacrylate","light ester g":"glycidyl methacrylate",
   "azo dyes":"azo dyes","azo dye":"azo dyes","azo colorants":"azo dyes","disperse dyes":"azo dyes","azo pigments":"azo dyes",
   "aromatic amines":"aromatic amines","arylamines":"aromatic amines","benzidine":"aromatic amines","ppd":"aromatic amines","p-phenylenediamine":"aromatic amines","aniline":"aromatic amines","toluidine":"aromatic amines","mda":"aromatic amines",
@@ -4491,9 +4539,15 @@ const EXTRA_ALIASES = {
   "decabde":"decabde","bde-209":"decabde","decabromodiphenyl ether":"decabde","dbdpo":"decabde",
 };
 
-Object.entries(EXTRA_ALIASES).forEach(([alias, target]) => {
-  if (ALIASES[target]) ALIASES[alias] = ALIASES[target];
+const ALIASES = {};
+Object.keys(CURATED_DB).forEach(k => {
+  ALIASES[k.toLowerCase()] = k;
+  const en = CURATED_DB[k];
+  if (en.name) ALIASES[en.name.toLowerCase()] = k;
+  if (en.cas) ALIASES[en.cas.toLowerCase()] = k;
+  (en.aka || []).forEach(a => { ALIASES[String(a).toLowerCase()] = k; });
 });
+Object.keys(EXTRA_ALIASES).forEach(k => { ALIASES[k.toLowerCase()] = EXTRA_ALIASES[k]; });
 
 window.CURATED_DB = CURATED_DB;
 window.ALIASES = ALIASES;
