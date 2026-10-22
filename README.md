@@ -4,12 +4,13 @@ An interactive reference tool for exploring toxic chemicals and elements — the
 
 ## What it does
 
-Search any of **210 chemicals and elements** by name, CAS number, or chemical class. Each entry includes:
+Search any of **212 chemicals and elements** by name, CAS number, or chemical class. Each entry includes:
 
 - **Health & ecological hazards** with severity pips (1–5) across cancer, neurotoxicity, endocrine disruption, reproductive harm, persistence, and more
 - **GreenScreen benchmark ratings** — BM-1 (Avoid) through BM-4 (Prefer) with color-coded pip indicators
 - **Key manufacturers & polluters** — named companies with facility locations, enforcement history, and settlement amounts (80 entries)
 - **Legislation tracking** — passed laws and proposed bills at federal, state, and international levels, with US + EU map visualization
+- **ChemFORWARD Hazard Bands** — surfaced on the GreenScreen badge when a band differs from, or post-dates, the GreenScreen benchmark
 - **Regulatory badges** — WA Safer Products for Washington, Toxic-Free Cosmetics Act, WA PBT rule, and CA Safe Cosmetics Program coverage
 - **Safer alternatives** — specific alternatives by product context, sourced from WA Ecology Regulatory Determinations (35 entries)
 - **Product status coding** — color-coded product chips: red (banned), orange (partially banned), yellow (abandoned by industry), white (active use)
@@ -21,7 +22,7 @@ Search any of **210 chemicals and elements** by name, CAS number, or chemical cl
 
 ```
 index.html      — The UI application (~70KB). Loads chemicals.js, renders the interface.
-chemicals.js    — The chemical database (~500KB). All 206 entries + alias lookup table.
+chemicals.js    — The chemical database (~530KB). All 212 entries + alias lookup table.
 README.md       — This file.
 ```
 
@@ -29,7 +30,7 @@ README.md       — This file.
 
 ## Database coverage
 
-**210 total entries** across:
+**212 total entries** across:
 
 - **71 curated chemicals** — TFF Toxic Chemicals page, WA Safer Products Cycles 1/1.5/2, WA Toxic-Free Cosmetics Act, WA PBT Rule, Stockholm Convention POPs, GreenScreen BM-1 chemicals, WHO acute pesticides, EWG dietary pesticides
 - **110 periodic table elements** — all Z=1–118; 8 route via aliases to existing entries (Hg→heavy metals, As→heavy metals, Cr→hexavalent chromium, Pb→lead, Cd→cadmium, Sn→organotins, Sb→antimony, F→PFAS)
@@ -37,6 +38,7 @@ README.md       — This file.
 - **5 EDCs** — perchlorate, diethylstilbestrol (DES), vinclozolin, phytoestrogens, UV filters (oxybenzone/octinoxate)
 - **1 industrial monomer** — glycidyl methacrylate (Prop 65 carcinogen, EU CMR; added because it falls through every list-based source)
 - **3 PlastChem priority groups** — azo dyes, aromatic amines, benzothiazoles
+- **2 ChemFORWARD 2026 reclassifications** — caprylyl glycol, phenethyl alcohol (both moved Hazard Band C → Band F on post-assessment reproductive toxicity data)
 - **8 CSCP/TFF chemicals** — melamine, cyanuric acid, carbon black, toluene, coal tar, retinyl palmitate, ethanolamines (DEA/TEA/MEA), PEG compounds
 
 ## Data sources
@@ -47,6 +49,7 @@ README.md       — This file.
 - [EJF, Poison Plastics (2026)](https://ejfoundation.org/reports/poison-plastics) — EJF analysis of the PlastChem database
 - [PlastChem project](https://plastchem-project.org/) — 16,000+ plastic chemicals, hazard criteria
 - [OEHHA Proposition 65 list](https://oehha.ca.gov/proposition-65/proposition-65-list) — CA carcinogens and reproductive toxicants
+- [ChemFORWARD 2026 Beauty & Personal Care Safer Chemistry Profile](https://www.chemforward.org/news/bpc-products-reveals-areas-to-strengthen-chemical-safety) — 2.9M ingredient occurrences across 156,594 US products
 - [CA Safe Cosmetics Program (CSCP)](https://cscpsearch.cdph.ca.gov/search/publicsearch) — CDPH open data
 - [Endocrine Society Common EDCs](https://www.endocrine.org/topics/edc/what-edcs-are/common-edcs)
 - [GreenScreen for Safer Chemicals](https://www.greenscreenchemicals.org/)
@@ -91,6 +94,7 @@ The database lives in `chemicals.js`. Each chemical entry follows this schema:
   cscpData: { count: 1200, note: "Source note", categories: ["Hair care"], searchUrl: "https://..." },
   plastchem: { group: "Phthalates", hazards: {c:83,m:null,r:100,stot:100,edc:100}, useCats: [...], note: "", source: "" },
   ejfAnalysis: { title, summary, categories: [...], caveat, source, url },
+  chemforward: { band: "F", previousBand: "C", bandLabel: "...", reclassified: "2026", basis: "...", source: "..." },  // ChemFORWARD Hazard Band A/B/C/D/F/U — no E band
   spwa: "Cycle 1",  // WA Safer Products coverage
   tfca: true,       // WA Toxic-Free Cosmetics Act
   waPBT: true,      // WA PBT Rule
