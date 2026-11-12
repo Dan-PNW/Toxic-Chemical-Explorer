@@ -4,7 +4,7 @@ An interactive reference tool for exploring toxic chemicals and elements — the
 
 ## What it does
 
-Search any of **212 chemicals and elements** by name, CAS number, or chemical class. Each entry includes:
+Search any of **213 chemicals and elements** by name, CAS number, or chemical class. Each entry includes:
 
 - **Health & ecological hazards** with severity pips (1–5) across cancer, neurotoxicity, endocrine disruption, reproductive harm, persistence, and more
 - **GreenScreen benchmark ratings** — BM-1 (Avoid) through BM-4 (Prefer) with color-coded pip indicators
@@ -22,7 +22,7 @@ Search any of **212 chemicals and elements** by name, CAS number, or chemical cl
 
 ```
 index.html      — The UI application (~70KB). Loads chemicals.js, renders the interface.
-chemicals.js    — The chemical database (~530KB). All 212 entries + alias lookup table.
+chemicals.js    — The chemical database (~550KB). All 213 entries + alias lookup table.
 README.md       — This file.
 ```
 
@@ -30,7 +30,7 @@ README.md       — This file.
 
 ## Database coverage
 
-**212 total entries** across:
+**213 total entries** across:
 
 - **71 curated chemicals** — TFF Toxic Chemicals page, WA Safer Products Cycles 1/1.5/2, WA Toxic-Free Cosmetics Act, WA PBT Rule, Stockholm Convention POPs, GreenScreen BM-1 chemicals, WHO acute pesticides, EWG dietary pesticides
 - **110 periodic table elements** — all Z=1–118; 8 route via aliases to existing entries (Hg→heavy metals, As→heavy metals, Cr→hexavalent chromium, Pb→lead, Cd→cadmium, Sn→organotins, Sb→antimony, F→PFAS)
@@ -39,12 +39,14 @@ README.md       — This file.
 - **1 industrial monomer** — glycidyl methacrylate (Prop 65 carcinogen, EU CMR; added because it falls through every list-based source)
 - **3 PlastChem priority groups** — azo dyes, aromatic amines, benzothiazoles
 - **2 ChemFORWARD 2026 reclassifications** — caprylyl glycol, phenethyl alcohol (both moved Hazard Band C → Band F on post-assessment reproductive toxicity data)
+- **1 chlorinated aromatic** — 1,4-dichlorobenzene (Prop 65 carcinogen, IARC 2B; up to 99% of solid deodorizer blocks by weight)
 - **8 CSCP/TFF chemicals** — melamine, cyanuric acid, carbon black, toluene, coal tar, retinyl palmitate, ethanolamines (DEA/TEA/MEA), PEG compounds
 
 ## Data sources
 
 - [WA Ecology Safer Products Cycle 1](https://apps.ecology.wa.gov/publications/documents/2204018.pdf) — Pub. 22-04-018
 - [WA Ecology Safer Products Cycle 1.5](https://apps.ecology.wa.gov/publications/documents/2404024.pdf) — Pub. 24-04-024
+- [WA Ecology Safer Products Cycle 2 draft regulatory determinations](https://apps.ecology.wa.gov/publications/documents/2604043.pdf) — Pub. 26-04-043, Nov 2026 (**draft** — comments close Dec 18, 2026)
 - [TFF Breast Milk Study 2026](https://toxicfreefuture.org/research/endocrine-disrupting-plastic-chemicals-in-breast-milk/) — Nature journal, peer-reviewed
 - [EJF, Poison Plastics (2026)](https://ejfoundation.org/reports/poison-plastics) — EJF analysis of the PlastChem database
 - [PlastChem project](https://plastchem-project.org/) — 16,000+ plastic chemicals, hazard criteria
@@ -102,6 +104,8 @@ The database lives in `chemicals.js`. Each chemical entry follows this schema:
 ```
 
 **Product status values:** `banned`, `partial`, `abandoned` (or omit for active use)
+
+**Proposed vs. adopted law:** `legislation` rows use `status: "proposed"` for anything not yet adopted, including draft agency determinations. Safer Products for Washington Cycle 2 determinations (published Nov 3, 2026) are **draft** — comments close Dec 18, 2026, final determinations expected June 2027, rule adoption June 2028. Do not cite them as current law.
 
 ## Tech stack
 
