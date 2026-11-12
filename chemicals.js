@@ -57,11 +57,15 @@ const CURATED_DB = {
     {context:"Building materials",alt:"Fiber cement siding, wood, metal, HDPE pipe, PEX, TPO roofing",note:"Habitable (formerly Healthy Building Network) Informed Product Guidance identifies PVC-free alternatives for most building applications."},
     {context:"Wire insulation",alt:"XLPE (cross-linked polyethylene), TPE (thermoplastic elastomer)",note:"XLPE and TPE are replacing PVC in wire and cable applications."},
     {context:"Packaging film",alt:"Polyethylene, polypropylene, compostable bioplastics",note:"Retailers including Target and Walmart have committed to reducing PVC packaging."}
-  ],
-  altSource:"Healthy Building Network Informed Product Guidance",
+  ,
+    {context:"Plastic packaging",alt:"Polyethylene (LDPE, LLDPE, HDPE), polypropylene (PP, BOPP), PET, polyamide 6, EVOH",note:"Conventional polymer substitutions identified by Ecology."},
+    {context:"Plastic packaging - bio-based and compostable",alt:"PLA, PHAs, PBAT, polycaprolactone, polybutylene succinate, cellulose, starch, polyvinyl alcohol",note:"Ecology named these but extended the full alternatives analysis into Cycle 3, so feasibility is not yet settled across packaging formats."}],
+  altSource:"WA Dept. of Ecology, Safer Products for Washington Cycle 2 draft regulatory determinations, Pub. 26-04-043 (Nov 2026)",
   links:[{t:"Healthy Building Network",u:"https://healthybuilding.net/blog/1-pvc-the-poison-plastic"},{t:"CHEJ PVC guide",u:"https://chej.org/campaigns/pvc/"}],
-  legislation:[{st:"CA",bill:"AB 2214",status:"proposed",title:"Building material chemical disclosure requirements"},{st:"WA",bill:"HB 1047",status:"passed",title:"Phthalate restrictions in children's products"},{st:"ME",bill:"LD 1503",status:"passed",title:"Toxic Packaging Reduction Act — heavy metals in packaging"},{st:"US",bill:"CPSIA",status:"passed",title:"Consumer Product Safety Improvement Act — phthalate limits in toys"}]
-},
+  legislation:[{st:"CA",bill:"AB 2214",status:"proposed",title:"Building material chemical disclosure requirements"},{st:"WA",bill:"HB 1047",status:"passed",title:"Phthalate restrictions in children's products"},{st:"ME",bill:"LD 1503",status:"passed",title:"Toxic Packaging Reduction Act — heavy metals in packaging"},{st:"US",bill:"CPSIA",status:"passed",title:"Consumer Product Safety Improvement Act — phthalate limits in toys"},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"REPORTING REQUIREMENT (proposed) — PVC and PVDC in plastic packaging. Ecology extended the alternatives analysis into Cycle 3 rather than restricting now. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."}]
+,
+  spwa:"Cycle 2 (plastic packaging)"},
 "formaldehyde": {
   name:"Formaldehyde", aka:["Methanal","Formalin (aqueous solution)","Methyl aldehyde"],
   cas:"50-00-0",
@@ -147,15 +151,27 @@ const CURATED_DB = {
     {context:"Firefighting foam",alt:"Fluorine-free foam (F3)",note:"GreenScreen Certified fluorine-free firefighting foam available. WA banned PFAS in firefighting foam."},
     {context:"Cookware",alt:"Ceramic non-stick coatings, cast iron, stainless steel, carbon steel",note:"PTFE-free cookware widely available. WA Ecology evaluating alternatives in Cycle 1.5."},
     {context:"Cleaning products",alt:"EPA Safer Choice surfactants, plant-based cleaners",note:"WA Ecology Cycle 1.5 identified safer surfactant alternatives meeting minimum criteria."}
-  ],
-  altSource:"WA Ecology Regulatory Determinations Reports (Pub. 22-04-018, 24-04-024)",
+  ,
+    {context:"Cookware and kitchen supplies",alt:"Sol-gel and silicone coatings: dimethyl siloxane/silica reaction products, methyl phenyl silsesquioxanes, colloidal and amorphous silica, methyltrimethoxysilane, polydimethylsiloxane (dimethicone)",note:"Ecology identified these as feasible and available non-stick alternatives. Two further alternatives in Caraway and GreenPan products are confidential business information."},
+    {context:"Floor waxes and polishes",alt:"Dipropylene glycol monomethyl ether; C12-14 and C12-16 ethoxylated alcohols; oxirane polymer (134180-76-0)",note:"Identified by use surface - cork, linoleum, vinyl and rubber. Commercial products already on the market use each."},
+    {context:"Hard surface sealers",alt:"Silanes (triethoxyoctylsilane, isobutyltrimethoxysilane, 3-aminopropyltriethoxysilane); waxes (paraffin, carnauba, beeswax); acrylic/butyl copolymer; polyvinyl alcohol; silica gel",note:"Covers water, oil, stain and dirt resistance functions separately - no single drop-in replaces all four."},
+    {context:"Firefighting PPE",alt:"Non-PFAS DWR outer shells (PF Zero, Hydropel, TecGen); polyurethane and expanded-polyethylene moisture barriers; nonwoven polyimide hoods",note:"Named products meeting the minimum criteria across turnout gear, wildland, station wear, technical rescue and EMS. Polyimide qualifies only with residual monomers below 1000 ppm."},
+    {context:"Architectural paints",alt:"Polymethyl methacrylate, polyethylene and carnauba waxes, silanes, zinc phosphate, kaolin, aluminum hydroxide, ammonium polyphosphates",note:"About 30 feasible and available alternatives identified across the paint functions PFAS and APEs serve."}],
+  altSource:"WA Dept. of Ecology, Safer Products for Washington Cycle 2 draft regulatory determinations, Pub. 26-04-043 (Nov 2026)",
   "cscpData":{count:1744,note:"1,744 products with intentionally added PFAS (FDA, August 2024); CSCP separately tracks PFAS",categories:["Eye shadow","Skin care","Eyeliner","Face powder","Foundation"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   plastchem:{group:"Per- and polyfluoroalkyl substances",hazards:{c:88,m:13,r:91,stot:94,edc:null},useCats:["Food-contact plastics","Textiles","Toys","Household items","Hygiene & medical"],note:"Present in every everyday use category analysed.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
   links:[{t:"EPA PFAS action",u:"https://www.epa.gov/pfas"},{t:"ATSDR PFAS",u:"https://www.atsdr.cdc.gov/pfas/"},{t:"PFAS Central",u:"https://pfascentral.org/"},{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/"}],
   spwa:"Cycle 1, 1.5 & Cycle 2",
   tfca:true,
   waPBT:true,
-  legislation:[{st:"ME",bill:"LD 1503",status:"passed",title:"Ban on PFAS in all products (first-in-nation, effective 2030)"},{st:"MN",bill:"HF 2310",status:"passed",title:"Amara's Law — bans PFAS in all products by 2032"},{st:"WA",bill:"HB 1694",status:"passed",title:"PFAS ban in food packaging, cosmetics, firefighting foam"},{st:"CA",bill:"AB 1817",status:"passed",title:"Bans PFAS in textile articles"},{st:"NY",bill:"S1046",status:"passed",title:"PFAS ban in food packaging"},{st:"CO",bill:"HB 22-1345",status:"passed",title:"PFAS in firefighting foam and food packaging restrictions"},{st:"US",bill:"PFAS Action Act",status:"proposed",title:"Federal PFAS regulation — designates PFAS as hazardous substances under CERCLA"},{st:"US",bill:"EPA MCL",status:"passed",title:"EPA final rule — drinking water limits for 6 PFAS compounds (2024)"},{st:"VT",bill:"S 25",status:"passed",title:"Bans PFAS in firefighting foam and food packaging"},{st:"CT",bill:"SB 837",status:"passed",title:"PFAS ban in food packaging and firefighting foam"}]
+  legislation:[{st:"ME",bill:"LD 1503",status:"passed",title:"Ban on PFAS in all products (first-in-nation, effective 2030)"},{st:"MN",bill:"HF 2310",status:"passed",title:"Amara's Law — bans PFAS in all products by 2032"},{st:"WA",bill:"HB 1694",status:"passed",title:"PFAS ban in food packaging, cosmetics, firefighting foam"},{st:"CA",bill:"AB 1817",status:"passed",title:"Bans PFAS in textile articles"},{st:"NY",bill:"S1046",status:"passed",title:"PFAS ban in food packaging"},{st:"CO",bill:"HB 22-1345",status:"passed",title:"PFAS in firefighting foam and food packaging restrictions"},{st:"US",bill:"PFAS Action Act",status:"proposed",title:"Federal PFAS regulation — designates PFAS as hazardous substances under CERCLA"},{st:"US",bill:"EPA MCL",status:"passed",title:"EPA final rule — drinking water limits for 6 PFAS compounds (2024)"},{st:"VT",bill:"S 25",status:"passed",title:"Bans PFAS in firefighting foam and food packaging"},{st:"CT",bill:"SB 837",status:"passed",title:"PFAS ban in food packaging and firefighting foam"},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — PFAS in architectural paints, most uses. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"REPORTING REQUIREMENT (proposed) — fluoropolymers in special purpose architectural paints. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — PFAS in artificial turf. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — PFAS in cookware and kitchen supplies. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — PFAS in firefighting PPE: structural turnout gear, wildland gear, station wear, technical rescue and EMS gear. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — PFAS in floor waxes and polishes. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — PFAS in hard surface sealers. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."}]
 },
 "6ppd": {
   name:"6PPD", aka:["N-(1,3-dimethylbutyl)-N'-phenyl-p-phenylenediamine"],
@@ -179,8 +195,14 @@ const CURATED_DB = {
   plastchem:{group:"Aromatic amines",hazards:{c:100,m:100,r:100,stot:100,edc:null},note:"PPDs are aromatic amines — the single worst-performing group in EJF's analysis, hazardous on every endpoint assessed.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
   links:[{t:"WA Dept of Ecology 6PPD",u:"https://ecology.wa.gov/regulations-permits/emerging-topics/6ppd"},{t:"Science paper (Tian et al.)",u:"https://www.science.org/doi/10.1126/science.abd6951"},{t:"Safer States",u:"https://www.saferstates.org/"}],
   spwa:"Cycle 2 (designated by legislature)",
-  legislation:[{st:"WA",bill:"SB 5931",status:"passed",title:"Requires identification of safer alternatives to 6PPD in tires"},{st:"CA",bill:"AB 1628",status:"proposed",title:"Study of tire-derived chemicals and 6PPD-quinone impacts"},{st:"WA",bill:"HB 1185",status:"proposed",title:"Stormwater management addressing tire wear particle contamination"},{st:"OR",bill:"SB 543",status:"proposed",title:"Tire chemical reduction and salmon habitat protection"}]
-},
+  legislation:[{st:"WA",bill:"SB 5931",status:"passed",title:"Requires identification of safer alternatives to 6PPD in tires"},{st:"CA",bill:"AB 1628",status:"proposed",title:"Study of tire-derived chemicals and 6PPD-quinone impacts"},{st:"WA",bill:"HB 1185",status:"proposed",title:"Stormwater management addressing tire wear particle contamination"},{st:"OR",bill:"SB 543",status:"proposed",title:"Tire chemical reduction and salmon habitat protection"},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — 6PPD in artificial turf. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"REPORTING REQUIREMENT (proposed) — 6PPD in motor vehicle tires. Ecology found no safer, feasible and available alternative: 7PPD and IPPD failed the safer criteria. A dedicated 6PPD alternatives assessment is due December 2026. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."}]
+,
+  saferAlternatives:[
+    {context:"Motor vehicle tires",alt:"No safer, feasible and available alternative identified",note:"This is the finding, not a gap in the search. Ecology assessed 7PPD and IPPD and found neither meets the safer criteria; other candidates lack data. That is why the tire determination is a reporting requirement rather than a restriction. A dedicated alternatives assessment is due December 2026."},
+    {context:"Artificial turf infill",alt:"Coconut coir, olive pit particles, walnut shell, cork, loblolly pine particle (BrockFILL), organically managed grass, or infill-free turf",note:"Unlike tires, turf has workable alternatives - which is why Ecology proposes a restriction here and only reporting for tires."}],
+  altSource:"WA Dept. of Ecology, Safer Products for Washington Cycle 2 draft regulatory determinations, Pub. 26-04-043 (Nov 2026)"},
 "azo dyes": {
   name:"Azo dyes", aka:["Azo colorants","Azo pigments","Azo dyestuffs","Disperse dyes"],
   cas:"Multiple (class)",
@@ -287,12 +309,16 @@ const CURATED_DB = {
     {context:"Personal care (skin feel/slip)",alt:"Plant-derived emollients, squalane, caprylic/capric triglycerides",note:"Many natural and synthetic alternatives provide similar skin feel without PBT concerns."},
     {context:"Hair conditioning",alt:"Broccoli seed oil, plant-derived conditioning agents, hydrolyzed proteins",note:"Natural alternatives increasingly available in premium and mass-market formulations."},
     {context:"Industrial applications",alt:"Application-specific — varies by use",note:"D4/D5 are being phased out in EU personal care. Industrial alternatives depend on the specific application."}
-  ],
-  altSource:"EU REACH SVHC restriction, clean beauty industry reformulation",
+  ,
+    {context:"Cosmetics - emollients and carriers",alt:"Propanediol, isododecane, caprylic/capric triglyceride, dipropylene glycol, neopentyl glycol diheptanoate, behenyl behenate, glycerin",note:"Feasible and available per Ecology Cycle 2 analysis."},
+    {context:"Cosmetics - plant oils and waxes",alt:"Coconut oil, hydrogenated olive oil, grapeseed oil, sweet almond oil, castor oil, carnauba wax",note:"Material alternatives already in commercial use."},
+    {context:"Cosmetics - dimethicone caveat",alt:"Dimethicone, only below 1000 ppm residual cVMS oligomer",note:"Ecology treats dimethicone as safer only if oligomer cVMS stays under 1000 ppm in the finished product. Swapping to dimethicone without that spec can carry the hazard across."}],
+  altSource:"WA Dept. of Ecology, Safer Products for Washington Cycle 2 draft regulatory determinations, Pub. 26-04-043 (Nov 2026)",
   "cscpData":{count:1200,note:"~1,200 products with D4/D5 siloxanes reported to CSCP",categories:["Hair products","Skin care","Antiperspirant"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"EU REACH SVHC",u:"https://echa.europa.eu/candidate-list-table"},{t:"Environment Canada",u:"https://www.canada.ca/en/health-canada/services/chemical-substances/challenge/batch-2/cyclotetrasiloxane.html"},{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/"}],
   spwa:"Cycle 2 (as cyclic volatile methylsiloxanes)",
-  legislation:[{st:"EU",bill:"REACH Annex XVII",status:"passed",title:"Restricts D4/D5/D6 in wash-off cosmetics above 0.1%"},{st:"CA",bill:"AB 496",status:"proposed",title:"Toxic-Free Cosmetics Act — includes cyclic siloxanes"},{st:"WA",bill:"SB 5703",status:"passed",title:"Safer Beauty Act — restricts toxic chemicals in personal care products"},{st:"CA",bill:"Prop 65",status:"passed",title:"D4 listed under Proposition 65 for reproductive toxicity"}]
+  legislation:[{st:"EU",bill:"REACH Annex XVII",status:"passed",title:"Restricts D4/D5/D6 in wash-off cosmetics above 0.1%"},{st:"CA",bill:"AB 496",status:"proposed",title:"Toxic-Free Cosmetics Act — includes cyclic siloxanes"},{st:"WA",bill:"SB 5703",status:"passed",title:"Safer Beauty Act — restricts toxic chemicals in personal care products"},{st:"CA",bill:"Prop 65",status:"passed",title:"D4 listed under Proposition 65 for reproductive toxicity"},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — cyclic volatile methylsiloxanes (cVMS) in cosmetic products. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."}]
 },
 "trichloroethylene": {
   name:"Trichloroethylene (TCE)", aka:["Trichloroethene","TCE","Trilene"],
@@ -381,14 +407,16 @@ const CURATED_DB = {
     {context:"Personal care fragrances",alt:"Carrier oils (jojoba, coconut, fractionated coconut), isolated aroma chemicals, ethyl alcohol",note:"WA Ecology identified multiple fixative and solvent alternatives. EWG SkinDeep database lists carrier oils in wide range of products."},
     {context:"PVC products generally",alt:"Non-PVC materials (polyethylene, polypropylene, silicone, natural rubber)",note:"Eliminating PVC eliminates the need for phthalate plasticizers entirely."},
     {context:"Medical devices",alt:"Citrate plasticizers, polyolefin-based alternatives, silicone tubing",note:"Several phthalate-free IV bags and tubing now available from B. Braun, Baxter."}
-  ],
-  altSource:"WA Ecology Cycle 1 Regulatory Determinations (Pub. 22-04-018, Ch. 6)",
+  ,
+    {context:"Sealants, caulks and adhesives",alt:"DEHT/DOTP, triacetin, DINCH, dipropylene glycol dibenzoate, oxydiethylene dibenzoate, diisononyl adipate, propylene glycol, soybean oil methyl esters",note:"Ecology found no alternatives for polysulfide or polyurea base polymers - the restriction does not reach every formulation."}],
+  altSource:"WA Dept. of Ecology, Safer Products for Washington Cycle 2 draft regulatory determinations, Pub. 26-04-043 (Nov 2026)",
   "cscpData":{count:4200,note:"~4,200 products reported with ortho-phthalates or DEHP (cosmetics and fragrance)",categories:["Fragrances","Nail products","Hair products","Lotions"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   plastchem:{group:"Phthalates",hazards:{c:83,m:null,r:100,stot:100,edc:100},useCats:["Food-contact plastics","Textiles","Toys","Household items","Hygiene & medical"],note:"Present in every everyday use category analysed. Every assessed phthalate is a reproductive toxicant, organ toxicant and endocrine disruptor.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
   links:[{t:"EPA phthalates",u:"https://www.epa.gov/assessing-and-managing-chemicals-under-tsca/phthalates"},{t:"CPSC phthalates",u:"https://www.cpsc.gov/Business--Manufacturing/Business-Education/Business-Guidance/Phthalates-Information"},{t:"Campaign for Safe Cosmetics",u:"https://www.safecosmetics.org/chemicals/phthalates/"}],
   spwa:"Cycle 1 & Cycle 2",
   tfca:true,
-  legislation:[{st:"US",bill:"CPSIA Sec. 108",status:"passed",title:"Permanently bans DEHP, DBP, BBP in children's toys; interim bans on DINP, DIDP, DnOP"},{st:"CA",bill:"AB 652",status:"passed",title:"Bans phthalates in juvenile products (play mats, changing pads)"},{st:"WA",bill:"HB 1047",status:"passed",title:"Restricts phthalates in children's products"},{st:"VT",bill:"S 103",status:"passed",title:"Bans phthalates in food packaging"},{st:"CA",bill:"SB 312",status:"proposed",title:"Fragrance ingredient disclosure including phthalates"},{st:"NY",bill:"S1046",status:"proposed",title:"Phthalate restrictions in food packaging materials"},{st:"EU",bill:"REACH Annex XIV",status:"passed",title:"DEHP, DBP, BBP, DIBP on Authorization List — restricted use"}]
+  legislation:[{st:"US",bill:"CPSIA Sec. 108",status:"passed",title:"Permanently bans DEHP, DBP, BBP in children's toys; interim bans on DINP, DIDP, DnOP"},{st:"CA",bill:"AB 652",status:"passed",title:"Bans phthalates in juvenile products (play mats, changing pads)"},{st:"WA",bill:"HB 1047",status:"passed",title:"Restricts phthalates in children's products"},{st:"VT",bill:"S 103",status:"passed",title:"Bans phthalates in food packaging"},{st:"CA",bill:"SB 312",status:"proposed",title:"Fragrance ingredient disclosure including phthalates"},{st:"NY",bill:"S1046",status:"proposed",title:"Phthalate restrictions in food packaging materials"},{st:"EU",bill:"REACH Annex XIV",status:"passed",title:"DEHP, DBP, BBP, DIBP on Authorization List — restricted use"},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — ortho-phthalates in sealants, caulks and adhesives. Ortho-phthalates run 0.1%-40% by weight in these products; WA volume estimated at 45-133 million pounds. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."}]
 },
 "1,4-dioxane": {
   name:"1,4-Dioxane", aka:["Dioxane","Diethylene dioxide","p-Dioxane"],
@@ -513,8 +541,9 @@ const CURATED_DB = {
   "cscpData":{count:640,note:"~640 products with APEs or nonylphenol reported",categories:["Hair care","Body wash","Household cleaners"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   plastchem:{group:"Alkylphenols",hazards:{c:50,m:67,r:92,stot:100,edc:100},useCats:["Food-contact plastics","Textiles","Toys","Household items","Hygiene & medical"],note:"One of only two groups EJF found present in every everyday use category analysed.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
   links:[{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/toxic-chemicals/apes-troubling-bubbles/"},{t:"EPA nonylphenol",u:"https://www.epa.gov/assessing-and-managing-chemicals-under-tsca/risk-management-nonylphenol-and-nonylphenol-ethoxylates"}],
-  spwa:"Cycle 1 (as phenolic compounds)",
-  legislation:[{st:"US",bill:"EPA SNUR",status:"passed",title:"EPA Significant New Use Rule for nonylphenol ethoxylates"},{st:"EU",bill:"REACH",status:"passed",title:"Nonylphenol and NPEs restricted in textiles and cleaning products"},{st:"WA",bill:"Safer Products",status:"passed",title:"Restricted in cleaning products under Safer Products for WA"}]
+  spwa:"Cycle 1 (as phenolic compounds) & Cycle 2 (paints)",
+  legislation:[{st:"US",bill:"EPA SNUR",status:"passed",title:"EPA Significant New Use Rule for nonylphenol ethoxylates"},{st:"EU",bill:"REACH",status:"passed",title:"Nonylphenol and NPEs restricted in textiles and cleaning products"},{st:"WA",bill:"Safer Products",status:"passed",title:"Restricted in cleaning products under Safer Products for WA"},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — APEs in architectural paints, most uses. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."}]
 },
 "asbestos": {
   name:"Asbestos", aka:["Chrysotile","Amosite","Crocidolite","Tremolite","Actinolite","Anthophyllite"],
@@ -655,8 +684,14 @@ const CURATED_DB = {
   spwa:"Cycle 2",
   tfca:true,
   waPBT:true,
-  legislation:[{st:"US",bill:"LCRA",status:"passed",title:"Lead Contamination Reduction Act — lead-free pipes and fixtures"},{st:"US",bill:"RRP Rule",status:"passed",title:"EPA Renovation, Repair, Painting rule for pre-1978 housing"},{st:"US",bill:"LCRR",status:"passed",title:"Lead and Copper Rule Revisions — requires lead pipe replacement (2024)"},{st:"MI",bill:"PA 399",status:"passed",title:"Michigan lead service line replacement requirements after Flint crisis"}]
-},
+  legislation:[{st:"US",bill:"LCRA",status:"passed",title:"Lead Contamination Reduction Act — lead-free pipes and fixtures"},{st:"US",bill:"RRP Rule",status:"passed",title:"EPA Renovation, Repair, Painting rule for pre-1978 housing"},{st:"US",bill:"LCRR",status:"passed",title:"Lead and Copper Rule Revisions — requires lead pipe replacement (2024)"},{st:"MI",bill:"PA 399",status:"passed",title:"Michigan lead service line replacement requirements after Flint crisis"},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — lead and lead compounds in jewelry and accessories. Market testing found 1 ppm to 98% by weight. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."}]
+,
+  saferAlternatives:[
+    {context:"Jewelry - base material",alt:"Zirconium dioxide, non-nano titanium, non-nano niobium, magnesium carbonate, 304 or 316L stainless steel, natural biological materials",note:"Feasible and available per Ecology Cycle 2 analysis."},
+    {context:"Jewelry - brightening and shine",alt:"Calcium carbonate, zirconium dioxide, non-nano titanium, non-nano niobium",note:""},
+    {context:"PVC wire and cable heat stabilizer",alt:"Magnesium oxide, calcium stearate, epoxidized soybean oil, acetyl tributyl citrate",note:""}],
+  altSource:"WA Dept. of Ecology, Safer Products for Washington Cycle 2 draft regulatory determinations, Pub. 26-04-043 (Nov 2026)"},
 "nmp": {
   name:"NMP (N-Methylpyrrolidone)", aka:["N-Methylpyrrolidone","1-Methyl-2-pyrrolidone","M-Pyrol"],
   cas:"872-50-4",
@@ -806,8 +841,10 @@ const CURATED_DB = {
   func:"PCBs: electrical insulating fluids, heat transfer fluids, plasticizers. DDT: broad-spectrum insecticide. Both banned for most uses but legacy contamination persists.",
   manufacturers:[{name:"Monsanto (legacy)",note:"Sole US producer of PCBs (Aroclor brand) from 1935-1977. Now part of Bayer. Subject to massive cleanup liability."},{name:"No current producers",note:"PCB manufacturing banned in US (1979) and globally. Legacy contamination persists in transformers, caulk, and building materials."},{name:"Inadvertent PCB sources",note:"PCBs are inadvertently produced as byproducts in pigment manufacturing (printing inks, paints)."}],
   links:[{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/toxic-chemicals/pcbs-and-ddt/"},{t:"EPA PCBs",u:"https://www.epa.gov/pcbs"},{t:"Stockholm Convention",u:"http://www.pops.int/"}],
-  legislation:[{st:"US",bill:"TSCA",status:"passed",title:"PCBs banned under TSCA (1979)"},{st:"US",bill:"FIFRA",status:"passed",title:"DDT banned for agricultural use (1972)"},{st:"Global",bill:"Stockholm Convention",status:"passed",title:"Both listed as POPs for global elimination"},{st:"WA",bill:"PCB cleanup",status:"passed",title:"Washington PCB chemical action plan and cleanup requirements"}]
-},
+  legislation:[{st:"US",bill:"TSCA",status:"passed",title:"PCBs banned under TSCA (1979)"},{st:"US",bill:"FIFRA",status:"passed",title:"DDT banned for agricultural use (1972)"},{st:"Global",bill:"Stockholm Convention",status:"passed",title:"Both listed as POPs for global elimination"},{st:"WA",bill:"PCB cleanup",status:"passed",title:"Washington PCB chemical action plan and cleanup requirements"},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"NO ACTION (proposed) — PCBs in printing inks. Ecology proposes no Cycle 2 action and will continue work on this category in future cycles. Lower PCB levels were achievable for oil-based CMYK offset inks but not across all ink types. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."}]
+,
+  spwa:"Cycle 2 (printing inks — no action proposed)"},
 "pbts": {
   name:"Persistent bioaccumulative toxics (PBTs)", aka:["PBTs","Persistent organic pollutants","POPs"],
   cas:"Multiple (class)",
@@ -899,10 +936,14 @@ const CURATED_DB = {
     {context:"Electronics enclosures",alt:"Non-halogenated OPFRs in PC/ABS, inherently flame-resistant resins",note:"WA Ecology Cycle 1 identified alternatives meeting UL flammability standards. EPEAT/TCO certified products available."},
     {context:"Building insulation",alt:"Mineral wool, fiberglass (FR-free types), cellulose",note:"Non-halogenated insulation alternatives widely available."},
     {context:"Furniture & mattresses",alt:"Barrier fabrics, inherently fire-resistant textiles (wool, modacrylic)",note:"CA TB 117-2013 allows passing flammability without chemical FRs. Most major retailers have FR-free furniture."}
-  ],
-  altSource:"WA Ecology Cycle 1 Regulatory Determinations (Pub. 22-04-018, Ch. 1)",
+  ,
+    {context:"Rigid polyiso foam insulation, roofing",alt:"Triethyl phosphate; ammonium polyphosphate Type II; or no flame retardant at all",note:"Class A roofing polyiso with no flame retardant is already sold (Versico NH, InsulBase NH) - the strongest available answer to the feasibility objection. Diethoxyphosphorylmethanol was identified but Ecology could not confirm a US product on the market."},
+    {context:"Insulation - material substitution",alt:"Mineral wool, stone wool, or fiberglass batt and blown insulation",note:"Avoids the polyiso chemistry entirely."}],
+  altSource:"WA Dept. of Ecology, Safer Products for Washington Cycle 2 draft regulatory determinations, Pub. 26-04-043 (Nov 2026)",
   links:[{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/toxic-chemicals/toxic-flame-retardants/"},{t:"Toxic-Free Future breast milk study",u:"https://toxicfreefuture.org/research/toxic-flame-retardants-in-breast-milk/"},{t:"Green Science Policy Institute",u:"https://greensciencepolicy.org/harmful-chemicals/flame-retardants/"}],
-  legislation:[{st:"WA",bill:"HB 2545",status:"passed",title:"Bans flame retardants in furniture and children's products"},{st:"CA",bill:"TB 117-2013",status:"passed",title:"Updated flammability standard — removes open flame test that drove FR use"},{st:"ME",bill:"LD 1433",status:"passed",title:"Bans flame retardants in children's products and furniture"},{st:"US",bill:"CPSC",status:"passed",title:"Halogenated flame retardants banned in children's products, mattresses, furniture, and electronics casings (2024)"},{st:"MN",bill:"SF 1054",status:"passed",title:"Bans TDCPP and TCEP in children's products and furniture"},{st:"EU",bill:"REACH/POP",status:"passed",title:"PBDEs, HBCD listed as POPs/restricted under REACH"}],
+  legislation:[{st:"WA",bill:"HB 2545",status:"passed",title:"Bans flame retardants in furniture and children's products"},{st:"CA",bill:"TB 117-2013",status:"passed",title:"Updated flammability standard — removes open flame test that drove FR use"},{st:"ME",bill:"LD 1433",status:"passed",title:"Bans flame retardants in children's products and furniture"},{st:"US",bill:"CPSC",status:"passed",title:"Halogenated flame retardants banned in children's products, mattresses, furniture, and electronics casings (2024)"},{st:"MN",bill:"SF 1054",status:"passed",title:"Bans TDCPP and TCEP in children's products and furniture"},{st:"EU",bill:"REACH/POP",status:"passed",title:"PBDEs, HBCD listed as POPs/restricted under REACH"},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — organohalogen flame retardants (OFRs) in rigid polyiso foam insulation used in roofing assemblies. Implementation timeframe to be set during rulemaking. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"REPORTING REQUIREMENT (proposed) — OFRs in other insulation product types. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."}],
   spwa:"Cycle 1 & Cycle 2",
   waPBT:true
 },
@@ -3407,9 +3448,14 @@ const CURATED_DB = {
   triSearch:"https://edap.epa.gov/public/extensions/TRIToxicsTracker/TRIToxicsTracker.html",
   "cscpData":{count:120,note:"~120 products with cadmium compounds reported (cosmetic colorants)",categories:["Nail polish","Eye shadow","Pigments"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   links:[{t:"ATSDR cadmium",u:"https://www.atsdr.cdc.gov/toxprofiles/tp5.pdf"},{t:"IARC monograph",u:"https://monographs.iarc.who.int/wp-content/uploads/2018/06/mono100C-8.pdf"},{t:"WA Ecology SPWA",u:"https://ecology.wa.gov/waste-toxics/reducing-toxic-chemicals/washingtons-toxics-in-products-laws/safer-products"}],
-  legislation:[{st:"WA",bill:"SPWA Cycle 2",status:"passed",title:"Priority chemical — Cycle 2 targets cadmium in jewelry and accessories"},{st:"EU",bill:"REACH Annex XVII",status:"passed",title:"Cadmium restricted in jewelry, brazing alloys, PVC, and paints"},{st:"US",bill:"CPSIA",status:"passed",title:"Limits cadmium in children's metal jewelry"},{st:"CA",bill:"Prop 65",status:"passed",title:"Cadmium listed as carcinogen and reproductive toxicant"}],
+  legislation:[{st:"WA",bill:"SPWA Cycle 2",status:"passed",title:"Priority chemical — Cycle 2 targets cadmium in jewelry and accessories"},{st:"EU",bill:"REACH Annex XVII",status:"passed",title:"Cadmium restricted in jewelry, brazing alloys, PVC, and paints"},{st:"US",bill:"CPSIA",status:"passed",title:"Limits cadmium in children's metal jewelry"},{st:"CA",bill:"Prop 65",status:"passed",title:"Cadmium listed as carcinogen and reproductive toxicant"},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — cadmium and cadmium compounds in jewelry and accessories. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."}],
   spwa:"Cycle 2"
-},
+,
+  saferAlternatives:[
+    {context:"Jewelry - base material",alt:"Zirconium dioxide, non-nano titanium, non-nano niobium, magnesium carbonate, 304 or 316L stainless steel, natural biological materials",note:"Feasible and available per Ecology Cycle 2 analysis."},
+    {context:"Jewelry - brightening and shine",alt:"Calcium carbonate, zirconium dioxide, non-nano titanium, non-nano niobium",note:""}],
+  altSource:"WA Dept. of Ecology, Safer Products for Washington Cycle 2 draft regulatory determinations, Pub. 26-04-043 (Nov 2026)"},
 "organobromine organochlorine": {
   name:"Organobromine & organochlorine substances", aka:["Brominated substances","Chlorinated substances","Halogenated organics","OCS","OBS"],
   cas:"Multiple (class)",
@@ -3429,7 +3475,8 @@ const CURATED_DB = {
   products:["PVC packaging (cling wrap, blister packs)","PVDC (Saran-type wrap)","Brominated electronic enclosures","Toilet deodorizers","Recycled plastics (contaminated with BFRs)","Insulation"],
   func:"Organochlorines in packaging provide barrier properties and flexibility. Organobromines serve as flame retardants. Both classes are being targeted for phase-out due to lifecycle toxicity.",
   links:[{t:"WA Ecology SPWA",u:"https://ecology.wa.gov/waste-toxics/reducing-toxic-chemicals/washingtons-toxics-in-products-laws/safer-products"},{t:"Toxic-Free Future PVC",u:"https://toxicfreefuture.org/key-project/ban-pvc-and-vinyl-chloride/"},{t:"Green Science Policy",u:"https://greensciencepolicy.org/harmful-chemicals/flame-retardants/"}],
-  legislation:[{st:"WA",bill:"SPWA Cycle 2",status:"passed",title:"Priority chemical class — targets organochlorines in plastic packaging and deodorizers, organobromines in insulation"},{st:"WA",bill:"SPWA Cycle 1",status:"passed",title:"Organohalogen flame retardants restricted in electronics and recreational foam"},{st:"EU",bill:"REACH/POP",status:"passed",title:"Multiple organobromine and organochlorine substances restricted or banned"}],
+  legislation:[{st:"WA",bill:"SPWA Cycle 2",status:"passed",title:"Priority chemical class — targets organochlorines in plastic packaging and deodorizers, organobromines in insulation"},{st:"WA",bill:"SPWA Cycle 1",status:"passed",title:"Organohalogen flame retardants restricted in electronics and recreational foam"},{st:"EU",bill:"REACH/POP",status:"passed",title:"Multiple organobromine and organochlorine substances restricted or banned"},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"REPORTING REQUIREMENT (proposed) — PVC and PVDC in plastic packaging. Alternatives analysis extended into Cycle 3. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."}],
   spwa:"Cycle 1 & Cycle 2"
 },
 "btex": {
@@ -3453,9 +3500,13 @@ const CURATED_DB = {
   manufacturers:[{name:"ExxonMobil",note:"Major benzene, toluene, and xylene producer from petroleum refining."},{name:"Shell",note:"Major BTEX producer."},{name:"Chevron Phillips Chemical",note:"Major US benzene and styrene producer."},{name:"LyondellBasell",note:"Major benzene and toluene producer."},{name:"All petroleum refiners",note:"BTEX compounds are fundamental petrochemical building blocks produced at every refinery."}],
   triSearch:"https://edap.epa.gov/public/extensions/TRIToxicsTracker/TRIToxicsTracker.html",
   links:[{t:"EPA benzene",u:"https://www.epa.gov/sites/default/files/2016-09/documents/benzene.pdf"},{t:"ATSDR toluene",u:"https://www.atsdr.cdc.gov/toxprofiles/tp56.pdf"},{t:"WA Ecology SPWA",u:"https://ecology.wa.gov/waste-toxics/reducing-toxic-chemicals/washingtons-toxics-in-products-laws/safer-products"}],
-  legislation:[{st:"WA",bill:"SPWA Cycle 2",status:"passed",title:"Priority chemical class under Cycle 2 Phase 1"},{st:"US",bill:"OSHA PEL",status:"passed",title:"Benzene PEL: 1 ppm (8-hr TWA) — among the strictest OSHA limits"},{st:"CA",bill:"Prop 65",status:"passed",title:"Benzene listed as carcinogen; toluene as reproductive toxicant"},{st:"US",bill:"CAA NESHAP",status:"passed",title:"Benzene regulated as hazardous air pollutant under Clean Air Act"}],
+  legislation:[{st:"WA",bill:"SPWA Cycle 2",status:"passed",title:"Priority chemical class under Cycle 2 Phase 1"},{st:"US",bill:"OSHA PEL",status:"passed",title:"Benzene PEL: 1 ppm (8-hr TWA) — among the strictest OSHA limits"},{st:"CA",bill:"Prop 65",status:"passed",title:"Benzene listed as carcinogen; toluene as reproductive toxicant"},{st:"US",bill:"CAA NESHAP",status:"passed",title:"Benzene regulated as hazardous air pollutant under Clean Air Act"},
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — BTEX substances in nail products. Toluene above 100 ppm fell from 11.7% of products in CA DTSC 2019 testing to 5.2% in 2025, evidence reformulation is already under way. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."}],
   spwa:"Cycle 2"
-},
+,
+  saferAlternatives:[
+    {context:"Nail products - solvents",alt:"Ethyl acetate, butyl acetate, isopropyl alcohol, propylene carbonate",note:"Feasible and available. Industry reformulation is already measurable: toluene above 100 ppm dropped from 11.7% to 5.2% of products between the 2019 and 2025 CA DTSC studies."}],
+  altSource:"WA Dept. of Ecology, Safer Products for Washington Cycle 2 draft regulatory determinations, Pub. 26-04-043 (Nov 2026)"},
 "triclosan": {
   name:"Triclosan", aka:["5-Chloro-2-(2,4-dichlorophenoxy)phenol","Irgasan","TCS"],
   cas:"3380-34-5",
@@ -3623,6 +3674,53 @@ const CURATED_DB = {
   triSearch:"https://edap.epa.gov/public/extensions/TRIToxicsTracker/TRIToxicsTracker.html",
   links:[{t:"EPA ethylene oxide",u:"https://www.epa.gov/hazardous-air-pollutants-ethylene-oxide"},{t:"IARC monograph",u:"https://monographs.iarc.who.int/wp-content/uploads/2018/06/mono100F-28.pdf"},{t:"ProPublica EtO investigation",u:"https://www.propublica.org/series/poison-in-the-air"}],
   legislation:[{st:"US",bill:"EPA IRIS",status:"passed",title:"EPA IRIS assessment — 30x increase in cancer potency estimate (2016)"},{st:"IL",bill:"SB 1852",status:"passed",title:"Illinois ethylene oxide emission limits near sterilization facilities"},{st:"GA",bill:"HB 863",status:"passed",title:"Georgia strengthened emission standards for ethylene oxide facilities"},{st:"US",bill:"Clean Air Act",status:"passed",title:"Ethylene oxide listed as hazardous air pollutant — NESHAP standards"}]
+}  ,
+"1,4-dichlorobenzene": {
+  name:"1,4-Dichlorobenzene", aka:["para-Dichlorobenzene","p-DCB","1,4-DCB","Paradichlorobenzene","PDB","Dichlorocide"],
+  cas:"106-46-7",
+  chemClass:{name:"Chlorinated aromatic hydrocarbons",def:"Benzene rings with chlorine substituted onto them. The chlorines make these compounds volatile, fat-soluble and slow to break down, and the family as a whole has a long record of liver, kidney and carcinogenic effects. 1,4-DCB is the para isomer - chlorines opposite each other on the ring - which is what gives it the crystalline solid form that sublimates straight to vapor at room temperature."},
+  desc:"The chemical in the urinal cake and the mothball, and one of the few consumer products that is a near-pure dose of a single listed carcinogen. Solid deodorizer blocks can be up to 99% 1,4-DCB by weight, and they work by sublimating - the solid turns directly to vapor, so the entire product is designed to end up in the air people breathe. Washington uses an estimated 287,500 to 718,750 pounds a year. It is listed under California Proposition 65 as a carcinogen, classified IARC Group 2B, and named by the National Toxicology Program as reasonably anticipated to be a human carcinogen. Its metabolite 2,5-dichlorophenol turns up in the urine of nearly every person tested in national biomonitoring, which is the clearest sign of how routine the exposure is. In November 2026 Washington Ecology proposed restricting it in solid deodorizers.",
+  formula:"C6H4Cl2", molWeight:"147.00",
+  structure:null,
+  toxicity:[
+    {label:"Cancer",sev:5,val:"Listed under California Proposition 65 as a carcinogen. IARC Group 2B, possibly carcinogenic to humans. The National Toxicology Program lists it as reasonably anticipated to be a human carcinogen. Animal bioassays produced liver tumors in mice and kidney tumors in male rats."},
+    {label:"Organ damage",sev:4,val:"Liver and kidney are the primary target organs in repeated-dose studies. Human case reports describe hemolytic anemia and liver injury following heavy exposure, particularly from mothball use in enclosed spaces."},
+    {label:"Neurological",sev:3,val:"Central nervous system depression at high vapor concentrations - headache, dizziness, nausea. Chronic occupational exposure has been associated with weakness and tremor."},
+    {label:"Respiratory & eye",sev:3,val:"Vapor irritates eyes, nose and throat. Because the product sublimates by design, the exposure route is inhalation in exactly the small enclosed spaces - bathrooms, closets, storage - where these products are placed."},
+    {label:"Exposure",sev:4,val:"The metabolite 2,5-dichlorophenol is detected in the urine of nearly all participants in US national biomonitoring, indicating near-universal background exposure. Use in bathrooms and closets concentrates exposure indoors where ventilation is poorest."},
+    {label:"Ecological",sev:3,val:"Volatile and persistent in air, with moderate aquatic toxicity. Reaches surface water through wastewater from urinal and toilet deodorizer use."}
+  ],
+  gs:{bm:"U",label:"Unscreened",detail:"No certified GreenScreen assessment for 1,4-dichlorobenzene was located, so no benchmark is claimed here. The regulatory record is the stronger signal: Proposition 65 carcinogen, IARC Group 2B, NTP reasonably anticipated human carcinogen, and a proposed Washington restriction in the product category where it is used nearly neat."},
+  parents:["Chlorinated solvents","Benzene derivatives"],
+  children:[],
+  products:[
+    {name:"Toilet bowl and urinal deodorizer blocks",status:"active",note:"Up to 99% 1,4-DCB by weight"},
+    {name:"Mothballs and moth flakes",status:"active"},
+    {name:"Closet and room deodorizer blocks",status:"active"},
+    {name:"Diaper pail deodorizers",status:"active"},
+    {name:"Garbage and dumpster deodorizer blocks",status:"active"},
+    {name:"Pesticide fumigant (historic)",status:"abandoned",note:"Largely displaced by other fumigants"}
+  ],
+  func:"Deodorizer and moth repellent. It works by sublimation - the solid passes directly to vapor - which masks odor and repels insects. That mechanism means the product is engineered to disperse the chemical into indoor air, so there is no use scenario in which exposure is avoided.",
+  saferAlternatives:[
+    {context:"Solid deodorizers",alt:"Camphor (bornan-2-one), activated carbon, clinoptilolite (natural zeolite), sodium bicarbonate",note:"All identified by Ecology as feasible and available. Carbon-based alternatives must keep impurities such as PAHs and metals under 100 ppm to meet the safer criteria."},
+    {context:"Urinal deodorizing",alt:"Ice, as a process alternative",note:"Ecology names this explicitly - it is not a chemical substitution but a practice change that eliminates the product category."},
+    {context:"Moth protection",alt:"Cedar, airtight storage, laundering before storage",note:"Physical and process controls rather than a volatile chemical left to sublimate in a closet."}
+  ],
+  altSource:"WA Dept. of Ecology, Safer Products for Washington Cycle 2 draft regulatory determinations, Pub. 26-04-043 (Nov 2026)",
+  legislation:[
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — 1,4-DCB in solid deodorizers. Ecology notes solid deodorizers can be up to 99% 1,4-DCB by weight, with 287,500-718,750 pounds used annually in Washington. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."},
+    {st:"CA",bill:"Proposition 65",status:"passed",title:"Listed as a chemical known to the State of California to cause cancer; warning required."},
+    {st:"US",bill:"NTP Report on Carcinogens",status:"passed",title:"Listed as reasonably anticipated to be a human carcinogen."},
+    {st:"EU",bill:"CLP Regulation",status:"passed",title:"Harmonised classification Carc. 2 (suspected human carcinogen) and Aquatic Chronic 1."}
+  ],
+  spwa:"Cycle 2 (solid deodorizers)",
+  links:[
+    {t:"Ecology Cycle 2 draft determinations (Pub. 26-04-043)",u:"https://apps.ecology.wa.gov/publications/documents/2604043.pdf"},
+    {t:"Prop 65 chemical list (OEHHA)",u:"https://oehha.ca.gov/proposition-65/proposition-65-list"},
+    {t:"IARC Monographs",u:"https://monographs.iarc.who.int/"},
+    {t:"NTP Report on Carcinogens",u:"https://ntp.niehs.nih.gov/whatwestudy/assessments/cancer/roc"}
+  ]
 },
 "glycidyl methacrylate": {
   name:"Glycidyl methacrylate (GMA)", aka:["GMA","2,3-Epoxypropyl methacrylate","Glycidyl alpha-methylacrylate","Methacrylic acid glycidyl ester","2-Propenoic acid, 2-methyl-, oxiranylmethyl ester","Light Ester G"],
@@ -4404,6 +4502,12 @@ const CURATED_DB = {
 };
 
 const EXTRA_ALIASES = {
+  "1,4-dichlorobenzene":"1,4-dichlorobenzene","para-dichlorobenzene":"1,4-dichlorobenzene","p-dichlorobenzene":"1,4-dichlorobenzene","paradichlorobenzene":"1,4-dichlorobenzene","1,4-dcb":"1,4-dichlorobenzene","p-dcb":"1,4-dichlorobenzene","pdb":"1,4-dichlorobenzene","mothball":"1,4-dichlorobenzene","mothballs":"1,4-dichlorobenzene","urinal cake":"1,4-dichlorobenzene",
+  "ortho-phthalates":"phthalates","orthophthalates":"phthalates",
+  "organohalogen flame retardants":"flame retardants","ofr":"flame retardants","ofrs":"flame retardants",
+  "apes":"alkylphenol ethoxylates",
+  "decamethylcyclopentasiloxane":"cyclotetrasiloxane","cyclic volatile methylsiloxanes":"cyclotetrasiloxane","cvms":"cyclotetrasiloxane","cyclohexasiloxane":"cyclotetrasiloxane","d6":"cyclotetrasiloxane",
+  "polyvinylidene chloride":"organobromine organochlorine",
   "caprylyl glycol":"caprylyl glycol","1,2-octanediol":"caprylyl glycol","octane-1,2-diol":"caprylyl glycol","capryl glycol":"caprylyl glycol",
   "phenethyl alcohol":"phenethyl alcohol","2-phenylethanol":"phenethyl alcohol","phenylethyl alcohol":"phenethyl alcohol","benzeneethanol":"phenethyl alcohol","pea":"phenethyl alcohol",
   "glycidyl methacrylate":"glycidyl methacrylate","gma":"glycidyl methacrylate","2,3-epoxypropyl methacrylate":"glycidyl methacrylate","glycidol":"glycidyl methacrylate","methacrylic acid glycidyl ester":"glycidyl methacrylate","epoxypropyl methacrylate":"glycidyl methacrylate","light ester g":"glycidyl methacrylate",
