@@ -134,11 +134,13 @@ const CURATED_DB = {
     {label:"Endocrine disruption",val:"Disrupts thyroid function, reproductive hormones, metabolic regulation. Associated with reduced fertility, lower birth weight, developmental effects."},
     {label:"Immune suppression",val:"Reduces vaccine antibody response in children. Weakens immune function even at very low exposure levels."},
     {label:"Ecological",val:"No known natural degradation pathway. Bioaccumulates through food chains. Contaminates soil, groundwater, surface water, and rainwater globally. Detected in Arctic wildlife."}
-  ],
+  ,
+    {label:"Menstrual products (2026 testing)",sev:2,val:"Weaving Voices tested 21 disposable pads, liners and tampons bought in Minnesota in Aug 2025 and found extractable organic fluorine in all 21, at 76-1392 ng/g. The authors read these levels as too low to reflect intentional PFAS addition, i.e. as evidence that Minnesota\u2019s menstrual-product PFAS ban is working. Read the headline, not the per-product table: the method blank averaged 182 ng/g and was NOT subtracted from reported values, 7 of the 21 products came in below that blank, and no limit of detection was published. The data support the compliance conclusion; they do not support ranking one brand against another. Only the highest result (1392 ng/g, about 8x the blank) stands clearly above background."}],
   gs:{bm:1,label:"Benchmark 1 — Avoid (class)",detail:"The PFAS class is designated BM-1. The essential-use framework recommends eliminating PFAS from all non-essential uses. Extreme environmental persistence alone justifies class-wide avoidance."},
   parents:["Fluorine / hydrogen fluoride"],
   children:["PFOA","PFOS","GenX","Fluorotelomers"],
-  products:[{name:"Food packaging",status:"partial",note:"WA, CA, MN and other states banned PFAS in food packaging"},{name:"Firefighting foam (AFFF)",status:"partial",note:"WA and several states banned PFAS foam"},{name:"Carpets and rugs",status:"partial",note:"WA restricted PFAS in carpets (Cycle 1)"},{name:"Cosmetics",status:"partial",note:"WA Toxic-Free Cosmetics Act banned PFAS in cosmetics (2023)"},"Nonstick cookware","Waterproof clothing","Dental floss","Ski wax","Semiconductor mfg"],
+  products:[{name:"Food packaging",status:"partial",note:"WA, CA, MN and other states banned PFAS in food packaging"},{name:"Firefighting foam (AFFF)",status:"partial",note:"WA and several states banned PFAS foam"},{name:"Carpets and rugs",status:"partial",note:"WA restricted PFAS in carpets (Cycle 1)"},{name:"Cosmetics",status:"partial",note:"WA Toxic-Free Cosmetics Act banned PFAS in cosmetics (2023)"},"Nonstick cookware","Waterproof clothing","Dental floss","Ski wax","Semiconductor mfg",
+    {name:"Menstrual products (pads, liners, tampons)",status:"banned",note:"Intentionally added PFAS banned in MN from Jan 1, 2025; several other states have followed"}],
   func:"Water, oil, and stain resistance. Used as surfactants, coatings, and processing aids. Their unique chemistry makes surfaces repel both water and oil simultaneously.",
   manufacturers:[{name:"3M",note:"Produced PFOS via electrochemical fluorination until 2002. $10.3B settlement for water contamination (2023)."},{name:"DuPont / Chemours",note:"Produced PFOA for Teflon manufacturing. Chemours spun off from DuPont in 2015. $1.18B settlement."},{name:"Daikin Industries",note:"Japanese fluorochemical producer. Major PFAS manufacturer."},{name:"Solvay",note:"Belgian chemical company. PFAS production in West Deptford, NJ."},{name:"AGC Chemicals (Asahi Glass)",note:"Japanese producer of fluoropolymers and PFAS surfactants."}],
   triSearch:"https://edap.epa.gov/public/extensions/TRIToxicsTracker/TRIToxicsTracker.html",
@@ -160,7 +162,8 @@ const CURATED_DB = {
   altSource:"WA Dept. of Ecology, Safer Products for Washington Cycle 2 draft regulatory determinations, Pub. 26-04-043 (Nov 2026)",
   "cscpData":{count:1744,note:"1,744 products with intentionally added PFAS (FDA, August 2024); CSCP separately tracks PFAS",categories:["Eye shadow","Skin care","Eyeliner","Face powder","Foundation"],searchUrl:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
   plastchem:{group:"Per- and polyfluoroalkyl substances",hazards:{c:88,m:13,r:91,stot:94,edc:null},useCats:["Food-contact plastics","Textiles","Toys","Household items","Hygiene & medical"],note:"Present in every everyday use category analysed.",source:"EJF (2026) Poison Plastics, analysis of PlastChem v1.0"},
-  links:[{t:"EPA PFAS action",u:"https://www.epa.gov/pfas"},{t:"ATSDR PFAS",u:"https://www.atsdr.cdc.gov/pfas/"},{t:"PFAS Central",u:"https://pfascentral.org/"},{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/"}],
+  links:[{t:"EPA PFAS action",u:"https://www.epa.gov/pfas"},{t:"ATSDR PFAS",u:"https://www.atsdr.cdc.gov/pfas/"},{t:"PFAS Central",u:"https://pfascentral.org/"},{t:"Toxic-Free Future",u:"https://toxicfreefuture.org/"},
+    {t:"Weave period product testing (2026)",u:"https://weavingvoices.org/wp-content/uploads/2026/11/Weave-PFAS-Menstrual-Product-Testing-Report.pdf"}],
   spwa:"Cycle 1, 1.5 & Cycle 2",
   tfca:true,
   waPBT:true,
@@ -171,7 +174,8 @@ const CURATED_DB = {
     {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — PFAS in cookware and kitchen supplies. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."},
     {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — PFAS in firefighting PPE: structural turnout gear, wildland gear, station wear, technical rescue and EMS gear. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."},
     {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — PFAS in floor waxes and polishes. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."},
-    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — PFAS in hard surface sealers. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."}]
+    {st:"WA",bill:"Safer Products Cycle 2",status:"proposed",title:"RESTRICT (proposed) — PFAS in hard surface sealers. Draft determination published Nov 3, 2026; public comment closes Dec 18, 2026."},
+    {st:"MN",bill:"Minn. Stat. 116.943",status:"passed",title:"Amara\u2019s Law \u2014 ban on intentionally added PFAS in menstrual products took effect Jan 1, 2025, ahead of the all-products ban in 2032. 2026 testing by Weaving Voices and by the MN Pollution Control Agency both found high compliance."}]
 },
 "6ppd": {
   name:"6PPD", aka:["N-(1,3-dimethylbutyl)-N'-phenyl-p-phenylenediamine"],
@@ -3674,6 +3678,190 @@ const CURATED_DB = {
   triSearch:"https://edap.epa.gov/public/extensions/TRIToxicsTracker/TRIToxicsTracker.html",
   links:[{t:"EPA ethylene oxide",u:"https://www.epa.gov/hazardous-air-pollutants-ethylene-oxide"},{t:"IARC monograph",u:"https://monographs.iarc.who.int/wp-content/uploads/2018/06/mono100F-28.pdf"},{t:"ProPublica EtO investigation",u:"https://www.propublica.org/series/poison-in-the-air"}],
   legislation:[{st:"US",bill:"EPA IRIS",status:"passed",title:"EPA IRIS assessment — 30x increase in cancer potency estimate (2016)"},{st:"IL",bill:"SB 1852",status:"passed",title:"Illinois ethylene oxide emission limits near sterilization facilities"},{st:"GA",bill:"HB 863",status:"passed",title:"Georgia strengthened emission standards for ethylene oxide facilities"},{st:"US",bill:"Clean Air Act",status:"passed",title:"Ethylene oxide listed as hazardous air pollutant — NESHAP standards"}]
+},
+"titanium dioxide": {
+  name:"Titanium dioxide", aka:["TiO2","CI 77891","E171","Titania","Titanium(IV) oxide","Pigment White 6"],
+  cas:"13463-67-7",
+  chemClass:{name:"Metal oxide pigments",def:"Inorganic metal-oxide particles used as white pigments and opacifiers. Their hazard profile is driven less by the chemistry than by the physics: the same compound can be nearly inert as a bulk solid and problematic as a respirable or nanoscale powder. That particle-size dependence is why titanium dioxide regulation has been so contested - the substance on a label can mean several materially different things."},
+  desc:"The most common white pigment on earth, and the clearest example of why a chemical\u2019s hazard depends on its form. In bulk, titanium dioxide is chemically inert. As a respirable powder it is an inhalation hazard, and IARC classifies it Group 2B, possibly carcinogenic to humans. As a nanoscale food additive it was banned in the EU in 2022 after EFSA concluded genotoxicity could not be ruled out. Yet the EU\u2019s attempt to classify it as a Category 2 carcinogen under CLP was annulled by the General Court in 2022, with the annulment upheld by the Court of Justice in August 2025 and the classification removed by ECHA. So the honest picture is: a confirmed food-additive ban, a standing IARC 2B classification, a Proposition 65 listing for respirable airborne particles, and no EU carcinogen classification. It carries a GreenScreen List Translator score of Benchmark 1. It appeared in two-thirds of the 21 menstrual products Weaving Voices screened in 2026, the most frequently found chemical of concern in that study.",
+  formula:"TiO2", molWeight:"79.87",
+  structure:null,
+  toxicity:[
+    {label:"Cancer",sev:3,val:"IARC Group 2B, possibly carcinogenic to humans, based on inhalation studies in rats showing lung tumors. Listed under California Proposition 65 as a carcinogen, specifically as airborne unbound particles of respirable size - the listing is about the dust, not the solid."},
+    {label:"Genotoxicity",sev:3,val:"EFSA concluded in 2021 that genotoxicity could not be ruled out for titanium dioxide as a food additive and that a safe intake level could not be established, which led the EU to ban E171 in food from August 2022. The concern centres on nanoscale particles crossing the gut wall and accumulating."},
+    {label:"Respiratory",sev:3,val:"Inhaled respirable and nanoscale particles cause lung inflammation and, in animal studies, fibrosis and tumors. Exposure is overwhelmingly occupational - pigment manufacture, spray application, powder handling - not consumer use of a finished cream or paint."},
+    {label:"Regulatory divergence",sev:2,val:"The EU adopted a Carc. 2 inhalation classification for TiO2 powders in 2020, the General Court annulled it in November 2022, the Court of Justice upheld that annulment in August 2025, and ECHA removed the classification. Anyone citing an EU carcinogen classification for titanium dioxide is citing a rule that no longer exists. The IARC 2B classification and the food-additive ban are separate and both still stand."},
+    {label:"Ecological",sev:2,val:"Nanoscale TiO2 is photoactive and generates reactive oxygen species under UV, with documented toxicity to algae, invertebrates and fish in laboratory studies. Sunscreen use is a recognised input to nearshore waters."}
+  ],
+  gs:{bm:1,label:"Benchmark 1 \u2014 Avoid (List Translator)",detail:"GreenScreen List Translator Benchmark 1, i.e. a chemical of high concern derived from authoritative hazard lists rather than a full certified GreenScreen assessment. The drivers are the IARC 2B classification and the Proposition 65 listing. Treat this as a screening-level flag: the hazard it reflects is real but particle-size and route dependent, so BM-1 is a better guide for a powder or an aerosol than for a bound pigment in a cured coating."},
+  parents:["Titanium"],
+  children:[],
+  products:[
+    {name:"Food and confectionery colouring (E171)",status:"banned",note:"Banned in the EU from Aug 2022; France banned 2020. Still permitted in the US."},
+    {name:"Mineral sunscreen (UV filter)",status:"active"},
+    {name:"Cosmetics and makeup \u2014 whitener and opacifier",status:"active"},
+    {name:"Menstrual pads, liners and tampons",status:"active",note:"Found in 14 of 21 products screened by Weaving Voices, 2026"},
+    {name:"Paint, coatings and plastics (Pigment White 6)",status:"active"},
+    {name:"Paper, inks and toothpaste",status:"active"},
+    {name:"Pharmaceutical tablet coatings",status:"active"}
+  ],
+  func:"White pigment, opacifier and physical UV filter. It is extraordinarily good at scattering light, which is why it is in everything from paint to pills, and why substitution is hard - most alternatives trade off opacity, cost or durability.",
+  saferAlternatives:[
+    {context:"Food colouring",alt:"Calcium carbonate, rice starch, tapioca starch",note:"Reformulation after the EU E171 ban demonstrated feasibility across confectionery, bakery and supplements at commercial scale."},
+    {context:"Jewelry and product brightening",alt:"Calcium carbonate, zirconium dioxide, non-nano titanium, non-nano niobium",note:"Identified by WA Ecology in its Cycle 2 alternatives work. Note that non-nano titanium is a particle-size substitution, not a chemical one - it addresses the nanoscale concern while keeping the same compound."},
+    {context:"Reducing inhalation exposure",alt:"Dispersions, slurries and pre-wetted forms in place of dry powder",note:"Because the hazard is route-driven, eliminating the respirable dust step often matters more than replacing the substance."}
+  ],
+  altSource:"EU Reg. 2022/63 (E171 ban); WA Ecology Safer Products Cycle 2, Pub. 26-04-043",
+  legislation:[
+    {st:"EU",bill:"Reg. (EU) 2022/63",status:"passed",title:"Titanium dioxide removed as an authorised food additive (E171); ban applies from August 2022 following EFSA\u2019s 2021 genotoxicity opinion."},
+    {st:"EU",bill:"CLP Delegated Reg. 2020/217",status:"failed",title:"Carc. 2 (inhalation) classification for TiO2 powders ANNULLED by the General Court (Case T-279/20, Nov 2022); annulment upheld by the Court of Justice (C-71/23 P and C-82/23 P, Aug 2025) and the classification removed by ECHA."},
+    {st:"CA",bill:"Proposition 65",status:"passed",title:"Listed as a carcinogen \u2014 titanium dioxide (airborne, unbound particles of respirable size)."},
+    {st:"FR",bill:"Loi EGalim",status:"passed",title:"France suspended E171 in food from January 2020, ahead of the EU ban."},
+    {st:"US",bill:"IARC Monograph Vol. 93",status:"passed",title:"IARC Group 2B \u2014 possibly carcinogenic to humans (inhalation)."}
+  ],
+  links:[
+    {t:"IARC Monograph Vol. 93",u:"https://publications.iarc.who.int/111"},
+    {t:"EFSA 2021 safety assessment of E171",u:"https://www.efsa.europa.eu/en/efsajournal/pub/6585"},
+    {t:"Prop 65 chemical list (OEHHA)",u:"https://oehha.ca.gov/proposition-65/proposition-65-list"},
+    {t:"Weave period product testing (2026)",u:"https://weavingvoices.org/wp-content/uploads/2026/11/Weave-PFAS-Menstrual-Product-Testing-Report.pdf"}
+  ]
+},
+"mineral oils": {
+  name:"Mineral oils (MOSH & MOAH)", aka:["Mineral oil","Paraffinum liquidum","Petrolatum","Petroleum jelly","White mineral oil","Naphthenic oil","Hydrogenated mineral oil","MOSH","MOAH","Mineral oil hydrocarbons","Liquid paraffin"],
+  cas:"8042-47-5",
+  chemClass:{name:"Petroleum-derived hydrocarbon mixtures",def:"Not single chemicals but refinery fractions, split by analysts into two families: MOSH, the saturated hydrocarbons, and MOAH, the aromatic ones. Degree of refining is everything. Untreated and mildly treated mineral oils are IARC Group 1 human carcinogens; highly refined grades, where the aromatic fraction has been stripped out, are IARC Group 3. The label word - mineral oil, petrolatum, paraffinum liquidum - does not tell you which you have."},
+  desc:"The ingredient whose hazard lives entirely in its purification record. Mineral oils are petroleum fractions, and the carcinogenic activity sits in the aromatic fraction (MOAH), particularly molecules with three or more aromatic rings, which EFSA linked to genotoxicity in its 2023 opinion. Strip that fraction out and you get a highly refined oil IARC places in Group 3, not classifiable. Leave it in and you have an IARC Group 1 human carcinogen, the same tier as asbestos and benzene. Cosmetic-grade material is supposed to be highly refined, and Germany\u2019s BfR has concluded that highly refined grades in cosmetics pose no expected health risk - but that conclusion is conditional on the refining, and a label cannot verify it. Mineral oil, petrolatum, hydrogenated mineral oil and naphthenic oil between them accounted for the largest cluster of flagged ingredients in the 2026 Weaving Voices screen of menstrual products.",
+  formula:"Mixture", molWeight:"Variable",
+  structure:null,
+  toxicity:[
+    {label:"Cancer",sev:5,val:"IARC Group 1, carcinogenic to humans, for mineral oils that are untreated or only mildly treated - based on skin cancer in exposed workers (mule spinners, metal machinists, printers). Highly refined mineral oils are IARC Group 3, not classifiable. The entire distance between those two classifications is refining."},
+    {label:"Genotoxicity",sev:4,val:"EFSA\u2019s 2023 opinion concluded that genotoxicity concern attaches to MOAH containing three or more aromatic rings, and expressed a health concern for dietary exposure under both scenarios assessed. MOSH, the saturated fraction, was judged not of concern for any age group."},
+    {label:"Accumulation",sev:3,val:"MOSH accumulate in human tissue, with mineral oil hydrocarbons repeatedly detected in liver, spleen, lymph nodes and human milk. The health significance of that accumulation remains unresolved, which EFSA names as a data gap rather than an all-clear."},
+    {label:"Contamination route",sev:3,val:"A large share of exposure is unintentional - migration from printing inks on cardboard packaging, jute and sisal bag coatings, machinery lubricants and release agents. That is why the control is a manufacturing-practice requirement as much as an ingredient restriction."},
+    {label:"GreenScreen screening",sev:3,val:"Hydrogenated mineral oil and petrolatum score List Translator Benchmark 1 (likely chemical of high concern); mineral oil and naphthenic oil score LT-P1 (possible). These screening scores reflect the unrefined-grade hazard, which is the conservative reading when refining cannot be confirmed from a label."}
+  ],
+  gs:{bm:1,label:"Benchmark 1 \u2014 Avoid (List Translator, grade dependent)",detail:"List Translator scores run LT-1 for hydrogenated mineral oil and petrolatum and LT-P1 for mineral oil and naphthenic oil, derived from the IARC Group 1 classification of untreated and mildly treated grades. This is a screening flag, not a verdict on a specific product: a documented highly refined, MOAH-free grade is a materially different material from the one driving the listing. The practical question to ask a supplier is not whether the oil is cosmetic grade but what the measured MOAH content is."},
+  parents:["Petroleum products","Polycyclic aromatic hydrocarbons"],
+  children:[],
+  products:[
+    {name:"Petrolatum in ointments, lip balm and skincare",status:"active"},
+    {name:"Baby oil and body lotion",status:"active"},
+    {name:"Menstrual pads and liners",status:"active",note:"Mineral oil, hydrogenated mineral oil, petrolatum and naphthenic oil all appeared in the 2026 Weaving Voices screen"},
+    {name:"Food packaging inks and recycled cardboard",status:"active",note:"A principal unintentional migration route into food"},
+    {name:"Machinery lubricants and release agents",status:"active"},
+    {name:"Metalworking fluids",status:"partial",note:"Occupational exposure to untreated grades is the basis of the IARC Group 1 classification; many jurisdictions now require highly refined grades"},
+    {name:"Laxatives and pharmaceutical excipients",status:"active"}
+  ],
+  func:"Emollient, occlusive, lubricant and carrier. Petrolatum in particular is an exceptionally effective moisture barrier, which is why dermatology still recommends it and why substitution is a real trade-off rather than a free swap.",
+  saferAlternatives:[
+    {context:"Occlusive skincare",alt:"Shea butter, cocoa butter, lanolin, squalane (olive or sugarcane derived), beeswax, plant-based waxes",note:"Several approach petrolatum\u2019s barrier performance. None match it exactly, which is worth saying plainly rather than implying a drop-in swap exists."},
+    {context:"Reducing food-contact migration",alt:"Virgin fibre board, functional barrier layers, mineral-oil-free printing inks",note:"Addresses the contamination route rather than the ingredient. EFSA and BfR both treat packaging migration as the dominant dietary source."},
+    {context:"When mineral oil is retained",alt:"Specify measured MOAH content and require supplier conformance declarations",note:"The actionable control. Since the hazard tracks the aromatic fraction, a MOAH specification does more than an ingredient ban that a highly refined grade would pass anyway."}
+  ],
+  altSource:"EFSA Journal 2023 opinion on mineral oil hydrocarbons in food; German BfR assessments of mineral oil components in cosmetics",
+  legislation:[
+    {st:"EU",bill:"Reg. (EU) 2023/915 amendment",status:"proposed",title:"MOAH maximum levels for food: draft amendment approved by SCoPAFF in May 2026, final Commission adoption expected late 2026, limits intended to apply from 2027 with some categories from 2030. Interim 2022 SCoPAFF enforcement levels are 0.5 mg/kg (up to 4% fat), 1.0 mg/kg (4-50% fat) and 2.0 mg/kg (over 50% fat)."},
+    {st:"EU",bill:"Cosmetics Reg. 1223/2009 Annex II",status:"passed",title:"Mineral oils are prohibited in cosmetics unless the full refining history is known and it can be shown the substance is not carcinogenic."},
+    {st:"US",bill:"IARC Monographs Vol. 33 & 100F",status:"passed",title:"Untreated and mildly treated mineral oils classified IARC Group 1, carcinogenic to humans; highly refined mineral oils classified Group 3."},
+    {st:"DE",bill:"BfR assessments",status:"passed",title:"German Federal Institute for Risk Assessment concluded highly refined mineral oils in cosmetics pose no expected health risk on current knowledge, while flagging MOAH-containing grades as a concern."}
+  ],
+  links:[
+    {t:"EFSA 2023 opinion on mineral oil hydrocarbons in food",u:"https://www.efsa.europa.eu/en/efsajournal/pub/8215"},
+    {t:"IARC Monograph Vol. 100F",u:"https://publications.iarc.who.int/123"},
+    {t:"BfR on mineral oil components in cosmetics",u:"https://www.bfr.bund.de/cm/343/gesundheitliche-risiken-durch-mineraloelkomponenten-in-kosmetischen-mitteln.pdf"},
+    {t:"Weave period product testing (2026)",u:"https://weavingvoices.org/wp-content/uploads/2026/11/Weave-PFAS-Menstrual-Product-Testing-Report.pdf"}
+  ]
+},
+"fragrance": {
+  name:"Fragrance (undisclosed mixtures)", aka:["Parfum","Perfume","Aroma","Flavor","Fragrance blend","Masking fragrance"],
+  cas:"Mixture \u2014 no single CAS",
+  chemClass:{name:"Trade-secret ingredient mixtures",def:"Not a chemical class but a disclosure category. US and EU labelling rules let a manufacturer print one word - fragrance, parfum, aroma - in place of a blend that may contain dozens to hundreds of individual substances, on trade-secret grounds. The hazard question is therefore structural: the chemicals may be benign or not, and the label is designed not to say."},
+  desc:"The single largest hole in consumer chemical disclosure. One word on an ingredient list can stand for a blend of dozens or hundreds of substances, and no law requires the components be named. The scale is measurable: ChemFORWARD\u2019s 2026 analysis of 156,594 US beauty and personal care products found undisclosed fragrance ingredients in roughly 24% of them, more than 40,000 products. Two consequences follow. First, a consumer cannot avoid a specific chemical they react to or want to steer clear of, because it may be inside the word fragrance. Second, phthalates, synthetic musks, sensitisers and other substances of concern have repeatedly been found in fragrance blends after the fact. Where fragrance components are voluntarily disclosed, screening finds real hazards: the 2026 Weaving Voices menstrual product study flagged six fragrance ingredients, including hexyl salicylate, methyldihydrojasmonate (Hedione), geranyl acetate, dihydrocitronellol and 3-octanol. The practical rule is that fragrance-free, not unscented, is the only reliable consumer-side control - unscented products can contain masking fragrance.",
+  formula:"Mixture", molWeight:"Variable",
+  structure:null,
+  toxicity:[
+    {label:"Disclosure",sev:4,val:"The defining hazard. Federal and EU labelling rules permit a single collective term for the entire blend, so neither consumers nor downstream formulators can verify what is present. ChemFORWARD found undisclosed fragrance ingredients in about 24% of 156,594 US beauty and personal care products - over 40,000 products where the ingredient list cannot answer the question."},
+    {label:"Sensitisation",sev:3,val:"Fragrance is among the most common causes of allergic contact dermatitis. The EU requires 26 specific fragrance allergens to be named on the label above threshold concentrations - an explicit acknowledgement that the collective term hides substances people react to. The US has no equivalent requirement."},
+    {label:"Hidden chemicals of concern",sev:3,val:"Phthalates (notably diethyl phthalate as a fragrance fixative), synthetic musks that are persistent and bioaccumulative, and styrene have all been documented in fragrance blends through independent testing rather than disclosure. Phenethyl alcohol, moved to ChemFORWARD Band F in 2026, functions as both fragrance and preservative and so can sit inside the undisclosed fraction."},
+    {label:"Respiratory",sev:3,val:"Fragranced product use is associated with asthma exacerbation, migraine and respiratory irritation in population surveys, with higher reported effects among people with existing asthma. Air fresheners and laundry products are the most frequently implicated categories."},
+    {label:"Screening results",sev:2,val:"Where components are disclosed they can be screened, and the results are mixed rather than uniformly bad. The 2026 Weaving Voices menstrual product study scored six disclosed fragrance ingredients at GreenScreen List Translator LT-P1, possible Benchmark 1: hexyl salicylate, methyldihydrojasmonate, geranyl acetate, dihydrocitronellol, 3-octanol and drometrizole."}
+  ],
+  gs:{bm:"U",label:"Unscreened \u2014 by design",detail:"A fragrance blend cannot be assigned a GreenScreen benchmark, because GreenScreen scores defined substances and a blend is undefined to everyone outside the manufacturer. That is the finding, not a gap in the data: the disclosure structure makes hazard assessment impossible from the outside. Individual disclosed components can be and have been screened, with results ranging from benign to LT-1."},
+  parents:[],
+  children:["Phthalates","Phenethyl alcohol"],
+  products:[
+    {name:"Perfume, cologne and body spray",status:"active"},
+    {name:"Lotion, shampoo, conditioner and soap",status:"active"},
+    {name:"Laundry detergent, fabric softener and dryer sheets",status:"active"},
+    {name:"Air fresheners, candles and plug-ins",status:"active"},
+    {name:"Scented menstrual pads and liners",status:"active",note:"Scented variants carried the largest number of flagged ingredients in the 2026 Weaving Voices screen"},
+    {name:"Cleaning products",status:"active"},
+    {name:"Baby and childrens products",status:"active"},
+    {name:"Diethyl phthalate as a fragrance fixative",status:"abandoned",note:"Largely phased out by major brands under pressure, though not formally banned in the US"}
+  ],
+  func:"Supplies scent, and also masks the base odour of raw materials - which is why products labelled unscented frequently contain a masking fragrance. Some components double as preservatives or solvents, so removing fragrance can require reformulating more than the scent.",
+  saferAlternatives:[
+    {context:"Consumer-side control",alt:"Fragrance-free products",note:"The only reliable option. Unscented is not the same claim: unscented products commonly contain masking fragrance to neutralise base odour."},
+    {context:"Procurement and retailer policy",alt:"Require full fragrance ingredient disclosure to the component level, not the collective term",note:"Several retailers and certification programs now require this. It converts an unassessable blend into a screenable ingredient list, which is the precondition for any hazard assessment."},
+    {context:"Formulation",alt:"Essential oils and single disclosed aroma chemicals",note:"Honest caveat: natural origin is not a hazard assessment. Essential oils contain sensitisers - limonene, linalool and citral are among the 26 EU-labelled allergens - so this substitution improves disclosure without necessarily reducing sensitisation risk."}
+  ],
+  altSource:"ChemFORWARD 2026 Beauty & Personal Care Safer Chemistry Profile; Weaving Voices for Health & Justice, 'The Fine Print on Period Products' (Nov 2026)",
+  legislation:[
+    {st:"CA",bill:"AB 2762 / SB 312",status:"passed",title:"Cosmetic Fragrance and Flavor Ingredient Right to Know Act \u2014 requires manufacturers to report fragrance and flavour ingredients on designated hazard lists to the CA Safe Cosmetics Program."},
+    {st:"EU",bill:"Cosmetics Reg. 1223/2009 Annex III",status:"passed",title:"26 named fragrance allergens must be declared on the label above 0.001% in leave-on and 0.01% in rinse-off products; an expansion to around 80 allergens is phasing in."},
+    {st:"NY",bill:"S4265",status:"proposed",title:"Would require full ingredient disclosure for cleaning products including fragrance components."},
+    {st:"US",bill:"FPLA / FDA labelling rules",status:"passed",title:"Permits the collective terms fragrance and flavor in place of component disclosure on trade-secret grounds \u2014 the rule that creates the gap."}
+  ],
+  links:[
+    {t:"CA Safe Cosmetics Program fragrance reporting",u:"https://cscpsearch.cdph.ca.gov/search/publicsearch"},
+    {t:"ChemFORWARD 2026 BPC profile",u:"https://www.chemforward.org/news/bpc-products-reveals-areas-to-strengthen-chemical-safety"},
+    {t:"EU allergen labelling requirements",u:"https://ec.europa.eu/growth/sectors/cosmetics_en"},
+    {t:"Weave period product testing (2026)",u:"https://weavingvoices.org/wp-content/uploads/2026/11/Weave-PFAS-Menstrual-Product-Testing-Report.pdf"}
+  ]
+},
+"sodium polyacrylate": {
+  name:"Sodium polyacrylate (SAP)", aka:["Superabsorbent polymer","SAP","Acrylic acid sodium salt polymer","Waterlock","Polyacrylate"],
+  cas:"9003-04-7",
+  chemClass:{name:"Superabsorbent polymers",def:"Cross-linked polyacrylate networks that can hold many hundreds of times their weight in water. The polymer itself is too large to be absorbed through skin or mucosa, so the hazard questions are not about the polymer but about what rides along with it: residual acrylic acid monomer, cross-linkers, and particulates small enough to inhale."},
+  desc:"The gel that replaced bulk in absorbent products, and the ingredient most people have touched without being able to name. Sodium polyacrylate is in effectively every disposable pad, liner, tampon and diaper on the market, because it converts liquid to gel and locks it away from the skin. The polymer is large and inert, and it is not meaningfully absorbed - the plausible concerns are residual acrylic acid monomer left over from polymerisation, and historically the association between high-absorbency tampons and toxic shock syndrome, which drove the withdrawal of certain superabsorbent materials in the 1980s. It carries a GreenScreen List Translator LT-P1 score, possible Benchmark 1, which reflects the monomer rather than the polymer. There is also a plain data problem: as the 2026 Weaving Voices report notes, there is very little research on vulvar and vaginal exposure to any of these materials, and that mucosa absorbs more readily than skin.",
+  formula:"(C3H3NaO2)n", molWeight:"Polymeric \u2014 variable",
+  structure:null,
+  toxicity:[
+    {label:"Residual monomer",sev:3,val:"Acrylic acid, the monomer, is corrosive and a respiratory and skin irritant. Residual monomer in the finished polymer is the actual basis of the GreenScreen List Translator LT-P1 score; specifications typically cap it in the low hundreds of ppm, but the limit is a supplier specification rather than a regulated threshold in most markets."},
+    {label:"Historic product risk",sev:3,val:"Certain high-absorbency tampon materials were withdrawn in the 1980s after being linked to toxic shock syndrome. Polyacrylate-based superabsorbents remain in use in pads and liners; the FDA now requires standardised absorbency labelling for tampons, which is the regulatory response to that episode."},
+    {label:"Respiratory",sev:2,val:"Fine superabsorbent powder is an inhalation irritant in manufacturing settings. Not a consumer exposure route, since the polymer is bound inside the product core."},
+    {label:"Data gap",sev:3,val:"Very little published research exists on vulvar and vaginal exposure to superabsorbent polymers or to the other materials in menstrual products, a gap the 2026 Weaving Voices report names explicitly. Vaginal mucosa is more permeable than skin and lacks the stratum corneum barrier, so dermal safety data do not transfer cleanly."},
+    {label:"Ecological",sev:2,val:"Not biodegradable. Superabsorbent polymers persist in landfill and are a recognised component of the disposable absorbent-product waste stream; they also fragment into microplastic-scale particles. Low direct aquatic toxicity."}
+  ],
+  gs:{bm:"U",label:"Unscreened (List Translator LT-P1)",detail:"GreenScreen List Translator LT-P1, possible Benchmark 1, as reported in the 2026 Weaving Voices menstrual product screen. No full certified GreenScreen assessment was located. The score is driven by the acrylic acid monomer rather than the polymer, which is a meaningful distinction: a specification limiting residual monomer addresses most of what the flag represents, where simply avoiding the polymer costs absorbency with no clear health gain."},
+  parents:["Acrylates"],
+  children:[],
+  products:[
+    {name:"Menstrual pads and liners",status:"active",note:"Found in U by Kotex Balance pads and liners in the 2026 Weaving Voices screen; industry-standard across the category"},
+    {name:"Disposable diapers and training pants",status:"active"},
+    {name:"Adult incontinence products",status:"active"},
+    {name:"Tampons (absorbent core)",status:"partial",note:"Certain high-absorbency superabsorbent materials withdrawn in the 1980s after the toxic shock syndrome link"},
+    {name:"Agricultural soil conditioners and water-retention gels",status:"active"},
+    {name:"Instant snow and novelty toys",status:"active"},
+    {name:"Cable water-blocking and packaging desiccants",status:"active"}
+  ],
+  func:"Absorbs and gels liquid, holding hundreds of times its own weight and keeping moisture away from skin. It is what allows a thin pad to outperform a thick one, so substitution is a genuine performance trade-off rather than a formulation tweak.",
+  saferAlternatives:[
+    {context:"Menstrual products \u2014 reusable",alt:"Menstrual cups and discs (medical-grade silicone), period underwear, reusable cloth pads",note:"Eliminates the exposure and the waste stream. Verify period underwear is PFAS-free: several brands have been found with intentionally added PFAS, so this swap can trade one concern for another if unverified."},
+    {context:"Menstrual products \u2014 disposable",alt:"Organic cotton or wood-pulp core products without superabsorbent polymer",note:"Commercially available. The honest trade-off is lower absorbency per unit thickness, which some users will find acceptable and others will not."},
+    {context:"When SAP is retained",alt:"Specify residual acrylic acid monomer limits and require supplier conformance",note:"Targets what the hazard flag actually reflects. Weaving Voices recommends exactly this kind of supplier declaration as standard practice."}
+  ],
+  altSource:"Weaving Voices for Health & Justice, 'The Fine Print on Period Products' (Nov 2026)",
+  legislation:[
+    {st:"US",bill:"21 CFR 801.430",status:"passed",title:"FDA requires standardised absorbency labelling and toxic shock syndrome warnings for tampons \u2014 the regulatory response to the 1980s superabsorbent episode."},
+    {st:"NY",bill:"A164A",status:"passed",title:"Requires full ingredient disclosure on menstrual product packaging \u2014 the first US state to do so, and the reason ingredient screening of these products is possible at all."},
+    {st:"CA",bill:"AB 1989",status:"passed",title:"Menstrual Products Right to Know Act \u2014 requires ingredient labelling on menstrual product packaging."}
+  ],
+  links:[
+    {t:"Weave period product testing (2026)",u:"https://weavingvoices.org/wp-content/uploads/2026/11/Weave-PFAS-Menstrual-Product-Testing-Report.pdf"},
+    {t:"FDA tampon absorbency labelling",u:"https://www.fda.gov/medical-devices/safety-communications/tampons-and-asbestos-dioxin-toxic-shock-syndrome"},
+    {t:"GreenScreen List Translator",u:"https://www.greenscreenchemicals.org/learn/greenscreen-list-translator"}
+  ]
 }  ,
 "1,4-dichlorobenzene": {
   name:"1,4-Dichlorobenzene", aka:["para-Dichlorobenzene","p-DCB","1,4-DCB","Paradichlorobenzene","PDB","Dichlorocide"],
@@ -4502,6 +4690,12 @@ const CURATED_DB = {
 };
 
 const EXTRA_ALIASES = {
+  "titanium dioxide":"titanium dioxide","tio2":"titanium dioxide","ci 77891":"titanium dioxide","e171":"titanium dioxide","titania":"titanium dioxide","pigment white 6":"titanium dioxide","13463-67-7":"titanium dioxide",
+  "mineral oil":"mineral oils","mineral oils":"mineral oils","petrolatum":"mineral oils","petroleum jelly":"mineral oils","paraffinum liquidum":"mineral oils","hydrogenated mineral oil":"mineral oils","naphthenic oil":"mineral oils","moah":"mineral oils","mosh":"mineral oils","liquid paraffin":"mineral oils","white mineral oil":"mineral oils","mineral oil aromatic hydrocarbons":"mineral oils",
+  "fragrance":"fragrance","parfum":"fragrance","perfume":"fragrance","aroma":"fragrance","masking fragrance":"fragrance","fragrance blend":"fragrance","hexyl salicylate":"fragrance","geranyl acetate":"fragrance","hedione":"fragrance","methyldihydrojasmonate":"fragrance","dihydrocitronellol":"fragrance","3-octanol":"fragrance","drometrizole":"fragrance",
+  "sodium polyacrylate":"sodium polyacrylate","superabsorbent polymer":"sodium polyacrylate","sap":"sodium polyacrylate","polyacrylate":"sodium polyacrylate","waterlock":"sodium polyacrylate",
+  "zinc oxide":"zinc","pigment red 146":"azo dyes","solvent blue 104":"azo dyes","vinyl acetate":"vinyl chloride",
+  "menstrual products":"pfas","menstrual product":"pfas","tampon":"pfas","tampons":"pfas","period products":"pfas","sanitary pad":"pfas","panty liner":"pfas",
   "1,4-dichlorobenzene":"1,4-dichlorobenzene","para-dichlorobenzene":"1,4-dichlorobenzene","p-dichlorobenzene":"1,4-dichlorobenzene","paradichlorobenzene":"1,4-dichlorobenzene","1,4-dcb":"1,4-dichlorobenzene","p-dcb":"1,4-dichlorobenzene","pdb":"1,4-dichlorobenzene","mothball":"1,4-dichlorobenzene","mothballs":"1,4-dichlorobenzene","urinal cake":"1,4-dichlorobenzene",
   "ortho-phthalates":"phthalates","orthophthalates":"phthalates",
   "organohalogen flame retardants":"flame retardants","ofr":"flame retardants","ofrs":"flame retardants",
@@ -4553,7 +4747,7 @@ const EXTRA_ALIASES = {
   "mg":"magnesium","al":"aluminum","aluminium":"aluminum","si":"silicon",
   "p element":"phosphorus","sulphur":"sulfur",
   "cl":"chlorine","cl2":"chlorine","ar":"argon","k element":"potassium",
-  "ca element":"calcium","sc":"scandium","ti":"titanium","tio2":"titanium",
+  "ca element":"calcium","sc":"scandium","ti":"titanium",
   "v element":"vanadium","mn":"manganese","fe":"iron","co element":"cobalt",
   "ni":"nickel","cu":"copper","zn":"zinc","ga":"gallium","ge":"germanium",
   "se":"selenium","br":"bromine","kr":"krypton","rb":"rubidium","sr":"strontium",
@@ -4600,13 +4794,13 @@ const EXTRA_ALIASES = {
   "bronopol":"formaldehyde releasers","imidazolidinyl urea":"formaldehyde releasers","diazolidinyl urea":"formaldehyde releasers","sodium hydroxymethylglycinate":"formaldehyde releasers","paraformaldehyde":"formaldehyde releasers","methenamine":"formaldehyde releasers",
   "organobromine":"organobromine organochlorine","organochlorine":"organobromine organochlorine",
   "halogenated organics":"organobromine organochlorine","pvdc":"organobromine organochlorine",
-  "btex":"btex","benzene":"btex","toluene":"btex","ethylbenzene":"btex","xylenes":"btex","xylene":"btex",
+  "btex":"btex","benzene":"btex","ethylbenzene":"btex","xylenes":"btex","xylene":"btex",
   "6ppd-quinone":"6ppd","6ppd-q":"6ppd","tire chemicals":"6ppd",
   "dmdm":"dmdm hydantoin",
   "1,4-dioxane":"1,4-dioxane","dioxane":"1,4-dioxane",
   "methylene dichloride":"methylene chloride","dcm":"methylene chloride",
   "n-hexane":"hexane",
-  "pahs":"pahs","pah":"pahs","benzo[a]pyrene":"pahs","bap":"pahs","naphthalene":"pahs","pyrene":"pahs","coal tar":"pahs","creosote":"pahs",
+  "pahs":"pahs","pah":"pahs","benzo[a]pyrene":"pahs","bap":"pahs","naphthalene":"pahs","pyrene":"pahs","creosote":"pahs",
   "dioxins":"dioxins","furans":"dioxins","pcdd":"dioxins","pcdf":"dioxins","tcdd":"dioxins","2,3,7,8-tcdd":"dioxins","agent orange":"dioxins","dioxin":"dioxins",
   "ethylene oxide":"ethylene oxide","eto":"ethylene oxide","oxirane":"ethylene oxide",
   "perchloroethylene":"perchloroethylene","pce":"perchloroethylene","perc":"perchloroethylene","tetrachloroethylene":"perchloroethylene","dry cleaning":"perchloroethylene",
