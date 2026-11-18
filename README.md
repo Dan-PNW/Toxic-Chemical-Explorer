@@ -4,7 +4,7 @@ An interactive reference tool for exploring toxic chemicals and elements — the
 
 ## What it does
 
-Search any of **213 chemicals and elements** by name, CAS number, or chemical class. Each entry includes:
+Search any of **217 chemicals and elements** by name, CAS number, or chemical class. Each entry includes:
 
 - **Health & ecological hazards** with severity pips (1–5) across cancer, neurotoxicity, endocrine disruption, reproductive harm, persistence, and more
 - **GreenScreen benchmark ratings** — BM-1 (Avoid) through BM-4 (Prefer) with color-coded pip indicators
@@ -22,7 +22,7 @@ Search any of **213 chemicals and elements** by name, CAS number, or chemical cl
 
 ```
 index.html      — The UI application (~70KB). Loads chemicals.js, renders the interface.
-chemicals.js    — The chemical database (~550KB). All 213 entries + alias lookup table.
+chemicals.js    — The chemical database (~580KB). All 217 entries + alias lookup table.
 README.md       — This file.
 ```
 
@@ -30,7 +30,7 @@ README.md       — This file.
 
 ## Database coverage
 
-**213 total entries** across:
+**217 total entries** across:
 
 - **71 curated chemicals** — TFF Toxic Chemicals page, WA Safer Products Cycles 1/1.5/2, WA Toxic-Free Cosmetics Act, WA PBT Rule, Stockholm Convention POPs, GreenScreen BM-1 chemicals, WHO acute pesticides, EWG dietary pesticides
 - **110 periodic table elements** — all Z=1–118; 8 route via aliases to existing entries (Hg→heavy metals, As→heavy metals, Cr→hexavalent chromium, Pb→lead, Cd→cadmium, Sn→organotins, Sb→antimony, F→PFAS)
@@ -40,6 +40,7 @@ README.md       — This file.
 - **3 PlastChem priority groups** — azo dyes, aromatic amines, benzothiazoles
 - **2 ChemFORWARD 2026 reclassifications** — caprylyl glycol, phenethyl alcohol (both moved Hazard Band C → Band F on post-assessment reproductive toxicity data)
 - **1 chlorinated aromatic** — 1,4-dichlorobenzene (Prop 65 carcinogen, IARC 2B; up to 99% of solid deodorizer blocks by weight)
+- **4 consumer-product chemicals** — titanium dioxide, mineral oils (MOSH/MOAH), fragrance (undisclosed mixtures), sodium polyacrylate; added from the 2026 Weaving Voices menstrual product screen
 - **8 CSCP/TFF chemicals** — melamine, cyanuric acid, carbon black, toluene, coal tar, retinyl palmitate, ethanolamines (DEA/TEA/MEA), PEG compounds
 
 ## Data sources
@@ -52,6 +53,7 @@ README.md       — This file.
 - [PlastChem project](https://plastchem-project.org/) — 16,000+ plastic chemicals, hazard criteria
 - [OEHHA Proposition 65 list](https://oehha.ca.gov/proposition-65/proposition-65-list) — CA carcinogens and reproductive toxicants
 - [ChemFORWARD 2026 Beauty & Personal Care Safer Chemistry Profile](https://www.chemforward.org/news/bpc-products-reveals-areas-to-strengthen-chemical-safety) — 2.9M ingredient occurrences across 156,594 US products
+- [Weaving Voices, *The Fine Print on Period Products* (Nov 2026)](https://weavingvoices.org/wp-content/uploads/2026/11/Weave-PFAS-Menstrual-Product-Testing-Report.pdf) — PFAS and ingredient screening of 21 disposable menstrual products
 - [CA Safe Cosmetics Program (CSCP)](https://cscpsearch.cdph.ca.gov/search/publicsearch) — CDPH open data
 - [Endocrine Society Common EDCs](https://www.endocrine.org/topics/edc/what-edcs-are/common-edcs)
 - [GreenScreen for Safer Chemicals](https://www.greenscreenchemicals.org/)
@@ -105,7 +107,11 @@ The database lives in `chemicals.js`. Each chemical entry follows this schema:
 
 **Product status values:** `banned`, `partial`, `abandoned` (or omit for active use)
 
+**Alias precedence:** `EXTRA_ALIASES` is a plain object merged after the auto-generated alias loop, so a **duplicate key later in the object silently wins**. When a chemical has both a dedicated entry and membership in a class entry, make sure the class alias does not shadow the specific term (this bug routed `toluene` → BTEX and `coal tar` → PAHs). Audit with: list all `"key":` matches in `EXTRA_ALIASES` and check for repeats.
+
 **Proposed vs. adopted law:** `legislation` rows use `status: "proposed"` for anything not yet adopted, including draft agency determinations. Safer Products for Washington Cycle 2 determinations (published Nov 3, 2026) are **draft** — comments close Dec 18, 2026, final determinations expected June 2027, rule adoption June 2028. Do not cite them as current law.
+
+`status: "failed"` marks a rule that was adopted and then struck down (e.g. the EU CLP carcinogen classification for titanium dioxide, annulled 2022 and upheld annulled in 2025). These rows appear only under the "all" filter, which is the default.
 
 ## Tech stack
 
